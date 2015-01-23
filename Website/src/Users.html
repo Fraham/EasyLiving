@@ -3,7 +3,7 @@
   
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap 3, from LayoutIt!</title>
+    <title>Easy Living Users</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -24,14 +24,14 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="TabLogo.png">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
   </head>
   
   <body>
-    <div class="navbar navbar-default navbar-static-top navbar-inverse">
+    <div class="navbar navbar-default navbar-static-top navbar-inverse" id="header">
       <div class="container">
         <div class="navbar-header">
           <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
@@ -39,9 +39,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-          <a class="navbar-brand" href="#">Easy Living</a>
+          <a class="navbar-brand" href="#"><img alt="140x140" src="Logo.png" class="img-responsive" style="width:35%;height:35%" id="centre"></a>
         </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="collapse navbar-collapse navbar-ex1-collapse red">
           <ul class="nav navbar-nav navbar-right">
             <li class="active">
               <a href="#">Home</a>
@@ -51,6 +51,9 @@
             </li>
 			<li>
               <a href="#">Settings</a>
+            </li>
+			<li>
+              <a href="#">Houses</a>
             </li>
 			<li>
               <a href="#">Help</a>
@@ -95,18 +98,27 @@
         </div>
         <div class="col-md-3 column">
           <div class="row clearfix">
-            <div class="col-md-12 column" draggable="true">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Quick Access Tools</h3>
+            <div class="col-md-12 column" draggable="false">
+              <div class="panel panel-default red-border">
+                <div class="panel-heading" id="header">
+                  <h3 class="panel-title">House Overview</h3>
                 </div>
-                <div class="panel-body">Living Room Main Light:</div>
+                <div class="panel-body">No. lights on:</div>
+				<div class="panel-body">No. doors open:</div>
+				<div class="panel-body">No. windows open:</div>
+				<div class="panel-body">House Occupied:</div>
               </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Panel title</h3>
+              <div class="panel panel-default red-border">
+                <div class="panel-heading" id="header">
+                  <h3 class="panel-title">Notifications</h3>
                 </div>
-                <div class="panel-body">Panel content</div>
+                <div class="panel-body">
+				<div class="alert alert-dismissable alert-info">
+            <h4>You've received post</h4>
+            <div>
+              <strong>9:30am</strong>
+            </div>
+			</div>
               </div>
             </div>
           </div>
