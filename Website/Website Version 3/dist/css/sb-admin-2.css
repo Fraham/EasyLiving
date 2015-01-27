@@ -211,7 +211,13 @@ body {
 }
 
 .login-panel {
-    margin-top: 25%;
+    margin-top: 40%;
+}
+
+@media (max-width: 767px) {
+  .login-panel {
+      margin-top: 10%;
+  }
 }
 
 .flot-chart {
