@@ -1,70 +1,20 @@
-typedef struct{
-	String name;
-	int pin;
-	int state;
-}stateSens;
+#include "Sensor.h"
+#include "Fridge.h"
+#include "PIR.h"
 
-stateSens mgSens[] = {
-	{ "Fridge", 6, 1 },
-	{ "Door", 5, 1 },
+Sensor sensors[] = { 
+	Door("Door", 5),
+	Fridge("Fridge", 6, 7),
+	PIR("Motion1", 3),
 };
-int mgSensCount = sizeof(mgSens) / sizeof(stateSens);
-
-stateSens pirSens[] = {
-	{ "Main", 3, 1 },
-};
-int pirSensCount = sizeof(mgSens) / sizeof(stateSens);
+int sensorCount = sizeof(sensors) / sizeof(*sensors);
 
 void setup() {
 	Serial.begin(9600);
-	for (int i = 0; i<mgSensCount; i++)
-	{
-		pinMode(mgSens[i].pin, INPUT);
-	}
 }
 
 void loop()
 {
-	mgSensCheck();
-	pirSensCheck();
+	for (int i = 0; i < sensorCount; i++)
+		sensors[i].check();
 }
-
-void mgSensCheck()
-{
-	for (int i = 0; i<mgSensCount; i++)
-	{
-		if (digitalRead(mgSens[i].pin) && !mgSens[i].state)
-		{
-			Serial.print(mgSens[i].name);
-			Serial.println(" opened!");
-			mgSens[i].state = 1;
-		}
-		if (!digitalRead(mgSens[i].pin) && mgSens[i].state)
-		{
-			Serial.print(mgSens[i].name);
-			Serial.println(" closed!");
-			mgSens[i].state = 0;
-		}
-	}
-}
-
-void pirSensCheck()
-{
-	for (int i = 0; i<pirSensCount; i++)
-	{
-		if (digitalRead(pirSens[i].pin) && !pirSens[i].state)
-		{
-			Serial.print(pirSens[i].name);
-			Serial.println(": movement detected!");
-			pirSens[i].state = 1;
-		}
-		if (!digitalRead(pirSens[i].pin) && pirSens[i].state)
-		{
-			Serial.print(pirSens[i].name);
-			Serial.println(": movement stopped!");
-			pirSens[i].state = 0;
-		}
-	}
-}
-
-
