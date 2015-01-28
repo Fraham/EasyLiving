@@ -3,6 +3,6 @@
 class PIR :	public Door
 {
 	public:
-		PIR(String name, char pin);
+		PIR(String name, int pin);
 };
 

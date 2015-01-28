@@ -4,7 +4,7 @@
 class Door : public Sensor
 {
 	public:
-		Door(String name, char pin);
+		Door(String name, int pin);
 		void check();
 		virtual void opened();
 		virtual void leftOpened();

@@ -1,11 +1,14 @@
 #include "Fridge.h"
+#define alarmDelay 10000 //time before alarm (ms)
+#define buzzDelay 100 //delay between state switch (ms)
+#define buzzFreq 250 //tone frequency (Hz)
 
 
-Fridge::Fridge(String name, char pin, char buzzPin) : Door(name, pin)
+Fridge::Fridge(String name, int pin, int buzzPin) : Door(name, pin)
 {
-	Buzzer _buzzer = {7, false};
-	_freq = 5;
-	_waitTime = false;
+	pinMode(buzzPin, OUTPUT);
+	_buzzPin = buzzPin;
+	_buzzState = false;
 }
 
 void Fridge::opened()
@@ -16,21 +19,22 @@ void Fridge::opened()
 
 void Fridge::leftOpened()
 {
-	if (millis() - _openTime >= _timer)
+	if (_state && millis() - _openTime >= alarmDelay)
 	{
-		bool switchTime = millis() - _switchTime >= _freq;
-		if (!_waitTime &&  switchTime)
+		bool switchTime = millis() - _switchTime >= buzzDelay;
+		if (!_buzzState &&  switchTime)
 		{
-			_buzzer.state = abs(_buzzer.state - 1);
-			digitalWrite(_buzzer.pin, _buzzer.state);
-			_waitTime = true;
+			tone(_buzzPin, buzzFreq);
+			_buzzState = true;
 			_switchTime = millis();
 		}
-		if (_waitTime && switchTime)
+		else if (_buzzState && switchTime)
 		{
-			_waitTime = false;
+			noTone(_buzzPin);
+			_buzzState = false;
 			_switchTime = millis();
 		}
 	}
+	else noTone(_buzzPin);
 }
 

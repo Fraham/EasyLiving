@@ -3,14 +3,14 @@
 class Sensor
 {
 	public:
-		Sensor(String name, char pin);
-		char getPin();
+		Sensor(String name, int pin);
+		int getPin();
 		String getName();
 		bool getState();
-		virtual void check();
+		virtual void check() = 0;
 		
 	protected:
-		char _pin;
+		int _pin;
 		String _name;
 		bool _state;
 		String _highMsg;

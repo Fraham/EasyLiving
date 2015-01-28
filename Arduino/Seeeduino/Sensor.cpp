@@ -1,18 +1,19 @@
 #include "Sensor.h"
 #include <Arduino.h>
 
-Sensor::Sensor(String name, char pin)
+Sensor::Sensor(String name, int pin)
 {
+	Serial.begin(9600);
+	//digitalWrite(_pin, LOW);
+	pinMode(_pin, INPUT);
 	_name = name;
 	_pin = pin;
-	_state = 1;
-	Serial.begin(9600);
-	pinMode(_pin, OUTPUT);
+	_state = true;
 	_highMsg = "";
 	_lowMsg = "";
 }
 
-char Sensor::getPin()
+int Sensor::getPin()
 {
 	return _pin;
 }
@@ -27,4 +28,4 @@ bool Sensor::getState()
 	return _state;
 }
 
-void Sensor::check(){};
+//void Sensor::check(){ Serial.println(_pin); };

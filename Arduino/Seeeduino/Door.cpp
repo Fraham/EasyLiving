@@ -1,7 +1,7 @@
 #include "Door.h"
 
 
-Door::Door(String name, char pin) : Sensor(name, pin)
+Door::Door(String name, int pin) : Sensor(name, pin)
 {
 	_highMsg = " opened!";
 	_lowMsg = " closed!";
