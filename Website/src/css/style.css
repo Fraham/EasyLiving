@@ -1,11 +1,6 @@
 #header {
-    background-color:#99CCFF;
-    color:white;
-    text-align:center;
-	left:0px;
-	position:absolute;
-	height:150px;
-    top:0px;
+    background-color:#C8C8C8 ;
+	border-color: #FF0000;
 }
 
 #centre{
@@ -24,6 +19,23 @@
 	bottom:0px;
 }
 
+a:link {
+    color: #B2FF99;
+}
+
+.red-border{
+	border-color:#FF0000;
+}
+.red{
+	color:#FF0000;
+}
+
+
+
+
+
+
+
 .fixed{
 	position: fixed;
 }
@@ -36,9 +48,8 @@
 .right-align{
 	right:0%;
 }
-.yellow{
-	background-color: #99CCFF;
-}
 .centre-align{
 	left:50%;
 }
+
+
