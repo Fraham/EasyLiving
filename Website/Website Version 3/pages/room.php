@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Easy Living</title>
+  <title>Easy Living Rooms Overview</title>
   <link rel="shortcut icon" href="Images/TabLogo.png">
   <!-- Bootstrap Core CSS -->
   <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,25 +28,39 @@
 
   <!-- Custom Fonts -->
   <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
 </head>
 
 <body>
+
   <div id="wrapper">
 
     <!-- Navigation -->
-    <nav class="hidden-lg hidden-sm hidden-md navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-      <div class="navbar-header centered">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+      <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-		<img alt="140x140" src="Images/Logo.png" class="img-responsive center-block" style="width:25%;height:25%;">
       </div>
       <!-- /.navbar-header -->
+      <div class="input-group custom-search-form sidebar-search col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-2">
+        <input type="text" class="form-control" placeholder="Search...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
 
-        <!-- Navigation -->
         <ul class="nav navbar-top-links navbar-right">
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #D80000">
@@ -130,8 +144,10 @@
       <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
           <ul class="nav" id="side-menu">
-            <div class="input-group custom-search-form col-lg-12 hidden-xs">
+            <div class="input-group custom-search-form">
+              <div class="col-lg-12 hidden-xs">
                 <img alt="140x140" src="Images/Logo.png" class="img-responsive" style="width:100%;height:100%;">
+              </div>
             </div>
             <!-- /input-group -->
             <li>
@@ -170,68 +186,79 @@
         </div>
         <!-- /.navbar-static-side -->
       </nav>
+
       <div id="page-wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h1 class="page-header">Notifications</h1>
+            <h1 class="page-header">Rooms Overview</h1>
           </div>
+          <!-- /.col-lg-12 -->
         </div>
+        <!-- /.row -->
         <div class="row">
-          <div class="col-lg-12">
-            <div class="panel panel-default">
+          <?php
+          include "connectToDatabase.php";
+
+          $sql = "SELECT rooms.room_name, log.comment, log.date, sensor_types.sensor_type_name FROM log
+          INNER JOIN sensors
+          ON log.sensor_id = sensors.idsensors
+          INNER JOIN sensor_types
+          ON sensors.sensor_type = sensor_types.idsensor_types
+          INNER JOIN rooms
+          ON sensors.room_id = rooms.idrooms";
+
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+              echo "<tbody>";
+              echo "<tr class='odd gradeX'>";
+              echo "<td class='center'> $row[room_name] </td>";
+              echo "<td class='center'> $row[comment] </td>";
+              echo "<td class='center'> $row[date] </td>";
+              echo "<td class='center'> $row[sensor_type_name] </td>";
+              echo "</tr>";
+              echo "</tbody>";
+            }
+          }
+          $conn->close();
+          ?>
+          <div class="col-lg-3 col-md-6">
+            <div class="panel panel-red">
               <div class="panel-heading">
-                Notifications Tables
-              </div>
-              <!-- /.panel-heading -->
-              <div class="panel-body">
-                <div class="dataTable_wrapper">
-                  <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                    <thead>
-                      <tr>
-                        <th>Room</th>
-                        <th>Comment</th>
-                        <th>Date and Time</th>
-                        <th>Sensor Type</th>
-                      </tr>
-                    </thead>
-                    <?php
-                    include "connectToDatabase.php";
-
-                    $sql = "SELECT rooms.room_name, log.comment, log.date, sensor_types.sensor_type_name FROM log
-                    INNER JOIN sensors
-                    ON log.sensor_id = sensors.idsensors
-                    INNER JOIN sensor_types
-                    ON sensors.sensor_type = sensor_types.idsensor_types
-                    INNER JOIN rooms
-                    ON sensors.room_id = rooms.idrooms";
-
-                    $result = $conn->query($sql);
-
-                    if ($result->num_rows > 0) {
-                      // output data of each row
-                      while($row = $result->fetch_assoc()) {
-                        echo "<tbody>";
-                        echo "<tr class='odd gradeX'>";
-                        echo "<td class='center'> $row[room_name] </td>";
-                        echo "<td class='center'> $row[comment] </td>";
-                        echo "<td class='center'> $row[date] </td>";
-                        echo "<td class='center'> $row[sensor_type_name] </td>";
-                        echo "</tr>";
-                        echo "</tbody>";
-                      }
-                    }
-                    $conn->close();
-                    ?>
+                <div class="row">
+                  <div class="col-xs-3">
+                    <i class="fa fa-comments fa-5x"></i>
                   </div>
+                  <div class="col-xs-9 text-right">
+                    <div class="huge">Living Room</div>
+                    <div>Occupied</div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="col-md-6">
+                  <h3><font color="black">Window:</font><span class="text-danger">Open</span></h3>
+                </div>
+                <div class="col-md-6">
+                  <h3>Lamp: **Bootstrap Switch**</h3>
+                  <label for="flip-a">Select slider:</label>
+                  <select name="slider" id="flip-a" data-role="slider">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                  </select>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- /#page-wrapper -->
+
     </div>
     <!-- /#wrapper -->
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
     <!-- jQuery -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -240,7 +267,6 @@
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
