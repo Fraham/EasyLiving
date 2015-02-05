@@ -195,15 +195,22 @@
                   <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                       <tr>
-                        <th>Sensor ID</th>
+                        <th>Room</th>
                         <th>Comment</th>
                         <th>Date and Time</th>
+                        <th>Sensor Type</th>
                       </tr>
                     </thead>
                     <?php
                     include "connectToDatabase.php";
 
-                    $sql = "SELECT * FROM log";
+                    $sql = "SELECT rooms.room_name, log.comment, log.date, sensor_types.sensor_type_name FROM log
+                    INNER JOIN sensors
+                    ON log.sensor_id = sensors.idsensors
+                    INNER JOIN sensor_types
+                    ON sensors.sensor_type = sensor_types.idsensor_types
+                    INNER JOIN rooms
+                    ON sensors.room_id = rooms.idrooms";
 
                     $result = $conn->query($sql);
 
@@ -211,45 +218,46 @@
                       // output data of each row
                       while($row = $result->fetch_assoc()) {
                         echo "<tbody>";
-                          echo "<tr class='odd gradeX'>";
-                            echo "<td class='center'> $row[sensor_id] </td>";
-                            echo "<td class='center'> $row[comment] </td>";
-                            echo "<td class='center'> $row[date] </td>";
-                            echo "</tr>";
-                            echo "</tbody>";
-                          }
-                        }
-                        $conn->close();
-                        ?>
-                      </div>
-                    </div>
+                        echo "<tr class='odd gradeX'>";
+                        echo "<td class='center'> $row[room_name] </td>";
+                        echo "<td class='center'> $row[comment] </td>";
+                        echo "<td class='center'> $row[date] </td>";
+                        echo "<td class='center'> $row[sensor_type_name] </td>";
+                        echo "</tr>";
+                        echo "</tbody>";
+                      }
+                    }
+                    $conn->close();
+                    ?>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- /#wrapper -->
-        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-        <!-- jQuery -->
-        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+      </div>
+    </div>
+    <!-- /#wrapper -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-        <!-- Morris Charts JavaScript -->
-        <script src="../bower_components/raphael/raphael-min.js"></script>
-        <script src="../bower_components/morrisjs/morris.min.js"></script>
-        <script src="../js/morris-data.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="../bower_components/raphael/raphael-min.js"></script>
+    <script src="../bower_components/morrisjs/morris.min.js"></script>
+    <script src="../js/morris-data.js"></script>
 
 
 
-        <!-- Custom Theme JavaScript -->
-        <script src="../dist/js/sb-admin-2.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
 
-      </body>
+  </body>
 
-      </html>
+  </html>
