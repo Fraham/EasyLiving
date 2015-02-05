@@ -46,86 +46,8 @@
       </div>
       <!-- /.navbar-header -->
 
-        <!-- Navigation -->
-        <ul class="nav navbar-top-links navbar-right">
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #D80000">
-              <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-alerts">
-              <li>
-                <a href="#">
-                  <div>
-                    <i class="fa fa-comment fa-fw"></i> New Comment
-                    <span class="pull-right text-muted small">4 minutes ago</span>
-                  </div>
-                </a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#">
-                  <div>
-                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                    <span class="pull-right text-muted small">12 minutes ago</span>
-                  </div>
-                </a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#">
-                  <div>
-                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                    <span class="pull-right text-muted small">4 minutes ago</span>
-                  </div>
-                </a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#">
-                  <div>
-                    <i class="fa fa-tasks fa-fw"></i> New Task
-                    <span class="pull-right text-muted small">4 minutes ago</span>
-                  </div>
-                </a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#">
-                  <div>
-                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                    <span class="pull-right text-muted small">4 minutes ago</span>
-                  </div>
-                </a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a class="text-center" href="notifications.php">
-                  <strong>See All Alerts</strong>
-                  <i class="fa fa-angle-right"></i>
-                </a>
-              </li>
-            </ul>
-            <!-- /.dropdown-alerts -->
-          </li>
-          <!-- /.dropdown -->
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #D80000">
-              <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-user">
-              <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-              </li>
-              <li><a href="#"><i class="fa fa-gear fa-fw"></i> Account Settings</a>
-              </li>
-              <li class="divider"></li>
-              <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-              </li>
-            </ul>
-            <!-- /.dropdown-user -->
-          </li>
-          <!-- /.dropdown -->
-        </ul>
-        <!-- /.navbar-top-links -->
+  
+
       </div>
       <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
@@ -138,33 +60,36 @@
               <a href="index.html" style="color: #D80000"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li>
-              <a href="#" style="color: #D80000"><i class="fa fa-sitemap fa-fw"></i> Rooms<span class="fa arrow"></span></a>
-              <ul class="nav nav-second-level">
+				<a href="#" style="color: #D80000"><i class="fa fa-sitemap fa-fw"></i> Rooms<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level dropdown-toggle">
                 <li>
                   <a href="room.html" style="color: #D80000">Overview</a>
                 </li>
                 <li>
                   <a href="roomSettings.html" style="color: #D80000">Room Settings</a>
                 </li>
-              </ul>
+				</ul>
             </li>
             <li>
-              <a href="notifications.php" style="color: #D80000"><i class="fa fa-table fa-fw"></i> Notifications</a>
+              <a href="notifications.php" style="color: #D80000"><i class="fa fa-exclamation fa-fw"></i> Notifications</a>
             </li>
             <li>
-              <a href="#"style="color: #D80000"><i class="fa fa-sitemap fa-fw"></i> Household<span class="fa arrow"></span></a>
-              <ul class="nav nav-second-level">
+				<a href="#"style="color: #D80000"><i class="fa fa-home fa-fw"></i> Household<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
                 <li>
                   <a href="residents.html"style="color: #D80000">Residents</a>
                 </li>
                 <li>
                   <a href="selection.html"style="color: #D80000">Household Selection</a>
                 </li>
-              </ul>
+				</ul>
             </li>
-            <li>
-              <a href="preferences.html" style="color: #D80000"><i class="fa fa-table fa-fw"></i>Preferences</a>
-            </li>
+			<li>
+				<a href="preferences.html" style="color: #D80000"><i class="fa fa-edit fa-fw"></i>Preferences</a>
+			</li>
+			<li>
+				<a href="login.html" style="color: #D80000"><i class="fa fa-sign-out fa-fw"></i>Log out</a>
+			</li>
           </div>
           <!-- /.sidebar-collapse -->
         </div>
