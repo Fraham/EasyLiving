@@ -14,13 +14,22 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="_core">
-      <UniqueIdentifier>{4be8f242-12be-46e2-b5c6-92441b57aca2}</UniqueIdentifier>
+      <UniqueIdentifier>{1b2536dc-67d1-463f-8e3b-a65f62ef8ad0}</UniqueIdentifier>
     </Filter>
     <Filter Include="_core\avr-libc">
-      <UniqueIdentifier>{1d7200e0-c8b4-4799-892f-ccc732abc95a}</UniqueIdentifier>
+      <UniqueIdentifier>{cdcee339-28c9-442d-9dd1-cef1526d2b03}</UniqueIdentifier>
     </Filter>
     <Filter Include="_libraries">
-      <UniqueIdentifier>{3a0e7583-a6df-493a-8bc5-b9158a272259}</UniqueIdentifier>
+      <UniqueIdentifier>{88284058-a6f2-4953-94f8-d922d3c66bd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_libraries\SPI">
+      <UniqueIdentifier>{e0afade0-7a8e-49a1-9681-942e4fcca2d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_libraries\Ethernet">
+      <UniqueIdentifier>{f8d629e3-88fa-42ea-ba61-d6d8cf157286}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_libraries\Ethernet\utility">
+      <UniqueIdentifier>{ca9e07c9-3bce-42ec-8021-1f14c1999614}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -40,6 +49,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PIR.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Conn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\Arduino.h">
@@ -105,6 +120,36 @@
     <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\variants\standard\pins_arduino.h">
       <Filter>_core</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\SPI\SPI.h">
+      <Filter>_libraries\SPI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\Dhcp.h">
+      <Filter>_libraries\Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\Dns.h">
+      <Filter>_libraries\Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\Ethernet.h">
+      <Filter>_libraries\Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\EthernetClient.h">
+      <Filter>_libraries\Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\EthernetServer.h">
+      <Filter>_libraries\Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\EthernetUdp.h">
+      <Filter>_libraries\Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\util.h">
+      <Filter>_libraries\Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\utility\socket.h">
+      <Filter>_libraries\Ethernet\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\utility\w5100.h">
+      <Filter>_libraries\Ethernet\utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Fridge.cpp">
@@ -117,6 +162,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PIR.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Conn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\CDC.cpp">
@@ -179,5 +227,37 @@
     <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\avr-libc\realloc.c">
       <Filter>_core\avr-libc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\SPI\SPI.cpp">
+      <Filter>_libraries\SPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\Dhcp.cpp">
+      <Filter>_libraries\Ethernet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\Dns.cpp">
+      <Filter>_libraries\Ethernet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\Ethernet.cpp">
+      <Filter>_libraries\Ethernet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\EthernetClient.cpp">
+      <Filter>_libraries\Ethernet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\EthernetServer.cpp">
+      <Filter>_libraries\Ethernet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\EthernetUdp.cpp">
+      <Filter>_libraries\Ethernet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\utility\socket.cpp">
+      <Filter>_libraries\Ethernet\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\utility\w5100.cpp">
+      <Filter>_libraries\Ethernet\utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Seeeduino.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

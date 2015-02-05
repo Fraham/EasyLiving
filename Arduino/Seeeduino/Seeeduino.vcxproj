@@ -38,13 +38,15 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ExecutablePath>$(ProjectDir);C:\Program Files (x86)\Arduino\libraries\SPI;C:\Program Files (x86)\Arduino\libraries\Ethernet</ExecutablePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino;C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard;C:\Users\jeisonas\Desktop 2\EasyLiving\Arduino\Seeeduino;C:\Program Files (x86)\Arduino\libraries;C:\Program Files (x86)\Arduino\hardware\arduino\libraries;C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers;C:\Users\jeisonas\Desktop 2\EasyLiving\Arduino\libraries;c:\program files (x86)\arduino\hardware\tools\avr\avr\include\;c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\;c:\program files (x86)\arduino\hardware\tools\avr\avr\;c:\program files (x86)\arduino\hardware\tools\avr\lib\gcc\avr\4.3.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino;C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard;C:\Users\jeisonas\Desktop 2\EasyLiving\Arduino\Seeeduino;C:\Program Files (x86)\Arduino\libraries\SPI;C:\Program Files (x86)\Arduino\libraries\SPI\utility;C:\Program Files (x86)\Arduino\libraries\Ethernet;C:\Program Files (x86)\Arduino\libraries\Ethernet\utility;C:\Program Files (x86)\Arduino\libraries;C:\Program Files (x86)\Arduino\hardware\arduino\libraries;C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers;C:\Users\jeisonas\Desktop 2\EasyLiving\Arduino\libraries;c:\program files (x86)\arduino\hardware\tools\avr\avr\include\;c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\;c:\program files (x86)\arduino\hardware\tools\avr\avr\;c:\program files (x86)\arduino\hardware\tools\avr\lib\gcc\avr\4.3.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>C:\Users\jeisonas\Desktop 2\EasyLiving\Arduino\Seeeduino\Visual Micro\.Seeeduino.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
       <PreprocessorDefinitions>__AVR_ATmega328p__;__AVR_ATmega328P__;ARDUINO=106;ARDUINO_MAIN;__AVR__;__avr__;F_CPU=16000000L;__cplusplus;GCC_VERSION=40301;ARDUINO_ARCH_AVR;ARDUINO_AVR_UNO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -99,8 +101,20 @@
     <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\wiring_private.h" />
     <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\WString.h" />
     <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\variants\standard\pins_arduino.h" />
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\Dhcp.h" />
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\Dns.h" />
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\Ethernet.h" />
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\EthernetClient.h" />
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\EthernetServer.h" />
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\EthernetUdp.h" />
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\util.h" />
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\utility\socket.h" />
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\utility\w5100.h" />
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\SPI\SPI.h" />
+    <ClInclude Include="Conn.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="PIR.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Sensor.h" />
     <ClInclude Include="Fridge.h" />
     <ClInclude Include="Visual Micro\.Seeeduino.vsarduino.h" />
@@ -126,17 +140,30 @@
     <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\wiring_shift.c" />
     <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\WMath.cpp" />
     <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\WString.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\Dhcp.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\Dns.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\Ethernet.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\EthernetClient.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\EthernetServer.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\EthernetUdp.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\utility\socket.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Ethernet\utility\w5100.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\SPI\SPI.cpp" />
+    <ClCompile Include="Conn.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="PIR.cpp" />
     <ClCompile Include="Sensor.cpp" />
     <ClCompile Include="Fridge.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Seeeduino.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties arduino.upload.port="COM3" />
+      <UserProperties arduino.upload.maximum_size="32256" arduino.upload.speed="115200" visualmicro.package.name="arduino" arduino.board.property_bag="name=Arduino Uno&#xD;&#xA;upload.protocol=arduino&#xD;&#xA;upload.maximum_size=32256&#xD;&#xA;upload.speed=115200&#xD;&#xA;bootloader.low_fuses=0xff&#xD;&#xA;bootloader.high_fuses=0xde&#xD;&#xA;bootloader.extended_fuses=0x05&#xD;&#xA;bootloader.path=optiboot&#xD;&#xA;bootloader.file=optiboot_atmega328.hex&#xD;&#xA;bootloader.unlock_bits=0x3F&#xD;&#xA;bootloader.lock_bits=0x0F&#xD;&#xA;build.mcu=atmega328p&#xD;&#xA;build.f_cpu=16000000L&#xD;&#xA;build.core=arduino&#xD;&#xA;build.variant=standard&#xD;&#xA;runtime.ide.path=C:\Program Files (x86)\Arduino&#xD;&#xA;build.system.path=C:\Program Files (x86)\Arduino\hardware\arduino\system&#xD;&#xA;runtime.ide.version=106&#xD;&#xA;originalid=uno&#xD;&#xA;vm.platform.root.path=C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\arduino10x&#xD;&#xA;ide.hint=Arduino 0023 and 1.0.x Ide&#xD;&#xA;ide.location.key=Arduino&#xD;&#xA;ide.location.ide.winreg=Arduino 1.0.x Application&#xD;&#xA;ide.location.sketchbook.winreg=Arduino 1.0.x Sketchbook&#xD;&#xA;ide.location.sketchbook.preferences=sketchbook.path&#xD;&#xA;ide.location.sketchbook.default=%MYDOCUMENTS%\arduino&#xD;&#xA;ide.location.preferences=%VM_APPDATA_ROAMING%\arduino\preferences.txt&#xD;&#xA;ide.default.package=arduino&#xD;&#xA;ide.default.platform=avr&#xD;&#xA;ide.multiplatform=true&#xD;&#xA;ide.includes=arduino.h&#xD;&#xA;ide.platformswithoutpackage=true&#xD;&#xA;ide.includes.fallback=wprogram.h&#xD;&#xA;ide.extension=ino&#xD;&#xA;ide.extension.fallback=pde&#xD;&#xA;ide.versionLTEQ=149&#xD;&#xA;ide.exe=arduino.exe&#xD;&#xA;ide.hosts=atmel&#xD;&#xA;ide.url=http://arduino.cc/en/Main/Software&#xD;&#xA;vm.debug=true&#xD;&#xA;software=ARDUINO&#xD;&#xA;ide.appid=arduino10x&#xD;&#xA;location.sketchbook=C:\Users\jeisonas\Desktop 2\EasyLiving\Arduino&#xD;&#xA;vm.core.include=arduino.h&#xD;&#xA;build.board=AVR_UNO&#xD;&#xA;vm.boardsource.path=C:\Program Files (x86)\Arduino\hardware\arduino&#xD;&#xA;runtime.platform.path=C:\Program Files (x86)\Arduino\hardware\arduino&#xD;&#xA;vm.platformname.name=avr&#xD;&#xA;build.arch=AVR&#xD;&#xA;" visualmicro.application.name="arduino10x" arduino.build.mcu="atmega328p" arduino.upload.protocol="arduino" arduino.build.f_cpu="16000000L" arduino.board.desc="Arduino Uno" arduino.board.name="uno" arduino.upload.port="COM3" visualmicro.platform.name="avr" arduino.build.core="arduino" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

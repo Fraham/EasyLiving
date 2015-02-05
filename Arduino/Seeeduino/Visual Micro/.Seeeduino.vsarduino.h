@@ -60,6 +60,8 @@ extern "C" void __cxa_pure_virtual() {;}
 #define portInputRegister(P)
 #define portModeRegister(P)
 #include <Seeeduino.ino>
+#include <Conn.cpp>
+#include <Conn.h>
 #include <Door.cpp>
 #include <Door.h>
 #include <Fridge.cpp>
@@ -68,4 +70,5 @@ extern "C" void __cxa_pure_virtual() {;}
 #include <PIR.h>
 #include <Sensor.cpp>
 #include <Sensor.h>
+#include <resource.h>
 #endif

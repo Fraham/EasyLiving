@@ -1,6 +1,9 @@
+#include <SPI.h>
+#include <Ethernet.h>
 #include "Sensor.h"
 #include "Fridge.h"
 #include "PIR.h"
+#include "Conn.h"
 
 Sensor *sensors[] = { 
 	new Door("Door", 5),
@@ -9,14 +12,14 @@ Sensor *sensors[] = {
 };
 int sensorCount = sizeof(sensors) / sizeof(*sensors);
 
-void setup() {
+void setup() 
+{
 	Serial.begin(9600);
+	connInit();
 }
 
 void loop()
 {
 	for (int i = 0; i < sensorCount; i++)
-	{
 		(*sensors[i]).check();
-	}
 }

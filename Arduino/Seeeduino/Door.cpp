@@ -1,25 +1,22 @@
 #include "Door.h"
 
-
 Door::Door(String name, int pin) : Sensor(name, pin)
 {
-	_highMsg = " opened!";
-	_lowMsg = " closed!";
+	_highMsg = _name + " opened!";
+	_lowMsg = _name + " closed!";
 }
 
 void Door::check()
 {
 	if (digitalRead(_pin) && !_state)
 	{
-		Serial.print(_name);
-		Serial.println(_highMsg);
+		sendMsg(_highMsg);
 		_state = 1;
 		opened();
 	}
 	if (!digitalRead(_pin) && _state)
 	{
-		Serial.print(_name);
-		Serial.println(_lowMsg);
+		sendMsg(_lowMsg);
 		_state = 0;
 	}
 	leftOpened();
