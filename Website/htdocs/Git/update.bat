@@ -1,2 +1,2 @@
 cd C:\Users\easyLiving\Desktop\EasyLiving
-git fetch
+"C:\Program Files (x86)\Git\cmd\git" pull
