@@ -22,4 +22,5 @@ void loop()
 {
 	for (int i = 0; i < sensorCount; i++)
 		(*sensors[i]).check();
+	getResponse();
 }

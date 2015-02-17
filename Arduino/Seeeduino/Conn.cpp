@@ -15,8 +15,17 @@ void connInit()
 	Serial.println("Ready!");
 }
 
+void closeConn()
+{
+		if (!server.connected()) {
+			//Serial.println("Connection Closed");
+			server.stop();
+		}
+}
+
 void sendMsg(String msg)
 {
+	closeConn();
 	String _msg = "msg=" + msg;
 	if (server.connect(serverAddr, 80)) {
 		server.println("POST /post.php HTTP/1.1");
@@ -28,7 +37,21 @@ void sendMsg(String msg)
 		server.print(_msg);
 	}
 
-	if (server.connected()) {
-		server.stop();
+}
+
+String getResponse()
+{
+	String response = "";
+	if (server.available())
+	{
+		while (server.available())
+		{
+			char c = server.read();
+			response += c;
+		}
+		response = response.substring(248);
+		Serial.println(response);
+		closeConn();
 	}
+	return response;
 }
