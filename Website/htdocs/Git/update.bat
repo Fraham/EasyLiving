@@ -1,0 +1,2 @@
+cd EasyLiving
+git fetch
