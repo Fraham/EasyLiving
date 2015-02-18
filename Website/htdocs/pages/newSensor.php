@@ -9,6 +9,8 @@
     $statement->bind_param("isssi", $sensorID, $name, $messageOn, $messageOff, $roomID);
 
     addNewData($statement);
+
+    $conn->close();
   }
 
   //addNewSensor(2, "something", "hello", "bye", 1);
