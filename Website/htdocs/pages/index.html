@@ -10,6 +10,8 @@
   <meta name="author" content="">
 
   <title>Easy Living</title>
+        <!-- jQuery -->
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
   <link rel="shortcut icon" href="Images/TabLogo.png">
   <!-- Bootstrap Core CSS -->
   <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -256,6 +258,7 @@
 			<div class="panel-body">
 				<div class="list-group" id="notificationPanel">
 					<script>
+						refresh();
 						function refresh()
 						{
 							$.post( "getNotificationPanel.php", function( data ) {
@@ -263,23 +266,7 @@
 							});
 						}
 						var intervalID = setInterval(refresh, 500);
-					</script]>
-					<?php
-						/*<a href="#" class="list-group-item">
-							<i class="fa fa-comment fa-fw"></i> new comment
-							<span class="pull-right text-muted small"><em>4 minutes ago</em>
-							</span>
-						</a>
-						fa fa-comment fa-fw
-						fa fa-twitter fa-fw
-						fa fa-envelope fa-fw
-						fa fa-tasks fa-fw
-						fa fa-upload fa-fw
-						fa fa-bolt fa-fw
-						fa fa-warning fa-fw
-						fa fa-shopping-cart fa-fw
-						fa fa-money fa-fw*/
-					?>
+					</script>
 				</div>
 				<!-- /.list-group -->
 				<a href="notifications.php" class="btn btn-default btn-block">View All Alerts</a>
@@ -297,8 +284,6 @@
 
 
 
-        <!-- jQuery -->
-        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
         <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

@@ -10,11 +10,21 @@
 	if ($result->num_rows > 0) 
 	{
 		while($row = $result->fetch_assoc()) {
-			$tableHtml .= "<a href='#' class='list-group-item'><i class='fa fa-comment fa-fw'></i>";
-			$tableHtml .= $row[time];
+			$tableHtml .= "<a href='#' class='list-group-item'>";//<i class='fa fa-comment fa-fw'></i>";
+			$tableHtml .= "$row[data]";
 			$tableHtml .= "<span class='pull-right text-muted small'><em>4 minutes ago</em></span>";
 		}
 	}
 	$conn->close();
 	echo $tableHtml;
 ?>
+
+<!--					fa fa-comment fa-fw
+						fa fa-twitter fa-fw
+						fa fa-envelope fa-fw
+						fa fa-tasks fa-fw
+						fa fa-upload fa-fw
+						fa fa-bolt fa-fw
+						fa fa-warning fa-fw
+						fa fa-shopping-cart fa-fw
+						fa fa-money fa-fw-->
