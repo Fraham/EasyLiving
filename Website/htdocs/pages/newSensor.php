@@ -2,13 +2,14 @@
   function addNewSensor($sensorID, $name, $messageOn, $messageOff, $roomID)
   {
     require "connectToDatabase.php";
+    require "addData.php";
 
     $statement = $conn->prepare("INSERT INTO sensors (sensorID, name, messageOn, messageOff, roomID) VALUES (?, ?, ?, ?, ?)");
 
     $statement->bind_param("isssi", $sensorID, $name, $messageOn, $messageOff, $roomID);
 
-    $statement->execute();
+    addNewData($statement);
   }
 
-  addNewSensor(1, "something", "hello", "bye", 1);
+  //addNewSensor(2, "something", "hello", "bye", 1);
 ?>
