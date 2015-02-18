@@ -1,7 +1,7 @@
 <?php
   function addNewData($statement)
   {
-    require "connectToDatabase.php";
+    require "../connect.php";
 
     $statement->execute();
   }

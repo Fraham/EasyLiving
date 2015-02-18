@@ -1,7 +1,7 @@
 <?php
   function addNewSensor($sensorID, $name, $messageOn, $messageOff, $roomID)
   {
-    require "connectToDatabase.php";
+    require "../connect.php";
     require "addData.php";
 
     $statement = $conn->prepare("INSERT INTO sensors (sensorID, name, messageOn, messageOff, roomID) VALUES (?, ?, ?, ?, ?)");
