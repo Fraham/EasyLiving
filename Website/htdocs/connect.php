@@ -12,7 +12,3 @@
 		die("Connection failed: " . $conn->connect_error);
 	}
 ?>
-<html>
-<body>
-</body>
-</html>

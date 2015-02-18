@@ -120,7 +120,7 @@
                       </tr>
                     </thead>
                     <?php
-                    include "connectToDatabase.php";
+                    require "../connect.php";
 
                     $sql = "SELECT rooms.room_name, log.comment, log.date, sensor_types.sensor_type_name FROM log
                     INNER JOIN sensors

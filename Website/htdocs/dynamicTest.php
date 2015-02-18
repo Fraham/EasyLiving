@@ -137,14 +137,14 @@
                 <table class="table table-striped table-bordered table-hover display order-column" id="dataTables-example">
                   <thead>
 					<script>
-					function refresh()
-					{
-						$.post( "getTable.php", function( data ) {
-						  $( ".table" ).html( data );
-						});
-					}
-					var intervalID = setInterval(refresh, 500);
-				</script>
+						function refresh()
+						{
+							$.post( "getTable.php", function( data ) {
+							  $( ".table" ).html( data );
+							});
+						}
+						var intervalID = setInterval(refresh, 500);
+					</script>
                   </thead>
 				  </table>
                 </div>
