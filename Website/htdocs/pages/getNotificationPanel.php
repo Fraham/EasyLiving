@@ -2,10 +2,10 @@
 	$tableHtml = "";
 	require_once "../connect.php";
 
-	$sql = "SELECT DATE_FORMAT(time,'%k:%i') as time, data FROM test ORDER BY idtest DESC LIMIT 10";
+	$statement = "SELECT DATE_FORMAT(time,'%k:%i') as time, data FROM test ORDER BY idtest DESC LIMIT 10";
 	//$sql = "SELECT data FROM test ORDER BY idtest DESC LIMIT 10";
 
-	$result = $conn->query($sql);
+	$result = $conn->query($statement);
 
 	if ($result->num_rows > 0)
 	{
