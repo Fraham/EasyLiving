@@ -20,4 +20,43 @@
 
     $conn->close();
   }
+
+  function addNewHouse($houseID, $house_password)
+  {
+    require "../connect.php";
+
+    $statement = $conn->prepare("INSERT INTO house (houseID, house_name) VALUES (?, ?)");
+
+    $statement->bind_param("ss", $houseID, $house_password);
+
+    addNewData($statement);
+
+    $conn->close();
+  }
+
+  function addNewRoom($sensorID, $name, $messageOn, $messageOff, $roomID)
+  {
+    require "../connect.php";
+
+    $statement = $conn->prepare("INSERT INTO sensors (sensorID, name, messageOn, messageOff, roomID) VALUES (?, ?, ?, ?, ?)");
+
+    $statement->bind_param("isssi", $sensorID, $name, $messageOn, $messageOff, $roomID);
+
+    addNewData($statement);
+
+    $conn->close();
+  }
+
+  function addNewUser($sensorID, $name, $messageOn, $messageOff, $roomID)
+  {
+    require "../connect.php";
+
+    $statement = $conn->prepare("INSERT INTO sensors (sensorID, name, messageOn, messageOff, roomID) VALUES (?, ?, ?, ?, ?)");
+
+    $statement->bind_param("isssi", $sensorID, $name, $messageOn, $messageOff, $roomID);
+
+    addNewData($statement);
+
+    $conn->close();
+  }
 ?>
