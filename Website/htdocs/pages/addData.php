@@ -47,13 +47,13 @@
     $conn->close();
   }
 
-  function addNewUser($sensorID, $name, $messageOn, $messageOff, $roomID)
+  function addNewUser($userID, $email, $password)
   {
     require "../connect.php";
 
-    $statement = $conn->prepare("INSERT INTO sensors (sensorID, name, messageOn, messageOff, roomID) VALUES (?, ?, ?, ?, ?)");
+    $statement = $conn->prepare("INSERT INTO sensors (userID, email, password) VALUES (?, ?, ?)");
 
-    $statement->bind_param("isssi", $sensorID, $name, $messageOn, $messageOff, $roomID);
+    $statement->bind_param("iss", $userID, $email, $password);
 
     addNewData($statement);
 
