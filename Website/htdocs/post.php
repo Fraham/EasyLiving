@@ -1,7 +1,7 @@
 <?php
 	if (isset($_POST["msg"]))
 	{
-		require "connect.php";
+		require "src/connect.php";
 		
 		$newdata = $_POST["msg"];
 		

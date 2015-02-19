@@ -1,7 +1,7 @@
 <?php
   function addNewData($statement)
   {
-    require_once "../connect.php";
+    require_once "../../src/connect.php";
 
     $statement->execute();
 
@@ -10,7 +10,7 @@
 
   function addNewSensor($sensorID, $name, $messageOn, $messageOff, $roomID)
   {
-    require_once "../connect.php";
+    require_once "../src/connect.php";
 
     $statement = $conn->prepare("INSERT INTO sensors (sensorID, name, messageOn, messageOff, roomID) VALUES (?, ?, ?, ?, ?)");
 
@@ -23,7 +23,7 @@
 
   function addNewHouse($houseID, $house_password)
   {
-    require_once "../connect.php";
+    require_once "../src/connect.php";
 
     $statement = $conn->prepare("INSERT INTO house (houseID, house_name) VALUES (?, ?)");
 
@@ -36,7 +36,7 @@
 
   function addNewRoom($sensorID, $name, $messageOn, $messageOff, $roomID)
   {
-    require_once "../connect.php";
+    require_once "../src/connect.php";
 
     $statement = $conn->prepare("INSERT INTO sensors (sensorID, name, messageOn, messageOff, roomID) VALUES (?, ?, ?, ?, ?)");
 
@@ -49,7 +49,7 @@
 
   function addNewUser($userID, $email, $password)
   {
-    require_once "../connect.php";
+    require_once "../src/connect.php";
 
     $statement = $conn->prepare("INSERT INTO sensors (userID, email, password) VALUES (?, ?, ?)");
 

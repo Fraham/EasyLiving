@@ -1,7 +1,7 @@
 <?php
   function getData($statement)
   {
-    require_once "../connect.php";
+    require_once "../../src/connect.php";
 
     $statement->execute();
 

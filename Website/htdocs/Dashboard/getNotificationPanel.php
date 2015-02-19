@@ -1,6 +1,6 @@
 <?php
 	$tableHtml = "";
-	require_once "../connect.php";
+	require_once "../src/connect.php";
 
 	$statement = "SELECT DATE_FORMAT(time,'%k:%i') as time, data FROM test ORDER BY idtest DESC LIMIT 10";
 	//$sql = "SELECT data FROM test ORDER BY idtest DESC LIMIT 10";
