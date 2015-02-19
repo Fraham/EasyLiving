@@ -31,4 +31,22 @@
     $conn->close();
   }
 
+  function getRooms($houseID)
+  {
+    $statement = "SELECT * FROM room
+    WHERE room.houseID = $houseID";
+
+    $result = $conn->query($statement);
+
+    if ($result->num_rows > 0)
+    {
+      while($row = $result->fetch_assoc())
+      {
+
+      }
+    }
+
+    $conn->close();
+  }
+
 ?>
