@@ -7,10 +7,13 @@
 
     $result = $conn->query($statement);
 
+    $count = 0;
+
     if ($result->num_rows > 0)
     {
       while($row = $result->fetch_assoc())
       {
+        $count++;
         $roomHTML .= "<div class='col-lg-6 col-md-6'>
             <div class='panel panel-red'>
             <div class='panel-heading'>
@@ -41,6 +44,12 @@
             </div>
             </div>
             </div>";
+
+            if ($count == 2)
+            {
+              $roomHTML .= "<div class='clearfix'></div>";
+              $count = 0;
+            }
       }
     }
 
