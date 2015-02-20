@@ -35,10 +35,13 @@
             <h4><font color='black'>Window: </font><span class='text-danger'>Open</span></h4>
             </div>
             <div class='col-md-6'>
-            <h4>Lamp: **Switch**</h4>
-            <select name='slider' id='flip-a' data-role='slider'>
-            <option value='off'>Off</option>
-            <option value='on'>On</option>
+            <h4>Lamp:
+			<span><div class='btn-group btn-toggle'> 
+			<button class='btn btn-xs btn-default'>ON</button>
+			<button class='btn btn-xs btn-danger active'>OFF</button>
+			</span>
+			</h4>
+			</div>
             </select>
             </div>
             </div>

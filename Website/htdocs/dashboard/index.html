@@ -53,7 +53,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-		<img alt="140x140" src="../src/images/logo.png" class="img-responsive center-block" style="width:25%;height:25%;">
+		<div class ="clearfix"></div>
+		<img src="../src/images/logo.png" class="img-responsive center-block" style="width:35%;height:35%; margin:auto; padding:0px">
       </div>
       <!-- /.navbar-header -->
         <!-- /.dropdown -->
@@ -117,10 +118,11 @@
       </div>
       <!-- /.row -->
       <div class="row">
-			<div class="col-lg-3">
+		<div class="col-lg-9">
+			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<i class="fa fa-bell fa-fw"></i> House Overview
+						<i class="fa fa-home fa-fw"></i> House Overview
 					</div>
 					<!-- /.panel-heading -->
 					<div class="panel-body">
@@ -134,7 +136,7 @@
 
 			</div>
           <!-- /#page-wrapper -->
-        <div class="col-lg-6" id = "roomsPanel">
+        <div class="col-lg-12" id = "roomsPanel">
         <script>
           refresh();
           function refresh()
@@ -146,91 +148,12 @@
           var intervalID = setInterval(refresh, 500);
         </script>
 
-
-        <div class="col-lg-6 col-md-6">
-          <div class="panel panel-warning">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="col-xs-3">
-                  <i class="fa fa-cutlery fa-4x"></i>
-                </div>
-                <div class="col-xs-9 text-right">
-                  <div class="huge">Kitchen</div>
-                  <div>Unoccupied</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="panel-body">
-				<div class="col-md-6">
-					<h4>Window: <span class="text-danger">Open</span></h4>
-					<h4>Fridge: <span class="text-success">Closed</span></h4>
-
-					</div>
-					<div class="col-md-6">
-						<h4>Lamp: **Switch**</h4>
-						<select name="slider" id="flip-a" data-role="slider">
-						<option value="off">Off</option>
-						<option value="on">On</option>
-						</select>
-					</div>
-                    <div class="clearfix"></div>
-              </div>
-          </div>
-        </div>
-
 		<div class="clearfix visible-md-block visible-lg-block"></div>
 
-        <div class="col-lg-6 col-md-6">
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="col-xs-3">
-                  <i class="fa fa-user fa-4x"></i>
-                </div>
-                <div class="col-xs-9 text-right">
-                  <div class="huge">Bedroom</div>
-                  <div>Unoccupied</div>
-                </div>
-              </div>
-            </div>
 
-              <div class="panel-body">
-					<div class="col-md-6">
-						<h4>Window: <span class="text-danger">Open</span></h4>
-					</div>
-					<div class="col-md-6">
-						<h4>Lamp: **Bootstrap Switch**</h4>
-					</div>
-              </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6 col-md-6">
-          <div class="panel panel-success">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="col-xs-3">
-                  <i class="fa fa-briefcase fa-4x"></i>
-                </div>
-                <div class="col-xs-9 text-right">
-                  <div class="huge">Office</div>
-                  <div>Unoccupied</div>
-                </div>
-              </div>
-            </div>
-              <div class="panel-body">
-					<div class="col-md-6">
-						<h4>Window: <span class="text-danger">Open</span></h4>
-					</div>
-					<div class="col-md-6">
-						<h4>Lamp: **Bootstrap Switch**</h4>
-					</div>
-              </div>
-          </div>
-        </div>
 		<div class="clearfix visible-md-block"></div>
 
+	 </div>
 	 </div>
 	<div class="col-lg-3 col-md-12">
 		<div class="panel panel-default">
@@ -259,7 +182,21 @@
 
 	</div>
           <!-- /#page-wrapper -->
+	<script>	
+		$('.btn-toggle').click(function() {
+			$(this).find('.btn').toggleClass('active');  
+    
+			if ($(this).find('.btn-danger').size()>0) {
+				$(this).find('.btn').toggleClass('btn-danger');
+			}
+			$(this).find('.btn').toggleClass('btn-default');
+		});
 
+		$('form').submit(function(){
+			alert($(this["options"]).val());
+			return false;
+		});
+	</script>
 
 	</div>
 	</div>
