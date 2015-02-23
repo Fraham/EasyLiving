@@ -2,7 +2,7 @@
 	$tableHtml = "";
 	require_once "../src/connect.php";
 
-	$statement = "SELECT room.dName, log.comment, DATE_FORMAT(log.date,'%k:%i') as time FROM log
+	$statement = "SELECT room.dName, log.comment, DATE_FORMAT(log.date,'%k:%i') as time, sensors.name as sensorName FROM log
 		INNER JOIN sensors
 		ON log.sensorID = sensors.sensorID
 		INNER JOIN room
@@ -15,6 +15,7 @@
 	{
 		$tableHtml .= "<thead>
 			<tr>
+				<th>Sensor Name</th>
 				<th>Room</th>
 				<th>Comment</th>
 				<th>Date and Time</th>
@@ -25,6 +26,7 @@
 		{
 			$tableHtml .= "<tbody>";
 			$tableHtml .= "<tr class='odd gradeX'>";
+			$tableHtml .= "<td class='center'> $row[sensorName] </td>";
 			$tableHtml .= "<td class='center'> $row[dName] </td>";
 			$tableHtml .= "<td class='center'> $row[comment] </td>";
 			$tableHtml .= "<td class='center'> $row[time] </td>";
