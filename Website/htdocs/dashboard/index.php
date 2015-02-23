@@ -45,70 +45,62 @@
   <div id="wrapper">
 
     <!-- Navigation -->
-    <nav class="hidden-lg hidden-sm hidden-md navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-      <div class="navbar-header centered">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-		<div class ="clearfix"></div>
-		<a href="../dashboard"><img src="../src/images/logo.png" class="img-responsive center-block" style="width:35%;height:35%; margin:auto; padding:0px"></a>
-      </div>
-      <!-- /.navbar-header -->
-        <!-- /.dropdown -->
-
-      <!-- /.navbar-top-links -->
-	  </div>
+		<nav class=" navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+			<div class="navbar-header centered">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class ="clearfix"></div>
+				<img src="images/logo.png" class="hidden-lg hidden-sm hidden-md img-responsive" style="width:35%;height:35%; margin:auto; padding:0px">
+			</div>
+			<ul class="nav navbar-top-links navbar-right pull-right">
+				<li class="dropdown">
+					<a class="dropdown-toggle" style="color:#D80000" data-toggle="dropdown" href="#">
+						<i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+					</a>
+					<ul class="dropdown-menu dropdown-user">
+						<div style="text-align: center"><h4> Available Houses</h4></div>
+						
+						<li class="divider"></li>
+						<p style = "text-align: center">******php to pull all households to available******</p>
+						<li class="divider"></li>
+						<li><a href="#"><i class="fa fa-plus fa-fw"></i> Add House</a></li>
+						<li><a href="../login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+						</li>
+					</ul>
+                    <!-- /.dropdown-user -->
+                </li>
+			</ul>
+		</nav>
+	</div>
       <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
-			<ul class="nav" id="side-menu">
+            <ul class="nav" id="side-menu">
 				<div class="input-group custom-search-form col-lg-12 hidden-xs">
-					<a href = "../dashboard"><img src="../src/images/logo.png" class="img-responsive" style="width:100%;height:100%;"></a>
+					<img src="../src/images/logo.png" class="img-responsive" style="width:100%;height:100%;">
 				</div>
-				  <!-- /input-group -->
-				<li>
-				  <a href="../dashboard" style="color: #D80000"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-				</li>
-				<li>
-					<a href="#" style="color: #D80000"><i class="fa fa-sitemap fa-fw"></i> Rooms<span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level dropdown-toggle">
-						<li>
-						  <a href="../rooms" style="color: #D80000">Overview</a>
-						</li>
-						<li>
-						  <a href="../roomsSettings" style="color: #D80000">Room Settings</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-				  <a href="../notifications" style="color: #D80000"><i class="fa fa-exclamation fa-fw"></i> Notifications</a>
-				</li>
-				<li>
-					<a href="#"style="color: #D80000"><i class="fa fa-home fa-fw"></i> Household<span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-					<li>
-					  <a href="../residents"style="color: #D80000">Residents</a>
-					</li>
-					<li>
-					  <a href="../residents"style="color: #D80000">Household Selection</a>
-					</li>
-					</ul>
-				</li>
-				<li>
-					<a href="../preferences" style="color: #D80000"><i class="fa fa-edit fa-fw"></i>Preferences</a>
-				</li>
-				<li>
-					<a href="login.html" style="color: #D80000"><i class="fa fa-sign-out fa-fw"></i>Log out</a>
-				</li>
+				<?php require_once "getMenu.php"?>
 			</ul>
         </div>
-        <!-- /.sidebar-collapse -->
       </div>
-      <!-- /.navbar-static-side -->
-    </nav>
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
     <div id="page-wrapper">
       <div class="row">
         <div class="col-lg-12">

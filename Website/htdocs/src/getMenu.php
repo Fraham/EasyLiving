@@ -14,7 +14,6 @@
 		[2, "residents", "Residents", ""],
 		[2, "selection", "Selection", ""],
 		[0, "preferences", "Preferences", "edit"],
-		[0, "login", "Log out", "sign-out"],
 	];
 	
 	foreach($menu as list($type, $link, $name, $icon))
