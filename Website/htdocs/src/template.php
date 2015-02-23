@@ -3,7 +3,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<?php $title = "" ?>
+	<?php $title = "";?>
 	<!-- favicon -->
 	<link rel="shortcut icon" href="images/TabLogo.png">
 	<!-- jQuery -->
@@ -46,12 +46,12 @@
 					<span class="icon-bar"></span>
 				</button>
 				<div class ="clearfix"></div>
-				<img src="images/logoFlat.png" class="hidden-lg hidden-sm hidden-md img-responsive" style="width:35%;height:35%; margin:auto; padding:0px">
+				<img src="../src/images/logoFlat.png" class="hidden-lg hidden-sm hidden-md img-responsive" style="width:35%;height:35%; margin:auto; padding:0px">
 			</div>
 			<ul class="nav navbar-top-links navbar-right pull-right">
 				<li class="dropdown">
 					<a class="dropdown-toggle" style="color:#D80000" data-toggle="dropdown" href="#">
-						<i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+						<i class="fa fa-lg fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-user">
 						<div style="text-align: center"><h4> Available Houses</h4></div>
@@ -72,7 +72,7 @@
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
 				<div class="input-group custom-search-form col-lg-12 hidden-xs">
-					<img src="images/logo.png" class="img-responsive" style="width:100%;height:100%;">
+					<img src="../src/images/logo.png" class="img-responsive" style="width:100%;height:100%;">
 				</div>
 				<?php include "getMenu.php"?>
 			</ul>
