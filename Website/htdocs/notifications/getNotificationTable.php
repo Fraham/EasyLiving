@@ -2,7 +2,8 @@
 	$tableHtml = "";
 	require_once "../src/connect.php";
 
-	$statement = "SELECT room.dName, log.comment, DATE_FORMAT(log.date,'%k:%i') as time, sensors.name as sensorName FROM log
+	$statement = "SELECT room.dName, log.comment, DATE_FORMAT(log.date,'%k:%i') as time, sensors.name as sensorName
+		FROM log
 		INNER JOIN sensors
 		ON log.sensorID = sensors.sensorID
 		INNER JOIN room
@@ -13,7 +14,8 @@
 
 	if ($result->num_rows > 0)
 	{
-		$tableHtml .= "<thead>
+		$tableHtml .=
+		"<thead>
 			<tr>
 				<th>Sensor Name</th>
 				<th>Room</th>
