@@ -115,14 +115,7 @@
               <div class="panel-body">
                 <div class="dataTable_wrapper">
                   <table class="table table-striped table-bordered table-hover" id="notifications">
-                    <thead>
-                      <tr>
-                        <th>Room</th>
-                        <th>Comment</th>
-                        <th>Date and Time</th>
-                        <th>Sensor Type</th>
-                      </tr>
-                    </thead>
+
                     <script>
                       refresh();
 

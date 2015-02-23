@@ -13,6 +13,14 @@
 
 	if ($result->num_rows > 0)
 	{
+		$tableHtml .= "<thead>
+			<tr>
+				<th>Room</th>
+				<th>Comment</th>
+				<th>Date and Time</th>
+			</tr>
+		</thead>";
+
 		while($row = $result->fetch_assoc())
 		{
 			$tableHtml .= "<tbody>";
