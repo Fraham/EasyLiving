@@ -10,6 +10,10 @@
   <meta name="author" content="">
 
   <title>Easy Living</title>
+
+  <!-- jQuery -->
+  <script src="../src/bower_components/jquery/dist/jquery.min.js"></script>
+
   <link rel="shortcut icon" href="../src/images/TabLogo.png">
   <!-- Bootstrap Core CSS -->
   <link href="../src/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +50,7 @@
       </div>
       <!-- /.navbar-header -->
 
-  
+
 
       </div>
       <div class="navbar-default sidebar" role="navigation">
@@ -110,7 +114,7 @@
               <!-- /.panel-heading -->
               <div class="panel-body">
                 <div class="dataTable_wrapper">
-                  <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                  <table class="table table-striped table-bordered table-hover" id="notifications">
                     <thead>
                       <tr>
                         <th>Room</th>
@@ -119,34 +123,17 @@
                         <th>Sensor Type</th>
                       </tr>
                     </thead>
-                    <?php
-                    require "../src/connect.php";
+                    <script>
+                      refresh();
 
-                    $sql = "SELECT rooms.room_name, log.comment, log.date, sensor_types.sensor_type_name FROM log
-                    INNER JOIN sensors
-                    ON log.sensor_id = sensors.idsensors
-                    INNER JOIN sensor_types
-                    ON sensors.sensor_type = sensor_types.idsensor_types
-                    INNER JOIN rooms
-                    ON sensors.room_id = rooms.idrooms";
-
-                    $result = $conn->query($sql);
-
-                    if ($result->num_rows > 0) {
-                      // output data of each row
-                      while($row = $result->fetch_assoc()) {
-                        echo "<tbody>";
-                        echo "<tr class='odd gradeX'>";
-                        echo "<td class='center'> $row[room_name] </td>";
-                        echo "<td class='center'> $row[comment] </td>";
-                        echo "<td class='center'> $row[date] </td>";
-                        echo "<td class='center'> $row[sensor_type_name] </td>";
-                        echo "</tr>";
-                        echo "</tbody>";
+                      function refresh()
+                      {
+                        $.post("getNotificationTable.php", function( data ) {
+                          $("#notifications").html( data );
+                        });
                       }
-                    }
-                    $conn->close();
-                    ?>
+                      var intervalID = setInterval(refresh, 500);
+                    </script>
                   </div>
                 </div>
               </div>
