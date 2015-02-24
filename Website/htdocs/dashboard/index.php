@@ -4,6 +4,16 @@
 	 include $path."main.php";
 ?>
 	
+<script>
+	refresh();
+	function refresh()
+	{
+		$.post( "getNotificationPanel.php", function( data ) {
+			$( "#notificationPanel" ).html( data );
+		});
+	}
+	var intervalID = setInterval(refresh, 500);
+</script>
 	
 <div class="col-lg-9"> 
 	<div class="col-lg-12">
@@ -22,8 +32,11 @@
 		</div>
 
 	</div>
-	<!-- /#page-wrapper -->
 	<div class="col-lg-12" id = "roomsPanel">
+		
+<!-- 		WHY???? WHY!!! even the name of the function is the SAME!!! So we have two different "refresh"
+		functions in one file! how is that possible. Why rooms are updating every half a second?
+ -->
 		<script>
 			refresh();
 			function refresh()
@@ -36,8 +49,6 @@
 		</script>
 
 		<div class="clearfix visible-md-block visible-lg-block"></div>
-
-
 		<div class="clearfix visible-md-block"></div>
 
 	</div>
@@ -47,27 +58,15 @@
 		<div class="panel-heading">
 			<i class="fa fa-bell fa-fw"></i> Notifications Panel
 		</div>
-		<!-- /.panel-heading -->
 		<div class="panel-body">
-			<div class="list-group" id="notificationPanel">
-				<script>
-					refresh();
-					function refresh()
-					{
-						$.post( "getNotificationPanel.php", function( data ) {
-							$( "#notificationPanel" ).html( data );
-						});
-					}
-					var intervalID = setInterval(refresh, 500);
-				</script>
-			</div>
-			<!-- /.list-group -->
+			<div class="list-group" id="notificationPanel"></div>
 			<a href="/notifications" class="btn btn-default btn-block">View All Alerts</a>
 		</div>
-		<!-- /.panel-body -->
 	</div>
 
 </div>
+
+<!-- WHAT IS THIS? -->
 <script>	
 	$('.btn-toggle').click(function() {
 		$(this).find('.btn').toggleClass('active');  
@@ -83,5 +82,6 @@
 		return false;
 	});
 </script>
+
 
 <?php include $path."footer.php"; ?>
