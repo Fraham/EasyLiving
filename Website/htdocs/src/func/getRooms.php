@@ -29,6 +29,7 @@ if ($result->num_rows > 0)
       $roomHTML .= "<div class='col-lg-6 col-md-6'>
       <div class='panel panel-";
       $roomHTML .= "$innerRow[occupied]";
+      //$roomHTML .= "$innerRow[unoccupied]"; for the other colour, need an if statement
       $roomHTML .= "'>
       <div class='panel-heading'>
       <div class='row'>
