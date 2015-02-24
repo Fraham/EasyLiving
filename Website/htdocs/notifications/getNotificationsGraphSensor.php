@@ -15,7 +15,7 @@
 	{
 		while($row = $result->fetch_assoc())
 		{
-			$sensorList .= "<option selected>";
+			$sensorList .= "<option>";
       $sensorList .= "$row[name]";
       $sensorList .= "</option>";
 		}

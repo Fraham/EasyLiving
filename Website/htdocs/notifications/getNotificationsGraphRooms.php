@@ -12,7 +12,7 @@
 	{
 		while($row = $result->fetch_assoc())
 		{
-			$roomList .= "<option selected>";
+			$roomList .= "<option>";
       $roomList .= "$row[dName]";
       $roomList .= "</option>";
 		}

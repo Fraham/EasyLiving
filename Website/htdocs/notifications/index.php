@@ -10,7 +10,7 @@
         Notification charts
       </div>
       <div class="panel-body panel-collapse collapse"id="chartBody">
-        
+
           <div class="col-lg-3 col-md-3">
                   <select class="form-control">
                     <option selected hidden>Room:</option>
@@ -25,7 +25,7 @@
                   </select>
             </label>
           </div>
-          
+
           <div class="col-lg-3 col-md-3">
             <input  class="form-control" placeholder="Start Date"  id="startDate">
           </div>

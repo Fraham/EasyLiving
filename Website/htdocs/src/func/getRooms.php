@@ -10,6 +10,10 @@ $result = $conn->query($statement);
 
 $count = 0;
 
+$amount = 3;
+
+$size = 12 / $amount;
+
 if ($result->num_rows > 0)
 {
   while($row = $result->fetch_assoc())
@@ -26,7 +30,7 @@ if ($result->num_rows > 0)
     {
       $innerRow = $roomResult->fetch_assoc();
 
-      $roomHTML .= "<div class='col-lg-6 col-md-6'>
+      $roomHTML .= "<div class='col-lg-$size'>
       <div class='panel panel-";
       $roomHTML .= "$innerRow[occupied]";
       //$roomHTML .= "$innerRow[unoccupied]"; for the other colour, need an if statement
@@ -69,7 +73,7 @@ if ($result->num_rows > 0)
       </div>";
     }
 
-    if ($count == 2)
+    if ($count == $amount)
     {
       $roomHTML .= "<div class='clearfix'></div>";
       $count = 0;
@@ -80,9 +84,9 @@ if ($result->num_rows > 0)
 $conn->close();
 echo $roomHTML;
 ?>
-<script>    
+<script>
     $('.btn-toggle').click(function() {
-        $(this).find('.btn').toggleClass('active');  
+        $(this).find('.btn').toggleClass('active');
 
         if ($(this).find('.btn-danger').size()>0) {
             $(this).find('.btn').toggleClass('btn-danger');
