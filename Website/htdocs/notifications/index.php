@@ -10,10 +10,11 @@
         Notification charts
       </div>
       <div class="panel-body panel-collapse collapse"id="chartBody">
-        <div> 
+        <div>
           <div class="col-lg-3 col-md-3">
                   <select class="form-control">
                     <option selected hidden>Room:</option>
+										<?php include "getNotificationsGraphRooms.php"; ?>
                   </select>
             </label>
           </div>
@@ -32,7 +33,7 @@
           </div>
         </div>
         <div>
-          
+
 
         </div>
       </div>
@@ -44,15 +45,15 @@
     <script type="text/javascript">
             // When the document is ready
             $(document).ready(function () {
-                
+
                 $('#startDate').datepicker({
                     format: "dd/mm/yyyy"
-                }); 
+                });
                 $('#endDate').datepicker({
                     format: "dd/mm/yyyy"
-                });  
-            
-            
+                });
+
+
             });
         </script>
 
