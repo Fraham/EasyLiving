@@ -27,11 +27,13 @@ if ($result->num_rows > 0)
       $innerRow = $roomResult->fetch_assoc();
 
       $roomHTML .= "<div class='col-lg-6 col-md-6'>
-      <div class='panel panel-red'>
+      <div class='panel panel-";
+      $roomHTML .= "$innerRow[occupied]";
+      $roomHTML .= "'>
       <div class='panel-heading'>
       <div class='row'>
       <div class='col-xs-3'>
-      <i class='fa";// fa-comments
+      <i class='fa";
 
       $roomHTML .= " $innerRow[icon] ";
 
