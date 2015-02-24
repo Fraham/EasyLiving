@@ -66,7 +66,7 @@
 
 </div>
 
-<!-- WHAT IS THIS? -->
+<!-- script for the toggle switch(needs of be moved) -->
 <script>	
 	$('.btn-toggle').click(function() {
 		$(this).find('.btn').toggleClass('active');  
