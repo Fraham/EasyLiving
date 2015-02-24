@@ -71,8 +71,8 @@
       <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
-				<div class="input-group custom-search-form col-lg-12 hidden-xs">
-					<img src="../src/images/logo.png" class="img-responsive" style="width:100%;height:100%;">
+				<div class="hidden-xs">
+					<img src="../src/images/logo.png" class="img-responsive" style="width:0%;height:0%; margin:auto; padding:0px;">
 				</div>
 				<?php include "getMenu.php"?>
 			</ul>

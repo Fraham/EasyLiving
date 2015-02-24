@@ -53,7 +53,7 @@
 			<div class='navbar-default sidebar' role='navigation'>
 				<div class='sidebar-nav navbar-collapse'>
 					<ul class='nav' id='side-menu'>
-						<div class='input-group custom-search-form col-lg-12 hidden-xs'>
+						<div class='hidden-xs'>
 							<img src='<?php echo $path; ?>../images/logo.png' class='img-responsive' style=''>
 						</div>
 						<?php include 'getMenu.php';?>
