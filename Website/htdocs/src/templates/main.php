@@ -30,7 +30,7 @@
 						<span class='icon-bar'></span>
 					</button>
 					<div class ='clearfix'></div>
-					<img src='<?php echo $path; ?>../images/logoFlat.png' class='hidden-lg hidden-sm hidden-md img-responsive' style='width:35%;height:35%; margin:auto; padding:0px'>
+					<a href="../../dashboard"><img src='<?php echo $path; ?>../images/logoFlat.png' class='hidden-lg hidden-sm hidden-md img-responsive' style='width:35%;height:35%; margin:auto; padding:0px'></a>
 				</div>
 				<ul class='nav navbar-top-links navbar-right pull-right'>
 					<li class='dropdown'>
@@ -54,7 +54,7 @@
 				<div class='sidebar-nav navbar-collapse'>
 					<ul class='nav' id='side-menu'>
 						<div class='hidden-xs'>
-							<img src='<?php echo $path; ?>../images/logo.png' class='img-responsive' style=''>
+							<a href="../../dashboard"><img src='<?php echo $path; ?>../images/logo.png' class='img-responsive'></a>
 						</div>
 						<?php include 'getMenu.php';?>
 					</ul>
