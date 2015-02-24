@@ -67,21 +67,5 @@
 </div>
 
 <!-- script for the toggle switch(needs of be moved) -->
-<script>	
-	$('.btn-toggle').click(function() {
-		$(this).find('.btn').toggleClass('active');  
-
-		if ($(this).find('.btn-danger').size()>0) {
-			$(this).find('.btn').toggleClass('btn-danger');
-		}
-		$(this).find('.btn').toggleClass('btn-default');
-	});
-
-	$('form').submit(function(){
-		alert($(this["options"]).val());
-		return false;
-	});
-</script>
-
 
 <?php include $path."footer.php"; ?>
