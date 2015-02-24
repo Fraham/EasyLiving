@@ -10,7 +10,7 @@
         Notification charts
       </div>
       <div class="panel-body panel-collapse collapse"id="chartBody">
-        <div>
+        
           <div class="col-lg-3 col-md-3">
                   <select class="form-control">
                     <option selected hidden>Room:</option>
@@ -21,10 +21,11 @@
           <div class="col-lg-3 col-md-3">
                   <select class="form-control">
                     <option selected hidden>Sensor:</option>
+										<?php include "getNotificationsGraphSensor.php"; ?>
                   </select>
             </label>
           </div>
-          </div>
+          
           <div class="col-lg-3 col-md-3">
             <input  class="form-control" placeholder="Start Date"  id="startDate">
           </div>
