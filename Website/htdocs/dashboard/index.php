@@ -49,8 +49,8 @@
 		</script>
 
 		<?php
-		$amount = 2;
-		include "../src/func/getRooms.php";
+			$amount = 3;
+			include "../src/func/getRooms.php";
 		?>
 
 		<div class="clearfix visible-md-block visible-lg-block"></div>
