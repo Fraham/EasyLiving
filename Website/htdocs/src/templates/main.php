@@ -21,7 +21,7 @@
 		<script src='<?php echo $path; ?>../bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
 		<script src='<?php echo $path; ?>../bower_components/metisMenu/dist/metisMenu.min.js'></script>
 		<script src='<?php echo $path; ?>../dist/js/sb-admin-2.js'></script>
-		<script src='<?php echo $path; ?>../datepicker/bootstrap-datetimepicker.min.js'></script>
+		<script src='<?php echo $path; ?>../datepicker/bootstrap-datetimepicker.js'></script>
 		<script src='<?php echo $path; ?>../datepicker/bootstrap-datepicker.js'></script>
 
 		

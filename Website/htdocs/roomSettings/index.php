@@ -133,45 +133,7 @@
 						</div>
 					</div>
 				</div>
-
-					<div class="panel-body">
-						<div class="col-md-6">
-							<h3>Window: <span class="text-danger">Open</span></h3>
-							<h3>Fridge: <span class="text-success">Closed</span></h3>
-
-						</div>
-						<div class="col-md-6">
-							<h3>Lamp: **Bootstrap Switch**</h3>
-						</div>
-						<div class="clearfix"></div>
-					</div>
 			</div>
-		</div>
-		<div class="modal fade" id="KitchenModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h2 class="modal-title" id="myModalLabel">Kitchen</h2>
-					</div>
-					<div class="modal-body row">
-						<div class="col-md-6">
-							<h3>Window: <span class="text-danger">Open</span></h3>
-							<h3>Fridge: <span class="text-success">Closed</span></h3>
-							<h3>Back Door: <span class="text-success">Closed</span></h3>
-
-						</div>
-						<div class="col-md-6">
-							<h3>Lamp: **Bootstrap Switch**</h3>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
 		</div>
 		<div class="col-lg-3 col-md-6">
 			<div class="panel panel-info">
@@ -189,39 +151,7 @@
 						</div>
 					</div>
 				</div>
-					<div class="panel-body">
-						<div class="col-md-6">
-							<h3>Window: <span class="text-danger">Open</span></h3>
-						</div>
-						<div class="col-md-6">
-							<h3>Lamp: **Bootstrap Switch**</h3>
-						</div>
-					</div>
 			</div>
-		</div>
-
-		<div class="modal fade" id="BedroomModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h2 class="modal-title" id="myModalLabel">Bedroom</h2>
-					</div>
-					<div class="modal-body row">
-						<div class="col-md-6">
-							<h3>Window: <span class="text-danger">Open</span></h3>
-						</div>
-						<div class="col-md-6">
-							<h3>Lamp: **Bootstrap Switch**</h3>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
 		</div>
 
 		<div class="col-lg-3 col-md-6">
@@ -240,14 +170,6 @@
 						</div>
 					</div>
 				</div>
-					<div class="panel-body">
-						<div class="col-md-6">
-							<h3>Window: <span class="text-danger">Open</span></h3>
-						</div>
-						<div class="col-md-6">
-							<h3>Lamp: **Bootstrap Switch**</h3>
-						</div>
-					</div>
 			</div>
 		</div>
 
