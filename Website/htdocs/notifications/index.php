@@ -46,12 +46,10 @@
 $('#startDate').datepicker({
     format: 'dd MM yyyy',
     autoclose: true,
-    todayBtn: true,
 });
 $('#endDate').datepicker({
     format: 'dd MM yyyy',
     autoclose: true,
-    todayBtn: true,
 });
 </script> 
 
