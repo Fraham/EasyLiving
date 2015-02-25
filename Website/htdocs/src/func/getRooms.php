@@ -38,9 +38,9 @@ if ($result->num_rows > 0)
       <div class='panel-heading'>
       <div class='row'>
       <div class='col-xs-3'>
-      <i class='fa";
+      <i class='fa fa-";
 
-      $roomHTML .= " $innerRow[icon] ";
+      $roomHTML .= "$innerRow[icon] ";
 
       $roomHTML .= "fa-4x'></i>
       </div>
