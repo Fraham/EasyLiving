@@ -32,7 +32,6 @@
           <div class="col-lg-3 col-md-3">
             <input  class="form-control" placeholder="End Date"  id="endDate">
           </div>
-          <input  placeholder="Date and time picker but not working" readonly class="datetimepicker form-control" id="form_datetime1">
 
         </div>
         <div>
@@ -45,12 +44,12 @@
 
 <script type="text/javascript">
 $('#startDate').datepicker({
-    format: 'yyyy-mm-dd',
+    format: 'dd MM yyyy',
     autoclose: true,
     todayBtn: true,
 });
 $('#endDate').datepicker({
-    format: 'yyyy-mm-dd',
+    format: 'dd MM yyyy',
     autoclose: true,
     todayBtn: true,
 });

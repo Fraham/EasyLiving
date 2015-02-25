@@ -8,7 +8,7 @@
 
 		<title><?php echo $title; ?></title>
 
-		<link rel='shortcut icon' href='../images/TabLogo.png'> 
+		<link rel='shortcut icon' href='../src/images/TabLogo.png'> 
 		<script src='<?php echo $path; ?>../bower_components/jquery/dist/jquery.min.js'></script>
 		<link href='<?php echo $path; ?>../bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet'>
 		<link href='<?php echo $path; ?>../bower_components/metisMenu/dist/metisMenu.min.css' rel='stylesheet'>
