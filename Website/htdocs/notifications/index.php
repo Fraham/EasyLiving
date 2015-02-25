@@ -27,10 +27,10 @@
           </div>
 
           <div class="col-lg-3 col-md-3">
-            <input  class="form-control" readonly placeholder="Start Date"  id="startDate">
+            <input  class="btn btn-default btn-block" readonly placeholder="Start Date"  id="startDate">
           </div>
           <div class="col-lg-3 col-md-3">
-            <input  class="form-control" readonly placeholder="End Date"  id="endDate">
+            <input  class="btn btn-default btn-block" readonly placeholder="End Date"  id="endDate">
           </div>
 
         </div>
