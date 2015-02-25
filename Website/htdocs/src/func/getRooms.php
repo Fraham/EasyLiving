@@ -10,7 +10,7 @@ $result = $conn->query($statement);
 
 $count = 0;
 
-$amount = 3;
+//$amount = 3;
 
 $size = 12 / $amount;
 
@@ -67,7 +67,6 @@ if ($result->num_rows > 0)
       </h4>
       </div>
       </select>
-      </div>
       </div>
       </div>
       </div>";
