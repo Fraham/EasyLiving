@@ -1,6 +1,6 @@
 <?php
 $roomHTML = "";
-require_once "../connect.php";
+require_once "../src/connect.php";
 
 $houseID = "111111";
 
