@@ -10,20 +10,22 @@
         Notification charts
       </div>
       <div class="panel-body panel-collapse collapse"id="chartBody">
-        <div> 
+
           <div class="col-lg-3 col-md-3">
                   <select class="form-control">
                     <option selected hidden>Room:</option>
+										<?php include "getNotificationsGraphRooms.php"; ?>
                   </select>
             </label>
           </div>
           <div class="col-lg-3 col-md-3">
                   <select class="form-control">
                     <option selected hidden>Sensor:</option>
+										<?php include "getNotificationsGraphSensor.php"; ?>
                   </select>
             </label>
           </div>
-          </div>
+
           <div class="col-lg-3 col-md-3">
             <input  class="form-control" placeholder="Start Date"  id="startDate">
           </div>
@@ -34,7 +36,7 @@
 
         </div>
         <div>
-          
+
 
         </div>
       </div>
@@ -54,6 +56,7 @@ $('#endDate').datepicker({
 });
 </script> 
 
+<<<<<<< HEAD
 <script type="text/javascript">
 $('.form_datetime1').datetimepicker({
     format: 'yyyy-mm-dd hh:ii',
@@ -62,6 +65,23 @@ $('.form_datetime1').datetimepicker({
     minuteStep: 5
 });
 </script>    
+=======
+
+    <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+
+                $('#startDate').datepicker({
+                    format: "dd/mm/yyyy"
+                });
+                $('#endDate').datepicker({
+                    format: "dd/mm/yyyy"
+                });
+
+
+            });
+        </script>
+>>>>>>> origin/master
 
 
 
