@@ -1,5 +1,5 @@
 <?php
-	$title = "Room Setings";
+	$title = "Room Settings";
 	$path = "../src/templates/";
 	include $path."main.php";
 ?>
@@ -21,20 +21,7 @@
 						</div>
 					</div>
 				</div>
-					<div class="panel-body">
-							<div class="col-md-6">
-							<h3><font color="black">Front Window:</font><span class="text-danger">Open</span></h3>
-							<h3><font color="black">Back Window:</font><span class="text-success">Closed</span></h3>
-						</div>
-						<div class="col-md-6">
-							<h3>Lamp: **Bootstrap Switch**</h3>
-							<label for="flip-a">Select slider:</label>
-							<select name="slider" id="flip-a" data-role="slider">
-							<option value="off">Off</option>
-							<option value="on">On</option>
-							</select>
-						</div>
-					</div>
+
 			</div>
 		</div>
 		<!--Modal-->

@@ -30,6 +30,8 @@
           <div class="col-lg-3 col-md-3">
             <input  class="form-control" placeholder="End Date"  id="endDate">
           </div>
+          <input  value="" readonly class="form_datetime1 form-control">
+
         </div>
         <div>
           
@@ -39,22 +41,27 @@
       </div>
     </div>
 
+<script type="text/javascript">
+$('#startDate').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true,
+    todayBtn: true,
+});
+$('#endDate').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true,
+    todayBtn: true,
+});
+</script> 
 
-
-    <script type="text/javascript">
-            // When the document is ready
-            $(document).ready(function () {
-                
-                $('#startDate').datepicker({
-                    format: "dd/mm/yyyy"
-                }); 
-                $('#endDate').datepicker({
-                    format: "dd/mm/yyyy"
-                });  
-            
-            
-            });
-        </script>
+<script type="text/javascript">
+$('.form_datetime1').datetimepicker({
+    format: 'yyyy-mm-dd hh:ii',
+    autoclose: true,
+    todayBtn: true,
+    minuteStep: 5
+});
+</script>    
 
 
 
