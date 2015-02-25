@@ -3,7 +3,7 @@
 	 $path = "../src/templates/";
 	 include $path."main.php";
 ?>
-	
+
 <script>
 	refresh();
 	function refresh()
@@ -14,8 +14,8 @@
 	}
 	var intervalID = setInterval(refresh, 500);
 </script>
-	
-<div class="col-lg-9"> 
+
+<div class="col-lg-9">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -33,20 +33,25 @@
 
 	</div>
 	<div class="col-lg-12" id = "roomsPanel">
-		
+
 <!-- 		WHY???? WHY!!! even the name of the function is the SAME!!! So we have two different "refresh"
 		functions in one file! how is that possible. Why rooms are updating every half a second?
  -->
 		<script>
-			refresh();
+			/*refresh();
 			function refresh()
 			{
 				$.post( "../src/func/getRooms.php", function( data ) {
 					$( "#roomsPanel" ).html( data );
 				});
 			}
-			var intervalID = setInterval(refresh, 500);
+			var intervalID = setInterval(refresh, 500);*/
 		</script>
+
+		<?php
+		$amount = 2;
+		include "../src/func/getRooms.php";
+		?>
 
 		<div class="clearfix visible-md-block visible-lg-block"></div>
 		<div class="clearfix visible-md-block"></div>
