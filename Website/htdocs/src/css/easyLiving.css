@@ -1,0 +1,25 @@
+/*Change notifyPanelWidth in both places*/
+@media (min-width: 1200px) {
+	.roomsPanel{
+		width: calc(100% - 350px);
+	}
+}
+@media handheld and (max-width: 1199px) {
+	.notifyPanel{
+		width: auto;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.notifyPanel{
+		float: right;
+		width: 350px;
+	}
+}
+body{
+	zoom: 90%;
+	height:100%
+}
+html{
+    min-height:100%;
+    position:relative
+}

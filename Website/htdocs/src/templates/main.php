@@ -23,6 +23,7 @@
 		<script src='<?php echo $path; ?>../dist/js/sb-admin-2.js'></script>
 		<script src='<?php echo $path; ?>../datepicker/bootstrap-datetimepicker.js'></script>
 		<script src='<?php echo $path; ?>../datepicker/bootstrap-datepicker.js'></script>
+		<link href='../src/css/easyLiving.css' rel='stylesheet'>
 
 		
 		<div id='wrapper'>
@@ -67,7 +68,7 @@
 			</div>
 			
 
-			<div id='page-wrapper'>
+			<div id='page-wrapper' style="position:absolute;">
 				<div class='row'>
 					<div class='col-lg-12'>
 						<h1 class='page-header'><?php echo $title; ?></h1>

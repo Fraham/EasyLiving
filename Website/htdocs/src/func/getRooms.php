@@ -1,10 +1,9 @@
 <?php
 require_once "../src/connect.php";
-
 $roomHTML = "";
-$count = 0;
 $houseID = "111111";
-$size = 12 / $amount;
+if (!isset($blockSize))
+	$blockSize = 370;
 
 $statement = "SELECT R.dName, RC.occupied, RC.unoccupied, I.icon
 			  FROM room as R
@@ -21,8 +20,6 @@ if ($result->num_rows > 0)
 {
 	while($row = $result->fetch_assoc())
 	{
-		$count++;
-
 		if (true) //motion sensor state
 			$color = $row["occupied"];
 		else
@@ -30,7 +27,7 @@ if ($result->num_rows > 0)
 
 
 		$roomHTML .= "
-			<div class='col-lg-$size'>
+			<div class='col-lg-2 room-xs' style='width: ".$blockSize."px; margin: auto; float: none;display: inline-block;'>
 				<div class='panel panel-".$color."'>
 					<div class='panel-heading'>
 						<div class='row'>
@@ -58,14 +55,7 @@ if ($result->num_rows > 0)
 					</div>
 				</div>
 			</div>";
-
-		if ($count == $amount)
-		{
-			$roomHTML .= "<div class='clearfix'></div>";
-			$count = 0;
-		}
 	}
-
 }
 
 $conn->close();
@@ -87,3 +77,11 @@ $('form').submit(function(){
 	return false;
 });
 </script>
+
+<style type="text/css">
+	@media (max-width:767px) {
+		.room-xs{
+			width: inherit !important;
+		}
+	}
+</style>

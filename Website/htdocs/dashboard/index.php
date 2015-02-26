@@ -15,46 +15,32 @@
 	var intervalID = setInterval(refresh, 500);
 </script>
 
-<div class="col-lg-9">
+<div class="col-lg-8 roomsPanel">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<i class="fa fa-home fa-fw"></i> House Overview
 			</div>
-			<!-- /.panel-heading -->
 			<div class="panel-body">
 				<h4>Front Door: <span class="text-success">Closed</span></h4>
 				<h4>Back Door: <span class="text-success">Closed</span></h4>
 				<h4>House Occupied: <span class="text-warning">Yes</span></h4>
 
 			</div>
-			<!-- /.panel-body -->
 		</div>
 
 	</div>
-	<div id="show">apple</div>
-	<div class="col-lg-12" id = "roomsPanel">
-	<script>
-		var blockSize = 375;
-		calcCols();
-		function calcCols(){
-		  $( "#show" ).html( "<div>" + $( "#roomsPanel" ).width() + " " + Math.floor($( "#roomsPanel" ).width()/blockSize) + "</div>" );
-		}
-		$( window ).resize(function() {
-			calcCols();
-		});
-	</script>
+	<div class="col-lg-12" style="text-align:center;">
 		<?php
-			$amount = 3;
 			include "../src/func/getRooms.php";
 		?>
 
-		<div class="clearfix visible-md-block visible-lg-block"></div>
-		<div class="clearfix visible-md-block"></div>
+		<!-- <div class="clearfix visible-md-block visible-lg-block"></div> -->
+		<!-- <div class="clearfix visible-md-block"></div> -->
 
 	</div>
 </div>
-<div class="col-lg-3 col-md-12">
+<div class="col-lg-4 col-md-12 notifyPanel">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<i class="fa fa-bell fa-fw"></i> Notifications Panel
@@ -64,9 +50,6 @@
 			<a href="/notifications" class="btn btn-default btn-block">View All Alerts</a>
 		</div>
 	</div>
-
 </div>
-
-<!-- script for the toggle switch(needs of be moved) -->
 
 <?php include $path."footer.php"; ?>

@@ -8,7 +8,7 @@
 <div class="col-lg-12" id = "roomsPanel">
 
   <?php
-    $amount = 4;
+    // $blockSize = 500;
     include "../src/func/getRooms.php";
   ?>
 
