@@ -7,12 +7,12 @@ $houseID = "111111";
 $size = 12 / $amount;
 
 $statement = "SELECT R.dName, RC.occupied, RC.unoccupied, I.icon
-		FROM room as R
-		INNER JOIN room_colour as RC
-		ON R.colourID = RC.colourID
-		INNER JOIN icons as I
-		ON R.iconID = I.iconID
-		WHERE	R.houseID = $houseID";
+			  FROM room as R
+			  INNER JOIN room_colour as RC
+			  ON R.colourID = RC.colourID
+			  INNER JOIN icons as I
+			  ON R.iconID = I.iconID
+			  WHERE	R.houseID = $houseID";
 
 $result = $conn->query($statement);
 
@@ -30,34 +30,34 @@ if ($result->num_rows > 0)
 
 
 		$roomHTML .= "
-		<div class='col-lg-$size'>
-		<div class='panel panel-".$color."'>
-		<div class='panel-heading'>
-		<div class='row'>
-		<div class='col-xs-3'>
-		<i class='fa fa-".$row["icon"]." fa-4x'></i>
-		</div>
-		<div class='col-xs-9 text-right'>
-		<div class='huge'>".$row["dName"]."</div>
-		<div>Occupied</div>
-		</div>
-		</div>
-		</div>
-		<div class='panel-body'>
-		<div class='col-md-6'>
-		<h4><font color='black'>Window: </font><span class='text-danger'>Open</span></h4>
-		</div>
-		<div class='col-md-6'>
-		<h4>Lamp:
-		<span><div class='btn-group btn-toggle'>
-		<button class='btn btn-xs btn-default'>ON</button>
-		<button class='btn btn-xs btn-danger active'>OFF</button>
-		</span>
-		</h4>
-		</div>
-		</div>
-		</div>
-		</div>";
+			<div class='col-lg-$size'>
+				<div class='panel panel-".$color."'>
+					<div class='panel-heading'>
+						<div class='row'>
+							<div class='col-xs-3'>
+								<i class='fa fa-".$row["icon"]." fa-4x'></i>
+							</div>
+							<div class='col-xs-9 text-right'>
+								<div class='huge'>".$row["dName"]."</div>
+								<div>Occupied</div>
+							</div>
+						</div>
+					</div>
+					<div class='panel-body'>
+						<div class='col-md-6'>
+							<h4><font color='black'>Window: </font><span class='text-danger'>Open</span></h4>
+						</div>
+						<div class='col-md-6'>
+							<h4>Lamp:
+								<span><div class='btn-group btn-toggle'>
+									<button class='btn btn-xs btn-default'>ON</button>
+									<button class='btn btn-xs btn-danger active'>OFF</button>
+								</span>
+							</h4>
+						</div>
+					</div>
+				</div>
+			</div>";
 
 		if ($count == $amount)
 		{
