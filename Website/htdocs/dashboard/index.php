@@ -49,7 +49,7 @@
 		</script>
 
 		<?php
-			$amount = 2;
+			$amount = 3;
 			include "../src/func/getRooms.php";
 		?>
 

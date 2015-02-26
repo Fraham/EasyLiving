@@ -34,10 +34,10 @@
             <form role="form">
               <fieldset>
                 <div class="form-group">
-                  <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                  <input class="form-control" placeholder="E-mail" id="email" type="email" autofocus>
                 </div>
                 <div class="form-group">
-                  <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                  <input class="form-control" placeholder="Password" id="password" type="password" value="">
                 </div>
                 <div class="checkbox">
                   <label>
@@ -45,7 +45,7 @@
                   </label>
                 </div>
                 <!-- Change this to a button or input when using this as a form -->
-                <a href="../dashboard" class="btn btn-lg btn-danger btn-block">Login</a>
+                <a href="../dashboard" id = "login" class="btn btn-lg btn-danger btn-block" onclick="verify">Login</a>
                 <a href="../createAccount" class="btn btn-lg btn-danger btn-block">Create a New Account</a>
               </fieldset>
             </form>
@@ -54,6 +54,19 @@
       </div>
     </div>
   </div>
+
+  <script>
+  function verify(){
+    if(document.getElementById("email").value != null && document.getElementById("password")!= null){
+      var e-mail = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+
+      
+
+    }
+  }
+
+  </script>
 
   <!-- jQuery -->
   <script src="../src/bower_components/jquery/dist/jquery.min.js"></script>
