@@ -6,11 +6,6 @@ $count = 0;
 $houseID = "111111";
 $size = 12 / $amount;
 
-/*$statement = "SELECT R.dName, RC.occupied, RC.unoccupied, I.icon
-FROM room as R, room_colour as RC, icons as I
-WHERE R.colourID = RC.colourID and R.iconID = I.iconID and
-R.houseID = $houseID";*/
-
 $statement = "SELECT R.dName, RC.occupied, RC.unoccupied, I.icon
 		FROM room as R
 		INNER JOIN room_colour as RC
@@ -29,9 +24,9 @@ if ($result->num_rows > 0)
 		$count++;
 
 		if (true) //motion sensor state
-		$color = $row["occupied"];
+			$color = $row["occupied"];
 		else
-		$color = $row["unoccupied"];
+			$color = $row["unoccupied"];
 
 
 		$roomHTML .= "
