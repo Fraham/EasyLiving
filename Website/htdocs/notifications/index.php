@@ -51,7 +51,7 @@ $('#endDate').datepicker({
     format: 'dd MM yyyy',
     autoclose: true,
 });
-</script> 
+</script>
 
 <script type="text/javascript">
 $('#form_datetime1').datetimepicker({
@@ -60,7 +60,7 @@ $('#form_datetime1').datetimepicker({
     todayBtn: true,
     minuteStep: 5
 });
-</script>    
+</script>
 
 
 
@@ -80,6 +80,7 @@ $('#form_datetime1').datetimepicker({
 
               function refresh()
               {
+								$houseID = "111111";
                 $.post("getNotificationTable.php", function( data ) {
                   $("#notifications").html( data );
                 });

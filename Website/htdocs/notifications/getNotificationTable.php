@@ -8,9 +8,15 @@
 		ON log.sensorID = sensors.sensorID
 		INNER JOIN room
 		ON sensors.roomID = room.roomID
+		INNER JOIN house
+		ON room.houseID = ?
 		ORDER BY logID DESC LIMIT 20";
 
-	$result = $conn->query($statement);
+	$result = $conn->prepare($statement);
+
+	$result->bind_param("s", $houseID);
+
+	$result->execute();
 
 	if ($result->num_rows > 0)
 	{
