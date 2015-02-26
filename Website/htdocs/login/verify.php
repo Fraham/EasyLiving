@@ -2,9 +2,15 @@
   require_once "../src/connect.php";
 
   $statement = "SELECT U.userID FROM users as U
-      WHERE U.email = $email AND U.password = $password";
+      WHERE U.email = ? AND U.password = ?";
 
-  $result = $conn->query($statement);
+  //$result = $conn->query($statement);
+
+  $result = $conn->prepare($statement);
+
+  $result->bind_param("ss", $email, $password);
+
+  $result->execute();
 
   if ($result->num_rows == 1)
   {
