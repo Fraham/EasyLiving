@@ -32,22 +32,18 @@
 		</div>
 
 	</div>
+	<div id="show">apple</div>
 	<div class="col-lg-12" id = "roomsPanel">
-
-<!-- 		WHY???? WHY!!! even the name of the function is the SAME!!! So we have two different "refresh"
-		functions in one file! how is that possible. Why rooms are updating every half a second?
- -->
-		<script>
-			/*refresh();
-			function refresh()
-			{
-				$.post( "../src/func/getRooms.php", function( data ) {
-					$( "#roomsPanel" ).html( data );
-				});
-			}
-			var intervalID = setInterval(refresh, 500);*/
-		</script>
-
+	<script>
+		var blockSize = 375;
+		calcCols();
+		function calcCols(){
+		  $( "#show" ).html( "<div>" + $( "#roomsPanel" ).width() + " " + Math.floor($( "#roomsPanel" ).width()/blockSize) + "</div>" );
+		}
+		$( window ).resize(function() {
+			calcCols();
+		});
+	</script>
 		<?php
 			$amount = 3;
 			include "../src/func/getRooms.php";
