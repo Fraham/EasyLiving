@@ -8,7 +8,7 @@
 
 		<title><?php echo $title; ?></title>
 
-		<link rel='shortcut icon' href='../src/images/TabLogo.png'> 
+		<link rel='shortcut icon' href='<?php echo $path; ?>../images/TabLogo.png'> 
 		<script src='<?php echo $path; ?>../bower_components/jquery/dist/jquery.min.js'></script>
 		<link href='<?php echo $path; ?>../bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet'>
 		<link href='<?php echo $path; ?>../bower_components/metisMenu/dist/metisMenu.min.css' rel='stylesheet'>
@@ -23,6 +23,8 @@
 		<script src='<?php echo $path; ?>../dist/js/sb-admin-2.js'></script>
 		<script src='<?php echo $path; ?>../datepicker/bootstrap-datetimepicker.js'></script>
 		<script src='<?php echo $path; ?>../datepicker/bootstrap-datepicker.js'></script>
+		<link href='<?php echo $path; ?>../css/jquery-ui.css' rel='stylesheet'>
+		<script src='<?php echo $path; ?>../js/jquery-ui.js'></script>
 		<link href='../src/css/easyLiving.css' rel='stylesheet'>
 
 		
@@ -68,7 +70,7 @@
 			</div>
 			
 
-			<div id='page-wrapper' style="position:absolute;">
+			<div class="" id='page-wrapper' style="position:relative; ">
 				<div class='row'>
 					<div class='col-lg-12'>
 						<h1 class='page-header'><?php echo $title; ?></h1>
