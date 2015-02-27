@@ -21,6 +21,7 @@
 		width: calc(100% - 350px);
 	}
 }
+
 body{
 	zoom: 90%;
 	height:100%;
@@ -46,4 +47,8 @@ html{
 #handle {
 	width: 30px;
 	height: 30px;
+}
+
+.test{
+	width: ;
 }

@@ -45,16 +45,25 @@
 						<a class='dropdown-toggle' style='color:#D80000' data-toggle='dropdown' href='#'>
 							<i class='fa fa-user fa-fw'></i>  <i class='fa fa-caret-down'></i>
 						</a>
-						<ul class='dropdown-menu dropdown-user'>
-							<div style='text-align: center'><h4> Available Houses</h4></div>
+							<ul class='dropdown-menu dropdown-user userDropDwn'>
+								<div style='text-align: center'><h4> Available Houses</h4></div>
 
-							<li class='divider'></li>
-							<p style = 'text-align: center'>******php to pull all households to available******</p>
-							<li class='divider'></li>
-							<li><a href='#'><i class='fa fa-plus fa-fw'></i> Add House</a></li>
-							<li><a href='../login'><i class='fa fa-sign-out fa-fw'></i> Logout</a>
-							</li>
-						</ul>
+								<li class='divider'></li>
+								<div class ="btn-group">
+									<button type="button" class="btn btn-md btn-default"><i class="fa fa-pencil img-center"></i></button>
+									<button type="button" class="btn btn-md btn-default">**HouseName**</button>
+									<button type="button" class="btn btn-md btn-default"><i class="fa fa-times img-center"></i></button>
+								</div>
+
+
+
+
+								<li class='divider'></li>
+								<li><a href='#'><i class='fa fa-plus fa-fw'></i> Add House</a></li>
+								<li><a href="../buyNewHouse/"><i class="fa fa-gbp fa-fw"></i> Buy New House</a></li>
+								<li><a href='../login'><i class='fa fa-sign-out fa-fw'></i> Logout</a>
+								</li>
+							</ul>						
 					</li>
 				</ul>
 			</nav>
