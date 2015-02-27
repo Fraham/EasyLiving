@@ -15,7 +15,7 @@
 @media (min-width: 1200px) {
 	.notifyPanel{
 		float: right;
-		width: auto;
+		width: 350px;
 	}
 	.roomsPanel{
 		width: calc(100% - 350px);
