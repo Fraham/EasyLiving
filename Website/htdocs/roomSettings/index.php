@@ -53,7 +53,7 @@
 							</select>
 						<label>Icon:</label>
 							<select class="form-control">
-								<option></option>
+								<option value="fa-plus"></option>
 								<option></option>
 								<option></option>
 								<option></option>
