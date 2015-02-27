@@ -18,8 +18,6 @@
 			});
 		});
 	</script>
-	<!-- <div class="clearfix visible-md-block visible-lg-block"></div> -->
-	<!-- <div class="clearfix visible-md-block"></div> -->
 </div>
 
 <?php include $path."footer.php"; ?>

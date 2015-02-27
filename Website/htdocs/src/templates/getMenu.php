@@ -14,6 +14,7 @@
 		[2, "residents", "Residents", ""],
 		[2, "selection", "Selection", ""],
 		[0, "preferences", "Preferences", "edit"],
+		[0, "icons.php", "Icons", "ban"],
 	];
 	
 	foreach($menu as list($type, $link, $name, $icon))
