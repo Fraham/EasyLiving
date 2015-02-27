@@ -1,19 +1,24 @@
 /*Change notifyPanelWidth in both places*/
-@media (min-width: 1200px) {
-	.roomsPanel{
-		width: calc(100% - 350px);
+@media (max-width:370px) {
+	.room-xs{
+		width: 100% !important;
 	}
 }
 @media (max-width: 991px) and (max-width: 1199px) {
-	.notifyPanel{
-		width: auto;
-		width: 350px;
+	.col-lg-2, .col-lg-4, .col-lg-8, .col-lg-12{
+		padding: 0;
+	}
+	.page-header{
+		padding: 10px;
 	}
 }
-@media screen and (min-width: 1200px) {
+@media (min-width: 1200px) {
 	.notifyPanel{
 		float: right;
-		width: 350px;
+		width: auto;
+	}
+	.roomsPanel{
+		width: calc(100% - 350px);
 	}
 }
 body{
@@ -39,12 +44,6 @@ html{
 }
 
 #handle {
-	/*margin-right: 10px;
-	font: bold 20px Sans-Serif;
-	color: #5F9EDF;
-	display: inline-block;
-	cursor: move;
-	cursor: -webkit-grabbing;*/
 	width: 30px;
 	height: 30px;
 }

@@ -34,10 +34,6 @@
 		<?php
 			include "../src/func/getRooms.php";
 		?>
-
-		<!-- <div class="clearfix visible-md-block visible-lg-block"></div> -->
-		<!-- <div class="clearfix visible-md-block"></div> -->
-
 	</div>
 </div>
 <div class="col-lg-4 col-md-12 notifyPanel">

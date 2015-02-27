@@ -5,7 +5,7 @@
 ?>
 
 
-<div class="col-lg-12" id = "roomsPanel">
+<div class="col-lg-12" id = "roomsPanel" style="width: 100%;">
 
 	<?php
 		// $blockSize = 500;

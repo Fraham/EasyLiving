@@ -63,25 +63,17 @@ echo $roomHTML;
 ?>
 
 <script>
-$('.btn-toggle').click(function() {
-	$(this).find('.btn').toggleClass('active');
+	$('.btn-toggle').click(function() {
+		$(this).find('.btn').toggleClass('active');
 
-	if ($(this).find('.btn-danger').size()>0) {
-		$(this).find('.btn').toggleClass('btn-danger');
-	}
-	$(this).find('.btn').toggleClass('btn-default');
-});
-
-$('form').submit(function(){
-	alert($(this["options"]).val());
-	return false;
-});
-</script>
-
-<style type="text/css">
-	@media (max-width:370px) {
-		.room-xs{
-			width: 100% !important;
+		if ($(this).find('.btn-danger').size()>0) {
+			$(this).find('.btn').toggleClass('btn-danger');
 		}
-	}
-</style>
+		$(this).find('.btn').toggleClass('btn-default');
+	});
+
+	$('form').submit(function(){
+		alert($(this["options"]).val());
+		return false;
+	});
+</script>
