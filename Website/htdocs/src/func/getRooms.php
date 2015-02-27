@@ -79,9 +79,9 @@ $('form').submit(function(){
 </script>
 
 <style type="text/css">
-	@media (max-width:767px) {
+	@media (max-width:370px) {
 		.room-xs{
-			width: inherit !important;
+			width: 100% !important;
 		}
 	}
 </style>

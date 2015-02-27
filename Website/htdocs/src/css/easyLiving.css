@@ -4,9 +4,10 @@
 		width: calc(100% - 350px);
 	}
 }
-@media handheld and (max-width: 1199px) {
+@media (max-width: 991px) and (max-width: 1199px) {
 	.notifyPanel{
 		width: auto;
+		width: 350px;
 	}
 }
 @media screen and (min-width: 1200px) {
