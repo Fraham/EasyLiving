@@ -1,6 +1,5 @@
 <?php
 include_once "../src/connect.php";
-include_once 'psl-config.php';
 
 $error_msg = "";
 
