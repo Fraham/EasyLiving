@@ -42,7 +42,11 @@ include_once '../src/includes/functions.php';
 </head>
 
 <body>
-
+    <?php
+    if (!empty($error_msg)) {
+        echo $error_msg;
+    }
+    ?>
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
