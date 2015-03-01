@@ -24,7 +24,7 @@ if (isset($_POST['email'], $_POST['p'])) {
     // breaking these rules.
     //
 
-    $prep_stmt = "SELECT id FROM members WHERE email = ? LIMIT 1";
+    $prep_stmt = "SELECT userID FROM users WHERE email = ? LIMIT 1";
     $stmt = $conn->prepare($prep_stmt);
 
     if ($stmt) {
@@ -53,7 +53,7 @@ if (isset($_POST['email'], $_POST['p'])) {
         $password = hash('sha512', $password . $random_salt);
 
         // Insert the new user into the database
-        if ($insert_stmt = $conn->prepare("INSERT INTO members (email, password, salt) VALUES (?, ?, ?)")) {
+        if ($insert_stmt = $conn->prepare("INSERT INTO users (email, password, salt) VALUES (?, ?, ?)")) {
             $insert_stmt->bind_param('sss', $email, $password, $random_salt);
             // Execute the prepared query.
             if (! $insert_stmt->execute()) {
