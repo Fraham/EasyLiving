@@ -22,7 +22,6 @@ include_once '../src/includes/functions.php';
         }
         ?>
         <ul>
-            <li>Usernames may contain only digits, upper and lower case letters and underscores</li>
             <li>Emails must have a valid email format</li>
             <li>Passwords must be at least 6 characters long</li>
             <li>Passwords must contain
@@ -35,7 +34,6 @@ include_once '../src/includes/functions.php';
             <li>Your password and confirmation must match exactly</li>
         </ul>
         <form method="post" name="registration_form" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>">
-            Username: <input type='text' name='username' id='username' /><br>
             Email: <input type="text" name="email" id="email" /><br>
             Password: <input type="password"
                              name="password"
@@ -46,7 +44,6 @@ include_once '../src/includes/functions.php';
             <input type="button"
                    value="Register"
                    onclick="return regformhash(this.form,
-                                   this.form.username,
                                    this.form.email,
                                    this.form.password,
                                    this.form.confirmpwd);" />

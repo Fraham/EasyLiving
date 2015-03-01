@@ -28,15 +28,15 @@ function sec_session_start() {
 
 function login($email, $password, $conn) {
     // Using prepared statements means that SQL injection is not possible.
-    if ($statement = $conn->prepare("SELECT id, username, password, salt
-				  FROM members
+    if ($statement = $conn->prepare("SELECT id, password, salt
+				  FROM users
                                   WHERE email = ? LIMIT 1")) {
         $statement->bind_param('s', $email);  // Bind "$email" to parameter.
         $statement->execute();    // Execute the prepared query.
         $statement->store_result();
 
         // get variables from result.
-        $statement->bind_result($user_id, $username, $db_password, $salt);
+        $statement->bind_result($user_id, $db_password, $salt);
         $statement->fetch();
 
         // hash the password with the unique salt.
@@ -60,10 +60,6 @@ function login($email, $password, $conn) {
                     $user_id = preg_replace("/[^0-9]+/", "", $user_id);
                     $_SESSION['user_id'] = $user_id;
 
-                    // XSS protection as we might print this value
-                    $username = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $username);
-
-                    $_SESSION['username'] = $username;
                     $_SESSION['login_string'] = hash('sha512', $password . $user_browser);
 
                     // Login successful.
@@ -123,10 +119,9 @@ function checkbrute($user_id, $conn) {
 
 function login_check($conn) {
     // Check if all session variables are set
-    if (isset($_SESSION['user_id'], $_SESSION['username'], $_SESSION['login_string'])) {
+    if (isset($_SESSION['user_id'], $_SESSION['login_string'])) {
         $user_id = $_SESSION['user_id'];
         $login_string = $_SESSION['login_string'];
-        $username = $_SESSION['username'];
 
         // Get the user-agent string of the user.
         $user_browser = $_SERVER['HTTP_USER_AGENT'];
