@@ -35,6 +35,9 @@ if (login_check($conn) == true) {
 
   <!-- Custom Fonts -->
   <link href="../src/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <script type="text/JavaScript" src="../src/js/sha512.js"></script>
+  <script type="text/JavaScript" src="../src/js/forms.js"></script>
 </head>
 <body>
   <div class="container">
@@ -59,7 +62,11 @@ if (login_check($conn) == true) {
                   </label>
                 </div>
                 <!-- Change this to a button or input when using this as a form -->
-                <a href="../dashboard" id = "login" class="btn btn-lg btn-danger btn-block" onclick="formhash(this.form, this.form.password);">Login</a>
+                <a id = "login"
+                    class="btn btn-lg btn-danger btn-block"
+                    onclick="formhash(this.form, this.form.password);">
+                    Login
+                </a>
                 <a href="../createAccount" class="btn btn-lg btn-danger btn-block">Create a New Account</a>
               </fieldset>
             </form>
