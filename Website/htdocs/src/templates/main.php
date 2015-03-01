@@ -1,3 +1,8 @@
+<?php
+	include_once "$path../includes/functions.php";
+	include_once "$path../connect.php";
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -8,7 +13,7 @@
 
 		<title><?php echo $title; ?></title>
 
-		<link rel='shortcut icon' href='<?php echo $path; ?>../images/TabLogo.png'> 
+		<link rel='shortcut icon' href='<?php echo $path; ?>../images/TabLogo.png'>
 		<script src='<?php echo $path; ?>../bower_components/jquery/dist/jquery.min.js'></script>
 		<link href='<?php echo $path; ?>../bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet'>
 		<link href='<?php echo $path; ?>../bower_components/metisMenu/dist/metisMenu.min.css' rel='stylesheet'>
@@ -27,8 +32,9 @@
 		<script src='<?php echo $path; ?>../js/jquery-ui.js'></script>
 		<link href='../src/css/easyLiving.css' rel='stylesheet'>
 
-		
+
 		<div id='wrapper'>
+			<?php if (login_check($conn) == true) : ?>
 			<nav class=' navbar navbar-default navbar-static-top' role='navigation' style='margin-bottom: 0'>
 				<div class='navbar-header centered'>
 					<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
@@ -62,7 +68,7 @@
 								<li><a href='#'><i class='fa fa-plus fa-fw'></i> Add House</a></li>
 								<li><a href="../buyNewHouse/"><i class="fa fa-gbp fa-fw"></i> Buy New House</a></li>
 								<li><a href='../login'><i class='fa fa-sign-out fa-fw'></i> Logout</a>
-								</li>						
+								</li>
 						</ul>
 					</li>
 				</ul>
@@ -77,7 +83,7 @@
 					</ul>
 				</div>
 			</div>
-			
+
 
 			<div class="" id='page-wrapper' style="position:relative; ">
 				<div class='row'>
@@ -85,5 +91,10 @@
 						<h1 class='page-header'><?php echo $title; ?></h1>
 					</div>
 				</div>
+			<?php else : ?>
+				<p>
+					<span class="error">You are not authorized to access this page.</span> Please <a href="index.php">login</a>.
+				</p>
+			<?php endif; ?>
 	</head>
 	<body>
