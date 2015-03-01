@@ -8,7 +8,7 @@ if (isset($_POST['email'], $_POST['p'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = $_POST['p']; // The hashed password.
 
-    if (login($email, $password, $mysqli) == true) {
+    if (login($email, $password, $conn) == true) {
         // Login success
         header("Location: ../protected_page.php");
         exit();

@@ -1,23 +1,5 @@
 <?php
-
-/*
- * Copyright (C) 2013 peredur.net
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-include_once 'psl-config.php';
+//include_once 'psl-config.php';
 
 function sec_session_start() {
     $session_name = 'sec_session_id';   // Set a custom session name
@@ -43,9 +25,9 @@ function sec_session_start() {
     session_regenerate_id();    // regenerated the session, delete the old one.
 }
 
-function login($email, $password, $mysqli) {
+function login($email, $password, $conn) {
     // Using prepared statements means that SQL injection is not possible.
-    if ($statement = $mysqli->prepare("SELECT id, username, password, salt 
+    if ($statement = $conn->prepare("SELECT id, username, password, salt
 				  FROM members
                                   WHERE email = ? LIMIT 1")) {
         $statement->bind_param('s', $email);  // Bind "$email" to parameter.
@@ -61,7 +43,7 @@ function login($email, $password, $mysqli) {
         if ($statement->num_rows == 1) {
             // If the user exists we check if the account is locked
             // from too many login attempts
-            if (checkbrute($user_id, $mysqli) == true) {
+            if (checkbrute($user_id, $conn) == true) {
                 // Account is locked
                 // Send an email to user saying their account is locked
                 return false;
@@ -89,7 +71,7 @@ function login($email, $password, $mysqli) {
                     // Password is not correct
                     // We record this attempt in the database
                     $now = time();
-                    if (!$mysqli->query("INSERT INTO login_attempts(user_id, time)
+                    if (!$conn->query("INSERT INTO login_attempts(user_id, time)
                                     VALUES ('$user_id', '$now')")) {
                         header("Location: ../error.php?err=Database error: login_attempts");
                         exit();
@@ -109,14 +91,14 @@ function login($email, $password, $mysqli) {
     }
 }
 
-function checkbrute($user_id, $mysqli) {
+function checkbrute($user_id, $conn) {
     // Get timestamp of current time
     $now = time();
 
     // All login attempts are counted from the past 2 hours.
     $valid_attempts = $now - (2 * 60 * 60);
 
-    if ($statement = $mysqli->prepare("SELECT time 
+    if ($statement = $conn->prepare("SELECT time
                                   FROM login_attempts
                                   WHERE user_id = ? AND time > '$valid_attempts'")) {
         $statement->bind_param('i', $user_id);
@@ -138,7 +120,7 @@ function checkbrute($user_id, $mysqli) {
     }
 }
 
-function login_check($mysqli) {
+function login_check($conn) {
     // Check if all session variables are set
     if (isset($_SESSION['user_id'], $_SESSION['username'], $_SESSION['login_string'])) {
         $user_id = $_SESSION['user_id'];
@@ -148,7 +130,7 @@ function login_check($mysqli) {
         // Get the user-agent string of the user.
         $user_browser = $_SERVER['HTTP_USER_AGENT'];
 
-        if ($statement = $mysqli->prepare("SELECT password 
+        if ($statement = $conn->prepare("SELECT password
 				      FROM members
 				      WHERE id = ? LIMIT 1")) {
             // Bind "$user_id" to parameter.

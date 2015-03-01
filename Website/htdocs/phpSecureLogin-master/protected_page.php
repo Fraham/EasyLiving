@@ -12,7 +12,7 @@ sec_session_start();
         <link rel="stylesheet" href="styles/main.css" />
     </head>
     <body>
-        <?php if (login_check($mysqli) == true) : ?>
+        <?php if (login_check($conn) == true) : ?>
         <p>Welcome <?php echo htmlentities($_SESSION['username']); ?>!</p>
             <p>
                 This is an example protected page.  To access this page, users
