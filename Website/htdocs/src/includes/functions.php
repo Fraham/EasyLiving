@@ -127,8 +127,8 @@ function login_check($conn) {
         $user_browser = $_SERVER['HTTP_USER_AGENT'];
 
         if ($statement = $conn->prepare("SELECT password
-				      FROM members
-				      WHERE id = ? LIMIT 1")) {
+				      FROM users
+				      WHERE userID = ? LIMIT 1")) {
             // Bind "$user_id" to parameter.
             $statement->bind_param('i', $user_id);
             $statement->execute();   // Execute the prepared query.

@@ -48,27 +48,24 @@ if (login_check($conn) == true) {
             <img alt="140x140" src="../src/images/logo.png" class="img-responsive center-block" style="width:50%;height:50%; padding:0px;">
           </div>
           <div class="panel-body">
-            <form role="form">
-              <fieldset>
-                <div class="form-group">
-                  <input class="form-control" placeholder="E-mail" id="email" type="email" autofocus>
-                </div>
-                <div class="form-group">
-                  <input class="form-control" placeholder="Password" id="password" type="password" value="">
-                </div>
-                <div class="checkbox">
-                  <label>
-                    <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                  </label>
-                </div>
-                <!-- Change this to a button or input when using this as a form -->
-                <a id = "login"
-                    class="btn btn-lg btn-danger btn-block"
-                    onclick="formhash(this.form, this.form.password);">
-                    Login
-                </a>
+            <?php
+            if (isset($_GET['error'])) {
+                echo '<p class="error">Error Logging In!</p>';
+            }
+            ?>
+            <form action="includes/process_login.php" method="post" name="login_form">
+                Email: <input type="text" name="email" autofocus class="form-control"/>
+                Password: <input type="password"
+                                 name="password"
+                                 id="password"
+                                 class="form-control"/>
+                <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+                <input type="button"
+                       value="Login"
+                       class="btn btn-lg btn-danger btn-block"
+                       onclick="formhash(this.form, this.form.password);" />
+
                 <a href="../createAccount" class="btn btn-lg btn-danger btn-block">Create a New Account</a>
-              </fieldset>
             </form>
           </div>
         </div>
