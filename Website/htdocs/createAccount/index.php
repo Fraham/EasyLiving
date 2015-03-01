@@ -1,3 +1,9 @@
+<?php
+
+include_once '../src/includes/register.inc.php';
+include_once '../src/includes/functions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +29,9 @@
   <!-- Custom Fonts -->
   <link href="../src/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+  <script type="text/JavaScript" src="../src/js/sha512.js"></script>
+  <script type="text/JavaScript" src="../src/js/forms.js"></script>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -42,30 +51,29 @@
             <img src="../src/images/logo.png" class="img-responsive center-block" style="width:50%;height:50%; padding:0px;">
           </div>
           <div class="panel-body">
-            <form role="form">
-              <fieldset>
-                <div class="form-group">
-                  <label>Email</label>
-                  <input class="form-control" placeholder="Example:smithjohn@example.com">
-                </div>
-
-                <div class="form-group">
-                  <label>Password</label>
-                  <input class="form-control" name="password" type="password" value="">
-                </div>
-
-                <div class="form-group">
-                  <label>Confirm Password</label>
-                  <input class="form-control" name="password" type="password" value="">
-                </div>
-                <!-- Change this to a button or input when using this as a form -->
-                <a type="submit" class="btn btn-lg btn-danger btn-block"
-                onclick="return regformhash(this.form,
-                                this.form.email,
-                                this.form.password,
-                                this.form.confirmpwd);">Create Account</a>
+            <form method="post" name="registration_form" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>">
+                Email: <input type="text"
+                                name="email"
+                                id="email"
+                                class="form-control"
+                                placeholder="Example:smithjohn@example.com"/><br>
+                Password: <input type="password"
+                                 name="password"
+                                 id="password"
+                                 class="form-control"
+                                 /><br>
+                Confirm password: <input type="password"
+                                         name="confirmpwd"
+                                         id="confirmpwd"
+                                         class="form-control" /><br>
+                <input type="button"
+                       value="Register"
+                       class="btn btn-lg btn-danger btn-block"
+                       onclick="return regformhash(this.form,
+                                       this.form.email,
+                                       this.form.password,
+                                       this.form.confirmpwd);" />
                 <a href="../login" class="btn btn-lg btn-danger btn-block">Cancel</a>
-              </fieldset>
             </form>
           </div>
         </div>
