@@ -61,7 +61,6 @@
                 <!-- Change this to a button or input when using this as a form -->
                 <a type="submit" class="btn btn-lg btn-danger btn-block"
                 onclick="return regformhash(this.form,
-                                this.form.username,
                                 this.form.email,
                                 this.form.password,
                                 this.form.confirmpwd);">Create Account</a>
