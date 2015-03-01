@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,11 +45,6 @@
             <form role="form">
               <fieldset>
                 <div class="form-group">
-                  <label>Username</label>
-                  <input class="form-control" placeholder="Example:JohnSmith1" autofocus>
-                </div>
-
-                <div class="form-group">
                   <label>Email</label>
                   <input class="form-control" placeholder="Example:smithjohn@example.com">
                 </div>
@@ -64,7 +59,12 @@
                   <input class="form-control" name="password" type="password" value="">
                 </div>
                 <!-- Change this to a button or input when using this as a form -->
-                <a href="../login" type="submit" class="btn btn-lg btn-danger btn-block">Create Account</a>
+                <a type="submit" class="btn btn-lg btn-danger btn-block"
+                onclick="return regformhash(this.form,
+                                this.form.username,
+                                this.form.email,
+                                this.form.password,
+                                this.form.confirmpwd);">Create Account</a>
                 <a href="../login" class="btn btn-lg btn-danger btn-block">Cancel</a>
               </fieldset>
             </form>
