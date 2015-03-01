@@ -1,5 +1,5 @@
 <?php
-include_once "../src/connect.php";
+include_once "../connect.php";
 include_once 'functions.php';
 
 sec_session_start(); // Our custom secure way of starting a PHP session.
@@ -10,7 +10,7 @@ if (isset($_POST['email'], $_POST['p'])) {
 
     if (login($email, $password, $conn) == true) {
         // Login success
-        header("Location: ../protected_page.php");
+        header("Location: ../../dashboard");
         exit();
     } else {
         // Login failed

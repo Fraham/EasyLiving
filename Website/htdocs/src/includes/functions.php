@@ -28,7 +28,7 @@ function sec_session_start() {
 
 function login($email, $password, $conn) {
     // Using prepared statements means that SQL injection is not possible.
-    if ($statement = $conn->prepare("SELECT id, password, salt
+    if ($statement = $conn->prepare("SELECT userID, password, salt
 				  FROM users
                                   WHERE email = ? LIMIT 1")) {
         $statement->bind_param('s', $email);  // Bind "$email" to parameter.
@@ -68,7 +68,7 @@ function login($email, $password, $conn) {
                     // Password is not correct
                     // We record this attempt in the database
                     $now = time();
-                    if (!$conn->query("INSERT INTO login_attempts(user_id, time)
+                    if (!$conn->query("INSERT INTO login_attempts(userID, time)
                                     VALUES ('$user_id', '$now')")) {
                         header("Location: ../error.php?err=Database error: login_attempts");
                         exit();
@@ -97,7 +97,7 @@ function checkbrute($user_id, $conn) {
 
     if ($statement = $conn->prepare("SELECT time
                                   FROM login_attempts
-                                  WHERE user_id = ? AND time > '$valid_attempts'")) {
+                                  WHERE userID = ? AND time > '$valid_attempts'")) {
         $statement->bind_param('i', $user_id);
 
         // Execute the prepared query.

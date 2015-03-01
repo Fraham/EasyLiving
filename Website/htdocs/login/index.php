@@ -53,7 +53,7 @@ if (login_check($conn) == true) {
                 echo '<p class="error">Error Logging In!</p>';
             }
             ?>
-            <form action="includes/process_login.php" method="post" name="login_form">
+            <form action="../src/includes/process_login.php" method="post" name="login_form">
                 Email: <input type="text" name="email" autofocus class="form-control"/>
                 Password: <input type="password"
                                  name="password"
