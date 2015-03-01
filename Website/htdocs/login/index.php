@@ -1,3 +1,17 @@
+<?php
+
+include_once "../src/connect.php";
+include_once "../src/includes/functions.php";
+
+sec_session_start();
+
+if (login_check($mysqli) == true) {
+    $logged = 'in';
+} else {
+    $logged = 'out';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +59,7 @@
                   </label>
                 </div>
                 <!-- Change this to a button or input when using this as a form -->
-                <a href="../dashboard" id = "login" class="btn btn-lg btn-danger btn-block" onclick="verify">Login</a>
+                <a href="../dashboard" id = "login" class="btn btn-lg btn-danger btn-block" onclick="formhash(this.form, this.form.password);">Login</a>
                 <a href="../createAccount" class="btn btn-lg btn-danger btn-block">Create a New Account</a>
               </fieldset>
             </form>
@@ -61,7 +75,7 @@
       var e-mail = document.getElementById("email").value;
       var password = document.getElementById("password").value;
 
-      
+
 
     }
   }

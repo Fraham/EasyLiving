@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
 -- Dumping data for table `login_attempts`
 --
 
-INSERT INTO `login_attempts` (`user_id`, `time`) VALUES
+INSERT INTO `login_attempts` (`userID`, `time`) VALUES
 (1, '1385995353'),
 (1, '1386011064');
 
