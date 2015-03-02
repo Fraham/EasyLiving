@@ -69,7 +69,7 @@
 								<li class='divider'></li>
 								<li><a href='#'><i class='fa fa-plus fa-fw'></i> Add House</a></li>
 								<li><a href="../buyNewHouse/"><i class="fa fa-gbp fa-fw"></i> Buy New House</a></li>
-								<li><a href='../login'><i class='fa fa-sign-out fa-fw'></i> Logout</a>
+								<li><a href="<?php echo $path; ?>../includes/logout.php"><i class='fa fa-sign-out fa-fw'></i> Logout</a>
 								</li>
 						</ul>
 					</li>
