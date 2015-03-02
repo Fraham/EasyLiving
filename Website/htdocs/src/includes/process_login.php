@@ -10,7 +10,7 @@ if (isset($_POST['email'], $_POST['p'])) {
 
     if (login($email, $password, $conn) == true) {
         // Login success
-        header("Location: ../../login");
+        header("Location: ../../dashboard");
         exit();
     } else {
         // Login failed

@@ -61,7 +61,7 @@ if (isset($_POST['email'], $_POST['p'])) {
                 exit();
             }
         }
-        header('Location: ../dashboard');
+        header('Location: ../login');
         exit();
     }
 }
