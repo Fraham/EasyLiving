@@ -23,7 +23,7 @@
 		<link href='<?php echo $path; ?>../dist/css/sb-admin-2.css' rel='stylesheet'>
 		<link href='<?php echo $path; ?>../bower_components/morrisjs/morris.css' rel='stylesheet'>
 		<link href='<?php echo $path; ?>../bower_components/font-awesome/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
-		<link href='<?php echo $path; ?>../datepicker/datetimepicker.css' rel='stylesheet'>
+		
 		<link href='<?php echo $path; ?>../datepicker/datepicker.css' rel='stylesheet'>
 		<script src='<?php echo $path; ?>../bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
 		<script src='<?php echo $path; ?>../bower_components/metisMenu/dist/metisMenu.min.js'></script>
