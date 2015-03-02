@@ -23,7 +23,6 @@
 		<link href='<?php echo $path; ?>../dist/css/sb-admin-2.css' rel='stylesheet'>
 		<link href='<?php echo $path; ?>../bower_components/morrisjs/morris.css' rel='stylesheet'>
 		<link href='<?php echo $path; ?>../bower_components/font-awesome/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
-		
 		<link href='<?php echo $path; ?>../datepicker/datepicker.css' rel='stylesheet'>
 		<script src='<?php echo $path; ?>../bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
 		<script src='<?php echo $path; ?>../bower_components/metisMenu/dist/metisMenu.min.js'></script>
@@ -63,18 +62,15 @@
 									<button type="button" class="btn btn-md btn-default"><i class="fa fa-times img-center"></i></button>
 								</div>
 
-
-
-
 								<li class='divider'></li>
 								<li><a href='#'><i class='fa fa-plus fa-fw'></i> Add House</a></li>
 								<li><a href="../buyNewHouse/"><i class="fa fa-gbp fa-fw"></i> Buy New House</a></li>
-								<li><a href="<?php echo $path; ?>../includes/logout.php"><i class='fa fa-sign-out fa-fw'></i> Logout</a>
-								</li>
+								<li><a href="<?php echo $path; ?>../includes/logout.php"><i class='fa fa-sign-out fa-fw'></i> Logout</a></li>
 						</ul>
 					</li>
 				</ul>
 			</nav>
+
 			<div class='navbar-default sidebar' role='navigation'>
 				<div class='sidebar-nav navbar-collapse'>
 					<ul class='nav' id='side-menu'>
