@@ -28,7 +28,7 @@
 	</div>
 	<div class="clearfix"></div>
 	<div class = "col-lg-12">
-		<button type="button" class="btn btn-lg btn-danger pull-center" >Cancel</button>
+		<button type="button" class="btn btn-lg btn-danger pull-right" >Cancel</button>
 		<button type="button" class="btn btn-lg btn-danger pull-right" >Submit</button>
 	</div>
 </div>
