@@ -5,6 +5,9 @@ $roomHTML = "";
 if (!isset($blockSize))
 	$blockSize = 370;
 
+if (isset($_SESSION['house_id']))
+{
+
 $houseID = $_SESSION['house_id'];
 
 $statement = "SELECT R.dName, RC.occupied, RC.unoccupied, I.icon
@@ -62,6 +65,11 @@ if ($result->num_rows > 0)
 
 $conn->close();
 echo $roomHTML;
+}
+else
+{
+	echo "house id not set";
+}
 ?>
 
 <script>
