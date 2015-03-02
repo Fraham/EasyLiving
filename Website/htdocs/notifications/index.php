@@ -83,7 +83,6 @@
 
 				function refresh()
 				{
-					$houseID = "111111";
 					$.post("getNotificationTable.php", function( data ) {
 						$("#notifications").html( data );
 					});

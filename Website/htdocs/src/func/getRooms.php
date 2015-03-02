@@ -1,9 +1,11 @@
 <?php
 require_once "../src/connect.php";
 $roomHTML = "";
-$houseID = "111111";
+
 if (!isset($blockSize))
 	$blockSize = 370;
+
+$houseID = $_SESSION['house_id'];
 
 $statement = "SELECT R.dName, RC.occupied, RC.unoccupied, I.icon
 			  FROM room as R

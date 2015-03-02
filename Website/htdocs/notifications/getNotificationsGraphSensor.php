@@ -2,7 +2,7 @@
 	$sensorList = "";
 	require "../src/connect.php";
 
-  $houseID = "111111";
+	$houseID = $_SESSION['house_id'];
 
   $statement = "SELECT sensors.name FROM sensors
 	INNER JOIN room

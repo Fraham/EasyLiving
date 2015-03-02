@@ -18,7 +18,6 @@
                     </tr>
                   </thead>
 									<?php
-										$houseID = "111111";
 										include "getResidents.php";
 									?>
                 </div>

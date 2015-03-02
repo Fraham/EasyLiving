@@ -3,6 +3,8 @@ require_once "../src/connect.php";
 
 $residents = "";
 
+$houseID = $_SESSION['house_id'];
+
 $statement = "SELECT U.email, H.dName FROM users as U
     INNER JOIN user_households as UH
     ON UH.userID = U.userID

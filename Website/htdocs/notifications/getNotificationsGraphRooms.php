@@ -2,7 +2,7 @@
 	$roomList = "";
 	require_once "../src/connect.php";
 
-  $houseID = "111111";
+	$houseID = $_SESSION['house_id'];
 
   $statement = "SELECT dName FROM room WHERE room.houseID = $houseID";
 

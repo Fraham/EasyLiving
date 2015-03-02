@@ -28,7 +28,7 @@ function sec_session_start() {
 
 function login($email, $password, $conn) {
     // Using prepared statements means that SQL injection is not possible.
-    if ($statement = $conn->prepare("SELECT userID, password, salt
+    if ($statement = $conn->prepare("SELECT userID, password, salt, currentHousehold
 				  FROM users
                                   WHERE email = ? LIMIT 1")) {
         $statement->bind_param('s', $email);  // Bind "$email" to parameter.
@@ -36,7 +36,7 @@ function login($email, $password, $conn) {
         $statement->store_result();
 
         // get variables from result.
-        $statement->bind_result($user_id, $db_password, $salt);
+        $statement->bind_result($user_id, $db_password, $salt, $houseID);
         $statement->fetch();
 
         // hash the password with the unique salt.
@@ -61,6 +61,8 @@ function login($email, $password, $conn) {
                     $_SESSION['user_id'] = $user_id;
 
                     $_SESSION['login_string'] = hash('sha512', $password . $user_browser);
+
+                    $_SESSION['house_id'] = $houseID;
 
                     // Login successful.
                     return true;
