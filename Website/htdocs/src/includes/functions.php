@@ -118,7 +118,6 @@ function checkbrute($user_id, $conn) {
 }
 
 function login_check($conn) {
-    // Check if all session variables are set
     if (isset($_SESSION['user_id'], $_SESSION['login_string'])) {
         $user_id = $_SESSION['user_id'];
         $login_string = $_SESSION['login_string'];
