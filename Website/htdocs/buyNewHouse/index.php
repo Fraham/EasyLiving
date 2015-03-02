@@ -4,6 +4,8 @@
 	include $path."main.php";
 ?>
 
+<?php if (login_check($conn) == true) : ?>
+
 <div class = "col-lg-6">
 	<div class = "panel panel-danger">
 		<div class = "panel-heading"> <h2> New House Preferences </h2> </div>
@@ -13,16 +15,16 @@
 				<input class ="form-control col-lg-6">
 			</form>
 		</div>
-	</div>	
+	</div>
 </div>
 
 	<div class = "col-lg-6">
 		<div class = "panel panel-danger">
 			<div class = "panel-heading"> <h2> Payment Details </h2> </div>
 			<div class = "panel-body">
-			
+
 			</div>
-		</div>	
+		</div>
 	</div>
 	<div class="clearfix"></div>
 	<div class = "col-lg-12">
@@ -31,9 +33,7 @@
 	</div>
 </div>
 
-
-
-
-
-
 <?php include $path."footer.php"?>
+
+<?php else : ?>
+<?php endif; ?>

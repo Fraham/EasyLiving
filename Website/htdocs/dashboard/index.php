@@ -4,6 +4,8 @@
 	 include $path."main.php";
 ?>
 
+<?php if (login_check($conn) == true) : ?>
+
 <script>
 	refresh();
 	function refresh()
@@ -49,3 +51,6 @@
 </div>
 
 <?php include $path."footer.php"; ?>
+
+<?php else : ?>
+<?php endif; ?>
