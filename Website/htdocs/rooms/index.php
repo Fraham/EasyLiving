@@ -4,6 +4,7 @@
 	include $path."main.php";
 ?>
 
+<?php if (login_check($conn) == true) : ?>
 
 <div class="col-lg-12" id = "roomsPanel" style="width: 100%;">
 
@@ -21,3 +22,6 @@
 </div>
 
 <?php include $path."footer.php"; ?>
+
+<?php else : ?>
+<?php endif; ?>

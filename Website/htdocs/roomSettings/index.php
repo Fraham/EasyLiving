@@ -4,6 +4,8 @@
 	include $path."main.php";
 ?>
 
+<?php if (login_check($conn) == true) : ?>
+
 	<div class="row">
 		<div class="col-lg-3 col-md-6">
 			<div class="panel panel-red">
@@ -273,3 +275,6 @@
 <?php
 	include $path."footer.php"
 ?>
+
+<?php else : ?>
+<?php endif; ?>

@@ -3,6 +3,9 @@
 	$path = "../src/templates/";
 	include $path."main.php";
 ?>
+
+<?php if (login_check($conn) == true) : ?>
+
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
@@ -93,3 +96,6 @@
 	<?php
 	include $path."footer.php"
 	?>
+
+<?php else : ?>
+<?php endif; ?>
