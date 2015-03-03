@@ -11,7 +11,7 @@ include $path."main.php";
 
 			<div class="panel panel-default">
 				<a><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#houseBody"></a>
-					Household Preferences
+					Property Preferences
 				</div>
 				<div class="panel-body panel-collapse collapse"id="houseBody">
 

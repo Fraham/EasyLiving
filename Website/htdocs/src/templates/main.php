@@ -53,20 +53,20 @@
 						<i class='fa fa-user fa-fw'></i>  <i class='fa fa-caret-down'></i>
 					</button>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-						<li style='text-align: center'><h4> Available Houses</h4></li>
+						<li style='text-align: center'><h4> Available Properties</h4></li>
 
 						<li class='divider'></li>
 
 						<li class ="btn-group">
 							<button type="button" class="btn btn-md btn-default"><i class="fa fa-pencil img-center"></i></button>
-							<button type="button" class="btn btn-md btn-default">**HouseName**</button>
+							<button type="button" class="btn btn-md btn-default">**PropertyName**</button>
 							<button type="button" class="btn btn-md btn-default"><i class="fa fa-times img-center"></i></button> <li/>
 						</li>
 
 						<li class='divider'></li>
-						
-						<li><a href='#'><i class='fa fa-plus fa-fw'></i> Add House</a></li>
-						<li><a href="../buyNewHouse/"><i class="fa fa-gbp fa-fw"></i> Buy New House</a></li>
+
+						<li><a href='#'><i class='fa fa-plus fa-fw'></i> Add Property</a></li>
+						<li><a href="../buyNewHouse/"><i class="fa fa-gbp fa-fw"></i> Buy New Property</a></li>
 						<li><a href="<?php echo $path; ?>../includes/logout.php"><i class='fa fa-sign-out fa-fw'></i> Logout</a></li>
 					</ul>
 				</div>

@@ -1,5 +1,5 @@
 <?php
-	$title = "Household Residents";
+	$title = "Property Residents";
 	$path = "../src/templates/";
 	include $path."main.php";
 ?>
@@ -14,7 +14,7 @@
                   <thead>
                     <tr>
                       <th>Email</th>
-                      <th>Current Household</th>
+                      <th>Current Property</th>
                     </tr>
                   </thead>
 									<?php
