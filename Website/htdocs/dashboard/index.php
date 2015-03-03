@@ -21,12 +21,12 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<i class="fa fa-home fa-fw"></i> House Overview
+				<i class="fa fa-home fa-fw"></i> Property Overview
 			</div>
 			<div class="panel-body">
 				<h4>Front Door: <span class="text-success">Closed</span></h4>
 				<h4>Back Door: <span class="text-success">Closed</span></h4>
-				<h4>House Occupied: <span class="text-warning">Yes</span></h4>
+				<h4>Property Occupied: <span class="text-warning">Yes</span></h4>
 
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 <?php
-	$title = "Buy New House";
+	$title = "Buy New Property";
 	$path = "../src/templates/";
 	include $path."main.php";
 ?>
@@ -8,10 +8,10 @@
 
 <div class = "col-lg-6">
 	<div class = "panel panel-danger">
-		<div class = "panel-heading"> <h2> New House Preferences </h2> </div>
+		<div class = "panel-heading"> <h2> New Property Preferences </h2> </div>
 		<div class = "panel-body">
 			<form>
-				<label>House Name:*</label>
+				<label>Property Name:*</label>
 				<input class ="form-control col-lg-6">
 			</form>
 		</div>

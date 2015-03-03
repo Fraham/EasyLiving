@@ -10,13 +10,13 @@
 		[2, "rooms", "Overview", ""],
 		[2, "roomSettings", "Room Settings", ""],
 		[0, "notifications", "Notifications", "exclamation"],
-		[1, "#", "Household", "home"],
+		[1, "#", "Property", "property"],
 		[2, "residents", "Residents", ""],
 		[2, "selection", "Selection", ""],
 		[0, "preferences", "Preferences", "edit"],
 		[0, "icons.php", "Icons", "ban"],
 	];
-	
+
 	foreach($menu as list($type, $link, $name, $icon))
 	{
 		if ($type != 2 and $opened)
@@ -43,5 +43,5 @@
 	}
 	if ($opened)
 		$html .= "</ul></li>";
-	echo $html;	
+	echo $html;
 ?>
