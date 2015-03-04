@@ -10,7 +10,7 @@ if (isset($_SESSION['house_id']))
 
 	$houseID = $_SESSION['house_id'];
 
-	$statement = "SELECT R.dName, RC.occupied, RC.unoccupied, I.icon
+	$statement = "SELECT R.dName, RC.occupied, RC.unoccupied, I.icon, R.roomID
 									FROM room as R
 									INNER JOIN room_colour as RC
 									ON R.colourID = RC.colourID
@@ -20,12 +20,34 @@ if (isset($_SESSION['house_id']))
 
 	$result = $conn->query($statement);
 
-
 	if ($result->num_rows > 0)
 	{
 		while($row = $result->fetch_assoc())
 		{
-			if (true) //motion sensor state
+			$occupiedStatement = "SELECT state, sensorID FROM sensors
+				INNER JOIN room
+				ON sensors.roomID = room.roomID
+				WHERE room.roomID = $row[roomID]";
+
+			$occupiedResult = $conn->query($occupiedStatement);
+
+			$motion = 0;
+
+			if ($occupiedResult->num_rows > 0)
+			{
+				while($occupiedRow = $occupiedResult->fetch_assoc())
+				{
+					if (0 === strpos($occupiedRow['sensorID'], '01'))
+		            {
+		                if (strcmp($occupiedRow['state'], "detected") === 0)
+		                {
+		                    $motion = 1;
+		                }
+		            }
+				}
+			}
+
+			if ($motion == 1) //motion sensor state
 			{
 				$color = $row["occupied"];
 				$state = "Occupied";
