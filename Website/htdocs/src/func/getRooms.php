@@ -47,7 +47,7 @@ if (isset($_SESSION['house_id']))
 							</div>
 							<div class='col-xs-9 text-right'>
 								<div class='huge'>".$row["dName"]."</div>
-								<div>.$state.</div>
+								<div>".$state."</div>
 						</div>
 					</div>
 				</div>
