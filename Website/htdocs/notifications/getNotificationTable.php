@@ -2,6 +2,12 @@
 	$tableHtml = "";
 	require_once "../src/connect.php";
 
+	include "../src/includes/functions.php";
+
+	sec_session_start();
+
+	$houseID = $_SESSION['house_id'];
+
 	$statement = "SELECT room.dName, log.comment, DATE_FORMAT(log.date,'%k:%i') as time, sensors.name as sensorName
 		FROM log
 		INNER JOIN sensors
@@ -9,14 +15,10 @@
 		INNER JOIN room
 		ON sensors.roomID = room.roomID
 		INNER JOIN house
-		ON room.houseID = ?
+		ON room.houseID = $houseID
 		ORDER BY logID DESC LIMIT 20";
 
-	$result = $conn->prepare($statement);
-
-	$result->bind_param("s", $houseID);
-
-	$result->execute();
+	$result = $conn->query($statement);
 
 	if ($result->num_rows > 0)
 	{
@@ -41,6 +43,11 @@
 			$tableHtml .= "</tr>";
 			$tableHtml .= "</tbody>";
 		}
+	}
+	else
+	{
+		$tableHtml .= "$houseID";
+		$tableHtml .= " no results";
 	}
 
 	$conn->close();

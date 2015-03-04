@@ -24,8 +24,9 @@
 				<i class="fa fa-home fa-fw"></i> Property Overview
 			</div>
 			<div class="panel-body">
-				<h4>Front Door: <span class="text-success">Closed</span></h4>
-				<h4>Back Door: <span class="text-success">Closed</span></h4>
+				<?php
+					include "getDoors.php";
+				?>
 				<h4>Property Occupied: <span class="text-warning">Yes</span></h4>
 
 			</div>
