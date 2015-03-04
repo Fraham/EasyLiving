@@ -1,5 +1,5 @@
 <?php
-	$roomHTML = "";
+	$doorHTML = "";
 	require_once "../src/connect.php";
 
     $houseID = $_SESSION['house_id'];
@@ -13,6 +13,8 @@
 
     $result = $conn->query($statement);
 
+    $motion = 0;
+
 	if ($result->num_rows > 0)
 	{
 		while($row = $result->fetch_assoc())
@@ -21,23 +23,39 @@
             {
                 if (strcmp($row['state'], "open") === 0)
                 {
-                    $roomHTML .= "<h4>";
-                    $roomHTML .= "$row[name]";
-                    $roomHTML .= ": <span class='text-danger'>Open</span></h4>";
+                    $doorHTML .= "<h4>";
+                    $doorHTML .= "$row[name]";
+                    $doorHTML .= ": <span class='text-danger'>Open</span></h4>";
                 }
                 else
                 {
-                    $roomHTML .= "<h4>";
-                    $roomHTML .= "$row[name]";
-                    $roomHTML .= ": <span class='text-success'>Closed</span></h4>";
+                    $doorHTML .= "<h4>";
+                    $doorHTML .= "$row[name]";
+                    $doorHTML .= ": <span class='text-success'>Closed</span></h4>";
+                }
+            }
+            elseif (0 === strpos($row['sensorID'], '01'))
+            {
+                if (strcmp($row['state'], "detected") === 0)
+                {
+                    $motion = 1;
                 }
             }
 		}
 	}
     else
     {
-        $roomHTML .= "no results";
+        $doorHTML .= "T";
     }
 
-	echo $roomHTML;
+    if ($motion == 1)
+    {
+        $doorHTML .= "<h4>Property Occupied: <span>Yes</span></h4>";
+    }
+    else
+    {
+        $doorHTML .= "<h4>Property Occupied: <span>No</span></h4>";
+    }
+
+	echo $doorHTML;
 ?>

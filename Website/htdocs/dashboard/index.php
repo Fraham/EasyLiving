@@ -27,8 +27,6 @@
 				<?php
 					include "getDoors.php";
 				?>
-				<h4>Property Occupied: <span class="text-warning">Yes</span></h4>
-
 			</div>
 		</div>
 
