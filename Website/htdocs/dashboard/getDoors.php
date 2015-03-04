@@ -23,13 +23,13 @@
                 {
                     $roomHTML .= "<h4>";
                     $roomHTML .= "$row[name]";
-                    $roomHTML .= ": <span class='text-success'>Open</span></h4>";
+                    $roomHTML .= ": <span class='text-danger'>Open</span></h4>";
                 }
                 else
                 {
                     $roomHTML .= "<h4>";
                     $roomHTML .= "$row[name]";
-                    $roomHTML .= ": <span class='text-danger'>Closed</span></h4>";
+                    $roomHTML .= ": <span class='text-success'>Closed</span></h4>";
                 }
             }
 		}
