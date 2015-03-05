@@ -9,7 +9,7 @@ $statement = "SELECT U.email, H.dName FROM users as U
     INNER JOIN user_households as UH
     ON UH.userID = U.userID
     INNER JOIN house as H
-    ON UH.houseID = H.houseID
+    ON U.currentHousehold = H.houseID
     WHERE	UH.houseID = $houseID";
 
 $result = $conn->query($statement);
