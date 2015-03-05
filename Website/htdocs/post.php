@@ -1,6 +1,9 @@
 <?php
 	if (isset($_POST["msg"]) and isset($_POST["id"]))
 	{
+		$file = 'arduino.txt';
+		$current = "here";
+		file_put_contents($file, $current);
 		require "src/connect.php";
 
 		$ID = $_POST['id'];
