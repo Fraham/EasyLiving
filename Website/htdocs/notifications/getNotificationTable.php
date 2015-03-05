@@ -8,14 +8,15 @@
 
 	$houseID = $_SESSION['house_id'];
 
-	$statement = "SELECT room.dName, log.comment, DATE_FORMAT(log.date,'%k:%i') as time, sensors.name as sensorName
+	$statement = "SELECT room.dName, log.comment, DATE_FORMAT(log.date,'%d %b %Y %T') as time, sensors.name as sensorName
 		FROM log
 		INNER JOIN sensors
 		ON log.sensorID = sensors.sensorID
 		INNER JOIN room
 		ON sensors.roomID = room.roomID
 		INNER JOIN house
-		ON room.houseID = $houseID
+		ON room.houseID = house.houseID
+    WHERE house.houseID = $houseID
 		ORDER BY logID DESC LIMIT 20";
 
 	$result = $conn->query($statement);
