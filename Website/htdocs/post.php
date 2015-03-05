@@ -6,7 +6,7 @@
 		$ID = $_POST['id'];
 		$newMessage = $_POST["msg"];
 
-		$statement = "UPDATE 'sensors' SET 'state'=".$newMessage." WHERE 'sensorID'='".$ID."'";
+		$statement = "UPDATE 'sensors' SET 'state'= '" + $newMessage + "' WHERE 'sensorID'='" + $ID + "'";
 
 		$sql = "INSERT INTO log (sensorID, comment)
 		VALUES ($_POST['id'], $_POST['msg'])";
