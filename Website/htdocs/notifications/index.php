@@ -10,7 +10,7 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<a><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#chartBody"></a>
-			Notification charts
+			Notification Charts
 		</div>
 		<div class="panel-body panel-collapse collapse"id="chartBody">
 
