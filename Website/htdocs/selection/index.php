@@ -37,10 +37,13 @@
                       <td class="center">X</td>
                     </tr>
                   </tbody>
+                  </table>
                 </div>
+             
+        <!-- PASTE HERE -->
 
-          </div>
-        </div>
+
+
 <?php
 	include $path."footer.php";
 ?>
