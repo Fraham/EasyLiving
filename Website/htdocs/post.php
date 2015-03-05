@@ -1,17 +1,11 @@
 <?php
 	if (isset($_POST["msg"]) and isset($_POST["id"]))
 	{
-		$file = 'arduino.txt';
-		$current = $_POST["id"] + $_POST["msg"];
-		file_put_contents($file, $current);
 		require "src/connect.php";
 
-		$ID = $_POST['id'];
-		$newMessage = $_POST["msg"];
+		$statement = "UPDATE sensors SET state = '".$_POST['msg']."' WHERE sensorID = '".$_POST['id']."';";
 
-		$statement = "UPDATE sensors SET state = '".$newMessage."' WHERE sensorID = '".$ID."';";
-
-		$sql = "INSERT INTO log (sensorID, comment)
+		$sql = "INSERT INTO log (sensorID, state)
 		VALUES (".$_POST['id'].", ".$_POST['msg'].")";
 
 		if (!$conn->query($sql)) {
@@ -20,7 +14,7 @@
 
 		$conn->close();
 		//notify();
-		echo date('Y-m-d H:i:s');
+		//echo date('Y-m-d H:i:s');
 	}
 
 	function notify()
@@ -39,5 +33,12 @@
 		$result = file_get_contents($url, false, $context);
 
 		var_dump($result);
+	}
+	
+	function here()
+	{
+		$file = 'arduino.txt';
+		$current = "here";
+		file_put_contents($file, $current);
 	}
 ?>
