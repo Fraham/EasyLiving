@@ -40,7 +40,52 @@
                   </table>
                 </div>
              
-        <!-- PASTE HERE -->
+ <input type="button"
+                       value="Add Property"
+                       class="btn btn-lg btn-danger pull-right"
+                       data-toggle="modal" data-target="#AddPropertyModal" />
+              <input type="button"
+                       value="Buy New Property"
+                       class="btn btn-lg btn-danger pull-right"
+                       href="../buyNewHouse" />
+
+
+
+          </div>
+        </div>
+
+
+        <div class="modal fade" id="AddPropertyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h2 class="modal-title" id="myModalLabel">Add Property</h2>
+          </div>
+          <div class="modal-body row">
+            <div class="form-group col-lg-12">
+               <form action="../src/includes/process_login.php" method="post" name="login_form">
+                Property ID: <input type="text" name="email" autofocus class="form-control"/>
+                Property Password: <input type="password"
+                                 name="password"
+                                 id="password"
+                                 class="form-control"/>
+                <input type="button"
+                       value="Add Property"
+                       class="btn btn-lg btn-danger btn-block"
+                       onclick="formhash(this.form, this.form.password);" />
+                                <input type="button"
+                       value="Cancel"
+                       class="btn btn-lg btn-danger btn-block"
+                       data-dismiss="modal" aria-hidden="true" />
+
+            </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
