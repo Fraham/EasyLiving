@@ -8,7 +8,7 @@
 
 	$houseID = $_SESSION['house_id'];
 
-	$statement = "SELECT room.dName, log.comment, DATE_FORMAT(log.date,'%d %b %Y %T') as time, sensors.name as sensorName
+	$statement = "SELECT room.dName, log.comment, DATE_FORMAT(log.date,'%d %M %Y %T') as time, sensors.name as sensorName
 		FROM log
 		INNER JOIN sensors
 		ON log.sensorID = sensors.sensorID
