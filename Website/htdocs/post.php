@@ -2,7 +2,7 @@
 	if (isset($_POST["msg"]) and isset($_POST["id"]))
 	{
 		$file = 'arduino.txt';
-		$current = "here";
+		$current = $_POST["id"] + $_POST["msg"];
 		file_put_contents($file, $current);
 		require "src/connect.php";
 
