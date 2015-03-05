@@ -2,7 +2,7 @@
 	$doorHTML = "";
 	require_once "../src/connect.php";
 
-    $houseID = $_SESSION['house_id'];
+  $houseID = $_SESSION['house_id'];
 
 	$statement = "SELECT state, sensorID, name FROM sensors
         INNER JOIN room

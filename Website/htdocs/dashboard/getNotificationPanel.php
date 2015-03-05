@@ -2,7 +2,22 @@
 	$tableHtml = "";
 	require_once "../src/connect.php";
 
-	$statement = "SELECT DATE_FORMAT(time,'%k:%i') as time, data FROM test ORDER BY idtest DESC LIMIT 10";
+	include "../src/includes/functions.php";
+
+	sec_session_start();
+
+	$houseID = $_SESSION['house_id'];
+
+	$statement = "SELECT DATE_FORMAT(date,'%k:%i') as time, comment FROM log
+	 				INNER JOIN sensors
+					ON log.sensorID = sensors.sensorID
+					INNER JOIN room
+					ON sensors.roomID = room.roomID
+					INNER JOIN house
+					ON room.houseID = house.houseID
+					WHERE house.houseID = $houseID
+          ORDER BY logID
+					DESC LIMIT 10";
 
 	$result = $conn->query($statement);
 
@@ -10,7 +25,7 @@
 	{
 		while($row = $result->fetch_assoc()) {
 			$tableHtml .= "<a href='#' class='list-group-item'>";//<i class='fa fa-comment fa-fw'></i>";
-			$tableHtml .= "$row[data]";
+			$tableHtml .= "$row[comment]";
 			$tableHtml .= "<span class='pull-right text-muted small'><em>";
 			$tableHtml .= "$row[time]";
 			$tableHtml .= "</em></span>";
