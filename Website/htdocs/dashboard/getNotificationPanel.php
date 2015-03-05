@@ -8,7 +8,7 @@
 
 	$houseID = $_SESSION['house_id'];
 
-	$statement = "SELECT DATE_FORMAT(date,'%k:%i') as time, comment FROM log
+	$statement = "SELECT DATE_FORMAT(date,'%k:%i') as time, sensors.messageOn, sensors.messageOff, log.state FROM log
 	 				INNER JOIN sensors
 					ON log.sensorID = sensors.sensorID
 					INNER JOIN room
@@ -23,9 +23,22 @@
 
 	if ($result->num_rows > 0)
 	{
-		while($row = $result->fetch_assoc()) {
+		while($row = $result->fetch_assoc())
+		{
+			$state = (int) $row['state'];
+			$message = "";
+
+			if($state == 0)
+			{
+				$message = $row['messageOff'];
+			}
+			else
+			{
+				$message = $row['messageOn'];
+			}
+
 			$tableHtml .= "<a href='#' class='list-group-item'>";//<i class='fa fa-comment fa-fw'></i>";
-			$tableHtml .= "$row[comment]";
+			$tableHtml .= $message;
 			$tableHtml .= "<span class='pull-right text-muted small'><em>";
 			$tableHtml .= "$row[time]";
 			$tableHtml .= "</em></span>";

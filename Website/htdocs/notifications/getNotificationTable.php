@@ -8,7 +8,7 @@
 
 	$houseID = $_SESSION['house_id'];
 
-	$statement = "SELECT room.dName, log.comment, DATE_FORMAT(log.date,'%d %M %Y %T') as time, sensors.name as sensorName
+	$statement = "SELECT room.dName, DATE_FORMAT(log.date,'%d %M %Y %T') as time, sensors.name  as sensorName, sensors.messageOn, sensors.messageOff, log.state
 		FROM log
 		INNER JOIN sensors
 		ON log.sensorID = sensors.sensorID
@@ -26,20 +26,32 @@
 		$tableHtml .=
 		"<thead>
 			<tr>
-				<th>Sensor Name</th>
 				<th>Room</th>
-				<th>Comment</th>
+				<th>Sensor Name</th>
+				<th>Message</th>
 				<th>Date and Time</th>
 			</tr>
 		</thead>";
 
 		while($row = $result->fetch_assoc())
 		{
+			$state = (int) $row["state"];
+			$message = "";
+
+			if($state == 0)
+			{
+				$message = $row['messageOff'];
+			}
+			else
+			{
+				$message = $row['messageOn'];
+			}
+
 			$tableHtml .= "<tbody>";
-			$tableHtml .= "<tr class='odd gradeX'>";
-			$tableHtml .= "<td class='center'> $row[sensorName] </td>";
+			$tableHtml .= "<tr>";
 			$tableHtml .= "<td class='center'> $row[dName] </td>";
-			$tableHtml .= "<td class='center'> $row[comment] </td>";
+			$tableHtml .= "<td class='center'> $row[sensorName] </td>";
+			$tableHtml .= "<td class='center'> $message </td>";
 			$tableHtml .= "<td class='center'> $row[time] </td>";
 			$tableHtml .= "</tr>";
 			$tableHtml .= "</tbody>";
