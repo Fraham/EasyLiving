@@ -23,10 +23,13 @@
 }
 
 body{
-	zoom: 90%;
 	height:100%;
 }
 html{
+	//-moz-transform: scale(0.9);
+    //-webkit-transform: scale(0.9);
+    //transform: scale(0.9);
+    zoom: 90%; /* Webkit browsers */
     min-height:100%;
     position:relative;
 }
