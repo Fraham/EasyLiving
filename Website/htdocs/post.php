@@ -5,6 +5,10 @@
 
 		$statement = "UPDATE sensors SET state = '".$_POST['msg']."' WHERE sensorID = '".$_POST['id']."';";
 
+		if (!$conn->query($statement)) {
+			echo "Error: " . $statement . "<br>" . $conn->error;
+		}
+
 		$sql = "INSERT INTO log (sensorID, state)
 		VALUES (".$_POST['id'].", ".$_POST['msg'].")";
 
@@ -34,7 +38,7 @@
 
 		var_dump($result);
 	}
-	
+
 	function here()
 	{
 		$file = 'arduino.txt';
