@@ -40,17 +40,17 @@
                   </table>
                 </div>
              
- <input type="button"
+              <input type="button"
                        value="Add Property"
                        class="btn btn-lg btn-danger pull-right"
                        data-toggle="modal" data-target="#AddPropertyModal" />
-              <input type="button"
-                       value="Buy New Property"
-                       class="btn btn-lg btn-danger pull-right"
-                       href="../buyNewHouse" />
-
-
-
+              <a href="../buyNewHouse"
+                class="btn btn-lg btn-danger pull-right"
+                onclick="../buyNewHouse" />
+                Buy New Property
+              </a> 
+                
+                
           </div>
         </div>
 
@@ -66,10 +66,12 @@
             <div class="form-group col-lg-12">
                <form action="../src/includes/process_login.php" method="post" name="login_form">
                 Property ID: <input type="text" name="email" autofocus class="form-control"/>
+                <br>
                 Property Password: <input type="password"
                                  name="password"
                                  id="password"
                                  class="form-control"/>
+                <br>
                 <input type="button"
                        value="Add Property"
                        class="btn btn-lg btn-danger btn-block"
@@ -78,7 +80,6 @@
                        value="Cancel"
                        class="btn btn-lg btn-danger btn-block"
                        data-dismiss="modal" aria-hidden="true" />
-
             </form>
 
             </div>

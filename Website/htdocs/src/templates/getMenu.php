@@ -10,7 +10,7 @@
 		[2, "rooms", "Overview", ""],
 		[2, "roomSettings", "Room Settings", ""],
 		[0, "notifications", "Notifications", "exclamation"],
-		[1, "#", "Property", "property"],
+		[1, "#", "Property", "home",],
 		[2, "residents", "Residents", ""],
 		[2, "selection", "Selection", ""],
 		[0, "preferences", "Preferences", "edit"],
