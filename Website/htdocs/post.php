@@ -6,7 +6,7 @@
 		$newdata = $_POST["msg"];
 
 		$sql = "INSERT INTO log (sensorID, comment)
-		VALUES (".$_POST['id'].", ".$_POST['msg'].")";
+		VALUES ($_POST['id'], $_POST['msg'])";
 
 		if (!$conn->query($sql)) {
 			echo "Error: " . $sql . "<br>" . $conn->error;
