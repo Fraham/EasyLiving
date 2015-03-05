@@ -1,13 +1,13 @@
 <?php
-	if (isset($_POST["msg"]))
+	if (isset($_POST["msg"]) and isset($_POST["id"]))
 	{
 		require "src/connect.php";
-		
+
 		$newdata = $_POST["msg"];
-		
-		$sql = "INSERT INTO test (data)
-		VALUES ('".$_POST["msg"]."')";
-		
+
+		$sql = "INSERT INTO log (sensorID, comment)
+		VALUES (".$_POST['id'].", ".$_POST['msg'].")";
+
 		if (!$conn->query($sql)) {
 			echo "Error: " . $sql . "<br>" . $conn->error;
 		}
@@ -16,7 +16,7 @@
 		//notify();
 		echo date('Y-m-d H:i:s');
 	}
-	
+
 	function notify()
 	{
 		$url = "dynamicTest.php";

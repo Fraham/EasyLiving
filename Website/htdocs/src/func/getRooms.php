@@ -39,7 +39,7 @@ if (isset($_SESSION['house_id']))
 				{
 					if (0 === strpos($occupiedRow['sensorID'], '01'))
 		            {
-		                if (strcmp($occupiedRow['state'], "detected") === 0)
+		                if ($occupiedRow['state'] == 0)
 		                {
 		                    $motion = 1;
 		                }
