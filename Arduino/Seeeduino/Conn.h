@@ -1,6 +1,6 @@
 #pragma once
 
-void sendMsg(String msg);
+void sendMsg(String id, String msg);
 void connInit();
 String getResponse();
 void closeConn();

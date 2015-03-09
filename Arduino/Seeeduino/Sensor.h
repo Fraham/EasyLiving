@@ -5,15 +5,15 @@
 class Sensor
 {
 	public:
-		Sensor(String name, int pin);
+		Sensor(String id, int pin);
 		int getPin();
-		String getName();
+		String getId();
 		bool getState();
 		virtual void check() = 0;
 		
 	protected:
 		int _pin;
-		String _name;
+		String _id;
 		bool _state;
 		String _highMsg;
 		String _lowMsg;

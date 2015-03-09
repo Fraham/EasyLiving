@@ -52,16 +52,16 @@
 					<button class="btn btn-default dropdown-toggle" style='color:#D80000' type="button" id="menu1" data-toggle="dropdown">
 						<i class='fa fa-user fa-fw'></i>  <i class='fa fa-caret-down'></i>
 					</button>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+					<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="propertySelect" style="width: 233px;">
 						<li style='text-align: center'><h4> Available Properties</h4></li>
 
 						<li class='divider'></li>
 
-						<li class ="btn-group">
+						<div style="margin-left: 5px; margin-right: 5px;">
 							<button type="button" class="btn btn-md btn-default"><i class="fa fa-pencil img-center"></i></button>
-							<button type="button" class="btn btn-md btn-default">**PropertyName**</button>
+							<button type="button" class="btn btn-md btn-default" style="width:137px;">**PropertyName**</button>
 							<button type="button" class="btn btn-md btn-default"><i class="fa fa-times img-center"></i></button> <li/>
-						</li>
+						</div>
 
 						<li class='divider'></li>
 
