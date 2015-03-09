@@ -1,14 +1,14 @@
 #include "Sensor.h"
 
-Sensor::Sensor(String name, int pin)
+Sensor::Sensor(String id, int pin)
 {
 	//Serial.begin(9600);
 	pinMode(_pin, INPUT);
-	_name = name;
+	_id = id;
 	_pin = pin;
 	_state = true;
-	_highMsg = "";
-	_lowMsg = "";
+	_highMsg = "1";
+	_lowMsg = "0";
 }
 
 int Sensor::getPin()
@@ -16,9 +16,9 @@ int Sensor::getPin()
 	return _pin;
 }
 
-String Sensor::getName()
+String Sensor::getId()
 {
-	return _name;
+	return _id;
 }
 
 bool Sensor::getState()

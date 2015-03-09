@@ -13,6 +13,9 @@ void connInit()
 		exit(0);
 	}
 	Serial.println("Ready!");
+	tone(8, 500);
+	delay(200);
+	noTone(8);
 }
 
 void closeConn()
@@ -23,20 +26,21 @@ void closeConn()
 		}
 }
 
-void sendMsg(String msg)
+void sendMsg(String id, String msg)
 {
-	closeConn();
-	String _msg = "msg=" + msg;
+	String _id = "id=" + id;
+	String _msg = "&msg=" + msg;
 	if (server.connect(serverAddr, 80)) {
 		server.println("POST /post.php HTTP/1.1");
 		server.println("Host: " + String(serverAddr));
 		server.println("Content-Type: application/x-www-form-urlencoded");
 		server.println("Connection: close");
-		server.println("Content-Length: " + String(_msg.length()));
+		server.println("Content-Length: " + String(_id.length()) + String(_msg.length()));
 		server.println();
-		server.print(_msg);
+		server.print(_id + _msg);
+		Serial.println(_id + _msg);
 	}
-
+	server.stop();
 }
 
 String getResponse()
