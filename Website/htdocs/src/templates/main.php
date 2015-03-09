@@ -98,15 +98,34 @@
 					</div>
 				</div>
 			<?php else : ?>
-				
+				<div class="veritcal-center">
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<img src='<?php echo $path; ?>../images/logo.png' class="hidden-xs center-block" style='width:25%; height:25%; margin:auto; padding:0px'>
+					<img src='<?php echo $path; ?>../images/logoFlat.png' class="hidden-lg hidden-md hidden-sm center-block" style='width:65%;height:65%; margin:auto; padding:0px'>
+					<h1 style="color:#D80000; text-align:center;">
+						You are not authorized to access this page. 
+					</h1>
+					<br>
+						<div class="text-center">
+							<a href="../login" class="btn btn-danger huge btn-lg text-center-block">Login</a>
+						</div>
+						
+				</div>
 
 
 
-
-
-				<p>
-					<span class="error">You are not authorized to access this page.</span> Please <a href="../login">login</a>.
-				</p>
 			<?php endif; ?>
 
 	</head>
@@ -132,7 +151,7 @@
                        value="Add Property"
                        class="btn btn-lg btn-danger btn-block"
                        onclick="formhash(this.form, this.form.password);" />
-                                <input type="button"
+                <input type="button"
                        value="Cancel"
                        class="btn btn-lg btn-danger btn-block"
                        data-dismiss="modal" aria-hidden="true" />

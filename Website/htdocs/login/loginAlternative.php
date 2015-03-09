@@ -5,70 +5,77 @@
   <script type="text/JavaScript" src="../src/js/forms.js"></script>
 </head>
 <body>
-    <div class="row">
-    <div class="col-lg-6 align-right">
-        <img  src="../src/images/logo.png" class="img-responsive" style="width:50%;height:50%; padding:0px;">
+    <div class="col-lg-6 ">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <img  src="../src/images/logo.png" class="pull-right" style="width:60%;height:50%; padding:0px;">
     </div>
+
     <div class="col-lg-6">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
-        <button
-            class="btn btn-lg btn-danger huge"
-            data-toggle="modal" data-target="#signUpModal">
-            Sign up
-        </button>        
-                <button
-                  class="btn btn-danger" 
-                  data-toggle="collapse" data-target="#demo">
-                  Sign in
-                </button>
-
-                <div id="demo" class="collapse">
-                    <?php
-                    if (isset($_GET['error'])) {
-                        echo '<p class="error">Error Logging In!</p>';
-                    }
-                    ?>
-                    <form action="../src/includes/process_login.php" method="post" name="login_form">
-                        Email: <input type="text" name="email" autofocus class="form-control"/>
-                        Password: <input type="password"
-                                         name="password"
-                                         id="password"
-                                         class="form-control"/>
-                        <input name="remember" type="checkbox" value="Remember Me"> Remember Me
-                        <input type="button"
-                               value="Login"
-                               class="btn btn-lg btn-danger btn-block"
-                               onclick="formhash(this.form, this.form.password);" />
-                    </form>
-                </div>
-
-
-                            <form method="post" name="registration_form" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>">
-                Email: <input type="text"
-                                name="email"
-                                id="rEmail"
-                                class="form-control"
-                                placeholder="Example:smithjohn@example.com"/><br>
-                Password: <input type="password"
-                                 name="password"
-                                 id="rPassword"
-                                 class="form-control"
-                                 /><br>
-                Confirm password: <input type="password"
-                                         name="confirmpwd"
-                                         id="confirmpwd"
-                                         class="form-control" /><br>
-                <input type="button"
-                       value="Register"
-                       class="btn btn-lg btn-danger btn-block"
-                       onclick="return regformhash(this.form,
-                                       this.form.email,
-                                       this.form.password,
-                                       this.form.confirmpwd);" />
-                <a href="../login" class="btn btn-lg btn-danger btn-block">Cancel</a>
-            </form>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <button
+              class="btn   btn-danger btn-lg"
+              data-toggle="modal" data-target="#signUpModal">
+              Sign up
+          </button>  
+          <div class="clearfix"></div>   
+          <br>   
+          <button
+            class="btn btn-danger btn-lg" 
+            data-toggle="collapse" data-target="#demo">
+            Sign in
+          </button>
+                  
+          <div id="demo" class="collapse">
+              <?php
+              if (isset($_GET['error'])) {
+                  echo '<p class="error">Error Logging In!</p>';
+              }
+              ?>
+                <form action="../src/includes/process_login.php" method="post" name="login_form">
+                <br>
+                    Email: <input type="text" name="email" autofocus class="form-control"/>
+                    Password: <input type="password"
+                                     name="password"
+                                     id="password"
+                                     class="form-control"/>
+                    <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+                    <input type="button"
+                           value="Login"
+                           class="btn btn-lg btn-danger btn-block"
+                           onclick="formhash(this.form, this.form.password);" />
+                </form>
+            </div>
+        </div>
       </div>
-    </div>
 
         
 
@@ -83,8 +90,32 @@
         </div>
         <div class="modal-body row">
           <div class="form-group col-lg-12">
-            <input class="form-control">
-
+            <form method="post" name="registration_form">
+                Email: <input type="text"
+                                name="email"
+                                id="email"
+                                class="form-control"
+                                placeholder="Example:smithjohn@example.com"/><br>
+                Password: <input type="password"
+                                 name="password"
+                                 id="password"
+                                 class="form-control"
+                                 /><br>
+                Confirm password: <input type="password"
+                                         name="confirmpwd"
+                                         id="confirmpwd"
+                                         class="form-control" /><br>
+                <input type="button"
+                       value="Register"
+                       class="btn btn-lg btn-danger btn-block"
+                       onclick="return regformhash(this.form,
+                                       this.form.email,
+                                       this.form.password,
+                                       this.form.confirmpwd);" />
+                <input type="button"
+                       value="Cancel"
+                       class="btn btn-lg btn-danger btn-block"
+                       data-dismiss="modal" aria-hidden="true" />
           </div>
         </div>
       </div>
