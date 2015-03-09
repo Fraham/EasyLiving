@@ -48,24 +48,31 @@
 					<a href="../../dashboard"><img src='<?php echo $path; ?>../images/logoFlat.png' class='hidden-lg hidden-sm hidden-md img-responsive' style='width:35%;height:35%; margin:auto; padding:0px'></a>
 				</div>
 
-				<div class="dropdown nav navbar-top-links navbar-right pull-right">
-					<button class="btn btn-default dropdown-toggle" style='color:#D80000' type="button" id="menu1" data-toggle="dropdown">
+				<div class="dropdown nav navbar-top-links navbar-right pull-right" id="userDropdown">
+					<button class="btn btn-default" onclick="" style='color:#D80000' type="button" id="menu1" data-toggle="dropdown">
 						<i class='fa fa-user fa-fw'></i>  <i class='fa fa-caret-down'></i>
 					</button>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+					<ul class="dropdown-menu">
 						<li style='text-align: center'><h4> Available Properties</h4></li>
 
 						<li class='divider'></li>
-
-						<li class ="btn-group">
-							<button type="button" class="btn btn-md btn-default"><i class="fa fa-pencil img-center"></i></button>
-							<button type="button" class="btn btn-md btn-default">**PropertyName**</button>
+						
+						<div>
+						<li class ="btn-group text-center">
+							<button type="button" class="btn btn-md btn-default" ><i class="fa fa-pencil img-center"></i></button>
+							<input type="button" id="name" value="Property Name"class="btn btn-md btn-default"></input>
 							<button type="button" class="btn btn-md btn-default"><i class="fa fa-times img-center"></i></button> <li/>
 						</li>
+						</div>
+						<div>
+						<li class ="btn-group text-center">
+							<button type="button" class="btn btn-md btn-default"><i class="fa fa-pencil img-center"></i></button>
+							<input type="button" value="Property Name"class="btn btn-md btn-default"></input>
+							<button type="button" class="btn btn-md btn-default"><i class="fa fa-times img-center"></i></button> <li/>
+						</li>
+						</div>
 
-						<li class='divider'></li>
-
-						<li><a href='#'><i class='fa fa-plus fa-fw'></i> Add Property</a></li>
+						<li><a data-toggle="modal" data-target="#AddPropertyModal"><i class='fa fa-plus fa-fw'></i> Add Property</a></li>
 						<li><a href="../buyNewHouse/"><i class="fa fa-gbp fa-fw"></i> Buy New Property</a></li>
 						<li><a href="<?php echo $path; ?>../includes/logout.php"><i class='fa fa-sign-out fa-fw'></i> Logout</a></li>
 					</ul>
@@ -101,5 +108,50 @@
 					<span class="error">You are not authorized to access this page.</span> Please <a href="../login">login</a>.
 				</p>
 			<?php endif; ?>
+
 	</head>
 	<body>
+    <div class="modal fade" id="AddPropertyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h2 class="modal-title" id="myModalLabel">Add Property</h2>
+          </div>
+          <div class="modal-body row">
+            <div class="form-group col-lg-12">
+               <form action="../src/includes/process_login.php" method="post" name="login_form">
+                Property ID: <input type="text" name="email" autofocus class="form-control"/>
+                <br>
+                Property Password: <input type="password"
+                                 name="password"
+                                 id="password"
+                                 class="form-control"/>
+                <br>
+                <input type="button"
+                       value="Add Property"
+                       class="btn btn-lg btn-danger btn-block"
+                       onclick="formhash(this.form, this.form.password);" />
+                                <input type="button"
+                       value="Cancel"
+                       class="btn btn-lg btn-danger btn-block"
+                       data-dismiss="modal" aria-hidden="true" />
+            </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </body>
+
+    <script>
+    function keepOpen(){
+    	document.getElementById("userDropdown").className += "open";
+    }	
+    function edit(){
+    	document.getElementById("name").className = "form-control";
+    	
+    	document.getElementById("name").type = "Text";
+    }
+    </script>

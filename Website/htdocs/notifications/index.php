@@ -13,6 +13,9 @@
 			Notification Charts
 		</div>
 		<div class="panel-body panel-collapse collapse"id="chartBody">
+		<div class="panel-body panel-collapse collapse"id="chartBody">
+		<div class="panel-body panel-collapse collapse"id="chartBody">
+		<div class="panel-body panel-collapse collapse"id="chartBody">
 
 			<div class="col-lg-3 col-md-3">
 				<select class="form-control">
@@ -21,7 +24,7 @@
 				</select>
 			</label>
 		</div>
-		<div class="col-lg-3 col-md-3">
+	<div class="col-lg-3 col-md-3">
 			<select class="form-control">
 				<option selected hidden>Sensor:</option>
 				<?php include "getNotificationsGraphSensor.php"; ?>

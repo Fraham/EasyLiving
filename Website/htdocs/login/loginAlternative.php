@@ -84,8 +84,6 @@
         <div class="modal-body row">
           <div class="form-group col-lg-12">
             <input class="form-control">
-            
-
 
           </div>
         </div>
