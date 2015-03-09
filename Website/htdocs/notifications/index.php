@@ -13,9 +13,6 @@
 			Notification Charts
 		</div>
 		<div class="panel-body panel-collapse collapse"id="chartBody">
-		<div class="panel-body panel-collapse collapse"id="chartBody">
-		<div class="panel-body panel-collapse collapse"id="chartBody">
-		<div class="panel-body panel-collapse collapse"id="chartBody">
 
 			<div class="col-lg-3 col-md-3">
 				<select class="form-control">
