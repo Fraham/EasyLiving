@@ -59,8 +59,7 @@
 	}
 	else
 	{
-		$tableHtml .= "$houseID";
-		$tableHtml .= " no results";
+		$tableHtml .= "There is no rooms to dislay.";
 	}
 
 	$conn->close();
