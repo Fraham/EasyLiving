@@ -9,36 +9,43 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-			<a><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#chartBody"></a>
+			<a><div class="panel-heading" ></a>
 			Notification Charts
 		</div>
-		<div class="panel-body panel-collapse collapse"id="chartBody">
+		<div class="panel-body"id="chartBody">
 
-			<div class="col-lg-3 col-md-3">
+			<div class="col-lg-2">
+					<select class="form-control">
+						<option selected hidden>Property:</option>
+						<?php include "getNotificationsGraphProperty.php"; ?>
+					</select>
+				</label>
+			</div>
+			<div class="col-lg-2">
 				<select class="form-control">
 					<option selected hidden>Room:</option>
+					<option>Any</option>
+
 					<?php include "getNotificationsGraphRooms.php"; ?>
 				</select>
 			</label>
 		</div>
-	<div class="col-lg-3 col-md-3">
-			<select class="form-control">
-				<option selected hidden>Sensor:</option>
-				<?php include "getNotificationsGraphSensor.php"; ?>
-			</select>
-		</label>
-	</div>
+			<div class="col-lg-2">
+					<select class="form-control">
+						<option selected hidden>Sensor:</option>
+						<option>Any</option>
+						<?php include "getNotificationsGraphSensor.php"; ?>
+					</select>
+				</label>
+			</div>
 
 	<div class="col-lg-3 col-md-3">
-		<input  class="btn btn-default btn-block" readonly placeholder="Start Date"  id="startDate">
+		<input type="text" class="form-control text-center" id="startDate" placeholder="Enter Start Date"></input>
+	</div>	
+	<div class="col-lg-3 col-md-3 btn-group">
+		<input type="text" class="form-control text-center" id="endDate" placeholder="Enter End Date"></input>
+		
 	</div>
-	<div class="col-lg-3 col-md-3">
-		<input  class="btn btn-default btn-block" readonly placeholder="End Date"  id="endDate">
-	</div>
-
-</div>
-<div>
-
 
 </div>
 </div>
@@ -70,11 +77,11 @@
 
 
 <div class="panel panel-default">
-	<a><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#notiBody"></a>
+	<div class="panel-heading">
 	Notifications Tables
 </div>
 <!-- /.panel-heading -->
-<div class="panel-body panel-collapse collapse" id="notiBody">
+<div class="panel-body panel-collapse" id="notiBody">
 	<div class="dataTable_wrapper">
 		<table class="table table-striped table-bordered table-hover" id="notifications">
 
