@@ -18,7 +18,12 @@
 					<select class="form-control">
 						<option selected hidden>Property:</option>
 						<option>Any</option>
-						<?php include "getNotificationsGraphProperty.php"; ?>
+						<?php
+							include("getNotificationsGraph.php");
+
+							getProperties();
+						?>
+
 					</select>
 				</label>
 			</div>
@@ -26,7 +31,11 @@
 				<select class="form-control">
 					<option selected hidden>Room:</option>
 					<option>Any</option>
-					<?php include "getNotificationsGraphRooms.php"; ?>
+					<?php //include "getNotificationsGraphRooms.php";
+
+					//include("getNotificationsGraph.php");
+					 getRooms();
+					?>
 				</select>
 			</label>
 		</div>
@@ -34,7 +43,9 @@
 					<select class="form-control">
 						<option selected hidden>Sensor:</option>
 						<option>Any</option>
-						<?php include "getNotificationsGraphSensor.php"; ?>
+						<?php
+							getSensors();
+						?>
 					</select>
 				</label>
 			</div>
