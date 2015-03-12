@@ -33,10 +33,6 @@ function getRooms()
 
   $userID = $_SESSION['user_id'];
 
-  //$houseID = $_SESSION['house_id'];
-
-  //$statement = "SELECT dName FROM room WHERE room.houseID = $houseID";
-
   $statement = "SELECT dName FROM room
                 INNER JOIN user_households
                 ON user_households.houseID = room.houseID
@@ -68,8 +64,6 @@ function getSensors()
   $sensorList = "";
   require "../src/connect.php";
 
-  //$houseID = $_SESSION['house_id'];
-
   $userID = $_SESSION['user_id'];
 
   $statement = "SELECT sensors.name FROM sensors
@@ -95,15 +89,4 @@ function getSensors()
 
   echo $sensorList;
 }
-
-//include "../src/includes/functions.php";
-
-//sec_session_start();
-/*
-getProperties();
-
-getRooms();
-
-getSensors();*/
-
 ?>
