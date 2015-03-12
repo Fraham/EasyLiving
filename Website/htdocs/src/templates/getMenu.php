@@ -8,8 +8,10 @@
 		[0, "dashboard", "Dashboard", "dashboard"],
 		[0, "rooms", "Rooms", "sitemap"],
 		[0, "sensors", "Sensors", "wifi"],
-		[0, "notifications", "Event Log", "exclamation"],
-		[0, "selecton", "My Locataions", "home",],
+		[1, "#", "Events", "exclamation"],
+		[2, "notifications", "History", "exclamation"],
+		[2, "conditions", "Settings", "exclamation"],
+		[0, "selection", "My Locataions", "home",],
 		[0, "preferences", "Preferences", "edit"],
 		[0, "icons.php", "Icons", "ban"],
 	];
