@@ -14,7 +14,10 @@ include $path."main.php";
 					Property Preferences
 				</div>
 				<div class="panel-body panel-collapse collapse"id="houseBody">
-
+					<div class="col-lg-6">
+						<label>Timer for Fridge Door Buzzer:</label>
+						<input type="number" class="form-control" placeholder="Period of time">
+					</div>
 				</div>
 			</div>
 			<div class="panel panel-default">
@@ -23,12 +26,13 @@ include $path."main.php";
 				</div>
 				<div class="panel-body panel-collapse collapse in"id="userBody">
 					<div class="col-lg-6">
-						<label>In General, I would like to recieve:</label>
+						<label>Notification Type:</label>
 						<select class="form-control">
 							<option>Push Notifications</option>
 							<option>Email Notifications</option>
 							<option>Email and Push Notifications</option>
 						</select>
+
 					</div>
 				</div>
 			</div>
