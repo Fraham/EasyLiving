@@ -17,6 +17,7 @@
 			<div class="col-lg-2">
 					<select class="form-control">
 						<option selected hidden>Property:</option>
+						<option>Any</option>
 						<?php include "getNotificationsGraphProperty.php"; ?>
 					</select>
 				</label>
@@ -25,7 +26,6 @@
 				<select class="form-control">
 					<option selected hidden>Room:</option>
 					<option>Any</option>
-
 					<?php include "getNotificationsGraphRooms.php"; ?>
 				</select>
 			</label>
@@ -41,10 +41,10 @@
 
 	<div class="col-lg-3 col-md-3">
 		<input type="text" class="form-control text-center" id="startDate" placeholder="Enter Start Date"></input>
-	</div>	
+	</div>
 	<div class="col-lg-3 col-md-3 btn-group">
 		<input type="text" class="form-control text-center" id="endDate" placeholder="Enter End Date"></input>
-		
+
 	</div>
 
 </div>

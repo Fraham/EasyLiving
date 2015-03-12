@@ -2,9 +2,16 @@
 	$roomList = "";
 	require_once "../src/connect.php";
 
-	$houseID = $_SESSION['house_id'];
+	$userID = $_SESSION['user_id'];
 
-  $statement = "SELECT dName FROM room WHERE room.houseID = $houseID";
+	/*$houseID = $_SESSION['house_id'];
+
+  $statement = "SELECT dName FROM room WHERE room.houseID = $houseID";*/
+
+	$statement = "SELECT dName FROM room
+								INNER JOIN user_households
+								ON user_households.houseID = room.houseID
+								WHERE user_households.userID = $userID";
 
 	$result = $conn->query($statement);
 
