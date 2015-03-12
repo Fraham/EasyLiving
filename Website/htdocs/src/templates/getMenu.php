@@ -6,13 +6,10 @@
 	//[type, link, name, icon]
 	$menu = [
 		[0, "dashboard", "Dashboard", "dashboard"],
-		[1, "#", "Rooms", "sitemap"],
-		[2, "rooms", "Overview", ""],
-		[2, "roomSettings", "Room Settings", ""],
-		[0, "notifications", "Notifications", "exclamation"],
-		[1, "#", "Property", "home",],
-		[2, "residents", "Residents", ""],
-		[2, "selection", "Selection", ""],
+		[0, "rooms", "Rooms", "sitemap"],
+		[0, "sensors", "Sensors", "wifi"],
+		[0, "notifications", "Event Log", "exclamation"],
+		[0, "selecton", "My Locataions", "home",],
 		[0, "preferences", "Preferences", "edit"],
 		[0, "icons.php", "Icons", "ban"],
 	];
