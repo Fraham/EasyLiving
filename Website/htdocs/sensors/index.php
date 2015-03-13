@@ -8,29 +8,108 @@
 
 <div class="row">
 	<div class="col-lg-12">
-		<div class="panel panel-default">
+		<div class="panel panel-danger">
 			<a><div class="panel-heading" ></a>
 			Living Room
 		</div>
 		<div class="panel-body"id="chartBody">
-		<div class="col-lg-3 col-sm-6">
-			<a href="" class="btn btn-default btn-block">Sensor1</a>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor1</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor2</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor3</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor4</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor5</a>
+			</div>
 		</div>
-		<div class="col-lg-3 col-sm-6">
-			<a href="" class="btn btn-default btn-block">Sensor2</a>
+	</div>
+</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-warning">
+			<a><div class="panel-heading" ></a>
+			Kitchen
 		</div>
-		<div class="col-lg-3 col-sm-6">
-			<a href="" class="btn btn-default btn-block">Sensor3</a>
+		<div class="panel-body"id="chartBody">
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor1</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor2</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor3</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor4</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor5</a>
+			</div>
 		</div>
-		<div class="col-lg-3 col-sm-6">
-			<a href="" class="btn btn-default btn-block">Sensor4</a>
-		</div>
-		<div class="col-lg-3 col-sm-6">
-			<a href="" class="btn btn-default btn-block">Sensor5</a>
-		</div>
+	</div>
+</div>
+</div>
 
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-info">
+			<a><div class="panel-heading" ></a>
+			Bedroom
+		</div>
+		<div class="panel-body"id="chartBody">
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor1</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor2</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor3</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor4</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor5</a>	
+			</div>
+		</div>
+	</div>
 </div>
 </div>
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-success	">
+			<a><div class="panel-heading" ></a>
+			Office
+		</div>
+		<div class="panel-body"id="chartBody">
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor1</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor2</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor3</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor4</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="" class="btn btn-default btn-block">Sensor5</a>
+			</div>
+		</div>
+	</div>
 </div>
 </div>
 
@@ -53,33 +132,6 @@
 		minuteStep: 5
 	});
 </script>
-
-
-
-
-
-<div class="panel panel-default">
-	<div class="panel-heading">
-	Notifications Tables
-</div>
-<!-- /.panel-heading -->
-<div class="panel-body panel-collapse" id="notiBody">
-	<div class="dataTable_wrapper">
-		<table class="table table-striped table-bordered table-hover" id="notifications">
-
-			<script>
-				refresh();
-
-				function refresh()
-				{
-					$.post("getNotificationTable.php", function( data ) {
-						$("#notifications").html( data );
-					});
-				}
-				var intervalID = setInterval(refresh, 500);
-			</script>
-		</div>
-	</div>
 
 	<?php
 	include $path."footer.php"
