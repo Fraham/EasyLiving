@@ -13,7 +13,6 @@ $(document).ready(function() {
     },
     xAxis: {
       type: 'datetime',
-      //minRange: 14 * 24 * 3600000 // fourteen days
     },
     yAxis: {
       title: {
