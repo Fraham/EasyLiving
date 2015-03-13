@@ -59,7 +59,7 @@
 	</div>
 	<div class="col-lg-3 col-md-3">
 		<script src="http://code.highcharts.com/highcharts.js"></script>
-		<div id="sales" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<div id="sales" style="min-width: 610px; height: 400px; margin: 0 auto"></div>
 	</div>
 
 </div>

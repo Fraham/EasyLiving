@@ -3,16 +3,14 @@ $(document).ready(function() {
   var cursan = {
     chart: {
       renderTo: 'sales',
-      defaultSeriesType: 'area',
+      //defaultSeriesType: 'area',
+      type: 'column',
       marginRight: 10,
       marginBottom: 20
     },
-    /*title: {
-      text: 'Highchart With Mysql',
+    title: {
+      text: '',
     },
-    subtitle: {
-      text: 'www.spjoshis.blogspot.com',
-    },*/
     xAxis: {
       type: 'datetime',
       //minRange: 14 * 24 * 3600000 // fourteen days
@@ -51,26 +49,7 @@ $(document).ready(function() {
     },
 
     series: [{
-      color: Highcharts.getOptions().colors[2],
-      name: 'Test Colomn',
-      marker: {
-        fillColor: '#FFFFFF',
-        lineWidth: 3,
-        lineColor: null // inherit from series
-      },
-      dataLabels: {
-        enabled: true,
-        rotation: 0,
-        color: '#666666',
-        align: 'top',
-        x: -10,
-        y: -10,
-        style: {
-          fontSize: '9px',
-          fontFamily: 'Verdana, sans-serif',
-          textShadow: '0 0 0px black'
-        }
-      }
+      name: 'Test Colomn'
     }],
   }
 
