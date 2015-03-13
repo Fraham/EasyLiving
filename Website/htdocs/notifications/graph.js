@@ -72,9 +72,9 @@ $(document).ready(function() {
       }
     }],
   }
-  
+
   //Fetch MySql Records
-  jQuery.get('js/data.php', null, function(tsv) {
+  jQuery.get('js/getGraphData.php', null, function(tsv) {
     var lines = [];
     traffic = [];
     try {
