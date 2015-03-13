@@ -1,5 +1,5 @@
 <?php
-	$title = "Notifications";
+	$title = "Event History";
 	$path = "../src/templates/";
 	include $path."main.php";
 ?>
@@ -53,11 +53,10 @@
 	<div class="col-lg-3 col-md-3">
 		<input type="text" class="form-control text-center" id="startDate" placeholder="Enter Start Date"></input>
 	</div>
-	<div class="col-lg-3 col-md-3 btn-group">
+	<div class="col-lg-3 col-md-3">
 		<input type="text" class="form-control text-center" id="endDate" placeholder="Enter End Date"></input>
 
 	</div>
-
 </div>
 </div>
 </div>

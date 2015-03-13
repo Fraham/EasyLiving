@@ -109,33 +109,15 @@
 				<a href="" class="btn btn-default btn-block">Sensor5</a>
 			</div>
 		</div>
-	</div>
+	ó</div>
 </div>
 </div>
 
-<script type="text/javascript">
-	$('#startDate').datepicker({
-		format: 'dd MM yyyy',
-		autoclose: true,
-	});
-	$('#endDate').datepicker({
-		format: 'dd MM yyyy',
-		autoclose: true,
-	});
-</script>
 
-<script type="text/javascript">
-	$('#form_datetime1').datetimepicker({
-		format: 'yyyy-mm-dd hh:ii',
-		autoclose: true,
-		todayBtn: true,
-		minuteStep: 5
-	});
-</script>
 
-	<?php
+<?php
 	include $path."footer.php"
-	?>
+?>
 
 <?php else : ?>
 <?php endif; ?>
