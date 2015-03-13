@@ -11,7 +11,7 @@
   {
     while($row = $result->fetch_assoc())
     {
-      echo $row['date'] . "\t" . $row['state']. "\n";
+      echo $row['date'] . "\t" . $row['state']. "\r\n";
     }
   }
 

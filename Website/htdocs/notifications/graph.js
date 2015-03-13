@@ -15,7 +15,7 @@ $(document).ready(function() {
     },*/
     xAxis: {
       type: 'datetime',
-      minRange: 14 * 24 * 3600000 // fourteen days
+      //minRange: 14 * 24 * 3600000 // fourteen days
     },
     yAxis: {
       title: {
@@ -58,8 +58,6 @@ $(document).ready(function() {
         lineWidth: 3,
         lineColor: null // inherit from series
       },
-      data: [
-                0.8446, 0.8445, 0.8444, 0.8451,    0.8418, 0.8264,    0.8258, 0.8232,    0.8233, 0.8258],
       dataLabels: {
         enabled: true,
         rotation: 0,
