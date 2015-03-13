@@ -4,7 +4,9 @@
 	include $path."main.php";
 ?>
 
-<?php if (login_check($conn) == true) : ?>
+<?php //if (login_check($conn) == true) : ?>
+
+<script type="text/javascript" src="graph.js"></script>
 
 <div class="row">
 	<div class="col-lg-12">
@@ -31,9 +33,7 @@
 				<select class="form-control">
 					<option selected hidden>Room:</option>
 					<option>Any</option>
-					<?php //include "getNotificationsGraphRooms.php";
-
-					//include("getNotificationsGraph.php");
+					<?php
 					 getRooms();
 					?>
 				</select>
@@ -57,10 +57,11 @@
 		<input type="text" class="form-control text-center" id="endDate" placeholder="Enter End Date"></input>
 
 	</div>
+	<div class="col-lg-3 col-md-3">
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		<div id="sales" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	</div>
 
-	<script src="http://code.highcharts.com/highcharts.js"></script>
-	<div id="sales" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-	
 </div>
 </div>
 </div>
@@ -117,5 +118,5 @@
 	include $path."footer.php"
 	?>
 
-<?php else : ?>
-<?php endif; ?>
+<?php //else : ?>
+<?php //endif; ?>

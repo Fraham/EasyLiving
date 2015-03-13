@@ -1,9 +1,9 @@
 <?php
   require_once "../src/connect.php";
 
-  $userID = $_SESSION['user_id'];
+  //$userID = $_SESSION['user_id'];
 
-  $statement = "SELECT date, state FROM log";
+  $statement = "SELECT date, state FROM log LIMIT 100";
 
   $result = $conn->query($statement);
 

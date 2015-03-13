@@ -7,14 +7,15 @@ $(document).ready(function() {
       marginRight: 10,
       marginBottom: 20
     },
-    title: {
+    /*title: {
       text: 'Highchart With Mysql',
     },
     subtitle: {
       text: 'www.spjoshis.blogspot.com',
-    },
+    },*/
     xAxis: {
-      categories: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar']
+      type: 'datetime',
+      minRange: 14 * 24 * 3600000 // fourteen days
     },
     yAxis: {
       title: {
@@ -57,6 +58,8 @@ $(document).ready(function() {
         lineWidth: 3,
         lineColor: null // inherit from series
       },
+      data: [
+                0.8446, 0.8445, 0.8444, 0.8451,    0.8418, 0.8264,    0.8258, 0.8232,    0.8233, 0.8258],
       dataLabels: {
         enabled: true,
         rotation: 0,
@@ -74,25 +77,37 @@ $(document).ready(function() {
   }
 
   //Fetch MySql Records
-  jQuery.get('js/getGraphData.php', null, function(tsv) {
+  jQuery.get('getGraphData.php', null, function(tsv)
+  {
     var lines = [];
     traffic = [];
-    try {
+
+    try
+    {
       // split the data return into lines and parse them
       tsv = tsv.split(/\n/g);
-      jQuery.each(tsv, function(i, line) {
+
+      jQuery.each(tsv, function(i, line)
+      {
         line = line.split(/\t/);
         date = line[0] ;
+
         amo=parseFloat(line[1].replace(',', ''));
-        if (isNaN(amo)) {
+
+        if (isNaN(amo))
+        {
           amo = null;
         }
+
         traffic.push([
           date,
           amo
         ]);
       });
-    } catch (e) {  }
+    }
+    catch (e)
+    {  }
+
     cursan.series[0].data = traffic;
     chart = new Highcharts.Chart(cursan);
   });
