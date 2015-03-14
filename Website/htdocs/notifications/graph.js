@@ -2,7 +2,7 @@ var chart;
 $(document).ready(function() {
   var cursan = {
     chart: {
-      renderTo: 'sales',
+      renderTo: 'events',
       //defaultSeriesType: 'area',
       type: 'column',
       marginRight: 10,
@@ -49,7 +49,7 @@ $(document).ready(function() {
 
     series: [{
       name: 'Test Colomn'
-    }],
+    }]
   }
 
   //Fetch MySql Records
