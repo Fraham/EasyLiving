@@ -21,14 +21,21 @@
 				<div class="panel-body"id="settingsBody">
 					<label>Number of Sensors</label>
 					<input type="number" id="noOfSensors" class="form-control" placeholder="Choose number of sensors">
+					<div class="row">
+						<div class="col-lg-2">
+							<label>Sensor Location</label>
+						<div class="col-lg-2">
+							<label>Sensor</label>
+						<div class="col-lg-2">
+							<label>Timer:</label>
 					<?php 
 						$loopvalue = 3;
+	
 						for ($i = 1; $i <= $loopvalue; $i++) {
 						echo '<div class="row">
 								<div class="col-lg-2">
-								<label>Sensor Location</label>
 								<select class="form-control">
-									<option selected hidden>-Please Select-</option>
+									<option selected hidden>Any</option>
 										<option>Any</option>
 									<?php
 										getRooms();
@@ -37,10 +44,8 @@
 							</label>
 						</div>';
 						echo '<div class="col-lg-2">
-								<label>Sensor</label>
 								<select class="form-control">
-									<option selected hidden>-Please Select-</option>
-										<option>Any</option>
+									<option selected hidden>---</option>
 									<?php
 										getSensors();
 									?>
@@ -48,7 +53,6 @@
 							</label>
 						</div>';
 						echo '<div class="col-lg-2">
-								<label>Timer:</label>
 									<input type="number" class="form-control" placeholder="Period of time">
 								</div>
 						</div>';
