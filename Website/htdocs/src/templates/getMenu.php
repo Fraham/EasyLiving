@@ -10,7 +10,7 @@
 		[0, "sensors", "Sensors", "wifi"],
 		[1, "#", "Events", "exclamation"],
 		[2, "notifications", "History", "exclamation"],
-		[2, "conditions", "Settings", "exclamation"],
+		[2, "Event Conditions", "Settings", "exclamation"],
 		[0, "selection", "My Locataions", "home",],
 		[0, "preferences", "Preferences", "edit"],
 		[0, "icons.php", "Icons", "ban"],
