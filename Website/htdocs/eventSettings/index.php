@@ -22,13 +22,13 @@
 					<label>Number of Sensors</label>
 					<input type="number" id="noOfSensors" class="form-control" placeholder="Choose number of sensors">
 					<div class="row">
-						<div class="col-lg-2">
+						<div class="col-mid-1">
 							<label>Sensor Location</label>
 						</div>
-						<div class="col-lg-2">
+						<div class="col-mid-1">
 							<label>Sensor</label>
 						</div>
-						<div class="col-lg-2">
+						<div class="col-mid-1">
 							<label>Timer:</label>
 						</div>
 					</div>
@@ -37,7 +37,7 @@
 	
 						for ($i = 1; $i <= $loopvalue; $i++) {
 						echo '<div class="row">
-								<div class="col-lg-2">
+								<div class="col-mid-1">
 								<select class="form-control">
 									<option selected hidden>Any</option>
 										<option>Any</option>
@@ -48,7 +48,7 @@
 								</select>
 							</label>
 						</div>';
-						echo '<div class="col-lg-2">
+						echo '<div class="col-mid-1">
 								<select class="form-control">
 									<option selected hidden>---</option>
 									<?php
@@ -57,7 +57,7 @@
 								</select>
 							</label>
 						</div>';
-						echo '<div class="col-lg-2">
+						echo '<div class="col-mid-1">
 								<input type="number" class="form-control" placeholder="Period of time">
 							</div>
 						</div>';
