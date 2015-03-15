@@ -58,7 +58,8 @@
 						</div>';
 						echo '<div class="col-lg-2">
 								<input type="number" class="form-control" placeholder="Period of time">
-							</div>';
+							</div>
+						</div>';
 						}
 					?>
 		</div>
