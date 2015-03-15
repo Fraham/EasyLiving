@@ -24,9 +24,22 @@
 					<?php 
 						$loopvalue = 3;
 						for ($i = 1; $i <= $loopvalue; $i++) {
-						echo '<div class="col-lg-2">
+						echo '<div class="row">
+								<div class="col-lg-2">
+								<label>Sensor Location</label>
 								<select class="form-control">
-									<option selected hidden>Sensor:</option>
+									<option selected hidden>-Please Select-</option>
+										<option>Any</option>
+									<?php
+										getRooms();
+									?>
+								</select>
+							</label>
+						</div>';
+						echo '<div class="col-lg-2">
+								<label>Sensor</label>
+								<select class="form-control">
+									<option selected hidden>-Please Select-</option>
 										<option>Any</option>
 									<?php
 										getSensors();
@@ -35,9 +48,10 @@
 							</label>
 						</div>';
 						echo '<div class="col-lg-2">
-								<label>Timer for Event:</label>
+								<label>Timer:</label>
 									<input type="number" class="form-control" placeholder="Period of time">
-								</div>';
+								</div>
+						</div>';
 						}
 					?>
 		</div>
