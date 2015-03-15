@@ -3,7 +3,7 @@
 
   //$userID = $_SESSION['user_id'];
 
-  $statement = "SELECT date, state FROM log LIMIT 100";
+  $statement = "SELECT date, state FROM log ORDER BY logID DESC LIMIT 100";
 
   $result = $conn->query($statement);
 
