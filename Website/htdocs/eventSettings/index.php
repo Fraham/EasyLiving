@@ -24,10 +24,14 @@
 					<div class="row">
 						<div class="col-lg-2">
 							<label>Sensor Location</label>
+						</div>
 						<div class="col-lg-2">
 							<label>Sensor</label>
+						</div>
 						<div class="col-lg-2">
 							<label>Timer:</label>
+						</div>
+					</div>
 					<?php 
 						$loopvalue = 3;
 	
