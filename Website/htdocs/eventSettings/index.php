@@ -19,31 +19,27 @@
 				Fridge Door Notification
 				</div>
 				<div class="panel-body"id="settingsBody">
-					<div class="col-lg-2">
-						<select class="form-control">
-							<option selected hidden>Property:</option>
-							<option>Any</option>
-							<?php
-								include("GetPropertyChoices.php");
-								getProperties();
-							?>
-						</select>
-					</label>
-				</div>
-				<div class="col-lg-2">
-						<select class="form-control">
-							<option selected hidden>Sensor:</option>
-							<option>Any</option>
-							<?php
-								getSensors();
-							?>
-						</select>
-					</label>
-				</div>
-				<div class="col-lg-2">
-					<label>Timer for Event:</label>
-					<input type="number" class="form-control" placeholder="Period of time">
-				</div>
+					<label>Number of Sensors</label>
+					<input type="number" id="noOfSensors" class="form-control" placeholder="Choose number of sensors">
+					<?php 
+						$loopvalue = document.getElementById("noOfSensors").value;
+						for ($i = 1; $i <= $loopvalue; $i++) {
+						echo '<div class="col-lg-2">
+								<select class="form-control">
+									<option selected hidden>Sensor:</option>
+										<option>Any</option>
+									<?php
+										getSensors();
+									?>
+								</select>
+							</label>
+						</div>';
+						echo '<div class="col-lg-2">
+								<label>Timer for Event:</label>
+									<input type="number" class="form-control" placeholder="Period of time">
+								</div>';
+						}
+					?>
 		</div>
 	</div>
 		
