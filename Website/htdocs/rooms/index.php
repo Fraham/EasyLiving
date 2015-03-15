@@ -20,7 +20,9 @@
 		});
 	</script>
 </div>
-
+<div class="col-lg-12">
+<a href="#" class="btn btn-danger btn-lg"><i class="fa fa-pencil"></i></a>
+</div>
 <?php include $path."footer.php"; ?>
 
 <?php else : ?>

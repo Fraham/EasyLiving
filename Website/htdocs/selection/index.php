@@ -1,5 +1,5 @@
 <?php
-	$title = "Property Selection";
+	$title = "My Locations";
 	$path = "../src/templates/";
 	include $path."main.php";
 ?>
