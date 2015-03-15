@@ -42,6 +42,7 @@
 									<option selected hidden>Any</option>
 										<option>Any</option>
 									<?php
+										include("GetPropertyChoices.php");
 										getRooms();
 									?>
 								</select>
