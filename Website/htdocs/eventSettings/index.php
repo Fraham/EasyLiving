@@ -22,7 +22,7 @@
 					<label>Number of Sensors</label>
 					<input type="number" id="noOfSensors" class="form-control" placeholder="Choose number of sensors">
 					<?php 
-						$loopvalue = 3
+						$loopvalue = 3;
 						for ($i = 1; $i <= $loopvalue; $i++) {
 						echo '<div class="col-lg-2">
 								<select class="form-control">
