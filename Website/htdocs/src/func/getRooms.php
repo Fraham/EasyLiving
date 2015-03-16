@@ -68,7 +68,7 @@ if (isset($_SESSION['house_id']))
 								<i class='fa fa-".$row["icon"]." fa-4x'></i>
 							</div>
 							<div class='col-xs-9 text-right'>
-								<div class='huge'>".$row["dName"]."</div>
+								<div class='huge' name=''>".$row["dName"]."</div>
 								<div>".$state."</div>
 						</div>
 					</div>
