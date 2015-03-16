@@ -53,7 +53,7 @@ $(document).ready(function() {
   }
 
   //Fetch MySql Records
-  jQuery.get('getGraphData.php', null, function(tsv)
+  jQuery.get('getGraphData.php?propertyID=111111', null, function(tsv)
   {
     var lines = [];
     traffic = [];
