@@ -7,6 +7,7 @@
 	$menu = [
 		[0, "dashboard", "Dashboard", "dashboard"],
 		[0, "rooms", "Rooms", "sitemap"],
+		[0, "roomsSettings", "Rooms Settings", "sitemap"],
 		[0, "sensors", "Sensors", "wifi"],
 		[1, "#", "Events", "exclamation"],
 		[2, "notifications", "History", "exclamation"],
