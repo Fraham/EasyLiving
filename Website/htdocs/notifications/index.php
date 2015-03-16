@@ -33,9 +33,7 @@
 				<select class="form-control">
 					<option selected hidden>Room:</option>
 					<option>Any</option>
-					<?php //include "getNotificationsGraphRooms.php";
-
-					//include("getNotificationsGraph.php");
+					<?php
 					 getRooms();
 					?>
 				</select>
@@ -66,7 +64,7 @@
 
 	<div class="col-lg-12 col-md-12">
 		<script src="http://code.highcharts.com/highcharts.js"></script>
-		<div id="events" style="min-width: 7px; height: 400px; margin: 0 auto"></div>
+		<div id="events" style="min-width: 700px; height: 400px; margin: 0 auto"></div>
 	</div>
 </div>
 </div>
@@ -123,6 +121,4 @@
 	<?php
 	include $path."footer.php"
 	?>
-
-<?php else : ?>
 <?php endif; ?>
