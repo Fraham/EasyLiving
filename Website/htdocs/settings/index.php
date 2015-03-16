@@ -25,11 +25,11 @@ $(document).ready(function(){
 			<select class="form-control">
 				<option>Push Notifications</option>
 				<option>Email Notifications</option>
-				<option>Both Email and Push Notifications</option>
+				<option>Email and Push Notifications</option>
 			</select>
 		</div>
-		<br>
-			<div class="col-lg-6">
+		<div class="clearfix"></div>
+		<div class="col-lg-6">
 				<label>Keep all Sensor and Event data for:</label>
 				<select class="form-control">
 					<option>1 month</option>
