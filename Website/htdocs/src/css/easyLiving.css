@@ -33,23 +33,28 @@ html{
     min-height:100%;
     position:relative;
 }
-#draggableElem{
-	background-color: #ccc;
-	padding: 5px 10px;
+
+.drag-handle {
+	margin-right: 10px;
+	font: bold 20px Sans-Serif;
+	color: #5F9EDF;
+	display: inline-block;
+	cursor: move;
+	cursor: -webkit-grabbing;
+}
+
+#room {
+	background-color: #fff;
+	padding: 10px 40px;
+}
+
+#roomsList {
 	color: #464637;
 	font-size: 20px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
-	//width: 300px;
-}
-
-#draggableItem{
-	
-}
-
-#handle {
-	width: 30px;
-	height: 30px;
+	width: 30%; 
+	margin-left: 10px;
 }
 
 .userDropDown{

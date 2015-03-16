@@ -29,9 +29,9 @@
 		<script src='<?php echo $path; ?>../dist/js/sb-admin-2.js'></script>
 		<script src='<?php echo $path; ?>../datepicker/bootstrap-datetimepicker.js'></script>
 		<script src='<?php echo $path; ?>../datepicker/bootstrap-datepicker.js'></script>
-		<link href='<?php echo $path; ?>../css/jquery-ui.css' rel='stylesheet'>
-		<script src='<?php echo $path; ?>../js/jquery-ui.js'></script>
-		<link href='../src/css/easyLiving.css' rel='stylesheet'>
+		<script src='<?php echo $path; ?>../js/sortable.js'></script>
+		<script src='<?php echo $path; ?>../js/jquery.bind.sortable.js'></script>
+		<link href='<?php echo $path; ?>../css/easyLiving.css' rel='stylesheet'>
 
 
 		<div id='wrapper'>

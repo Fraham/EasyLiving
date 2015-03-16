@@ -120,13 +120,13 @@
           <div class="modal-body row">
             <div class="form-group col-lg-12">
                <form action="../src/includes/process_login.php" method="post" name="login_form">
-                <label>Sesnor ID:</label> <input type="text" maxlength="6" name="ID" autofocus class="form-control"/>
+                <label>Sensor ID:</label> <input type="text" maxlength="6" name="ID" autofocus class="form-control"/>
                 <br>
                 <label>Sensor Name:</label> <input type="text"
                                  id="password"
                                  class="form-control"/>
                 <br>
-                <label>Sesnor Type</label>
+                <label>Sensor Type</label>
 						<select class="form-control">
 							<option>Motion</option>
 							<option>Door/Window</option>
@@ -142,7 +142,7 @@
 						</select>
 				<br>
                 <input type="button"
-                       value="Add Property"
+                       value="Add Sensor"
                        class="btn btn-lg btn-danger btn-block"
                        onclick="formhash(this.form, this.form.password);" />
                 <input type="button"
@@ -162,7 +162,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h2 class="modal-title" id="myModalLabel">Add Sensor</h2>
+            <h2 class="modal-title" id="myModalLabel">Edit Sensor</h2>
           </div>
           <div class="modal-body row">
             <div class="form-group col-lg-12">
@@ -172,7 +172,7 @@
                                  id="password"
                                  class="form-control"/>
                 <br>
-                <label>Sesnor Type</label>
+                <label>Sensor Type</label>
 						<select class="form-control">
 							<option>Motion</option>
 							<option>Door/Window</option>
@@ -188,7 +188,7 @@
 						</select>
 				<br>
                 <input type="button"
-                       value="Add Sensor"
+                       value="Confirm"
                        class="btn btn-lg btn-danger btn-block"
                        onclick="formhash(this.form, this.form.password);" />
                 <input type="button"
