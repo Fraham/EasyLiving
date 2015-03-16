@@ -4,7 +4,7 @@ $(document).ready(function() {
     chart: {
       renderTo: 'events',
       //defaultSeriesType: 'area',
-      type: 'column',
+      //type: 'column',
       marginRight: 10,
       marginBottom: 20
     },
@@ -16,7 +16,7 @@ $(document).ready(function() {
     },
     yAxis: {
       title: {
-        text: 'Average'
+        text: 'Count'
       },
       plotLines: [{
         value: 0,
@@ -52,8 +52,10 @@ $(document).ready(function() {
     }]
   }
 
+  var property = $("propertySelect").text();
+
   //Fetch MySql Records
-  jQuery.get('getGraphData.php?propertyID=111111&sensorID=20002', null, function(tsv)
+  jQuery.get('getGraphData.php', null, function(tsv)
   {
     var lines = [];
     traffic = [];

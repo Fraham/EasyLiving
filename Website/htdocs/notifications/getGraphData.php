@@ -101,7 +101,7 @@ if (isset($_GET["endDate"]))
   $set = 1;
 }*/
 
-$statement = "SELECT date, log.state FROM log
+$statement = "SELECT log.date, count(*) as Amount FROM log
 INNER JOIN sensors
 ON sensors.sensorID = log.sensorID
 INNER JOIN room
@@ -109,7 +109,11 @@ ON room.roomID = sensors.roomID
 INNER JOIN house
 ON house.houseID = room.houseID ";
 $statement .= $where;
-$statement .= " ORDER BY logID DESC LIMIT 100";
+$statement .= " GROUP BY
+	YEAR(log.date),
+	MONTH(log.date),
+	DAY(log.date),
+	HOUR(log.date)";
 
 $result = $conn->query($statement);
 
@@ -117,7 +121,7 @@ if ($result->num_rows > 0)
 {
   while($row = $result->fetch_assoc())
   {
-    echo $row['date'] . "\t" . $row['state']. "\r\n";
+    echo $row['date'] . "\t" . $row['Amount']. "\r\n";
   }
 }
 
