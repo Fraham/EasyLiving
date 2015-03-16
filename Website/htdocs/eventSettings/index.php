@@ -21,6 +21,7 @@
 				<div class="panel-body"id="settingsBody">
 					<div class="col-lg-6">
 					<label>Number of Sensors</label>
+<<<<<<< HEAD
 					<input type="number" id="noOfSensors" min="0" class="form-control" placeholder="Choose number of sensors">
 					</div>
 					<div class="col-lg-6">
@@ -35,6 +36,15 @@
 							<label>Sensor</label>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+=======
+					<input type="number" id="noOfSensors" class="form-control" placeholder="Choose number of sensors">
+					<div class="row">
+						<div class="col-lg-2">
+							<label>Sensor Location</label>
+						<div class="col-lg-2">
+							<label>Sensor</label>
+						<div class="col-lg-2">
+>>>>>>> origin/master
 							<label>Timer:</label>
 						</div>
 					<?php 
