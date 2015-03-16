@@ -6,11 +6,11 @@ include $path."main.php";
 
 <?php if (login_check($conn) == true) : ?>
 
-<script type="text/javascript">
+<!--<?php type="text/javascript">
 $(document).ready(function(){ 
     $("#myTab li:eq(1) a").tab('show');
 });
-</script>
+?> -->
 
 <ul class="nav nav-tabs" id="myTab">
   <li role="presentation" class="active"><a href="#userPref">User Preferences</a></li>
