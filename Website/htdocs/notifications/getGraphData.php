@@ -1,7 +1,7 @@
 <?php
 require_once "../src/connect.php";
 
-//$userID = $_SESSION['user_id'];
+$userID = $_SESSION['user_id'];
 
 $where = "";
 $set = 0;
@@ -101,7 +101,15 @@ if (isset($_GET["endDate"]))
   $set = 1;
 }*/
 
-$statement = "SELECT date, state FROM log ORDER BY logID DESC LIMIT 100";
+$statement = "SELECT date, state FROM log
+INNER JOIN sensors
+ON sensors.sensorID = log.sensorID
+INNER JOIN room
+ON room.roomID = sensors.roomID
+INNER JOIN house
+ON house.houseID = room.houseID";
+$statement .= $where;
+$statement .= "ORDER BY logID DESC LIMIT 100";
 
 $result = $conn->query($statement);
 
