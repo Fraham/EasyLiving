@@ -6,98 +6,98 @@
 
 <?php if (login_check($conn) == true) : ?>
 <div class="row">
-	<div class="col-lg-6">
+	<div class="col-lg-4">
 		<div class="panel panel-danger">
 			<div class="panel-heading" >
 			<strong>Living Room</strong>
 			</div>
 			<div class="panel-body"id="chartBody">
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor1</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor1</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor2</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor2</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor3</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor3</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor4</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor4</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor5</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor5</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-6">
+	<div class="col-lg-4">
 		<div class="panel panel-warning">
 			<div class="panel-heading" >
 			<strong>Kitchen</strong>
 			</div>
 			<div class="panel-body"id="chartBody">
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor1</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor1</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor2</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor2</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor3</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor3</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor4</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor4</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor5</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor5</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-6">
+	<div class="col-lg-4">
 		<div class="panel panel-info">
 			<div class="panel-heading" >
 			<strong>Bedroom</strong>
 			</div>
 			<div class="panel-body"id="chartBody">
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor1</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor1</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor2</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor2</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor3</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor3</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor4</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor4</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor5</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor5</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-6">
+	<div class="col-lg-4">
 		<div class="panel panel-success">
 			<div class="panel-heading" >
 			<strong>Office</strong>
 			</div>
 			<div class="panel-body"id="chartBody">
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor1</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor1</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor2</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor2</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor3</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor3</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor4</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor4</a>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<a href="" class="btn btn-default btn-block" data-toggle="modal" data-target="#EditModal">Sensor5</a>
+				<div class="col-lg-4 col-sm-6">
+					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor5</a>
 				</div>
 				<br>
 			</div>
@@ -162,7 +162,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h2 class="modal-title" id="myModalLabel">Edit Sensor</h2>
+            <h2 class="modal-title" id="myModalLabel">Edit Sensor: *Room* - *Name*</h2>
           </div>
           <div class="modal-body row">
             <div class="form-group col-lg-12">
