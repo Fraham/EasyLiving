@@ -12,70 +12,51 @@ $(document).ready(function(){
 });
 </script>
 
-<ul class="nav nav-tabs" id="myTab">
-  <li role="presentation" class="active"><a href="#userPref">User Preferences</a></li>
-  <li role="presentation"><a href="#accountSettings">General Account Settings</a></li>
-</ul>
-
-<div class="tab-content">
-	<div id="userPref" class="tab-pane fade active">
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li><a href="#pane1" data-toggle="tab">User Preferences	</a></li>
+    <li class="active"><a href="#pane2" data-toggle="tab">General Account Settings</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="pane1" class="tab-pane">
+    	<h3 class="page-header">User Preferences</h3>
+      	<div class="col-lg-6">
+			<label>Notification Type:</label>
+			<select class="form-control">
+				<option>Push Notifications</option>
+				<option>Email Notifications</option>
+				<option>Both Email and Push Notifications</option>
+			</select>
+		</div>
 		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<a><div class="panel-heading" data-parent="#accordion" href="#userBody"></a>
-						User Preferences
-					</div>
-					<div class="panel-body"id="userBody">
-						<div class="col-lg-6">
-							<label>Notification Type:</label>
-							<select class="form-control">
-								<option>Push Notifications</option>
-								<option>Email Notifications</option>
-								<option>Both Email and Push Notifications</option>
-							</select>
-						</div>
-						<div class="row">
-							<div class="col-lg-6">
-								<label>Keep all Sensor and Event data for:</label>
-								<select class="form-control">
-									<option>1 month</option>
-									<option>3 months</option>
-									<option>6 months</option>
-									<option>9 months</option>
-									<option>12 months</option>
-									<option>18 months</option>
-									<option>24 months</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="col-lg-6">
+				<label>Keep all Sensor and Event data for:</label>
+				<select class="form-control">
+					<option>1 month</option>
+					<option>3 months</option>
+					<option>6 months</option>
+					<option>9 months</option>
+					<option>12 months</option>
+					<option>18 months</option>
+					<option>24 months</option>
+				</select>
 			</div>
 		</div>
-	</div>
-	<div id="accountSettings" class="tab-pane">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<a><div class="panel-heading"data-parent="#accordion" href="#houseBody"></a>
-						General Account Settings
-					</div>
-					<div class="panel-body"id="houseBody">
-						<div class="col-lg-4">
-							Password
-						</div>
-						<div class="col-lg-4">
-							<input type="password" class="form-control" placeholder="******" disabled>
-						</div>
-						<div class="col-lg-2 col-md-3">
-							<button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#EditModal">Edit</button>
-						</div>
-					</div>
-				</div>
-			</div>
+    </div>
+    <div id="pane2" class="tab-pane active">
+    	<h3 class="page-header">General Account Settings</h3>
+		<div class="col-lg-4">
+			Password
 		</div>
-	</div>
-</div>
+		<div class="col-lg-4">
+			<input type="password" class="form-control" placeholder="******" disabled>
+		</div>
+		<div class="col-lg-2 col-md-3">
+			<button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#EditModal">Edit</button>
+		</div>
+    </div>
+  </div><!-- /.tab-content -->
+</div><!-- /.tabbable -->
 
 <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
