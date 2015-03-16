@@ -12,7 +12,7 @@
 		[2, "notifications", "History", "exclamation"],
 		[2, "eventSettings", "Settings", "exclamation"],
 		[0, "selection", "My Locations", "home",],
-		[0, "preferences", "Preferences", "edit"],
+		[0, "settings", "Settigns", "edit"],
 		[0, "icons.php", "Icons", "ban"],
 	];
 

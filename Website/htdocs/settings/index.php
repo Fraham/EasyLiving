@@ -28,7 +28,7 @@ $(document).ready(function(){
 				<option>Both Email and Push Notifications</option>
 			</select>
 		</div>
-		<div class="row">
+		<br>
 			<div class="col-lg-6">
 				<label>Keep all Sensor and Event data for:</label>
 				<select class="form-control">
@@ -40,7 +40,6 @@ $(document).ready(function(){
 					<option>18 months</option>
 					<option>24 months</option>
 				</select>
-			</div>
 		</div>
     </div>
     <div id="pane2" class="tab-pane active">
