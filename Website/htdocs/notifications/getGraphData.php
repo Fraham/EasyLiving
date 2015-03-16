@@ -1,7 +1,7 @@
 <?php
 require_once "../src/connect.php";
 
-$userID = $_SESSION['user_id'];
+//$userID = $_SESSION['user_id'];
 
 $where = "";
 $set = 0;
@@ -12,11 +12,11 @@ if (isset($_GET["propertyID"]))
 
   if ($set == 0)
   {
-    $where .= "WHERE";
+    $where .= "WHERE ";
   }
   else
   {
-    $where .= "OR";
+    $where .= " OR ";
   }
 
   $where .= "house.houseID = ";
@@ -31,11 +31,11 @@ if (isset($_GET["roomID"]))
 
   if ($set == 0)
   {
-    $where .= "WHERE";
+    $where .= "WHERE ";
   }
   else
   {
-    $where .= "OR";
+    $where .= " OR ";
   }
 
   $where .= "room.roomID = ";
@@ -50,11 +50,11 @@ if (isset($_GET["sensorID"]))
 
   if ($set == 0)
   {
-    $where .= "WHERE";
+    $where .= "WHERE ";
   }
   else
   {
-    $where .= "OR";
+    $where .= " OR ";
   }
 
   $where .= "sensor.sensorID = ";
@@ -101,15 +101,15 @@ if (isset($_GET["endDate"]))
   $set = 1;
 }*/
 
-$statement = "SELECT date, state FROM log
+$statement = "SELECT date, log.state FROM log
 INNER JOIN sensors
 ON sensors.sensorID = log.sensorID
 INNER JOIN room
 ON room.roomID = sensors.roomID
 INNER JOIN house
-ON house.houseID = room.houseID";
+ON house.houseID = room.houseID ";
 $statement .= $where;
-$statement .= "ORDER BY logID DESC LIMIT 100";
+$statement .= " ORDER BY logID DESC LIMIT 100";
 
 $result = $conn->query($statement);
 
