@@ -31,7 +31,7 @@
 		<script src='<?php echo $path; ?>../datepicker/bootstrap-datepicker.js'></script>
 		<link href='<?php echo $path; ?>../css/jquery-ui.css' rel='stylesheet'>
 		<script src='<?php echo $path; ?>../js/jquery-ui.js'></script>
-		<link href='../src/css/easyLiving.css' rel='stylesheet'>
+		<link href='<?php echo $path; ?>../css/easyLiving.css' rel='stylesheet'>
 
 
 		<div id='wrapper'>
