@@ -12,10 +12,9 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<a><div class="panel-heading" ></a>
-			Notification Charts
+			Notification Options
 		</div>
-		<div class="panel-body"id="chartBody">
-
+		<div class="panel-body">
 			<div class="col-lg-2">
 					<select class="form-control" id="propertySelect">
 						<option selected hidden>Property:</option>
@@ -34,7 +33,7 @@
 					<option selected hidden>Room:</option>
 					<option>Any</option>
 					<?php
-					 getRooms();
+					getRooms();
 					?>
 				</select>
 			</label>
@@ -61,6 +60,19 @@
 	<div class="col-lg-2 col-md-3">
 		<button type="button" class="btn btn-lg btn-danger" >Confirm</button>
 	</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<a><div class="panel-heading" ></a>
+			Notification Charts
+		</div>
+		<div class="panel-body"id="chartBody">
+
+
 
 	<div class="col-lg-12 col-md-12">
 		<script src="http://code.highcharts.com/highcharts.js"></script>
