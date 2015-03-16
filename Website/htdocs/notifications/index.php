@@ -4,7 +4,7 @@
 	include $path."main.php";
 ?>
 
-<?php// if (login_check($conn) == true) : ?>
+<?php if (login_check($conn) == true) : ?>
 
 <script type="text/javascript" src="graph.js"></script>
 
@@ -59,7 +59,7 @@
 		<input type="text" class="form-control text-center" id="endDate" placeholder="Enter End Date"></input>
 
 	</div>
-	
+
 	<div class="col-lg-2 col-md-3">
 		<button type="button" class="btn btn-lg btn-danger" >Confirm</button>
 	</div>
@@ -124,5 +124,5 @@
 	include $path."footer.php"
 	?>
 
-<?php //else : ?>
-<?php //endif; ?>
+<?php else : ?>
+<?php endif; ?>
