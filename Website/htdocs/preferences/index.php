@@ -6,7 +6,14 @@ include $path."main.php";
 
 <?php if (login_check($conn) == true) : ?>
 
-<ul class="nav nav-tabs">
+<?php type="text/javascript">
+$(document).ready(function(){ 
+    $("#myTab li:eq(1) a").tab('show');
+});
+?>
+
+
+<ul class="nav nav-tabs" id="myTab">
   <li role="presentation" class="active"><a href="#userPref">User Preferences</a></li>
   <li role="presentation"><a href="#accountSettings">General Account Settings</a></li>
 </ul>
@@ -33,7 +40,7 @@ include $path."main.php";
 			</div>
 		</div>
 	</div>
-	<div id="accountSettings" class="tab-pane fade in active">
+	<div id="accountSettings" class="tab-pane">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
