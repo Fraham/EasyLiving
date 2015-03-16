@@ -99,10 +99,8 @@ $(function () {
 
         chart = new Highcharts.Chart({
               chart: {
-                  renderTo: 'container',
-                  type: 'line',
-                  marginRight: 130,
-                  marginBottom: 25
+                  renderTo: 'events',
+                  type: 'line'
               },
               title: {
                   text: 'Amount',

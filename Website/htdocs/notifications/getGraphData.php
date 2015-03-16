@@ -120,6 +120,8 @@ $result = $conn->query($statement);
 
 if ($result->num_rows > 0)
 {
+    $check = 0;
+
   $jsonRows = array();
 
   $jsonResult = array();
@@ -128,19 +130,26 @@ if ($result->num_rows > 0)
 
   while($row = $result->fetch_assoc())
   {
-      $jsonResult[] = $row;
-    /*  $sensorID = $row['sensorID'];
+    $sensorID = $row['sensorID'];
 
     if (strcmp($sensorID, $lastItem) !== 0)
     {
         $lastItem = $row['sensorID'];
 
-        array_push($jsonResult, $jsonRows);
+        if ($check == 1)
+        {
+            array_push($jsonResult, $jsonRows);
+        }
 
         $jsonRows = array();
 
         $jsonRows['name'] = $row['SensorName'];
+
+        $check = 1;
     }
+
+    $jsonRows['category'][] = $row['date'];
+    $jsonRows['data'][] = $row['Amount'];
 
     //echo $row['date'] . "\t" . $row['Amount']. "\r\n";
     //$jsonRows['name'][] = $row['SensorName'];
