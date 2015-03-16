@@ -29,7 +29,7 @@ $(document).ready(function(){
 			</select>
 		</div>
 		<div class="clearfix"></div>
-		<div class="col-lg-6">
+		<div class="col-lg-6" style="margin-top:20px;">
 				<label>Keep all Sensor and Event data for:</label>
 				<select class="form-control">
 					<option>1 month</option>
