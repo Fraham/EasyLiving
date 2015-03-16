@@ -22,11 +22,11 @@
 					<label>Number of Sensors</label>
 					<input type="number" id="noOfSensors" class="form-control" placeholder="Choose number of sensors">
 					<div class="row">
-						<div class="col-lg-3">
+						<div class="col-lg-2">
 							<label>Sensor Location</label>
-						<div class="col-lg-3">
+						<div class="col-lg-2">
 							<label>Sensor</label>
-						<div class="col-lg-3">
+						<div class="col-lg-2">
 							<label>Timer:</label>
 					<?php 
 						$loopvalue = 3;

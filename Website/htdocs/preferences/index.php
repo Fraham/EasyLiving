@@ -47,9 +47,14 @@ $(document).ready(function(){
 						General Account Settings
 					</div>
 					<div class="panel-body"id="houseBody">
-						<div class="col-lg-6">
+						<div class="col-lg-4">
 							Password
+						</div>
+						<div class="col-lg-4">
 							<input type="text" class="form-control" placeholder="******">
+						</div>
+						<div class="col-lg-2 col-md-3">
+							<button type="button" class="btn btn-lg btn-danger" >Confirm</button>
 						</div>
 					</div>
 				</div>
