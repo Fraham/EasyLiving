@@ -17,7 +17,7 @@
 		<div class="panel-body"id="chartBody">
 
 			<div class="col-lg-2">
-					<select class="form-control">
+					<select class="form-control" id="propertySelect">
 						<option selected hidden>Property:</option>
 						<option>Any</option>
 						<?php

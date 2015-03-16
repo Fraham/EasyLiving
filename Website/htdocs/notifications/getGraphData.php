@@ -101,7 +101,7 @@ if (isset($_GET["endDate"]))
   $set = 1;
 }*/
 
-$statement = "SELECT log.date, count(*) as Amount FROM log
+$statement = "SELECT log.date, count(*) as Amount, sensors.name as SensorName FROM log
 INNER JOIN sensors
 ON sensors.sensorID = log.sensorID
 INNER JOIN room
@@ -110,6 +110,7 @@ INNER JOIN house
 ON house.houseID = room.houseID ";
 $statement .= $where;
 $statement .= " GROUP BY
+  log.sensorID,
 	YEAR(log.date),
 	MONTH(log.date),
 	DAY(log.date),
@@ -119,11 +120,22 @@ $result = $conn->query($statement);
 
 if ($result->num_rows > 0)
 {
+  $jsonRows = array();
+
   while($row = $result->fetch_assoc())
   {
-    echo $row['date'] . "\t" . $row['Amount']. "\r\n";
+    //echo $row['date'] . "\t" . $row['Amount']. "\r\n";
+    //$jsonRows['name'][] = $row['SensorName'];
+    $jsonRows[] = array(
+        "name" => $row['SensorName'],
+        "data" => "x:" + $row['date'] + ",y:" + $row['Amount']);
   }
 }
+
+$jsonResult = array();
+array_push($jsonResult, $jsonRows);
+
+print json_encode($jsonResult, JSON_NUMERIC_CHECK);
 
 $conn->close();
 ?>

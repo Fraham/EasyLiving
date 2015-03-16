@@ -1,10 +1,10 @@
-var chart;
+/*var chart;
 $(document).ready(function() {
   var cursan = {
     chart: {
       renderTo: 'events',
       //defaultSeriesType: 'area',
-      //type: 'column',
+      //type: 'bubble',
       marginRight: 10,
       marginBottom: 20
     },
@@ -13,6 +13,7 @@ $(document).ready(function() {
     },
     xAxis: {
       type: 'datetime',
+      gridLineWidth: 1,
     },
     yAxis: {
       title: {
@@ -70,7 +71,7 @@ $(document).ready(function() {
         line = line.split(/\t/);
         date = line[0] ;
 
-        amo=parseFloat(line[1].replace(',', ''));
+        amo = parseFloat(line[1].replace(',', ''));
 
         if (isNaN(amo))
         {
@@ -89,4 +90,59 @@ $(document).ready(function() {
     cursan.series[0].data = traffic;
     chart = new Highcharts.Chart(cursan);
   });
+});*/
+
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        $.getJSON("getGraphData.php", function(json) {
+
+        chart = new Highcharts.Chart({
+              chart: {
+                  renderTo: 'container',
+                  type: 'line',
+                  marginRight: 130,
+                  marginBottom: 25
+              },
+              title: {
+                  text: 'Amount',
+                  x: -6 //center
+              },
+              subtitle: {
+                  text: '',
+                  x: -20
+              },
+              xAxis: {
+                type: 'datetime',
+              },
+              yAxis: {
+                  title: {
+                      text: 'Amount'
+                  },
+                  plotLines: [{
+                      value: 0,
+                      width: 1,
+                      color: '#808080'
+                  }]
+              },
+              tooltip: {
+                  formatter: function() {
+                          return '<b>'+ this.series.name +'</b><br/>'+
+                          this.x +': '+ this.y;
+                  }
+              },
+              legend: {
+                  layout: 'vertical',
+                  align: 'right',
+                  verticalAlign: 'top',
+                  x: -10,
+                  y: 100,
+                  borderWidth: 0
+              },
+              series: json
+          });
+      });
+
+    });
+
 });
