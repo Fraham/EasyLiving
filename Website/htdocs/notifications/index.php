@@ -29,17 +29,16 @@
 				</label>
 			</div>
 			<div class="col-lg-2">
-				<select class="form-control">
+				<select class="form-control" id="roomSelect">
 					<option selected hidden>Room:</option>
 					<option>Any</option>
 					<?php
 					getRooms();
 					?>
 				</select>
-			</label>
 		</div>
 			<div class="col-lg-2">
-					<select class="form-control">
+					<select class="form-control" id="sensorSelect">
 						<option selected hidden>Sensor:</option>
 						<option>Any</option>
 						<?php
