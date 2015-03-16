@@ -33,7 +33,7 @@
 	
 						for ($i = 1; $i <= $loopvalue; $i++) {
 						echo '<div class="row">
-								<div class="col-lg-3">
+								<div class="col-lg-4">
 								<select class="form-control">
 									<option selected hidden>Any</option>
 										<option>Any</option>
@@ -43,7 +43,7 @@
 								</select>
 							</label>
 						</div>';
-						echo '<div class="col-lg-3">
+						echo '<div class="col-lg-4">
 								<select class="form-control">
 									<option selected hidden>---</option>
 									<?php
@@ -52,7 +52,7 @@
 								</select>
 							</label>
 						</div>';
-						echo '<div class="col-lg-3">
+						echo '<div class="col-lg-4">
 									<input type="number" class="form-control" placeholder="Period of time">
 								</div>
 						</div>';
