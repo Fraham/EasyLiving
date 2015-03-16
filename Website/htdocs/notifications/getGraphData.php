@@ -101,7 +101,7 @@ if (isset($_GET["endDate"]))
   $set = 1;
 }*/
 
-$statement = "SELECT log.date, count(*) as Amount, sensors.name as SensorName FROM log
+$statement = "SELECT log.date, count(*) as Amount, sensors.name as SensorName, log.sensorID FROM log
 INNER JOIN sensors
 ON sensors.sensorID = log.sensorID
 INNER JOIN room
@@ -122,18 +122,35 @@ if ($result->num_rows > 0)
 {
   $jsonRows = array();
 
+  $jsonResult = array();
+
+  $lastItem = "";
+
   while($row = $result->fetch_assoc())
   {
+      $jsonResult[] = $row;
+    /*  $sensorID = $row['sensorID'];
+
+    if (strcmp($sensorID, $lastItem) !== 0)
+    {
+        $lastItem = $row['sensorID'];
+
+        array_push($jsonResult, $jsonRows);
+
+        $jsonRows = array();
+
+        $jsonRows['name'] = $row['SensorName'];
+    }
+
     //echo $row['date'] . "\t" . $row['Amount']. "\r\n";
     //$jsonRows['name'][] = $row['SensorName'];
-    $jsonRows[] = array(
+    /*$jsonRows[] = array(
         "name" => $row['SensorName'],
-        "data" => "x:" + $row['date'] + ",y:" + $row['Amount']);
+        "data" => "x:" + $row['date'] + ",y:" + $row['Amount']);*/
   }
 }
 
-$jsonResult = array();
-array_push($jsonResult, $jsonRows);
+//array_push($jsonResult, $jsonRows);
 
 print json_encode($jsonResult, JSON_NUMERIC_CHECK);
 
