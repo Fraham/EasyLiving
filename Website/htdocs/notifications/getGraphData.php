@@ -16,7 +16,7 @@ if (isset($_GET["propertyID"]))
   }
   else
   {
-    $where .= " OR ";
+    $where .= " AND  ";
   }
 
   $where .= "house.houseID = ";
@@ -35,7 +35,7 @@ if (isset($_GET["roomID"]))
   }
   else
   {
-    $where .= " OR ";
+    $where .= " AND  ";
   }
 
   $where .= "room.roomID = ";
@@ -54,10 +54,10 @@ if (isset($_GET["sensorID"]))
   }
   else
   {
-    $where .= " OR ";
+    $where .= " AND  ";
   }
 
-  $where .= "sensor.sensorID = ";
+  $where .= "sensors.sensorID = ";
   $where .= $sensorID;
 
   $set = 1;
@@ -73,7 +73,7 @@ if (isset($_GET["sensorID"]))
   }
   else
   {
-    $where .= "OR";
+    $where .= "AND ";
   }
 
   $where .= "log.date = ";
@@ -92,7 +92,7 @@ if (isset($_GET["endDate"]))
   }
   else
   {
-    $where .= "OR";
+    $where .= "AND ";
   }
 
   $where .= "house.houseID = ";
