@@ -99,7 +99,7 @@
 				</div>
 			<?php else : ?>
 				<div class="veritcal-center" style="padding-top: 250px;">
-					<img src='<?php echo $path; ?>../images/logo.png' class="hidden-xs center-block" style='width:50%; height:50%; margin:auto; padding:0px'>
+					<img src='<?php echo $path; ?>../images/logo.png' class="hidden-xs center-block" style='width:25%; height:25%; margin:auto; padding:0px'>
 					<img src='<?php echo $path; ?>../images/logoFlat.png' class="hidden-lg hidden-md hidden-sm center-block" style='width:100%;height:100%; margin:auto; padding:0px'>
 					<h1 style="color:#D80000; text-align:center;">
 						You are not authorized to access this page. 
