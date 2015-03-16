@@ -18,7 +18,7 @@ $(document).ready(function(){
 </ul>
 
 <div class="tab-content">
-	<div id="userPref" class="tab-pane fade in active">
+	<div id="userPref" class="tab-pane fade active">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
