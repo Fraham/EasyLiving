@@ -159,6 +159,8 @@ if ($result->num_rows > 0)
   }
 }
 
+array_push($jsonResult, $jsonRows);
+
 //array_push($jsonResult, $jsonRows);
 
 print json_encode($jsonResult, JSON_NUMERIC_CHECK);

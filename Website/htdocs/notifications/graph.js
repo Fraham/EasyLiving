@@ -111,7 +111,7 @@ $(function () {
                   x: -20
               },
               xAxis: {
-                type: 'datetime',
+                type: 'datetime'
               },
               yAxis: {
                   title: {
@@ -124,10 +124,8 @@ $(function () {
                   }]
               },
               tooltip: {
-                  formatter: function() {
-                          return '<b>'+ this.series.name +'</b><br/>'+
-                          this.x +': '+ this.y;
-                  }
+                crosshairs: true,
+                shared: true
               },
               legend: {
                   layout: 'vertical',
