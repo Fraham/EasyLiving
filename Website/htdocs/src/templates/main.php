@@ -58,20 +58,12 @@
 						<li class='divider'></li>
 						
 						<div>
-						<li class ="btn-group text-center">
-							<button type="button" class="btn btn-md btn-default" ><i class="fa fa-pencil img-center"></i></button>
-							<input type="button" id="name" value="Property Name"class="btn btn-md btn-default"></input>
-							<button type="button" class="btn btn-md btn-default"><i class="fa fa-times img-center"></i></button> <li/>
-						</li>
+							<input type="button" id="name" value="Property Name"class="btn btn-md btn-default btn-block" style="margin-top:5px;"></input>
 						</div>
 						<div>
-						<li class ="btn-group text-center">
-							<button type="button" class="btn btn-md btn-default"><i class="fa fa-pencil img-center"></i></button>
-							<input type="button" value="Property Name"class="btn btn-md btn-default"></input>
-							<button type="button" class="btn btn-md btn-default"><i class="fa fa-times img-center"></i></button> <li/>
-						</li>
+							<input type="button" value="Property Name"class="btn btn-md btn-default btn-block" style="margin-top:5px;"></input>
 						</div>
-
+						<div class="divider"></div>
 						<li><a data-toggle="modal" data-target="#AddPropertyModal"><i class='fa fa-plus fa-fw'></i> Add Property</a></li>
 						<li><a href="../buyNewHouse/"><i class="fa fa-gbp fa-fw"></i> Buy New Property</a></li>
 						<li><a href="<?php echo $path; ?>../includes/logout.php"><i class='fa fa-sign-out fa-fw'></i> Logout</a></li>

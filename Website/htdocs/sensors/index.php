@@ -6,51 +6,21 @@
 
 <?php if (login_check($conn) == true) : ?>
 <div class="row">
-	<div class="col-lg-4">
-		<div class="panel panel-danger">
-			<div class="panel-heading" >
-			<strong>Living Room</strong>
-			</div>
-			<div class="panel-body"id="chartBody">
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor1</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor2</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor3</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor4</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor5</a>
-				</div>
-			</div>
-		</div>
-	</div>
+
+				<?php
+					include("../notifications/getNotificationsGraph.php");
+					getRoomsAsPanels();
+				?>
+
 	<div class="col-lg-4">
 		<div class="panel panel-warning">
 			<div class="panel-heading" >
 			<strong>Kitchen</strong>
 			</div>
 			<div class="panel-body"id="chartBody">
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor1</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor2</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor3</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor4</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor5</a>
-				</div>
+				<?php
+					getSensorBtns();
+				?>
 			</div>
 		</div>
 	</div>
@@ -60,21 +30,9 @@
 			<strong>Bedroom</strong>
 			</div>
 			<div class="panel-body"id="chartBody">
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor1</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor2</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor3</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor4</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor5</a>
-				</div>
+				<?php
+					getSensorBtns();
+				?>
 			</div>
 		</div>
 	</div>
@@ -84,21 +42,9 @@
 			<strong>Office</strong>
 			</div>
 			<div class="panel-body"id="chartBody">
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor1</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor2</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor3</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor4</a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">Sensor5</a>
-				</div>
+				<?php
+					getSensorBtns();
+				?>
 				<br>
 			</div>
 		</div>
@@ -128,17 +74,16 @@
                 <br>
                 <label>Sensor Type</label>
 						<select class="form-control">
-							<option>Motion</option>
-							<option>Door/Window</option>
-							<option>Temperature</option>
+							<?php
+								getSensorTypes();
+							?>
 						</select>
 				<br>
 				<label>Room</label>
 						<select class="form-control">
-							<option>Living Room</option>
-							<option>Kitchen</option>
-							<option>Bedroom</option>
-							<option>Office</option>
+							<?php
+								getRooms();
+							?>
 						</select>
 				<br>
                 <input type="button"
@@ -174,17 +119,16 @@
                 <br>
                 <label>Sensor Type</label>
 						<select class="form-control">
-							<option>Motion</option>
-							<option>Door/Window</option>
-							<option>Temperature</option>
+							<?php
+								getSensorTypes();
+							?>
 						</select>
 				<br>
 				<label>Room</label>
 						<select class="form-control">
-							<option>Living Room</option>
-							<option>Kitchen</option>
-							<option>Bedroom</option>
-							<option>Office</option>
+							<?php
+								getRooms();
+							?>
 						</select>
 				<br>
                 <input type="button"
