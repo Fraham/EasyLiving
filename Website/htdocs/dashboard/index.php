@@ -17,7 +17,7 @@
 	var intervalID = setInterval(refresh, 500);
 </script>
 
-<div class="col-lg-8 roomsPanel">
+<div class="col-lg-8 col-md-8 roomsPanel">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -31,7 +31,8 @@
 		</div>
 
 	</div>
-<div class="hidden-lg hidden-md hidden-sm col-lg-4 col-md-12 notifyPanel">
+</div>
+<div class=" col-lg-4 col-md-4 notifyPanel">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<i class="fa fa-bell fa-fw"></i> Notifications Panel
@@ -42,14 +43,14 @@
 		</div>
 	</div>
 </div>
-
+<div class="col-lg-8 col-md-8 roomsPanel">
 	<div class="col-lg-12" style="text-align:center;">
 		<?php
 			include "../src/func/getRooms.php";
 		?>
 	</div>
 </div>
-<div class="hidden-xs col-lg-4 col-md-12 notifyPanel">
+<!--  <div class="hidden-xs col-lg-4 col-md-12 notifyPanel">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<i class="fa fa-bell fa-fw"></i> Notifications Panel
@@ -59,7 +60,7 @@
 			<a href="/notifications" class="btn btn-default btn-block">View All Alerts</a>
 		</div>
 	</div>
-</div>
+</div> -->
 
 <?php include $path."footer.php"; ?>
 
