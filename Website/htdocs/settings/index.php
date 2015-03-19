@@ -75,7 +75,7 @@ $(document).ready(function(){
 					<h2 class="modal-title" id="myModalLabel">Change Password</h2>
           </div>
           <div class="modal-body row">
-            <div class="form-group col-lg-12">
+            <div class="form-group col-lg-12" style="margin:10px">
                <form action="../src/includes/process_login.php" method="post" name="login_form">
                 <label>Old Password:</label> <input type="password" id="oldPassword" class="form-control"/>
                 <br>
@@ -104,7 +104,7 @@ $(document).ready(function(){
 					<h2 class="modal-title" id="myModalLabel">Change Email</h2>
           </div>
           <div class="modal-body row">
-            <div class="form-group col-lg-12">
+            <div class="form-group col-lg-12" style="margin:10px">
                <form action="../src/includes/process_login.php" method="post" name="login_form">
                 <label>New Email:</label> <input type="email" id="oldPassword" class="form-control"/>
                 <br>

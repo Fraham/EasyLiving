@@ -59,6 +59,58 @@ function getRooms()
   echo $roomList;
 }
 
+function getRoomsSettings()
+{
+  $roomList = "";
+  require "../src/connect.php";
+
+  $userID = $_SESSION['user_id'];
+
+  $statement = "SELECT dName FROM room
+                INNER JOIN user_households
+                ON user_households.houseID = room.houseID
+                WHERE user_households.userID = $userID";
+
+  $result = $conn->query($statement);
+
+  if ($result->num_rows > 0)
+  {
+    while($row = $result->fetch_assoc())
+    {
+      $roomList .= '<div id="roomsList" class="col-lg-12">
+      <div id="room"><span class="drag-handle">&#9776;</span><a style="cursor:pointer;"data-toggle="collapse" data-target="#demo">';
+      $roomList.="$row[dName]";
+
+      $roomList.= '</a>
+        <div id="demo" class="collapse">
+                  <br>
+                      Room Name: <input type="text" placeholder="';
+
+    $roomList .="$row[dName]";
+
+    $roomList .='" class="form-control"/>
+                      Colour:
+            <select class="form-control">
+              <option>Red</option>
+              <option>Yellow</option>
+              <option>Blue</option>
+              <option>Green</option>
+            </select>
+            Icon:
+            <select class="form-control">
+            </select>
+            <button class="btn btn-danger btn-block" data-toggle="collapse" data-target="#demo" style="margin-top:10px;">Confirm</button>
+              </div>
+            </div>
+          </div';
+    }
+  }
+  $conn->close();
+
+  echo $roomList;
+}
+
+
 function getSensors()
 {
   $sensorList = "";
@@ -150,8 +202,8 @@ function getSensorTypes()
 
 function getRoomsAsPanels()
 {
-  require_once "../src/connect.php";
   $roomHTML = "";
+  require "../src/connect.php";
 
   if (isset($_SESSION['house_id']))
   {
@@ -167,7 +219,10 @@ function getRoomsAsPanels()
                     WHERE R.houseID = $houseID";
 
     $result = $conn->query($statement);
-
+    if ($result->num_rows > 0)
+    {
+      while($row = $result->fetch_assoc())
+      {
 
         $roomHTML .='
                     <div class="col-lg-4">
@@ -185,6 +240,8 @@ function getRoomsAsPanels()
                         </div>
                       </div>
                     </div>';
+      }
+    }
 
     $conn->close();
     echo $roomHTML;

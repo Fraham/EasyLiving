@@ -6,7 +6,11 @@
 <?php if (login_check($conn) == true) : ?>
 
 <div id='roomsList'>
-			<div id='room'><span class="drag-handle">&#9776;</span>Living Room</div>
+			<?php 
+			include("../notifications/getNotificationsGraph.php");
+			getRoomsSettings();
+			?>
+
 			<div id='room'><span class="drag-handle">&#9776;</span>Kitchen</div>
 			<div id='room'><span class="drag-handle">&#9776;</span>Other Room</div>
 </div>

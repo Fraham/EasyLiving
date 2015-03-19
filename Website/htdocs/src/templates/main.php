@@ -117,7 +117,7 @@
             <h2 class="modal-title" id="myModalLabel">Add Property</h2>
           </div>
           <div class="modal-body row">
-            <div class="form-group col-lg-12">
+            <div class="form-group col-lg-12" style="margin:10px">
                <form action="../src/includes/process_login.php" method="post" name="login_form">
                 Property ID: <input type="text" name="email" autofocus class="form-control"/>
                 <br>
