@@ -45,12 +45,12 @@
 						<span class='icon-bar'></span>
 					</button>
 					<div class ='clearfix'></div>
-					<a href="../../dashboard"><img src='<?php echo $path; ?>../images/logoFlat.png' class='hidden-lg hidden-sm hidden-md img-responsive' style='width:35%;height:35%; margin:auto; padding:0px'></a>
+					<a href="../../dashboard"><img src='<?php echo $path; ?>../images/logoFlat.png' class='hidden-lg hidden-sm hidden-md img-responsive' style='width:60%;height:60%; margin:auto; padding:0px'></a>
 				</div>
 
 				<div class="dropdown nav navbar-top-links navbar-right pull-right" id="userDropdown">
-					<button class="btn btn-default" onclick="" style='color:#D80000' type="button" id="menu1" data-toggle="dropdown">
-						<i class='fa fa-user fa-fw'></i>  <i class='fa fa-caret-down'></i>
+					<button class="btn btn-default btn-lg" onclick="" style='color:#D80000' type="button" id="menu1" data-toggle="dropdown">
+						<i class='fa fa-home fa-fw'></i>  <i class='fa fa-caret-down'></i>
 					</button>
 					<ul class="dropdown-menu">
 						<li style='text-align: center'><h4> Available Properties</h4></li>

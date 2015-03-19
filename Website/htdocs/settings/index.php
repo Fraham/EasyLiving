@@ -72,7 +72,6 @@ $(document).ready(function(){
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h2 class="modal-title" id="myModalLabel">Change Password</h2>
           </div>
           <div class="modal-body row">
@@ -96,13 +95,12 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
-</div>
+	</div>
 </div>
 <div class="modal fade" id="EditEmailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h2 class="modal-title" id="myModalLabel">Change Email</h2>
           </div>
           <div class="modal-body row">
