@@ -5,15 +5,14 @@
 ?>
 <?php if (login_check($conn) == true) : ?>
 
-<div id='roomsList'>
-			<?php 
-			include("../notifications/getNotificationsGraph.php");
-			getRoomsSettings();
-			?>
-
-			<div id='room'><span class="drag-handle">&#9776;</span>Kitchen</div>
-			<div id='room'><span class="drag-handle">&#9776;</span>Other Room</div>
-</div>
+	<div id="roomsList" class="col-lg-12">
+		<?php 
+		include("../notifications/getNotificationsGraph.php");
+		getRoomsSettings();
+		?>
+		</div>
+	  	</div>
+	</div>
 
 <script type="text/javascript">
 	var orderInit = {};

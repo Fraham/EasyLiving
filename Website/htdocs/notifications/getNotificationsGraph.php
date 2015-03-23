@@ -77,18 +77,11 @@ function getRoomsSettings()
   {
     while($row = $result->fetch_assoc())
     {
-      $roomList .= '<div id="roomsList" class="col-lg-12">
-      <div id="room"><span class="drag-handle">&#9776;</span><a style="cursor:pointer;"data-toggle="collapse" data-target="#demo">';
-      $roomList.="$row[dName]";
-
-      $roomList.= '</a>
-        <div id="demo" class="collapse">
-                  <br>
-                      Room Name: <input type="text" placeholder="';
-
-    $roomList .="$row[dName]";
-
-    $roomList .='" class="form-control"/>
+      $name = $row["dName"];
+      $roomList .= '<div class="panel panel-default">
+      <div id="room" class="panel panel-heading drag-handle" style="margin-bottom:10px" data-toggle="collapse" data-target="#demo">&#9776;  '.$name.'
+        <div id="demo" class="panel-body collapse">
+                      Room Name: <input type="text" placeholder="'.$name.'" class="form-control"  />
                       Colour:
             <select class="form-control">
               <option>Red</option>
@@ -98,11 +91,12 @@ function getRoomsSettings()
             </select>
             Icon:
             <select class="form-control">
+            '.getIcons().'
             </select>
             <button class="btn btn-danger btn-block" data-toggle="collapse" data-target="#demo" style="margin-top:10px;">Confirm</button>
               </div>
-            </div>
-          </div';
+              </div>
+              </div>';
     }
   }
   $conn->close();
@@ -251,6 +245,30 @@ function getRoomsAsPanels()
   {
     echo "house id not set";
   }
+}
+
+function getIcons()
+{
+  $propertyList = "";
+
+  require "../src/connect.php";
+
+  $userID = $_SESSION['user_id'];
+
+  $statement = "SELECT icon FROM icons";
+
+  $result = $conn->query($statement);
+
+  if ($result->num_rows > 0)
+  {
+    while($row = $result->fetch_assoc())
+    {
+      $propertyList .= "<option>";
+      $propertyList .= "$row[icon]";
+      $propertyList .= "</option>";
+    }
+  }
+  return $propertyList;
 }
 
 
