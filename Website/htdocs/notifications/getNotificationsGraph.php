@@ -148,7 +148,7 @@ function getSensorBtns($room)
 
   $userID = $_SESSION['user_id'];
 
-  $statement = "SELECT sensors.name FROM sensors
+  $statement = "SELECT sensors.name, room.dName FROM sensors
   INNER JOIN room
   ON room.roomID = sensors.roomID
   INNER JOIN user_households
@@ -161,17 +161,19 @@ function getSensorBtns($room)
   {
     while($row = $result->fetch_assoc())
     {
-      $sensorList .= '<div class="col-lg-4 col-sm-6">
-                        <a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">';
-      $sensorList .="$row[name]";
-      $sensorList .='</a> </div>';
+      if($room == $row["dName"]){       
 
+        $sensorList .= '<div class="col-lg-6">
+                          <a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">';
+        $sensorList .="$row[name]";
+        $sensorList .='</a> </div>';
+      }
     }
   }
 
   $conn->close();
 
-  echo $sensorList;
+  return $sensorList;
 }
 
 function getSensorTypes()
@@ -210,7 +212,7 @@ function getRoomsAsPanels()
 
     $houseID = $_SESSION['house_id'];
 
-    $statement = "SELECT R.dName, R.roomID
+    $statement = "SELECT R.dName, R.roomID, RC.unoccupied
                     FROM room as R
                     INNER JOIN room_colour as RC
                     ON R.colourID = RC.colourID
@@ -223,20 +225,19 @@ function getRoomsAsPanels()
     {
       while($row = $result->fetch_assoc())
       {
+        $color = $row["unoccupied"];
+        $room = $row["dName"];
 
         $roomHTML .='
-                    <div class="col-lg-4">
-                      <div class="panel panel-danger">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                      <div class="panel panel-'.$color.'">
                         <div class="panel-heading" >
                         <strong>';
         $roomHTML .="$row[dName]";
-        $roomHTML .='$</strong>
+        $roomHTML .='</strong>
                         </div>
                         <div class="panel-body"id="chartBody">
-                          <?php
-                            include("../notifications/getNotificationsGraph.php");
-                            getSensorBtns();
-                          ?>
+                            '.getSensorBtns($room).'
                         </div>
                       </div>
                     </div>';

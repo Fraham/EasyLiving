@@ -11,44 +11,6 @@
 					include("../notifications/getNotificationsGraph.php");
 					getRoomsAsPanels();
 				?>
-
-	<div class="col-lg-4">
-		<div class="panel panel-warning">
-			<div class="panel-heading" >
-			<strong>Kitchen</strong>
-			</div>
-			<div class="panel-body"id="chartBody">
-				<?php
-					getSensorBtns();
-				?>
-			</div>
-		</div>
-	</div>
-	<div class="col-lg-4">
-		<div class="panel panel-info">
-			<div class="panel-heading" >
-			<strong>Bedroom</strong>
-			</div>
-			<div class="panel-body"id="chartBody">
-				<?php
-					getSensorBtns();
-				?>
-			</div>
-		</div>
-	</div>
-	<div class="col-lg-4">
-		<div class="panel panel-success">
-			<div class="panel-heading" >
-			<strong>Office</strong>
-			</div>
-			<div class="panel-body"id="chartBody">
-				<?php
-					getSensorBtns();
-				?>
-				<br>
-			</div>
-		</div>
-	</div>
 </div>
 				<div class="row">
 					<div class="col-lg-12 col-sm-12">

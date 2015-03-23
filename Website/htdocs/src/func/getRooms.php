@@ -2,7 +2,7 @@
 require_once "../src/connect.php";
 $roomHTML = "";
 
-if (!isset($blockSize))
+if (!isset($blockSize))x
 	$blockSize = 370;
 
 if (isset($_SESSION['house_id']))
