@@ -13,6 +13,7 @@
 				</div>
 				<div class="panel-body"id="settingsBody">
 					<button class = "btn btn-danger btn-lg" style="margin-top:30px">Add sensor</button>
+					<br>
 					<button class = "btn btn-danger btn-lg" style="margin-top:30px">Add device to be activated</button>
 				</div>
 			</div>
@@ -24,6 +25,7 @@
 				</div>
 				<div class="panel-body"id="settingsBody">
 					<button class = "btn btn-danger btn-lg" style="margin-top:30px">Add sensor</button>
+					<br>
 					<button class = "btn btn-danger btn-lg" style="margin-top:30px">Add device to be activated </button>
 				</div>
 			</div>
