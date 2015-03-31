@@ -37,14 +37,14 @@
                 <label>Sensor Type</label>
 						<select class="form-control">
 							<?php
-								getSensorTypes();
+								getSensorTypes(0);
 							?>
 						</select>
 				<br>
 				<label>Room</label>
 						<select class="form-control">
 							<?php
-								getRooms();
+								getRooms(0);
 							?>
 						</select>
 				<br>
@@ -64,50 +64,7 @@
       </div>
     </div>
 
-<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h2 class="modal-title" id="myModalLabel">Edit Sensor: *Room* - *Name*</h2>
-          </div>
-          <div class="modal-body row">
-            <div class="form-group col-lg-12">
-               <form action="../src/includes/process_login.php" method="post" name="login_form">
-                <label>Sensor Name:</label> <input type="text"
-                				value="*current sensor name*" 
-                                 id="password"
-                                 class="form-control"/>
-                <br>
-                <label>Sensor Type</label>
-						<select class="form-control">
-							<?php
-								getSensorTypes();
-							?>
-						</select>
-				<br>
-				<label>Room</label>
-						<select class="form-control">
-							<?php
-								getRooms();
-							?>
-						</select>
-				<br>
-                <input type="button"
-                       value="Confirm"
-                       class="btn btn-lg btn-danger btn-block"
-                       onclick="formhash(this.form, this.form.password);" />
-                <input type="button"
-                       value="Cancel"
-                       class="btn btn-lg btn-danger btn-block"
-                       data-dismiss="modal" aria-hidden="true" />
-            </form>
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
 <?php

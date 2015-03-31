@@ -26,7 +26,7 @@ function getProperties()
   return $propertyList;
 }
 
-function getRooms()
+function getRooms($return)
 {
   $roomList = "";
   require "../src/connect.php";
@@ -56,7 +56,10 @@ function getRooms()
 
   $conn->close();
 
-  echo $roomList;
+  if($return == 1)
+    return $roomList;
+  else
+    echo $roomList;
 }
 
 function getRoomsSettings()
@@ -153,15 +156,60 @@ function getSensorBtns($room)
 
   if ($result->num_rows > 0)
   {
+    $count = 0;
     while($row = $result->fetch_assoc())
     {
       if($room == $row["dName"]){       
 
         $sensorList .= '<div class="col-lg-6">
-                          <a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal">';
+                          <a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal'.$count.'">';
         $sensorList .="$row[name]";
-        $sensorList .='</a> </div>';
+        $sensorList .='</a> </div>
+
+<div class="modal fade" id="EditModal'.$count.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <br>
+            <h2 class="modal-title" id="myModalLabel">Edit Sensor: '.$row["dName"].' - '.$row["name"].'</h2>
+          </div>
+          <div class="modal-body row">
+            <div class="form-group col-lg-12">
+               <form action="../src/includes/process_login.php" method="post" name="login_form">
+                <label>Sensor Name:</label> <input type="text"
+                        placeholder="'.$row["name"].'" 
+                                 id="password"
+                                 class="form-control"/>
+                <br>
+                <label>Sensor Type</label>
+            <select class="form-control">
+              '.getSensorTypes(1).'
+            </select>
+        <br>
+        <label>Room</label>
+            <select class="form-control">
+              '.getRooms(1).'
+            </select>
+        <br>
+                <input type="button"
+                       value="Confirm"
+                       class="btn btn-lg btn-danger btn-block"
+                       onclick="formhash(this.form, this.form.password);" />
+                <input type="button"
+                       value="Cancel"
+                       class="btn btn-lg btn-danger btn-block"
+                       data-dismiss="modal" aria-hidden="true" />
+            </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        ';
       }
+      $count++;
     }
   }
 
@@ -170,7 +218,7 @@ function getSensorBtns($room)
   return $sensorList;
 }
 
-function getSensorTypes()
+function getSensorTypes($return)
 {
   $sensorList = "";
   require "../src/connect.php";
@@ -193,7 +241,10 @@ function getSensorTypes()
 
   $conn->close();
 
-  echo $sensorList;
+  if($return == 1)
+    return $sensorList;
+  else
+    echo $sensorList;
 }
 
 function getRoomsAsPanels()
@@ -223,7 +274,7 @@ function getRoomsAsPanels()
         $room = $row["dName"];
 
         $roomHTML .='
-                    <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
                       <div class="panel panel-'.$color.'">
                         <div class="panel-heading" >
                         <strong>';
