@@ -81,9 +81,9 @@ function getRoomsSettings()
     while($row = $result->fetch_assoc())
     {
       $name = $row["dName"];
-      $roomList .= '<div class="panel panel-default">
-      <div id="room" class="panel panel-heading drag-handle" style="margin-bottom:10px" data-toggle="collapse" data-target="#demo">&#9776;  '.$name.'
-        <div id="demo" class="panel-body collapse">
+      $roomList .= '
+      <div id="room" class=" col-lg-12 drag-handle" style="margin-bottom:10px" data-toggle="collapse" data-target="#demo">&#9776;  '.$name.'
+        <div id="demo" class="collapse">
                       Room Name: <input type="text" placeholder="'.$name.'" class="form-control"  />
                       Colour:
             <select class="form-control">
@@ -97,7 +97,6 @@ function getRoomsSettings()
             '.getIcons().'
             </select>
             <button class="btn btn-danger btn-block" data-toggle="collapse" data-target="#demo" style="margin-top:10px;">Confirm</button>
-              </div>
               </div>
               </div>';
     }
