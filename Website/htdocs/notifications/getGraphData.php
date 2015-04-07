@@ -130,7 +130,7 @@ if ($result->num_rows > 0)
 
   while($row = $result->fetch_assoc())
   {
-    /*$sensorID = $row['sensorID'];
+    $sensorID = $row['sensorID'];
 
     if (strcmp($sensorID, $lastItem) !== 0)
     {
@@ -148,17 +148,8 @@ if ($result->num_rows > 0)
         $check = 1;
     }
 
-
     $jsonRows['category'][] = $row['date'];
     $jsonRows['data'][] = $row['Amount'];
-    */
-
-    $name = $row['sebsorID'];
-    $date = str_replace("-",",",$row['date']);
-    $pos = $row['Amount'];
-
-    $arr = array("name"=>$name,"data"=>"[".$date.", ".$pos." ],");
-    echo json_encode($arr);
 
     //echo $row['date'] . "\t" . $row['Amount']. "\r\n";
     //$jsonRows['name'][] = $row['SensorName'];
