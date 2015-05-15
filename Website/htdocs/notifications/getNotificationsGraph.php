@@ -1,5 +1,5 @@
 <?php
-function getProperties()
+function getProperties($return)
 {
   $propertyList = "";
 
@@ -23,7 +23,10 @@ function getProperties()
 
   $conn->close();
 
-  return $propertyList;
+   if($return == 1)
+    return $propertyList;
+  else
+    echo $propertyList;
 }
 
 function getRooms($return)

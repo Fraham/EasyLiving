@@ -4,7 +4,11 @@ $path = "../src/templates/";
 include $path."main.php";
 ?>
 
-<?php //if (login_check($conn) == true) : ?>
+<?php if (login_check($conn) == true) : ?>
+
+	<?php
+		include("getNotificationsGraph.php");
+	?>
 
 	<script type="text/javascript" src="graph.js"></script>
 
@@ -20,9 +24,7 @@ include $path."main.php";
 							<option selected hidden>Property:</option>
 							<option>Any</option>
 							<?php
-							include("getNotificationsGraph.php");
-
-							getProperties();
+								getProperties();
 							?>
 
 						</select>
@@ -131,4 +133,4 @@ $('#form_datetime1').datetimepicker({
 	<?php
 	include $path."footer.php"
 	?>
-<?php //endif; ?>
+<?php endif; ?>
