@@ -7,7 +7,7 @@ function getProperties($return)
 
   $userID = $_SESSION['user_id'];
 
-  $statement = "SELECT houseName FROM user_households WHERE user_households.userID =  $userID";
+  $statement = "SELECT houseName, houseID FROM user_households WHERE user_households.userID =  $userID";
 
   $result = $conn->query($statement);
 
@@ -15,7 +15,9 @@ function getProperties($return)
   {
     while($row = $result->fetch_assoc())
     {
-      $propertyList .= "<option>";
+      $propertyList .= "<option value = ";
+      $propertyList .= "$row[houseID]";
+      $propertyList .= ">";
       $propertyList .= "$row[houseName]";
       $propertyList .= "</option>";
     }

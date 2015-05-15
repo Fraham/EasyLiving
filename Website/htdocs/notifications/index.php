@@ -62,9 +62,13 @@ include $path."main.php";
 				<button type="button" class="btn btn-lg btn-danger" onclick="confirm()" >Confirm</button>
 					
 				<script>
+					confirm();
+					
 					function confirm()
 					{
-						$.post("getNotificationTable.php?sensorID=020001", function( data ) {
+						var houseID = $('#propertySelect').val();
+						
+						$.post("getNotificationTable.php?propertyID=" + houseID, function( data ) {
 							$("#notifications").html( data );
 						});
 					}
