@@ -157,8 +157,7 @@
 	}
 	else
 	{
-		$tableHtml .= "There is no rooms to dislay.";
-		$tableHtml .= $statement;
+		$tableHtml .= "There is nothing to dislay.";
 	}
 
 	$conn->close();
