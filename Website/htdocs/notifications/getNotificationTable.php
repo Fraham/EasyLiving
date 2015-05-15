@@ -3,10 +3,108 @@
 	require_once "../src/connect.php";
 
 	include "../src/includes/functions.php";
+	
+	$where = "";
+	$set = 0;
+	
+	if (isset($_GET["propertyID"]))
+	{
+	  $propertyID = $_GET["propertyID"];
+	
+	  if ($set == 0)
+	  {
+	    $where .= "WHERE ";
+	  }
+	  else
+	  {
+	    $where .= " AND  ";
+	  }
+	
+	  $where .= "house.houseID = ";
+	  $where .= $propertyID;
+	
+	  $set = 1;
+	}
+	
+	if (isset($_GET["roomID"]))
+	{
+	  $roomID = $_GET["roomID"];
+	
+	  if ($set == 0)
+	  {
+	    $where .= "WHERE ";
+	  }
+	  else
+	  {
+	    $where .= " AND  ";
+	  }
+	
+	  $where .= "room.roomID = ";
+	  $where .= $roomID;
+	
+	  $set = 1;
+	}
+	
+	if (isset($_GET["sensorID"]))
+	{
+	  $sensorID = $_GET["sensorID"];
+	
+	  if ($set == 0)
+	  {
+	    $where .= "WHERE ";
+	  }
+	  else
+	  {
+	    $where .= " AND  ";
+	  }
+	
+	  $where .= "sensors.sensorID = ";
+	  $where .= $sensorID;
+	
+	  $set = 1;
+	}
+	
+	/*if (isset($_GET["startDate"]))
+	{
+	  $startDate = $_GET["startDate"];
+	
+	  if ($set == 0)
+	  {
+	    $where .= "WHERE";
+	  }
+	  else
+	  {
+	    $where .= "AND ";
+	  }
+	
+	  $where .= "log.date = ";
+	  $where .= $propertyID;
+	
+	  $set = 1;
+	}
+	
+	if (isset($_GET["endDate"]))
+	{
+	  $endDate = $_GET["endDate"];
+	
+	  if ($set == 0)
+	  {
+	    $where .= "WHERE";
+	  }
+	  else
+	  {
+	    $where .= "AND ";
+	  }
+	
+	  $where .= "house.houseID = ";
+	  $where .= $propertyID;
+	
+	  $set = 1;
+	}*/
 
-	sec_session_start();
+	/*sec_session_start();
 
-	$houseID = $_SESSION['house_id'];
+	$houseID = $_SESSION['house_id'];*/
 
 	$statement = "SELECT room.dName, DATE_FORMAT(log.date,'%d %M %Y %T') as time, sensors.name  as sensorName, sensors.messageOn, sensors.messageOff, log.state
 		FROM log
@@ -15,9 +113,9 @@
 		INNER JOIN room
 		ON sensors.roomID = room.roomID
 		INNER JOIN house
-		ON room.houseID = house.houseID
-    WHERE house.houseID = $houseID
-		ORDER BY logID DESC LIMIT 20";
+		ON room.houseID = house.houseID ";
+	$statement .= $where;
+	$statement .= " ORDER BY logID DESC LIMIT 20";
 
 	$result = $conn->query($statement);
 
@@ -60,6 +158,7 @@
 	else
 	{
 		$tableHtml .= "There is no rooms to dislay.";
+		$tableHtml .= $statement;
 	}
 
 	$conn->close();

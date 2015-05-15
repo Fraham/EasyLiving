@@ -59,7 +59,16 @@ include $path."main.php";
 			</div>
 
 			<div class="col-lg-2 col-md-3">
-				<button type="button" class="btn btn-lg btn-danger" >Confirm</button>
+				<button type="button" class="btn btn-lg btn-danger" onclick="confirm()" >Confirm</button>
+					
+				<script>
+					function confirm()
+					{
+						$.post("getNotificationTable.php?sensorID=020001", function( data ) {
+							$("#notifications").html( data );
+						});
+					}
+				</script>
 			</div>
 		</div>
 	</div>
@@ -117,7 +126,7 @@ $('#form_datetime1').datetimepicker({
 			<table class="table table-striped table-bordered table-hover" id="notifications">
 
 			<script>
-			refresh();
+			/*refresh();
 
 			function refresh()
 			{
@@ -125,7 +134,7 @@ $('#form_datetime1').datetimepicker({
 					$("#notifications").html( data );
 				});
 			}
-			var intervalID = setInterval(refresh, 500);
+			var intervalID = setInterval(refresh, 500);*/
 			</script>
 		</div>
 	</div>
