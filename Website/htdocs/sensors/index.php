@@ -53,10 +53,9 @@
 							?>
 						</select>
 				<br>
-                <input type="button"
-                       value="Add Sensor"
+                <button
                        class="btn btn-lg btn-danger btn-block"
-                       onclick="addSensor()" />
+                       name="add" onclick="addSensor()">Add Sensor</button>
                 <input type="button"
                        value="Cancel"
                        class="btn btn-lg btn-danger btn-block"
@@ -88,15 +87,29 @@
       VALUES('$sensorID', '$sensorName', '$messageOn', '$messageOff','$room','0')";
 
 
-      mysql_query($statement);
+      if ($conn->query($statement) === TRUE) {
+        echo "New record created successfully";
+      } 
+      else {
+        echo "Error: " . $statement . "<br>" . $conn->error;
+      }
 
       $conn->close();
   }
   function deleteSensor()
   {
+    require "../src/connect.php";
 
+     $statement = "DELETE FROM sensors WHERE";
+
+
+      if ($conn->query($statement) === TRUE) {
+        echo "New record created successfully";
+      } 
+      else {
+        echo "Error: " . $statement . "<br>" . $conn->error;
+      }
   }
-
 ?>
 
 
