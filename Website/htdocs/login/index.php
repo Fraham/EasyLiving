@@ -50,7 +50,7 @@ if (login_check($conn) == true) {
           <div class="panel-body">
             <?php
             if (isset($_GET['error'])) {
-                echo '<p class="error">Error Logging In!</p>';
+                echo '<p class="error">Email or Password incorrect. Please try again</p>';
             }
             ?>
             <form action="../src/includes/process_login.php" method="post" name="login_form">

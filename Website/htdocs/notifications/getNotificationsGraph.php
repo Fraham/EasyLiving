@@ -178,9 +178,12 @@ function getSensorBtns($room)
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <br>
             <h2 class="modal-title" id="myModalLabel">Edit Sensor: '.$row["dName"].' - '.$row["name"].'</h2>
+            <br>
+                <input type="button"
+                       value="Delete"
+                       class="btn btn-lg btn-danger btn-block"
+                       onclick="formhash(this.form, this.form.password);"/>
           </div>
           <div class="modal-body row">
             <div class="form-group col-lg-12">

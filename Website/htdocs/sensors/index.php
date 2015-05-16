@@ -28,21 +28,26 @@
           <div class="modal-body row">
             <div class="form-group col-lg-12">
                <form action="../src/includes/process_login.php" method="post" name="login_form">
-                <label>Sensor ID:</label> <input type="text" maxlength="6" name="ID" autofocus class="form-control"/>
+                <label>Sensor ID:</label> <input type="number" maxlength="6" name="id" autofocus class="form-control"/>
                 <br>
                 <label>Sensor Name:</label> <input type="text"
-                                 id="password"
+                                 id="Name"
+                                 name="name"
                                  class="form-control"/>
                 <br>
+                <label>Message when activated</label> <input type="text" name="messageOn" autofocus class="form-control"/>
+                <br>
+                <label>Message when deactivated</label> <input type="text" name="messageOff" autofocus class="form-control"/>
+                <br>
                 <label>Sensor Type</label>
-						<select class="form-control">
+						<select class="form-control" name="sensorTyp">
 							<?php
 								getSensorTypes(0);
 							?>
 						</select>
 				<br>
 				<label>Room</label>
-						<select class="form-control">
+						<select class="form-control" name="room">
 							<?php
 								getRooms(0);
 							?>
@@ -51,7 +56,7 @@
                 <input type="button"
                        value="Add Sensor"
                        class="btn btn-lg btn-danger btn-block"
-                       onclick="formhash(this.form, this.form.password);" />
+                       onclick="addSensor()" />
                 <input type="button"
                        value="Cancel"
                        class="btn btn-lg btn-danger btn-block"
@@ -63,7 +68,36 @@
         </div>
       </div>
     </div>
+<?php 
+  function addSensor()
+  {
+    $sensorID = $_POST['id'];
+    $sensorName = $_POST['name'];
+    $messageOn = $_POST['messageOn'];
+    $messageOff = $_POST['messageOff'];
+    $room = $_POST['room'];
+      require "../src/connect.php";
 
+      $userID = $_SESSION['user_id'];
+      $sensorID = mysql_real_escape_string($sensorID);
+      $sensorName = mysql_real_escape_string($sensorName);
+      $messageOn = mysql_real_escape_string($messageOn);
+      $messageOff = mysql_real_escape_string($messageOff);
+
+      $statement = "INSERT INTO sensors (sensorID, name, messageOn, messageOff, roomID, state)
+      VALUES('$sensorID', '$sensorName', '$messageOn', '$messageOff','$room','0')";
+
+
+      mysql_query($statement);
+
+      $conn->close();
+  }
+  function deleteSensor()
+  {
+
+  }
+
+?>
 
 
 
