@@ -10,20 +10,23 @@
 	if (isset($_GET["propertyID"]))
 	{
 	  $propertyID = $_GET["propertyID"];
-	
-	  if ($set == 0)
-	  {
-	    $where .= "WHERE ";
+	  
+	  if (strcmp($propertyID, 'Any') !== 0)
+	  {			  
+		  if ($set == 0)
+		  {
+		    $where .= "WHERE ";
+		  }
+		  else
+		  {
+		    $where .= " AND  ";
+		  }
+		
+		  $where .= "house.houseID = ";
+		  $where .= $propertyID;
+		
+		  $set = 1;
 	  }
-	  else
-	  {
-	    $where .= " AND  ";
-	  }
-	
-	  $where .= "house.houseID = ";
-	  $where .= $propertyID;
-	
-	  $set = 1;
 	}
 	
 	if (isset($_GET["roomID"]))

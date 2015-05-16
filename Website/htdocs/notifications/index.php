@@ -21,8 +21,8 @@ include $path."main.php";
 				<div class="panel-body">
 					<div class="col-lg-2">
 						<select class="form-control" id="propertySelect">
-							<option selected hidden>Property:</option>
-							<option>Any</option>
+							<option selected hidden value = Any>Property:</option>
+							<option value = Any>Any</option>
 							<?php
 								getProperties();
 							?>
