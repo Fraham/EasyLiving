@@ -72,7 +72,24 @@ include $path."main.php";
 						
 						var sensorID = $('#sensorSelect').val();
 						
-						$.post("getNotificationTable.php?propertyID=" + houseID + "&roomID=" + roomID + "&sensorID=" + sensorID, function( data ) {
+						var start =	$("#startDate").datepicker( 'getDate' );
+						
+						start.setDate( start.getDate() + 1 );
+						
+						var startDate = start.toISOString().slice(0, 11).replace(' ', '').replace('T', '');
+						
+						startDate = startDate + " 00:00:00";
+						
+						var end = $("#endDate").datepicker( 'getDate' );
+						
+						end.setDate( end.getDate() + 1 );
+						
+						var endDate = end.toISOString().slice(0, 11).replace(' ', '').replace('T', '');
+						
+						endDate = endDate + " 23:59:59";
+						
+						
+						$.post("getNotificationTable.php?propertyID=" + houseID + "&roomID=" + roomID + "&sensorID=" + sensorID + "&startDate=" + startDate + "&endDate=" + endDate, function( data ) {
 							$("#notifications").html( data );
 						});
 					}

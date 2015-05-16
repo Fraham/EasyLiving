@@ -73,21 +73,22 @@
 	  }
 	}
 	
-	/*if (isset($_GET["startDate"]))
+	if (isset($_GET["startDate"]))
 	{
 	  $startDate = $_GET["startDate"];
 	
 	  if ($set == 0)
 	  {
-	    $where .= "WHERE";
+	    $where .= "WHERE ";
 	  }
 	  else
 	  {
-	    $where .= "AND ";
+	    $where .= " AND ";
 	  }
 	
-	  $where .= "log.date = ";
-	  $where .= $propertyID;
+	  $where .= "log.date >= '";
+	  $where .= $startDate;
+	  $where .= "'";
 	
 	  $set = 1;
 	}
@@ -98,18 +99,19 @@
 	
 	  if ($set == 0)
 	  {
-	    $where .= "WHERE";
+	    $where .= "WHERE ";
 	  }
 	  else
 	  {
-	    $where .= "AND ";
+	    $where .= " AND ";
 	  }
 	
-	  $where .= "house.houseID = ";
-	  $where .= $propertyID;
+	  $where .= "log.date <= '";
+	  $where .= $endDate;
+	  $where .= "'";
 	
 	  $set = 1;
-	}*/
+	}
 
 	/*sec_session_start();
 
@@ -163,10 +165,12 @@
 			$tableHtml .= "</tr>";
 			$tableHtml .= "</tbody>";
 		}
+		$tableHtml .= $statement;
 	}
 	else
 	{
 		$tableHtml .= "There is nothing to dislay.";
+		$tableHtml .= $statement;
 	}
 
 	$conn->close();
