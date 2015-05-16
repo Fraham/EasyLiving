@@ -32,39 +32,45 @@
 	if (isset($_GET["roomID"]))
 	{
 	  $roomID = $_GET["roomID"];
-	
-	  if ($set == 0)
-	  {
-	    $where .= "WHERE ";
+	  
+	  if (strcmp($roomID, 'Any') !== 0)
+	  {		
+		  if ($set == 0)
+		  {
+		    $where .= "WHERE ";
+		  }
+		  else
+		  {
+		    $where .= " AND  ";
+		  }
+		
+		  $where .= "room.roomID = ";
+		  $where .= $roomID;
+		
+		  $set = 1;
 	  }
-	  else
-	  {
-	    $where .= " AND  ";
-	  }
-	
-	  $where .= "room.roomID = ";
-	  $where .= $roomID;
-	
-	  $set = 1;
 	}
 	
 	if (isset($_GET["sensorID"]))
 	{
 	  $sensorID = $_GET["sensorID"];
-	
-	  if ($set == 0)
-	  {
-	    $where .= "WHERE ";
+	  
+	  if (strcmp($sensorID, 'Any') !== 0)
+	  {		
+		  if ($set == 0)
+		  {
+		    $where .= "WHERE ";
+		  }
+		  else
+		  {
+		    $where .= " AND  ";
+		  }
+		
+		  $where .= "sensors.sensorID = ";
+		  $where .= $sensorID;
+		
+		  $set = 1;
 	  }
-	  else
-	  {
-	    $where .= " AND  ";
-	  }
-	
-	  $where .= "sensors.sensorID = ";
-	  $where .= $sensorID;
-	
-	  $set = 1;
 	}
 	
 	/*if (isset($_GET["startDate"]))

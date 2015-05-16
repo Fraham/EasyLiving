@@ -32,8 +32,8 @@ include $path."main.php";
 				</div>
 				<div class="col-lg-2">
 					<select class="form-control" id="roomSelect">
-						<option selected hidden>Room:</option>
-						<option>Any</option>
+						<option selected hidden value = Any>Room:</option>
+						<option value = Any>Any</option>
 						<?php
 						getRooms();
 						?>
@@ -41,8 +41,8 @@ include $path."main.php";
 				</div>
 				<div class="col-lg-2">
 					<select class="form-control" id="sensorSelect">
-						<option selected hidden>Sensor:</option>
-						<option>Any</option>
+						<option selected hidden value = Any>Sensor:</option>
+						<option value = Any>Any</option>
 						<?php
 						getSensors();
 						?>
@@ -68,7 +68,11 @@ include $path."main.php";
 					{
 						var houseID = $('#propertySelect').val();
 						
-						$.post("getNotificationTable.php?propertyID=" + houseID, function( data ) {
+						var roomID = $('#roomSelect').val();
+						
+						var sensorID = $('#sensorSelect').val();
+						
+						$.post("getNotificationTable.php?propertyID=" + houseID + "&roomID=" + roomID + "&sensorID=" + sensorID, function( data ) {
 							$("#notifications").html( data );
 						});
 					}

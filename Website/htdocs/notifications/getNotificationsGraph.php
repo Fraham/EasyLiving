@@ -38,7 +38,7 @@ function getRooms($return)
 
   $userID = $_SESSION['user_id'];
 
-  $statement = "SELECT dName FROM room
+  $statement = "SELECT dName, roomID FROM room
                 INNER JOIN user_households
                 ON user_households.houseID = room.houseID
                 WHERE user_households.userID = $userID";
@@ -49,7 +49,9 @@ function getRooms($return)
   {
     while($row = $result->fetch_assoc())
     {
-      $roomList .= "<option>";
+      $roomList .= "<option value = ";
+      $roomList .= "$row[roomID]";
+      $roomList .= ">";
       $roomList .= "$row[dName]";
       $roomList .= "</option>";
     }
@@ -119,7 +121,7 @@ function getSensors()
 
   $userID = $_SESSION['user_id'];
 
-  $statement = "SELECT sensors.name FROM sensors
+  $statement = "SELECT sensors.name, sensorID FROM sensors
   INNER JOIN room
   ON room.roomID = sensors.roomID
   INNER JOIN user_households
@@ -132,7 +134,9 @@ function getSensors()
   {
     while($row = $result->fetch_assoc())
     {
-      $sensorList .= "<option>";
+      $sensorList .= "<option value = ";
+      $sensorList .= "$row[sensorID]";
+      $sensorList .= ">";
       $sensorList .= "$row[name]";
       $sensorList .= "</option>";
     }
