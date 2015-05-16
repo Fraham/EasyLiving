@@ -66,6 +66,8 @@ include $path."main.php";
 					
 					function confirm()
 					{
+						var url = "";
+						
 						var houseID = $('#propertySelect').val();
 						
 						var roomID = $('#roomSelect').val();
@@ -102,10 +104,14 @@ include $path."main.php";
 						    endDate = "2020-02-01 00:00:00"
 						}
 						
-						
-						$.post("getNotificationTable.php?propertyID=" + houseID + "&roomID=" + roomID + "&sensorID=" + sensorID + "&startDate=" + startDate + "&endDate=" + endDate, function( data ) {
+						url = "?propertyID=" + houseID + "&roomID=" + roomID + "&sensorID=" + sensorID + "&startDate=" + startDate + "&endDate=" + endDate; 
+						 
+						$.post("getNotificationTable.php" + url, function( data ) {
 							$("#notifications").html( data );
 						});
+						
+						changeGraph(url);
+						
 					}
 				</script>
 			</div>

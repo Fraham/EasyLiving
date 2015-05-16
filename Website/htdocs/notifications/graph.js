@@ -91,7 +91,7 @@ $(document).ready(function() {
     chart = new Highcharts.Chart(cursan);
   });
 });*/
-
+/*
 $(function () {
     var chart;
     $(document).ready(function() {
@@ -142,3 +142,53 @@ $(function () {
     });
 
 });
+*/
+
+function changeGraph(url)
+{
+  var chart;
+  
+  $.getJSON("getGraphData.php" + url, function(json) {
+
+        chart = new Highcharts.Chart({
+              chart: {
+                  renderTo: 'events',
+                  type: 'line'
+              },
+              title: {
+                  text: 'Amount',
+                  x: -6 //center
+              },
+              subtitle: {
+                  text: '',
+                  x: -20
+              },
+              xAxis: {
+                type: 'datetime'
+              },
+              yAxis: {
+                  title: {
+                      text: 'Amount'
+                  },
+                  plotLines: [{
+                      value: 0,
+                      width: 1,
+                      color: '#808080'
+                  }]
+              },
+              tooltip: {
+                crosshairs: true,
+                shared: true
+              },
+              legend: {
+                  layout: 'vertical',
+                  align: 'right',
+                  verticalAlign: 'top',
+                  x: -10,
+                  y: 100,
+                  borderWidth: 0
+              },
+              series: json
+          });
+      });
+}
