@@ -1,11 +1,13 @@
-$("#propertySelect").change(function() {
-  alert( "Handler for .change() called." );
-});
-
-$( ".target" ).change(function() {
-  alert( "Handler for .change() called." );
-});
-
-$( ".target" ).change(function() {
-  alert( "Handler for .change() called." );
+$(function () {
+  $("#propertySelect").change(function() {
+    alert( "Handler for .change() called." );
+  });
+  
+  $( "#roomSelect" ).change(function() {
+    alert( "Handler for .change() called." );
+  });
+  
+  $( "#sensorSelect" ).change(function() {
+    alert( "Handler for .change() called." );
+  });
 });
