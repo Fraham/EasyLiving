@@ -165,12 +165,10 @@
 			$tableHtml .= "</tr>";
 			$tableHtml .= "</tbody>";
 		}
-		$tableHtml .= $statement;
 	}
 	else
 	{
 		$tableHtml .= "There is nothing to dislay.";
-		$tableHtml .= $statement;
 	}
 
 	$conn->close();

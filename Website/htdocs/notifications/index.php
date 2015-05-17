@@ -11,6 +11,7 @@ include $path."main.php";
 	?>
 
 	<script type="text/javascript" src="graph.js"></script>
+	<script type="text/javascript" src="dropdownChange.js"></script>
 
 	<div class="row">
 		<div class="col-lg-12">
