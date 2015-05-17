@@ -22,8 +22,6 @@ include $path."main.php";
 				<div class="panel-body">
 					<div class="col-lg-2">
 						<select class="form-control" id="propertySelect">
-							<option selected hidden value = Any>Property:</option>
-							<option value = Any>Any</option>
 							<?php
 								getProperties();
 							?>
@@ -33,8 +31,6 @@ include $path."main.php";
 				</div>
 				<div class="col-lg-2">
 					<select class="form-control" id="roomSelect">
-						<option selected hidden value = Any>Room:</option>
-						<option value = Any>Any</option>
 						<?php
 						getRooms();
 						?>
@@ -42,8 +38,6 @@ include $path."main.php";
 				</div>
 				<div class="col-lg-2">
 					<select class="form-control" id="sensorSelect">
-						<option selected hidden value = Any>Sensor:</option>
-						<option value = Any>Any</option>
 						<?php
 						getSensors();
 						?>
@@ -111,8 +105,7 @@ include $path."main.php";
 							$("#notifications").html( data );
 						});
 						
-						changeGraph(url);
-						
+						changeGraph(url);						
 					}
 				</script>
 			</div>

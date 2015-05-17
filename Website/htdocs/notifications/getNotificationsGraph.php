@@ -1,7 +1,40 @@
 <?php
-function getProperties($return)
+  
+  if (isset($_GET["propertyID"]))
+  {
+    include "../src/includes/functions.php";
+    sec_session_start();
+    
+    $propertyID = $_GET["propertyID"];
+	  
+      $option = $_GET["option"];
+      
+      if(strcmp($option, 'room') == 0)
+      {
+        echo getRooms(1, $propertyID);
+      }
+      if(strcmp($option, 'sensor') == 0)
+      {
+        echo getSensors(1, 1, $propertyID);
+      }      
+  }
+  
+  if (isset($_GET["roomID"]))
+  {
+    include "../src/includes/functions.php";
+    sec_session_start();
+    
+    $roomID = $_GET["roomID"];
+    
+    echo getSensors(1, 2, $roomID);
+  }
+  
+  
+  
+function getProperties($return = 0)
 {
-  $propertyList = "";
+  $propertyList = "<option selected hidden value = Any>Property:</option>
+							<option value = Any>Any</option>";
 
   require "../src/connect.php";
 
@@ -31,17 +64,31 @@ function getProperties($return)
     echo $propertyList;
 }
 
-function getRooms($return)
+function getRooms($return = 0, $propertyID = null)
 {
-  $roomList = "";
+  $roomList = "<option selected hidden value = Any>Room:</option>
+						<option value = Any>Any</option>";
+  
   require "../src/connect.php";
 
   $userID = $_SESSION['user_id'];
+  
+  $where = " WHERE user_households.userID = ";
+  $where .= $userID;
+  
+  if(isset($propertyID))
+  {
+    if ($propertyID !== "Any")
+    {
+      $where .= " AND room.houseID = ";
+      $where .= $propertyID;
+    }
+  }
 
   $statement = "SELECT dName, roomID FROM room
                 INNER JOIN user_households
-                ON user_households.houseID = room.houseID
-                WHERE user_households.userID = $userID";
+                ON user_households.houseID = room.houseID";
+  $statement .= $where;
 
   $result = $conn->query($statement);
 
@@ -55,10 +102,6 @@ function getRooms($return)
       $roomList .= "$row[dName]";
       $roomList .= "</option>";
     }
-  }
-  else
-  {
-    $roomList .= "<option>No rooms $userID</option>";
   }
 
   $conn->close();
@@ -114,20 +157,42 @@ function getRoomsSettings()
 }
 
 
-function getSensors()
+function getSensors($return = 0, $option = 0, $propertyID)
 {
-  $sensorList = "";
+  $sensorList = "<option selected hidden value = Any>Sensor:</option>
+						<option value = Any>Any</option>";  
+  
   require "../src/connect.php";
 
   $userID = $_SESSION['user_id'];
+  
+  $where = " WHERE user_households.userID = ";
+  $where .= $userID;
+  
+  if(isset($propertyID))
+  {
+    if ($propertyID !== "Any")
+    {
+      if ($option === 1)
+      {
+        $where .= " AND room.houseID = ";
+      }
+      else if ($option === 2)
+      {
+        $where .= " AND sensors.roomID = ";
+      }
+      
+      $where .= $propertyID;
+    }
+  }
 
   $statement = "SELECT sensors.name, sensorID FROM sensors
   INNER JOIN room
   ON room.roomID = sensors.roomID
   INNER JOIN user_households
-  ON user_households.houseID = room.houseID
-  WHERE user_households.userID = $userID";
-
+  ON user_households.houseID = room.houseID";  
+  $statement .= $where;
+  
   $result = $conn->query($statement);
 
   if ($result->num_rows > 0)
@@ -143,8 +208,11 @@ function getSensors()
   }
 
   $conn->close();
-
-  echo $sensorList;
+  
+  if($return == 1)
+    return $sensorList;
+  else
+    echo $sensorList;
 }
 function getSensorBtns($room)
 {
@@ -332,6 +400,4 @@ function getIcons()
   }
   return $propertyList;
 }
-
-
 ?>
