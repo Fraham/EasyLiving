@@ -53,6 +53,17 @@ HTML;
 
     echo $tableHTML;
   }
+
+  public function getMenu()
+  {
+    $menuHTML = <<<HTML
+    <div>
+      <input type="button" value="{$this->userName}"class="btn btn-md btn-default btn-block" style="margin-top:5px;"></input>
+    </div>
+HTML;
+
+    echo $menuHTML;
+  }
 }
 
 ?>

@@ -56,13 +56,21 @@
 						<li style='text-align: center'><h4> Available Properties</h4></li>
 
 						<li class='divider'></li>
-						
-						<div>
-							<input type="button" id="name" value="Property Name"class="btn btn-md btn-default btn-block" style="margin-top:5px;"></input>
-						</div>
-						<div>
-							<input type="button" value="Property Name"class="btn btn-md btn-default btn-block" style="margin-top:5px;"></input>
-						</div>
+
+						<?php
+							require_once('../selection/PropertyClass.php');
+
+							$userID = $_SESSION['user_id'];
+
+							$properties = [];
+
+							$properties = Property::getByUserID($userID);
+
+							foreach ($properties as $property)
+							{
+								$property->getMenu();
+							}
+						?>
 						<div class="divider"></div>
 						<li><a data-toggle="modal" data-target="#AddPropertyModal"><i class='fa fa-plus fa-fw'></i> Add Property</a></li>
 						<li><a href="../buyNewHouse/"><i class="fa fa-gbp fa-fw"></i> Buy New Property</a></li>
@@ -94,13 +102,13 @@
 					<img src='<?php echo $path; ?>../images/logo.png' class="hidden-xs center-block" style='width:25%; height:25%; margin:auto; padding:0px'>
 					<img src='<?php echo $path; ?>../images/logoFlat.png' class="hidden-lg hidden-md hidden-sm center-block" style='width:100%;height:100%; margin:auto; padding:0px'>
 					<h1 style="color:#D80000; text-align:center;">
-						You are not authorized to access this page. 
+						You are not authorized to access this page.
 					</h1>
 					<br>
 						<div class="text-center">
 							<a href="../login" class="btn btn-danger huge btn-lg text-center-block">Login</a>
 						</div>
-						
+
 				</div>
 
 
@@ -146,10 +154,10 @@
     <script>
     function keepOpen(){
     	document.getElementById("userDropdown").className += "open";
-    }	
+    }
     function edit(){
     	document.getElementById("name").className = "form-control";
-    	
+
     	document.getElementById("name").type = "Text";
     }
     </script>
