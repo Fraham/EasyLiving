@@ -8,34 +8,30 @@ include $path."main.php";
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="dataTable_wrapper">
-				<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+				<table class="table table-striped table-bordered table-hover" id="propertyTable">
 					<thead>
 						<tr>
-							<th>Rendering engine</th>
-							<th>Browser</th>
-							<th>Platform(s)</th>
-							<th>Engine version</th>
-							<th>CSS grade</th>
+							<th>House ID</th>
+							<th>Password</th>
+							<th>Default Name</th>
+							<th>User Name</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr class="odd gradeX">
-							<td>Trident</td>
-							<td>Internet Explorer 4.0</td>
-							<td>Win 95+</td>
-							<td class="center">4</td>
-							<td class="center">X</td>
-						</tr>
-					</tbody>
-					<tbody>
-						<tr class="odd gradeX">
-							<td>Trident</td>
-							<td>Internet Explorer 4.0</td>
-							<td>Win 95+</td>
-							<td class="center">4</td>
-							<td class="center">X</td>
-						</tr>
-					</tbody>
+					<?php
+
+						require_once('PropertyClass.php');
+
+						$userID = $_SESSION['user_id'];
+
+						$properties = [];
+
+						$properties = Property::getByUserID($userID);
+
+						foreach ($properties as $property)
+						{
+							$property->__getTableFormat();
+						}
+					?>
 				</table>
 			</div>
 		</div>
