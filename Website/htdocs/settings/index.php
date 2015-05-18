@@ -11,7 +11,7 @@ $(document).ready(function(){
     $("#myTab li:eq(1) a").tab('show');
 });
 </script>
-
+<div class="row">
  <h3 class="page-header">User Preferences</h3>
     <div class="col-lg-6">
 		<label>Notification Type:</label>
@@ -21,7 +21,8 @@ $(document).ready(function(){
 			<option>Email and Push Notifications</option>
 		</select>
 	</div>
-    	
+</div>
+<div class="row">
 	<h3 class="page-header">General Account Settings</h3>
 	<div class="col-lg-4" style="margin-bottom:10px;">
 		<strong>Email:</strong>
@@ -43,6 +44,7 @@ $(document).ready(function(){
 			<button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#EditPasswordModal">Edit</button>
 		</div>
     </div>
+</div>	
 
 
 <div class="modal fade" id="EditPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
