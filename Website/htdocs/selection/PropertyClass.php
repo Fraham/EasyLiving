@@ -56,9 +56,22 @@ HTML;
 
   public function getMenu()
   {
+    $houseID = $_SESSION['house_id'];
+
+    $button = "";
+
+    if (strcmp($houseID, $this->houseID) !== 0)
+    {
+      $button = "btn-default";
+    }
+    else
+    {
+      $button = "btn-danger";
+    }
+
     $menuHTML = <<<HTML
     <div>
-      <input type="button" value="{$this->userName}"class="btn btn-md btn-default btn-block" style="margin-top:5px;"></input>
+      <input type="button" value="{$this->userName}"class="btn btn-md btn-block" style="margin-top:5px;"></input>
     </div>
 HTML;
 
