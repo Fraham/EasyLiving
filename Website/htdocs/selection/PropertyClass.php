@@ -69,10 +69,17 @@ HTML;
       $button = "btn-danger";
     }
 
+    $char = chr(35);
+
     $menuHTML = <<<HTML
     <div>
-      <input type="button" value="{$this->userName}"class="btn btn-md btn-block" style="margin-top:5px;"></input>
+      <input onclick="clickButton{$this->houseID}()" type="button" id="houseMenu" value="{$this->userName}"class="btn btn-md {$button} btn-block" style="margin-top:5px;"></input>
     </div>
+    <script>
+      function clickButton{$this->houseID}(){
+        alert("{$this->houseID}");
+      }
+    </script>
 HTML;
 
     echo $menuHTML;

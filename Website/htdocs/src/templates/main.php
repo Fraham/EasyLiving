@@ -71,6 +71,7 @@
 								$property->getMenu();
 							}
 						?>
+
 						<div class="divider"></div>
 						<li><a data-toggle="modal" data-target="#AddPropertyModal"><i class='fa fa-plus fa-fw'></i> Add Property</a></li>
 						<li><a href="../buyNewHouse/"><i class="fa fa-gbp fa-fw"></i> Buy New Property</a></li>
