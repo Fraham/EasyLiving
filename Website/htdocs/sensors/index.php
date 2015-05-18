@@ -1,39 +1,3 @@
-<?php 
- 	if ($_SERVER['REQUEST_METHOD'] == "POST")
- 	{
- 		$sensorID = $_POST['id'];
- 		$sensorName = $_POST['name'];
- 		$messageOn = $_POST['messageOn'];
- 		$messageOff = $_POST['messageOff'];
- 		$room = $_POST['room'];
- 		require "../src/connect.php";
-
- 		$userID = $_SESSION['user_id'];
- 		// $sensorID = mysql_real_escape_string($sensorID);
- 		// $sensorName = mysql_real_escape_string($sensorName);
- 		// $messageOn = mysql_real_escape_string($messageOn);
- 		// $messageOff = mysql_real_escape_string($messageOff);
-
- 		// function safe($var) //mysql_real ... too long, maybe it's better to replace with something shorter if you use it more than once?
- 		// {
- 		// 	return mysql_real_escape_string($var);
- 		// }
-
- 		$statement = "INSERT INTO sensors VALUES('$sensorID', '$sensorName', '$messageOn', '$messageOff','$room','0')"; //no need to specify fields if all values are present
-
-
- 		if ($conn->query($statement) === TRUE) {
- 			echo "New record created successfully";
- 		} 
- 		else {
- 			echo "Error: " . $statement . "<br>" . $conn->error;
- 		}
-
- 		$conn->close();
-
- 	}
-?>
-
 <?php
 	$title = "Sensors";
 	$path = "../src/templates/";
@@ -41,6 +5,32 @@
 ?>
 
 <?php if (login_check($conn) == true) : ?>
+	<?php 
+	 	if ($_SERVER['REQUEST_METHOD'] == "POST")
+	 	{
+	 		$sensorID = $_POST['id'];
+	 		$sensorName = $_POST['name'];
+	 		$messageOn = $_POST['messageOn'];
+	 		$messageOff = $_POST['messageOff'];
+	 		$room = $_POST['room'];
+	 		require "../src/connect.php";
+
+	 		$userID = $_SESSION['user_id'];
+
+	 		$statement = "INSERT INTO sensors VALUES('$sensorID', '$sensorName', '$messageOn', '$messageOff','$room','0')";
+
+
+	 		if ($conn->query($statement) === TRUE) {
+	 			echo "New record created successfully";
+	 		} 
+	 		else {
+	 			echo "Error: " . $statement . "<br>" . $conn->error;
+	 		}
+
+	 		$conn->close();
+
+	 	}
+	?>
 	<div class="row">
 		<?php
 			include("../notifications/getNotificationsGraph.php");
@@ -85,7 +75,7 @@
 								?>
 							</select>
 							<br>
-							<button class="btn btn-lg btn-danger btn-block" name="add" >Add Sensor</button>
+							<button type="submit" class="btn btn-lg btn-danger btn-block" name="add" >Add Sensor</button>
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
 					</div>
@@ -120,4 +110,5 @@
 
 <?php else : ?>
 <?php endif; ?>
+
 
