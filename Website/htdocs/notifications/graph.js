@@ -145,12 +145,8 @@ $(function () {
 */
 
 function changeGraph(url)
-{
-  var chart;
-  
-  $.getJSON("getGraphData.php" + url, function(json) {
-
-        chart = new Highcharts.Chart({
+{  
+  var options = {
               chart: {
                   renderTo: 'events',
                   type: 'line'
@@ -164,7 +160,7 @@ function changeGraph(url)
                   x: -20
               },
               xAxis: {
-                type: 'datetime'
+                type: 'datetime',
               },
               yAxis: {
                   title: {
@@ -187,8 +183,17 @@ function changeGraph(url)
                   x: -10,
                   y: 100,
                   borderWidth: 0
-              },
-              series: json
-          });
+              }
+          };
+  
+  $.getJSON("getGraphData.php" + url, function(json) {
+    for (var i = 0; i < json.length; i++ ){ 
+      json[i][1] = new Date(json[i][1]).getTime();
+    }
+
+        options.series = json;
+        
+    var chart = new Highcharts.Chart(options);
+        
       });
 }
