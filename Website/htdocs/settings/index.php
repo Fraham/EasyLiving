@@ -16,9 +16,8 @@ $(document).ready(function(){
     <div class="col-lg-6">
 		<label>Notification Type:</label>
 		<select class="form-control">
-			<option>Push Notifications</option>
-			<option>Email Notifications</option>
-			<option>Email and Push Notifications</option>
+			<option>None</option>
+			<option>Email</option>
 		</select>
 	</div>
 </div>
