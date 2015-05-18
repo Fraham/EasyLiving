@@ -68,7 +68,7 @@
 
 							foreach ($properties as $property)
 							{
-								$property->getMenu();
+								$property->getMenu($path);
 							}
 						?>
 

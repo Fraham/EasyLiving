@@ -73,7 +73,7 @@ include $path."main.php";
 						{
 							var start =	$("#startDate").datepicker( 'getDate' );
 							
-							start.setDate( start.getDate() + 1 );
+							//start.setDate( start.getDate() + 1 );
 							
 							var startDate = start.toISOString().slice(0, 11).replace(' ', '').replace('T', '');
 							
@@ -88,7 +88,7 @@ include $path."main.php";
 						{						
 							var end = $("#endDate").datepicker( 'getDate' );
 							
-							end.setDate( end.getDate() + 1 );
+							//end.setDate( end.getDate() + 1 );
 							
 							var endDate = end.toISOString().slice(0, 11).replace(' ', '').replace('T', '');
 							

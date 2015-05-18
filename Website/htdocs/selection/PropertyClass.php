@@ -54,7 +54,7 @@ HTML;
     echo $tableHTML;
   }
 
-  public function getMenu()
+  public function getMenu($path)
   {
     $houseID = $_SESSION['house_id'];
 
@@ -69,15 +69,25 @@ HTML;
       $button = "btn-danger";
     }
 
-    $char = chr(35);
-
     $menuHTML = <<<HTML
     <div>
       <input onclick="clickButton{$this->houseID}()" type="button" id="houseMenu" value="{$this->userName}"class="btn btn-md {$button} btn-block" style="margin-top:5px;"></input>
     </div>
     <script>
       function clickButton{$this->houseID}(){
-        alert("{$this->houseID}");
+            $.ajax({
+                type: "GET",
+                url: "{$path}changeHouse.php" ,
+                data: { houseID: {$this->houseID} },
+                success : function() { 
+
+                    // here is the code that will run on client side after running clear.php on server
+
+                    // function below reloads current page
+                    location.reload();
+
+                }
+            });
       }
     </script>
 HTML;
