@@ -43,6 +43,7 @@
 					<div class="form-group col-lg-12">
 						<form action="" method="post" id="addRoomForm">
 							<label>Room Name:</label> <input type="text" id="Name" name="name" class="form-control"/>
+							<br>
 							<input type="button" value="Add Room" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
