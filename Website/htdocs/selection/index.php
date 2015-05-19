@@ -11,7 +11,7 @@ include $path."main.php";
 				<table class="table table-striped table-bordered table-hover" id="propertyTable">
 					<thead>
 						<tr>
-							<th>House ID</th>
+							<th>Property ID</th>
 							<th>Password</th>
 							<th>Default Name</th>
 							<th>User Name</th>
