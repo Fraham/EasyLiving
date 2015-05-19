@@ -106,11 +106,11 @@ class Event
 				{$this->name}
 				</div>
 				<div class="panel-body"id="settingsBody">
-					<button class = "btn btn-danger btn-lg" style="margin-top:30px">Add sensor</button>
+					<button class = "btn btn-danger btn-lg" style="margin-top:0px">Add sensor</button>
 					<br>
-					<button class = "btn btn-danger btn-lg" style="margin-top:30px">Add condition</button>
+					<button class = "btn btn-danger btn-lg" style="margin-top:10px">Add condition</button>
 					<br>
-					<button class = "btn btn-danger btn-lg" style="margin-top:30px">Add device to be activated</button>
+					<button class = "btn btn-danger btn-lg" style="margin-top:10px">Add device to be activated</button>
 				</div>
 			</div>
 		</div>
