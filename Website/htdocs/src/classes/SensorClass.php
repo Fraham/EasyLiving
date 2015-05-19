@@ -83,7 +83,7 @@ class Sensor
 			
 			$sensorBlock = <<<HTML
 				<div class='col-md-6'>
-					<h4><font color='black'>{$this->name}: </font><span>{$message}</span></h4>
+					<h4><font color='black'>{$this->name}: </font><span><strong>{$message}</strong></span></h4>
 				</div>
 HTML;
 		}
