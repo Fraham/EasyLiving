@@ -221,7 +221,7 @@ function getSensorBtns($room)
 
   $userID = $_SESSION['user_id'];
 
-  $statement = "SELECT sensors.name, room.dName FROM sensors
+  $statement = "SELECT sensors.name, sensors.sensorID, room.dName FROM sensors
   INNER JOIN room
   ON room.roomID = sensors.roomID
   INNER JOIN user_households
@@ -248,14 +248,11 @@ function getSensorBtns($room)
           <div class="modal-header">
             <h2 class="modal-title" id="myModalLabel">Edit Sensor: '.$row["dName"].' - '.$row["name"].'</h2>
             <br>
-                <input type="button"
-                       value="Delete"
-                       class="btn btn-lg btn-danger btn-block"
-                       onclick="formhash(this.form, this.form.password);"/>
+                <button name="delete" class="btn btn-lg btn-danger btn-block" onclick="deleteSensor('.$row["sensorID"].')"> Delete </button>
           </div>
           <div class="modal-body row">
             <div class="form-group col-lg-12">
-               <form action="../src/includes/process_login.php" method="post" name="login_form">
+               <form action="" method="post" name="login_form">
                 <label>Sensor Name:</label> <input type="text"
                         placeholder="'.$row["name"].'" 
                                  id="password"
