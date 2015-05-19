@@ -38,7 +38,7 @@ class Event
 			{
 				while($row = $result->fetch_assoc())
 			  	{
-					$event->$sensors[] = $row['sensorID'];
+					$event->sensors[] = $row['sensorID'];
 			  	}			
 			}
 			
@@ -52,7 +52,7 @@ class Event
 			{
 				while($row = $result->fetch_assoc())
 			  	{
-					$event->$conditions[] = $row['conditionID'];
+					$event->conditions[] = $row['conditionID'];
 			  	}			
 			}
 			
@@ -66,7 +66,7 @@ class Event
 			{
 				while($row = $result->fetch_assoc())
 			  	{
-					$event->$devices[] = $row['deviceID'];
+					$event->devices[] = $row['deviceID'];
 			  	}			
 			}
 		}
@@ -74,8 +74,10 @@ class Event
 		return $event;
 	}
 	
-	public static function getEventsByUserID($userID)
+	public static function getByUserID($userID)
 	{
+		require "../src/connect.php";
+		
 		$events = [];
 		
 		$statement = "SELECT event.eventID
@@ -88,11 +90,34 @@ class Event
 		{
 			while($row = $result->fetch_assoc())
 		  	{
-				  $events[] = Event::getFromEventID($eventID);
+				  $events[] = Event::getFromEventID($row['eventID']);
 			}		  
 		}
 		
 		return $events;
+	}
+	
+	public function getEventFormat()
+	{
+		$eventHTML = <<<HTML
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<a><div class="panel-heading" ></a>
+				{$this->name}
+				</div>
+				<div class="panel-body"id="settingsBody">
+					<button class = "btn btn-danger btn-lg" style="margin-top:30px">Add sensor</button>
+					<br>
+					<button class = "btn btn-danger btn-lg" style="margin-top:30px">Add condition</button>
+					<br>
+					<button class = "btn btn-danger btn-lg" style="margin-top:30px">Add device to be activated</button>
+				</div>
+			</div>
+		</div>
+HTML;
+		
+		
+		echo $eventHTML;
 	}
 }
 ?>
