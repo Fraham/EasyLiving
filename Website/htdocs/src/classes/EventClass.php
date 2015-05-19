@@ -4,6 +4,7 @@ class Event
 {
 	public $eventID = "";
 	public $name = "";
+	public $userID = "";
 	
 	public $sensors = [];
 	public $conditions = [];
@@ -15,7 +16,7 @@ class Event
 	  
 	  	$event = new Event;
 		  
-		$statement = "SELECT event.name
+		$statement = "SELECT event.name, event.userID
 					FROM event
 					WHERE event.eventID = $eventID";
 	  
@@ -25,6 +26,7 @@ class Event
 		{
 			$row = $result->fetch_assoc();
 			$event->name = $row['name'];
+			$event->userID = $row['userID'];
 			
 			$statement = "SELECT event_sensor.sensorID
 					FROM event_sensor
@@ -70,6 +72,27 @@ class Event
 		}
 		
 		return $event;
+	}
+	
+	public static function getEventsByUserID($userID)
+	{
+		$events = [];
+		
+		$statement = "SELECT event.eventID
+					FROM event
+					WHERE event.userID = $userID";
+	  
+		$result = $conn->query($statement);
+			
+		if ($result->num_rows > 0)
+		{
+			while($row = $result->fetch_assoc())
+		  	{
+				  $events[] = Event::getFromEventID($eventID);
+			}		  
+		}
+		
+		return $events;
 	}
 }
 ?>
