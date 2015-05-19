@@ -8,12 +8,10 @@
 		[0, "dashboard", "Dashboard", "dashboard"],
 		[0, "rooms", "Rooms", "sitemap"],
 		[0, "sensors", "Sensors", "wifi"],
-		[1, "#", "Events", "exclamation"],
-		[2, "notifications", "History", "exclamation"],
-		[2, "eventSettings", "Settings", "exclamation"],
+		[0, "notifications", "History", "exclamation"],
+		[0, "eventSettings", "Event Settings", "exclamation"],
 		[0, "selection", "My Locations", "home",],
-		[0, "settings", "Settings", "edit"],
-		[0, "icons.php", "Icons", "ban"],
+		[0, "settings", "Settings", "edit"]
 	];
 
 	foreach($menu as list($type, $link, $name, $icon))
