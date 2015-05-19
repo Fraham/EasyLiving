@@ -166,6 +166,7 @@ function changeGraph(url)
 				title: {
 					text: 'Date',
 					align: 'high'
+				}
               },
               yAxis: {
                   title: {
