@@ -59,17 +59,17 @@ if (isset($_SESSION['house_id']))
 			}
 
 
-			$roomHTML .= "
-			<div class='col-lg-2 room-xs' style='width: ".$blockSize."px; margin: auto; float: none;display: inline-block;'>
-				<div class='panel panel-".$color."'>
+			$roomHTML .= <<<HTML
+			<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
+				<div class='panel panel-{$color}'>
 					<div class='panel-heading'>
 						<div class='row'>
 							<div class='col-xs-3'>
-								<i class='fa fa-".$row["icon"]." fa-4x'></i>
+								<i class='fa fa-{$row["icon"]} fa-4x'></i>
 							</div>
 							<div class='col-xs-9 text-right'>
-								<div class='huge' name=''>".$row["dName"]."</div>
-								<div>".$state."</div>
+								<div class='huge' name=''>{$row["dName"]}</div>
+								<div>"{$state}"</div>
 						</div>
 					</div>
 				</div>
@@ -87,7 +87,8 @@ if (isset($_SESSION['house_id']))
 						</div>
 					</div>
 				</div>
-			</div>";
+			</div>
+HTML;
 		}
 	}
 
