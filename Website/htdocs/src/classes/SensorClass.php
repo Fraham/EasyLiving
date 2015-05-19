@@ -62,11 +62,31 @@ class Sensor
 	
 	public function getBlockFormat()
 	{
-		$sensorBlock = <<<HTML
-			<div class='col-md-6'>
-				<h4><font color='black'>{$this->name}: </font><span class='text-danger'>Open</span></h4>
-			</div>
+		$sensorBlock = "";
+		
+		if (substr( $this->sensorID, 0, 2) === "01") // motion sensor
+		{
+			
+		}
+		if (substr( $this->sensorID, 0, 2) === "02")// door sensor
+		{
+			$message = "";
+			
+			if($this->state === 0)
+			{
+				$message = $this->messageOff;
+			}
+			else
+			{
+				$message = $this->messageOn;
+			}
+			
+			$sensorBlock = <<<HTML
+				<div class='col-md-6'>
+					<h4><font color='black'>{$this->name}: </font><span>{$message}</span></h4>
+				</div>
 HTML;
+		}
 		return $sensorBlock;
 	}
 }
