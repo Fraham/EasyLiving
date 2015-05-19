@@ -1,5 +1,5 @@
 <?php
-$title = "Event History";
+$title = "History";
 $path = "../src/templates/";
 include $path."main.php";
 ?>
