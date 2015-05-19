@@ -171,13 +171,13 @@ function changeGraph(url)
                 type: 'datetime',
                 maxPadding: 0,
 				        minPadding: 0,
-                dateTimeLabelFormats: 
+                /*dateTimeLabelFormats: 
                 {
                     millisecond: '%H:%M:%S',
                     second: '%H:%M:%S',
                     minute: '%H:%M',
                     hour: '%H:%M'
-				        }
+				        }*/
 			        },
               yAxis: 
               {
@@ -225,9 +225,23 @@ function changeGraph(url)
     {
       var obj = json[i];
       
+      var dataArray = [];
+      
+      for(var j = 0; j < obj.data.length; j++) 
+      {
+        console.log(obj.data[j]);
+        var tempArray = [];
+        var date = Date.UTC(obj.data[j][0], obj.data[j][1] - 1, obj.data[j][2], obj.data[j][3], obj.data[j][4], obj.data[j][5]);
+        
+        tempArray.push(date);
+        tempArray.push(obj.data[j][6]);
+        
+        dataArray.push(tempArray);
+      }
+      
       chart.addSeries({
                     name: obj.name,
-                    data: obj.data
+                    data: dataArray
       });
     }     
   });
