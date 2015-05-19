@@ -72,7 +72,7 @@ class Sensor
 		{
 			$message = "";
 			
-			if($this->state === 0)
+			if(strcmp($this->state, "0") === 0)
 			{
 				$message = $this->messageOff;
 			}
