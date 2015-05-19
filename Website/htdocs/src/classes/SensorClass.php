@@ -21,16 +21,16 @@ class Sensor
 	                ON house.houseID = user_households.houseID
 	                WHERE user_households.userID = $userID";
 					
-		return getFromQuery($statement);
+		return Sensor::getFromQuery($statement);
 	}
 	
 	public static function getByRoomID($roomID)
 	{
-	  $statement = "SELECT sensors.sensorID, sensors.name, sensors.messageOn, sensors.messageOff, sensors.roomID, sensors.state
-	                WHERE sensor.roomID = $roomID";
+	  	$statement = "SELECT sensors.sensorID, sensors.name, sensors.messageOn, sensors.messageOff, sensors.roomID, sensors.state
+		  			FROM sensors
+	                WHERE sensors.roomID = $roomID";
 					
-		return getFromQuery($statement);
-
+		return Sensor::getFromQuery($statement);
 	}
 	
 	public static function getFromQuery($statement)
@@ -41,23 +41,33 @@ class Sensor
 	  
 		$result = $conn->query($statement);
 	
-	  if ($result->num_rows > 0)
-	  {
-	    while($row = $result->fetch_assoc())
-	    {
-	      $sensor = new Sensor;
-	      $sensor->sensorID     = $row['sensorID'];
-	      $sensor->name    		= $row['name'];
-	      $sensor->messageOn	= $row['messageOn'];
-	      $sensor->messageOff   = $row['messageOff'];
-		  $sensor->roomID    	= $row['roomID'];
-		  $sensor->state    	= $row['state'];
+		if ($result->num_rows > 0)
+		{
+		  while($row = $result->fetch_assoc())
+		  {
+		    $sensor = new Sensor;
+		    $sensor->sensorID     = $row['sensorID'];
+		    $sensor->name    		= $row['name'];
+		    $sensor->messageOn	= $row['messageOn'];
+		    $sensor->messageOff   = $row['messageOff'];
+		 	$sensor->roomID    	= $row['roomID'];
+		  	$sensor->state    	= $row['state'];
+		
+		    $sensors[] = $sensor;
+		  }
+		}
+		
+		  return $sensors;
+	}
 	
-	      $sensors[] = $sensor;
-	    }
-	  }
-	
-	  return $sensors;
+	public function getBlockFormat()
+	{
+		$sensorBlock = <<<HTML
+			<div class='col-md-6'>
+				<h4><font color='black'>{$this->name}: </font><span class='text-danger'>Open</span></h4>
+			</div>
+HTML;
+		return $sensorBlock;
 	}
 }
 

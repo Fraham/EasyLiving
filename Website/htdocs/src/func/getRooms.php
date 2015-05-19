@@ -57,7 +57,19 @@ if (isset($_SESSION['house_id']))
 				$color = $row["unoccupied"];
 				$state = "Unoccupied";
 			}
+			
+			include_once ("{$path}../classes/SensorClass.php");
+			
+			$sensorHTML = "";
+			
+			$sensors = [];
 
+			$sensors = Sensor::getByRoomID($row['roomID']);
+
+			foreach ($sensors as $sensor)
+			{
+				$sensorHTML .= $sensor->getBlockFormat();
+			}			
 
 			$roomHTML .= <<<HTML
 			<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
@@ -69,25 +81,15 @@ if (isset($_SESSION['house_id']))
 							</div>
 							<div class='col-xs-9 text-right'>
 								<div class='huge' name=''>{$row["dName"]}</div>
-								<div>"{$state}"</div>
+								<div>{$state}</div>
 						</div>
 					</div>
 				</div>
 				<div class='panel-body'>
-					<div class='col-md-6'>
-						<h4><font color='black'>Window: </font><span class='text-danger'>Open</span></h4>
-					</div>
-						<div class='col-md-6'>
-							<h4>Lamp:
-								<span><div class='btn-group btn-toggle'>
-									<button class='btn btn-xs btn-default'>ON</button>
-									<button class='btn btn-xs btn-danger active'>OFF</button>
-								</span>
-							</h4>
-						</div>
-					</div>
+					{$sensorHTML}
 				</div>
 			</div>
+		</div>
 HTML;
 		}
 	}
