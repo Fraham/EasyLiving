@@ -161,7 +161,13 @@ function changeGraph(url)
               },
               xAxis: {
                 type: 'datetime',
-				tickInterval: 24*3600*1000,
+				pointStart: Date.UTC(2015, 3, 4, 9, 30),
+				pointInterval: 30 *60 * 1000,
+				labels: {
+					formatter: function() {
+						return Highcharts.dateFormat('%I:%M %P', this.value);
+					}
+				},
 				dateTimeLabelFormats: { day:'%Y-%m-%d' },
 				title: {
 					text: 'Date',
