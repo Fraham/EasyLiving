@@ -112,7 +112,7 @@ $set = 0;
 	  $set = 1;
 	}
 
-$statement = "SELECT log.date, count(*) as Amount, sensors.name as SensorName, log.sensorID FROM log
+$statement = "SELECT log.date, sensors.name as SensorName, log.sensorID FROM log
 INNER JOIN sensors
 ON sensors.sensorID = log.sensorID
 INNER JOIN room
@@ -159,8 +159,8 @@ if ($result->num_rows > 0)
         $check = 1;
     }
 
-    $jsonRows['category'][] = $row['date'];
-    $jsonRows['data'][] = $row['Amount'];
+    //$jsonRows['category'][] = $row['date'];
+    $jsonRows['data'][] = $row['date'];
 
     //echo $row['date'] . "\t" . $row['Amount']. "\r\n";
     //$jsonRows['name'][] = $row['SensorName'];

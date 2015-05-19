@@ -144,54 +144,61 @@ $(function () {
 });
 */
 
+
 function changeGraph(url)
 {  
   var options = {
-              chart: {
+              chart: 
+              {
                   renderTo: 'events',
                   type: 'line'
               },
-              credits: {
+              credits: 
+              {
                 enabled: false
-            },
-              title: {
+              },
+              title: 
+              {
                   text: 'Amount',
                   x: -6 //center
               },
-              subtitle: {
+              subtitle: 
+              {
                   text: '',
                   x: -20
               },
               xAxis: {
                 type: 'datetime',
-				pointStart: Date.UTC(2015, 3, 4, 9, 30),
-				pointInterval: 30 *60 * 1000,
-				labels: {
-					formatter: function() {
-						return Highcharts.dateFormat('%I:%M %P', this.value);
-					}
-				},
-				dateTimeLabelFormats: { day:'%Y-%m-%d' },
-				title: {
-					text: 'Date',
-					align: 'high'
-				}
-              },
-              yAxis: {
-                  title: {
+                maxPadding: 0,
+				        minPadding: 0,
+                dateTimeLabelFormats: 
+                {
+                    millisecond: '%H:%M:%S',
+                    second: '%H:%M:%S',
+                    minute: '%H:%M',
+                    hour: '%H:%M'
+				        }
+			        },
+              yAxis: 
+              {
+                  title: 
+                  {
                       text: 'Amount'
                   },
-                  plotLines: [{
+                  plotLines: 
+                  [{
                       value: 0,
                       width: 1,
                       color: '#808080'
                   }]
               },
-              tooltip: {
+              tooltip: 
+              {
                 crosshairs: true,
                 shared: true
               },
-              legend: {
+              legend: 
+              {
                   layout: 'vertical',
                   align: 'right',
                   verticalAlign: 'top',
@@ -201,16 +208,29 @@ function changeGraph(url)
               }
           };
   
-  $.getJSON("getGraphData.php" + url, function(json) {
-    for (var i = 0; i < json.length; i++ ){ 
-      json[i][1] = new Date(json[i][1]).getTime();
+  $.getJSON("getGraphData.php" + url, function(json) 
+  {
+    /*for (var i = 0; i < json.length; i++ )
+    { 
+      json[i][0] = new Date(json[i][0]).getTime();
     }
+    
+    options.series = json;   */
+    
 
-        options.series = json;
-        
+    
     var chart = new Highcharts.Chart(options);
-        
+    
+    for(var i = 0; i < json.length; i++) 
+    {
+      var obj = json[i];
+      
+      chart.addSeries({
+                    name: obj.name,
+                    data: obj.data
       });
+    }     
+  });
 }
 
 /*
