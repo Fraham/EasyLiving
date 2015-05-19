@@ -5,7 +5,8 @@
 	
 		sec_session_start();
 		
-		$_SESSION['house_id'] = $_GET["houseID"];
-	}
-	
+		$houseID = $_GET["houseID"];
+		
+		$_SESSION['house_id'] = $houseID;
+	}	
 ?>

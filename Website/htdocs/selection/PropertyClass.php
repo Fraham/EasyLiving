@@ -75,19 +75,12 @@ HTML;
     </div>
     <script>
       function clickButton{$this->houseID}(){
-            $.ajax({
-                type: "GET",
-                url: "{$path}changeHouse.php" ,
-                data: { houseID: {$this->houseID} },
-                success : function() { 
-
-                    // here is the code that will run on client side after running clear.php on server
-
-                    // function below reloads current page
-                    location.reload();
-
-                }
-            });
+        $.ajax({
+            url:"{$path}changeHouse.php?houseID={$this->houseID}",
+            success:function(result){
+                location.reload();
+            }
+        });
       }
     </script>
 HTML;
