@@ -19,7 +19,7 @@ include $path."main.php";
 					</thead>
 					<?php
 
-						require_once('PropertyClass.php');
+						require_once('../src/classes/PropertyClass.php');
 
 						$userID = $_SESSION['user_id'];
 
