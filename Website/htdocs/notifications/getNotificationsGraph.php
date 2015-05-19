@@ -221,7 +221,7 @@ function getSensorBtns($room)
 
 	$userID = $_SESSION['user_id'];
 
-	$statement = "SELECT sensors.name, sensors.sensorID, room.dName FROM sensors
+	$statement = "SELECT sensors.name, sensors.messageOn, sensors.messageOff, sensors.sensorID, room.dName FROM sensors
 	INNER JOIN room
 	ON room.roomID = sensors.roomID
 	INNER JOIN user_households
@@ -254,13 +254,16 @@ function getSensorBtns($room)
 								<div class="form-group col-lg-12">
 									<form action="" method="post" name="login_form">
 										<label>Sensor Name:</label> 
-										<input type="text" placeholder="{$row["name"]}" id="password" class="form-control"/>
-										<br>
-										<label>Sensor Type</label>
-										<select class="form-control">{getSensorTypes(1)}</select>
-										<br>
+										<input type="text" placeholder="{$row["name"]}"  class="form-control"/>
+										<br>  
+                    <label>Message when activated:</label> 
+                    <input type="text" placeholder="{$row["messageOn"]}" class="form-control"/>
+                    <br>  
+                    <label>Message when deactivated:</label> 
+                    <input type="text" placeholder="{$row["messageOff"]}"  class="form-control"/>
+                    <br>  
 										<label>Room</label>
-										<select class="form-control">{getRooms(1)}</select>
+										<select class="form-control"><?php getRooms(0); ?></select>
 										<br>
 										<input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" onclick="formhash(this.form, this.form.password);" />
 										<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
