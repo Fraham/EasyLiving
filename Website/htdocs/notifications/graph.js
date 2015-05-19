@@ -161,6 +161,11 @@ function changeGraph(url)
               },
               xAxis: {
                 type: 'datetime',
+				tickInterval: 24*3600*1000
+				dateTimeLabelFormats: { day:'%Y-%m-%d' },
+				title: {
+					text: 'Date',
+					align: 'high'
               },
               yAxis: {
                   title: {
