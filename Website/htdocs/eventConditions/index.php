@@ -1,5 +1,5 @@
 <?php 
-	$title = "Event Conditions";
+	$title = "Alert Conditions";
 	$path = "../src/templates/";
 	include $path."main.php";
 ?>
