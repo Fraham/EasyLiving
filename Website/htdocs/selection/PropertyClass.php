@@ -6,6 +6,8 @@ class Property
   public $password = "";
   public $defaultName = "";
   public $userName = "";
+  
+  public $rooms = [];
 
   public static function getByUserID($userID)
   {
