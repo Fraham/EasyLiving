@@ -11,7 +11,8 @@
 		[0, "notifications", "History", "exclamation"],
 		[0, "eventConditions", "Event Conditions", "exclamation"],
 		[0, "selection", "My Locations", "home",],
-		[0, "settings", "Settings", "edit"]
+		[0, "settings", "Settings", "edit"],
+		[0, "icons.php", "Icons", "ban"]
 	];
 
 	foreach($menu as list($type, $link, $name, $icon))
