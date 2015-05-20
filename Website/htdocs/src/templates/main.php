@@ -127,24 +127,23 @@
           </div>
           <div class="modal-body row">
             <div class="form-group col-lg-12" style="margin:10px">
-               <form action="../src/includes/process_login.php" method="post" name="login_form">
-                Property ID: <input type="text" name="email" autofocus class="form-control"/>
-                <br>
-                Property Password: <input type="password"
-                                 name="password"
-                                 id="password"
-                                 class="form-control"/>
-                <br>
-                <input type="button"
-                       value="Add Property"
-                       class="btn btn-lg btn-danger btn-block"
-                       onclick="formhash(this.form, this.form.password);" />
-                <input type="button"
-                       value="Cancel"
-                       class="btn btn-lg btn-danger btn-block"
-                       data-dismiss="modal" aria-hidden="true" />
-            </form>
-
+               <form action="" method="post" id="addPropertyForm">
+                	<label>Property ID:</label><input type="text" name="propertyID" autofocus class="form-control"/>
+                	<br>
+                	<label>Property Password:</label><input type="password" name="housePassword" id="housePassword" class="form-control"/>
+                	<br>
+                	<input type="button" value="Add Property" class="btn btn-lg btn-danger btn-block"onclick="addProperty()" />
+                	<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
+            	</form>
+				<script>
+					function addProperty()
+					{
+						$.post('../src/templates/addProperty.php', $('#addPropertyForm').serialize())
+						.done(function( data ) {
+							location.reload();
+						});
+					};
+				</script>
             </div>
           </div>
         </div>

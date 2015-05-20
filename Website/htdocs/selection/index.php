@@ -2,6 +2,7 @@
 $title = "My Locations";
 $path = "../src/templates/";
 include $path."main.php";
+require_once('../src/classes/PropertyClass.php');
 ?>
 
 <?php if (login_check($conn) == true) : ?>
@@ -18,9 +19,6 @@ include $path."main.php";
 						</tr>
 					</thead>
 					<?php
-
-						require_once('../src/classes/PropertyClass.php');
-
 						$userID = $_SESSION['user_id'];
 
 						$properties = [];
@@ -38,11 +36,11 @@ include $path."main.php";
 	</div>
 	<div class="row">
 		<div class="col-md-2">
-			<input type="button" value="Add Property" class="btn btn-lg btn-danger pull-right" data-toggle="modal" data-target="#AddPropertyModal" />
+			<input type="button" value="Add Property" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#AddPropertyModal" />
 		</div>
 
 		<div class="col-md-2">
-			<a href="../buyNewHouse" class="btn btn-lg btn-danger pull-right" onclick="../buyNewHouse" />
+			<a href="../buyNewHouse" class="btn btn-lg btn-danger" onclick="../buyNewHouse" />
 			Buy New Property
 		</a>
 		</div>
