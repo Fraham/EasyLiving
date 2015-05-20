@@ -10,6 +10,27 @@
 
 <?php if (login_check($conn) == true) : ?>
 
+<?php 
+		if (empty($_POST)===false)
+		{
+			//$roomID = $_POST['id'];
+			$dName = $_POST['name'];
+			$houseID = $_SESSION['houseID'];
+			$colourID = $_POST['colour'];
+			$iconID = $_POST['icon'];
+			require "../src/connect.php";
+
+			$userID = $_SESSION['user_id'];
+			$statement = "INSERT INTO room VALUES('$dName', '$houseID', '$colourID', '$iconID)";
+			if (!$conn->query($statement)) {
+				echo "Error: " . $statement . "<br>" . $conn->error;
+			}
+			$conn->close();
+		}else{
+	?>
+	
+
+		
 <div class="col-lg-12" id = "roomsPanel" style="width: 100%; margin-top: 20px;">
 
 	<?php
@@ -25,6 +46,11 @@
 	</script>
 </div>
 
+	<?php
+			include("../notifications/getNotificationsGraph.php");
+			
+		?>
+		
 	<div class="row">
 		<div class="col-lg-12 col-sm-12">
 			<button class="btn btn-danger center-block btn-lg" data-toggle="modal" data-target="#AddModal"><i class="fa fa-plus"></i></button>
@@ -44,6 +70,14 @@
 						<form action="" method="post" id="addRoomForm">
 							<label>Room Name:</label> <input type="text" id="Name" name="name" class="form-control"/>
 							<br>
+							<label>Colour</label>
+							<select class="form-control" name="colour">
+								<?php getRoomColours(0); ?>
+							</select>
+							<label>Icon</label>
+							<select class="form-control" name="icon">
+								<?php getIcons(); ?>
+							</select>
 							<input type="button" value="Add Room" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
@@ -52,8 +86,9 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<script>
+		
 		function deleteRoom(ID)
 		{
 			$.post("deleteRoom.php", { func: "delete", id: ID })
@@ -68,6 +103,8 @@
 				location.reload();
 			});
 		};
+		
+		
 	</script>
 
 <?php include $path."footer.php"; ?>
