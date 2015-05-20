@@ -9,15 +9,17 @@
 <?php 
 		if (empty($_POST)===false)
 		{
-			//$roomID = $_POST['id'];
 			$dName = $_POST['name'];
-			$houseID = $_SESSION['houseID'];
+			$houseID = $_SESSION['house_id'];
 			$colourID = $_POST['colour'];
 			$iconID = $_POST['icon'];
 			require "../src/connect.php";
 
-			$userID = $_SESSION['user_id'];
-			$statement = "INSERT INTO room ('dName', 'houseID', 'colourID', 'iconID') VALUES('$dName', '$houseID', '$colourID', '$iconID)";
+			$houseID = $_SESSION['house_id'];
+
+			$statement = "INSERT INTO room 
+						(dName, houseID, colourID, iconID) 
+						VALUES ('$dName', '$houseID', '$colourID', '$iconID')";
 			if (!$conn->query($statement)) {
 				echo "Error: " . $statement . "<br>" . $conn->error;
 			}
@@ -99,6 +101,7 @@
 			$.post('index.php', $('#addRoomForm').serialize())
 			.done(function( data ) {
 				location.reload();
+				console.log(data);
 			});
 		};
 		
