@@ -21,7 +21,7 @@
 			require "../src/connect.php";
 
 			$userID = $_SESSION['user_id'];
-			$statement = "INSERT INTO room VALUES('$dName', '$houseID', '$colourID', '$iconID)";
+			$statement = "INSERT INTO room ('dName', 'houseID', 'colourID', 'iconID') VALUES('$dName', '$houseID', '$colourID', '$iconID)";
 			if (!$conn->query($statement)) {
 				echo "Error: " . $statement . "<br>" . $conn->error;
 			}
