@@ -1,8 +1,6 @@
 <?php
 require_once "../src/connect.php";
 
-//$userID = $_SESSION['user_id'];
-
 $where = "";
 $set = 0;
 
@@ -150,7 +148,6 @@ if ($result->num_rows > 0)
         if ($check == 1)
         {
 			$jsonResult[] = $jsonRows;
-            //array_push($jsonResult, $jsonRows);
         }
 
         $jsonRows = array();
@@ -167,20 +164,11 @@ if ($result->num_rows > 0)
 	
 	$data = array($year, $month, $day, $hour, 0, 0, $row['amount']);
 
-    //$jsonRows['category'][] = $row['date'];
     $jsonRows['data'][] = $data;
-
-    //echo $row['date'] . "\t" . $row['Amount']. "\r\n";
-    //$jsonRows['name'][] = $row['SensorName'];
-    /*$jsonRows[] = array(
-        "name" => $row['SensorName'],
-        "data" => "x:" + $row['date'] + ",y:" + $row['Amount']);*/
   }
 }
 
 $jsonResult[] = $jsonRows;
-
-//array_push($jsonResult, $jsonRows);
 
 print json_encode($jsonResult, JSON_NUMERIC_CHECK);
 
