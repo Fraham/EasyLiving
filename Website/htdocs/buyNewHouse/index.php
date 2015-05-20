@@ -58,7 +58,6 @@
 	</div>
 	<div class="clearfix"></div>
 	<div class = "col-lg-12">
-		<button type="button" class="btn btn-lg btn-danger pull-right" >Cancel</button>
 		<button type="button" class="btn btn-lg btn-danger pull-right" onclick="submitForm()">Submit</button>
 	</div>
 </div>
@@ -66,10 +65,17 @@
 <script>
 	function submitForm()
 	{
-		$.post('newHouse.php', $('#registration_form').serialize())
-		.done(function( data ) {
-			location.reload();
-		});
+		if($('#password').val()!=$('#confirmpwd').val())
+		{
+      		alert("Password don't match");
+		}
+		else
+		{
+			$.post('newHouse.php', $('#registration_form').serialize())
+			.done(function( data ) {
+				location.reload();
+			});
+		}
 	};
 </script>
 
