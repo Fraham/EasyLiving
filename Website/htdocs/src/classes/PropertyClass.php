@@ -88,6 +88,46 @@ HTML;
 
     echo $menuHTML;
   }
+  
+  public static function getNextID()
+  {
+    require "../src/connect.php";
+    
+    $statement = "SELECT MAX(houseID) AS houseID 
+                  FROM house";
+                  
+    $result = $conn->query($statement);
+
+    if ($result->num_rows > 0)
+    {             
+      $row = $result->fetch_assoc();
+      
+      $newID = $row["houseID"] + 1;      
+    }
+    else
+    {
+      $newID = "111111";
+    }
+    
+    return ("$newID");
+  }
+  
+  public static function newProperty($userID, $name, $housePassword, $houseID)
+  {
+      require_once "../src/connect.php";
+  
+      $insertStatement = "INSERT INTO house
+      (houseID, house_password, dName)
+      VALUES ($houseID, $housePassword, $name)";
+  
+      $conn->execute($insertStatement);
+  
+      $insertStatement = "INSERT INTO userHouseholds
+      (userID, houseID)
+      VALUES ($userID, $houseID)";
+  
+      $conn->execute($insertStatement);
+  }
 }
 
 ?>
