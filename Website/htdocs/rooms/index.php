@@ -72,7 +72,7 @@
 							<br>
 							<label>Colour</label>
 							<select class="form-control" name="colour">
-								<?php getRoomColours(0); ?>
+								<?php getRoomColours(); ?>
 							</select>
 							<label>Icon</label>
 							<select class="form-control" name="icon">
