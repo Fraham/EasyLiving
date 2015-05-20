@@ -74,10 +74,12 @@
 							<select class="form-control" name="colour">
 								<?php getRoomColours(); ?>
 							</select>
+							<br>
 							<label>Icon</label>
 							<select class="form-control" name="icon">
 								<?php getIcons(); ?>
 							</select>
+							<br>
 							<input type="button" value="Add Room" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
