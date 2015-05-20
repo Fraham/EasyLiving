@@ -4,10 +4,6 @@
 	include $path."main.php";
 ?>
 
-<div class="col-lg-12" style="margin-left:15px">
-	<a href="../roomsSettings" class="btn btn-danger btn-lg"><i class="fa fa-pencil"></i> Edit</a>
-</div>
-
 <?php if (login_check($conn) == true) : ?>
 
 <?php 
