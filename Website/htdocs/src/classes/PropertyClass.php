@@ -114,19 +114,23 @@ HTML;
   
   public static function saveProperty($userID, $name, $housePassword, $houseID)
   {
-      require_once "../src/connect.php";
+      require "../src/connect.php";
   
       $insertStatement = "INSERT INTO house
       (houseID, house_password, dName)
-      VALUES ($houseID, $housePassword, $name)";
+      VALUES ('$houseID', '$housePassword', '$name')";
   
-      $conn->execute($insertStatement);
+      if (!$conn->query($insertStatement)) {
+				echo "Error: " . $insertStatement . "<br>" . $conn->error;
+			}
   
-      $insertStatement = "INSERT INTO userHouseholds
-      (userID, houseID)
-      VALUES ($userID, $houseID)";
+      $insertStatement = "INSERT INTO user_households
+      (houseName, userID, houseID)
+      VALUES ('$name', '$userID', '$houseID')";
   
-      $conn->execute($insertStatement);
+      if (!$conn->query($insertStatement)) {
+				echo "Error: " . $insertStatement . "<br>" . $conn->error;
+			}
   }
 }
 

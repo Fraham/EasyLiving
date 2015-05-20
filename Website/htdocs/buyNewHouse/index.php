@@ -7,10 +7,10 @@
 <?php if (login_check($conn) == true) : ?>
 
 <div class = "col-lg-6">
-	<div class = "panel panel-danger">
+	<div class = "panel panel-default">
 		<div class = "panel-heading"> <h2> New Property Preferences </h2> </div>
 		<div class = "panel-body">
-			 <form method="post" name="registration_form" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>">
+			 <form method="post" id="registration_form" action="">
                 Property Name: <input type="text"
                                 name="pName"
                                 id="pName"
@@ -29,7 +29,7 @@
 </div>
 
 	<div class = "col-lg-6">
-		<div class = "panel panel-danger">
+		<div class = "panel panel-default">
 			<div class = "panel-heading"> <h2> Payment Details </h2> </div>
 			<div class = "panel-body">
 				<form method="post" name="registration_form" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>">
@@ -59,9 +59,20 @@
 	<div class="clearfix"></div>
 	<div class = "col-lg-12">
 		<button type="button" class="btn btn-lg btn-danger pull-right" >Cancel</button>
-		<button type="button" class="btn btn-lg btn-danger pull-right" >Submit</button>
+		<button type="button" class="btn btn-lg btn-danger pull-right" onclick="submitForm()">Submit</button>
 	</div>
 </div>
+
+<script>
+	function submitForm()
+	{
+		$.post('newHouse.php', $('#registration_form').serialize())
+		.done(function( data ) {
+			console.log(data);
+			location.reload();
+		});
+	};
+</script>
 
 <script type="text/javascript">
 	$('#month').datepicker({
