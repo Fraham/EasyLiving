@@ -380,7 +380,7 @@ function getRoomsAsPanels()
 		{
 			while($row = $result->fetch_assoc())
 			{
-				$propertyList .= "<option>";
+				$propertyList .= "<option value>";
 				$propertyList .= "$row[icon]";
 				$propertyList .= "</option>";
 			}
@@ -397,7 +397,7 @@ function getRoomsAsPanels()
 
 		$userID = $_SESSION['user_id'];
 
-		$statement = "SELECT unoccupied FROM room_colour";
+		$statement = "SELECT unoccupied, colourID FROM room_colour";
 
 		$result = $conn->query($statement);
 
@@ -405,8 +405,10 @@ function getRoomsAsPanels()
 		{
 			while($row = $result->fetch_assoc())
 			{
-				$propertyList .= "<option>";
-				$propertyList .= "$row[room_colour]";
+				$propertyList .= "<option value=";
+				$propertyList .= "$row['colourID']";
+				$propertyList .= ">";
+				$propertyList .= "$row['unoccupied']";
 				$propertyList .= "</option>";
 			}
 		}
