@@ -372,7 +372,7 @@ function getRoomsAsPanels()
 
 		$userID = $_SESSION['user_id'];
 
-		$statement = "SELECT icon FROM icons";
+		$statement = "SELECT icon, iconID FROM icons";
 
 		$result = $conn->query($statement);
 
@@ -380,7 +380,9 @@ function getRoomsAsPanels()
 		{
 			while($row = $result->fetch_assoc())
 			{
-				$propertyList .= "<option value>";
+				$propertyList .= "<option value=";
+				$propertyList .= "$row[iconID]";
+				$propertyList .= ">";
 				$propertyList .= "$row[icon]";
 				$propertyList .= "</option>";
 			}

@@ -112,7 +112,7 @@ HTML;
     return ("$newID");
   }
   
-  public static function newProperty($userID, $name, $housePassword, $houseID)
+  public static function saveProperty($userID, $name, $housePassword, $houseID)
   {
       require_once "../src/connect.php";
   
