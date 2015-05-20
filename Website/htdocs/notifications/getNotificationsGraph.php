@@ -385,7 +385,7 @@ function getRoomsAsPanels()
 				$propertyList .= "</option>";
 			}
 		}
-		return $propertyList;
+		echo $propertyList;
 	}
 	
 	
@@ -412,6 +412,6 @@ function getRoomsAsPanels()
 				$propertyList .= "</option>";
 			}
 		}
-		return $propertyList;
+		echo $propertyList;
 	}
 	?>
