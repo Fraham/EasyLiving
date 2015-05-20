@@ -151,7 +151,8 @@ function changeGraph(url)
               chart: 
               {
                   renderTo: 'events',
-                  type: 'line'
+                  //type: 'line'
+                  type: 'spline'
               },
               credits: 
               {
