@@ -97,11 +97,8 @@ class Event
 		return $events;
 	}
 	
-
 	public function getEventFormat()
 	{
-		include("../notifications/getNotificationsGraph.php");
-
 		$eventHTML = <<<HTML
 		<div class="col-lg-12">
 			<div class="panel panel-default">
@@ -109,13 +106,11 @@ class Event
 				{$this->name}
 				</div>
 				<div class="panel-body"id="settingsBody">
-					<label>Sensors: </label>
-					<select class="form-control" name="room">
-						<?php getRooms(0); ?>
-					</select>
 					<button class = "btn btn-danger btn-lg" style="margin-top:0px">Add sensor</button>
 					<br>
 					<button class = "btn btn-danger btn-lg" style="margin-top:10px">Add condition</button>
+					<br>
+					<button class = "btn btn-danger btn-lg" style="margin-top:10px">Add device to be activated</button>
 				</div>
 			</div>
 		</div>
