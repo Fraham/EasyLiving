@@ -45,11 +45,11 @@
 		});
 	</script>
 </div>
-
-	<?php
-			include("../notifications/getNotificationsGraph.php");
-			
+	<div class="row">
+		<?php
+			include("../notifications/getNotificationsGraph.php");	
 		?>
+	</div>
 		
 	<div class="row">
 		<div class="col-lg-12 col-sm-12">
