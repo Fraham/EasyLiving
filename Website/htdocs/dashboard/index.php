@@ -46,7 +46,7 @@
 <div class="col-lg-8 col-md-8 roomsPanel">
 	<div class="col-lg-12" style="text-align:center;">
 		<?php
-			include "../src/func/getRooms.php";
+			include "getDashboardRooms.php";
 		?>
 	</div>
 </div>
