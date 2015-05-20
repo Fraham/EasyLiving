@@ -387,4 +387,29 @@ function getRoomsAsPanels()
 		}
 		return $propertyList;
 	}
+	
+	
+	function getRoomColours()
+	{
+		$propertyList = "";
+
+		require "../src/connect.php";
+
+		$userID = $_SESSION['user_id'];
+
+		$statement = "SELECT unoccupied FROM room_colour";
+
+		$result = $conn->query($statement);
+
+		if ($result->num_rows > 0)
+		{
+			while($row = $result->fetch_assoc())
+			{
+				$propertyList .= "<option>";
+				$propertyList .= "$row[room_colour]";
+				$propertyList .= "</option>";
+			}
+		}
+		return $propertyList;
+	}
 	?>
