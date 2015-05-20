@@ -10,7 +10,7 @@ if (isset($_SESSION['house_id']))
 
 	$houseID = $_SESSION['house_id'];
 
-	$statement = "SELECT R.dName, RC.occupied, RC.unoccupied, I.icon, R.roomID
+	$statement = "SELECT R.dName, R.roomID, RC.occupied, RC.unoccupied, I.icon, R.roomID
 									FROM room as R
 									INNER JOIN room_colour as RC
 									ON R.colourID = RC.colourID
@@ -100,7 +100,7 @@ if (isset($_SESSION['house_id']))
 							<div class="modal-header">
 								<h2 class="modal-title" id="myModalLabel">Edit Room: {$row["dName"]}</h2>
 								<br>
-								<button name="delete" class="btn btn-lg btn-danger btn-block" onclick="deleteSensor('{$row["sensorID"]}')"> Delete </button>
+								<button name="delete" class="btn btn-lg btn-danger btn-block" onclick="deleteRoom('{$row["roomID"]}')"> Delete </button>
 							</div>
 							<div class="modal-body row">
 								<div class="form-group col-lg-12">
@@ -109,7 +109,8 @@ if (isset($_SESSION['house_id']))
 										<br>
 										<label>Colour</label>
 										<select class="form-control" name="colour">
-											<?php getRoomColours(); ?>
+											<?php
+											getRoomColours(); ?>
 										</select>
 										<br>
 										<label>Icon</label>
@@ -117,7 +118,7 @@ if (isset($_SESSION['house_id']))
 											<?php getIcons(); ?>
 										</select>
 										<br>
-										<input type="button" value="Add Room" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
+										<input type="button" value="Save Changes" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
 										<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 									</form>
 								</div>
@@ -126,7 +127,7 @@ if (isset($_SESSION['house_id']))
 					</div>
 				</div>
 HTML;
-		$count++
+		$count++;
 		}
 	}
 

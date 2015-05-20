@@ -46,21 +46,16 @@
 				<div class="modal-body row">
 					<div class="form-group col-lg-12">
 						<form action="" method="post" id="addSensorForm">
-							<label>Sensor ID:</label> <input type="number" maxlength="6" name="id" autofocus class="form-control"/>
+							<label>Sensor ID:</label> <input type="number" maxlength="6" name="id" required autofocus class="form-control"/>
 							<br>
 							<label>Sensor Name:</label> <input type="text" id="Name" name="name" class="form-control"/>
 							<br>
-							<label>Message when activated</label> <input type="text" name="messageOn" autofocus class="form-control"/>
+							<label>Message when activated</label> <input type="text" name="messageOn" class="form-control"/>
 							<br>
-							<label>Message when deactivated</label> <input type="text" name="messageOff" autofocus class="form-control"/>
-							<br>
-							<label>Sensor Type</label>
-							<select class="form-control" name="sensorTyp">
-								<?php getSensorTypes(0); ?>
-							</select>
+							<label>Message when deactivated</label> <input type="text" name="messageOff" class="form-control"/>
 							<br>
 							<label>Room</label>
-							<select class="form-control" name="room">
+							<select class="form-control" required name="room">
 								<?php getRooms(0); ?>
 							</select>
 							<br>
@@ -100,4 +95,3 @@
   
 <?php else : ?>
 <?php endif; ?>
-
