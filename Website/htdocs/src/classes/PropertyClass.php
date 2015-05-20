@@ -77,12 +77,11 @@ HTML;
     </div>
     <script>
       function clickButton{$this->houseID}(){
-        $.ajax({
-            url:"{$path}changeHouse.php?houseID={$this->houseID}",
-            success:function(result){
-                location.reload();
-            }
-        });
+        $.post("{$path}changeHouse.php", { func: "changeHouse", houseID: "{$this->houseID}", user_id: "{$_SESSION['user_id']}" })
+  			.done(function( data ) {
+  				location.reload();
+          console.log(data);
+  			});
       }
     </script>
 HTML;
