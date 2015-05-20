@@ -352,17 +352,17 @@ function getRoomsAsPanels()
 							</div>
 						</div>
 					</div>';
-				}
 			}
+		}
 
 			$conn->close();
 			echo $roomHTML;
-		}
+	}
 		else
 		{
 			echo "house id not set";
 		}
-	}
+}
 
 	function getIcons()
 	{
@@ -406,9 +406,9 @@ function getRoomsAsPanels()
 			while($row = $result->fetch_assoc())
 			{
 				$propertyList .= "<option value=";
-				$propertyList .= "$row['colourID']";
+				$propertyList .= "$row[colourID]";
 				$propertyList .= ">";
-				$propertyList .= "$row['unoccupied']";
+				$propertyList .= "$row[unoccupied]";
 				$propertyList .= "</option>";
 			}
 		}
