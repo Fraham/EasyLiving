@@ -9,6 +9,12 @@
 		if (!$conn->query($statement)) {
 			echo "Error: " . $statement . "<br>" . $conn->error;
 		}
+		
+		$logStatement = "DELETE FROM log WHERE log.sensorID = $id";
+		if (!$conn->query($logStatement)) {
+			echo "Error: " . $logStatement . "<br>" . $conn->error;
+		}
+		
 		$conn->close();
 	}
 ?>
