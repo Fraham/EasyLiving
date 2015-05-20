@@ -106,7 +106,7 @@
 		
 		
 	</script>
-
+<?php } ?>
 <?php include $path."footer.php"; ?>
 
 <?php else : ?>
