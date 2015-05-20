@@ -100,7 +100,6 @@
 			$.post('index.php', $('#addRoomForm').serialize())
 			.done(function( data ) {
 				location.reload();
-				console.log(data);
 			});
 		};
 		

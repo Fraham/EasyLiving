@@ -66,7 +66,6 @@ function changeGraph(url)
       
       for(var j = 0; j < obj.data.length; j++) 
       {
-        console.log(obj.data[j]);
         var tempArray = [];
         var date = Date.UTC(obj.data[j][0], obj.data[j][1] - 1, obj.data[j][2], obj.data[j][3], obj.data[j][4], obj.data[j][5]);
         

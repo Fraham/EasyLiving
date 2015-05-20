@@ -68,7 +68,6 @@
 	{
 		$.post('newHouse.php', $('#registration_form').serialize())
 		.done(function( data ) {
-			console.log(data);
 			location.reload();
 		});
 	};
