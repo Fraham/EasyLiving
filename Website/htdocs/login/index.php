@@ -78,13 +78,20 @@ if (login_check($conn) == true) {
   <script>
   function verify(){
     if(document.getElementById("email").value != null && document.getElementById("password")!= null){
-      var e-mail = document.getElementById("email").value;
+      
+      var email = document.getElementById("email").value;
       var password = document.getElementById("password").value;
 
     }
   }
 
   email.addEventListener("keypress", function() {
+    if(e.keyCode == 13){
+      document.getElementById('login_button').click();
+    }
+  });
+  
+    password.addEventListener("keypress", function() {
     if(e.keyCode == 13){
       document.getElementById('login_button').click();
     }

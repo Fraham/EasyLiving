@@ -45,6 +45,59 @@ require_once('../src/classes/PropertyClass.php');
 		</a>
 		</div>
 	</div>
+	
+	<div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h2 class="modal-title" id="myModalLabel">Edit Property</h2>
+				</div>
+				<div class="modal-body row">
+					<div class="form-group col-lg-12">
+						<form class="form-horizontal" action="" method="post" id="editProperties">
+							<div class="form-group">
+								<label for="propertyID" class="col-sm-2 control-label">Property ID</label>
+								<div class="col-sm-10">
+							    	<input type="text" class="form-control" id="propertyID" readonly>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="password" class="col-sm-2 control-label">Password</label>
+								<div class="col-sm-10">
+							    	<input type="text" class="form-control" id="password">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="defaultName" class="col-sm-2 control-label">Default Name</label>
+								<div class="col-sm-10">
+							    	<input type="text" class="form-control" id="defaultName">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="userName" class="col-sm-2 control-label">User Name</label>
+								<div class="col-sm-10">
+							    	<input type="text" class="form-control" id="userName">
+								</div>
+							</div>													
+							<input type="button" value="Edit Property" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
+							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		function submitForm()
+		{
+			$.post('editProperty.php', $('#editProperties').serialize())
+			.done(function( data ) {
+				location.reload();
+			});
+		};
+	</script>
 
 <?php
 include $path."footer.php";
