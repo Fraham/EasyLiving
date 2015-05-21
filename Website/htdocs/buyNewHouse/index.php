@@ -9,21 +9,27 @@
 <div class = "col-lg-6">
 	<div class = "panel panel-default">
 		<div class = "panel-heading"> <h2> New Property Preferences </h2> </div>
-		<div class = "panel-body">
+			<div class = "panel-body">
 			 <form method="post" id="registration_form" action="">
-                Property Name: <input type="text"
-                                name="pName"
-                                id="pName"
-                                class="form-control danger"/><br>
-                Password: <input type="password"
-                                 name="password"
-                                 id="password"
-                                 class="form-control"
-                                 /><br>
-                Confirm password: <input type="password"
-                                         name="confirmpwd"
-                                         id="confirmpwd"
-                                         class="form-control" /><br>
+				 <div class="control-group">
+        			<label class="control-label" for="name">Property Name</label>
+					<div class="controls">
+                		<input type="text" name="pName" id="pName" class="form-control danger" required/>
+					</div>
+				</div>
+				<div class="control-group">
+        			<label class="control-label" for="name">Password</label>
+					<div class="controls">
+                		<input type="password" name="password" id="password" class="form-control" required/>
+					</div>
+				</div>
+				<div class="control-group">
+        			<label class="control-label" for="name">Confirm Password</label>
+					<div class="controls">
+                		<input type="password" name="confirmpwd" id="confirmpwd" class="form-control" required />
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
@@ -32,7 +38,7 @@
 		<div class = "panel panel-default">
 			<div class = "panel-heading"> <h2> Payment Details </h2> </div>
 			<div class = "panel-body">
-				<form method="post" name="registration_form" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>">
+				<form method="post" name="registration_form2" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>">
                 Name on Card: <input type="text"
                                 name="cardName"
                                 id="email"
