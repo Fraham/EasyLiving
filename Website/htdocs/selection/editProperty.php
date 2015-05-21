@@ -7,8 +7,6 @@
 	$propertyPassword = $_POST['password'];
 	
 	include "../src/includes/functions.php";
-	
-	echo "test";
 
 	sec_session_start();
 	

@@ -89,6 +89,22 @@ HTML;
 		}
 		return $sensorBlock;
 	}
+	
+	public static function updateSensor($sensorID, $name, $messageOn, $messageOff, $roomID)
+	{
+		require "../src/connect.php";
+  
+      	$insertStatement = "UPDATE sensors
+      	SET name = '$name', messageOn = '$messageOn' , messageOff = '$messageOff', roomID = $roomID
+      	WHERE sensorID = '$sensorID'";
+  
+      	if (!$conn->query($insertStatement)) {
+			echo "Error: " . $insertStatement . "<br>" . $conn->error;
+		}
+	}
+
 }
+
+
 
 ?>

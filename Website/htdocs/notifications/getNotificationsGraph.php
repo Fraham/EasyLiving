@@ -221,7 +221,7 @@ function getSensorBtns($room)
 
 	$userID = $_SESSION['user_id'];
 
-	$statement = "SELECT sensors.name, sensors.messageOn, sensors.messageOff, sensors.sensorID, room.dName FROM sensors
+	$statement = "SELECT sensors.roomID, sensors.name, sensors.messageOn, sensors.messageOff, sensors.sensorID, room.dName FROM sensors
 	INNER JOIN room
 	ON room.roomID = sensors.roomID
 	INNER JOIN user_households
@@ -239,39 +239,7 @@ function getSensorBtns($room)
 
 				$sensorList .= <<<HTML
 				<div class="col-lg-6">
-					<a href="" class="btn btn-default btn-block" style="margin: 5px;" data-toggle="modal" data-target="#EditModal{$count}">{$row["name"]}</a>
-				</div>
-
-				<div class="modal fade" id="EditModal{$count}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h2 class="modal-title" id="myModalLabel">Edit Sensor: {$row["dName"]} - {$row["name"]}</h2>
-								<br>
-								<button name="delete" class="btn btn-lg btn-danger btn-block" onclick="deleteSensor('{$row["sensorID"]}')"> Delete </button>
-							</div>
-							<div class="modal-body row">
-								<div class="form-group col-lg-12">
-									<form action="" method="post" name="login_form">
-										<label>Sensor Name:</label> 
-										<input type="text" placeholder="{$row["name"]}"  class="form-control"/>
-										<br>  
-                    <label>Message when activated:</label> 
-                    <input type="text" placeholder="{$row["messageOn"]}" class="form-control"/>
-                    <br>  
-                    <label>Message when deactivated:</label> 
-                    <input type="text" placeholder="{$row["messageOff"]}"  class="form-control"/>
-                    <br>  
-										<label>Room</label>
-										<select class="form-control"><?php getRooms(0); ?></select>
-										<br>
-										<input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" onclick="formhash(this.form, this.form.password);" />
-										<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
+					<a class="btn btn-default btn-block" style="margin: 5px;" onClick="openForm('{$row['sensorID']}', '{$row['name']}', '{$row['messageOn']}', '{$row['messageOff']}', '{$row['roomID']}')">{$row["name"]}</a>
 				</div>
 HTML;
 			}
