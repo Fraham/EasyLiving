@@ -1,5 +1,5 @@
 <?php 
-	include "../src/classes/roomClass.php"
+	include "../src/classes/roomClass.php";
 
 	$roomID = $_POST['roomID'];
 	$roomName = $_POST['name'];

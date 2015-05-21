@@ -43,7 +43,12 @@ class Room
 		require "../src/connect.php";
 
 		$statement = "UPDATE room
-		SET name='$name', colourID='$colourID',iconID='$iconID'";
+		SET dName='$name', colourID='$colourID',iconID='$iconID'
+		WHERE roomID = '$roomID'";
+		
+		if (!$conn->query($statement)) {
+			echo "Error: " . $statement . "<br>" . $conn->error;
+		}
 	}
 }
 ?>

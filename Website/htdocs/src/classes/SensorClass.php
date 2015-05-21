@@ -95,7 +95,7 @@ HTML;
 		require "../src/connect.php";
   
       	$insertStatement = "UPDATE sensors
-      	SET name = '$name', messageOn = '$messageOn' , messageOff = '$messageOff', roomID = $roomID
+      	SET name = '$name', messageOn = '$messageOn' , messageOff = '$messageOff', roomID = '$roomID'
       	WHERE sensorID = '$sensorID'";
   
       	if (!$conn->query($insertStatement)) {

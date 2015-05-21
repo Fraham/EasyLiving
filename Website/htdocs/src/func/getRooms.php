@@ -75,7 +75,7 @@ if (isset($_SESSION['house_id']))
 			$roomHTML .= <<<HTML
 			<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
 				<div class='panel panel-{$color}'>
-					<div class='panel-heading' onClick="openRoomForm('{$row['dName']}', '{$row['unoccupied']}', '{$row['icon']}')" style="cursor:pointer">
+					<div class='panel-heading' onClick="openRoomForm('{$row['roomID']}', '{$row['dName']}', '{$row['unoccupied']}', '{$row['icon']}')" style="cursor:pointer">
 						<div class='row'>
 							<div class='col-xs-3'>
 								<i class='fa fa-{$row["icon"]} fa-4x'></i>

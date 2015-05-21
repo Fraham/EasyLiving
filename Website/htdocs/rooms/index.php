@@ -65,7 +65,7 @@
 				<div class="modal-body row">
 					<div class="form-group col-lg-12">
 						<form action="" method="post" id="addRoomForm">
-							<label>Room Name:</label> <input type="text" id="Name" name="name" class="form-control"/>
+							<label>Room Name</label> <input type="text" id="Name" name="name" class="form-control"/>
 							<br>
 							<label>Colour</label>
 							<select class="form-control" name="colour">
@@ -152,6 +152,14 @@
 		{
 			$.post('index.php', $('#addRoomForm').serialize())
 			.done(function( data ) {
+				location.reload();
+			});
+		};
+		function editSensor()
+		{
+			$.post('editRoom.php', $('#editRoomForm').serialize())
+			.done(function( data ) {
+				console.log(data);
 				location.reload();
 			});
 		};
