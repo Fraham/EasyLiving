@@ -75,18 +75,16 @@ if (isset($_SESSION['house_id']))
 			$roomHTML .= <<<HTML
 			<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
 				<div class='panel panel-{$color}'>
-					<a data-toggle="modal" data-target="#EditRoomModal{$count}">	
-						<div class='panel-heading'>
-							<div class='row'>
-								<div class='col-xs-3'>
-									<i class='fa fa-{$row["icon"]} fa-4x'></i>
-								</div>
-								<div class='col-xs-9 text-right'>
-									<div class='huge' name=''>{$row["dName"]}</div>
-									<div>{$state}</div>
+					<div class='panel-heading' data-toggle="modal" data-target="#EditRoomModal{$count}" style="cursor:pointer">
+						<div class='row'>
+							<div class='col-xs-3'>
+								<i class='fa fa-{$row["icon"]} fa-4x'></i>
 							</div>
+							<div class='col-xs-9 text-right'>
+								<div class='huge' name=''>{$row["dName"]}</div>
+								<div>{$state}</div>
 						</div>
-					</a>
+					</div>
 				</div>
 				<div class='panel-body'>
 					{$sensorHTML}
@@ -109,7 +107,7 @@ if (isset($_SESSION['house_id']))
 										<br>
 										<label>Colour</label>
 										<select class="form-control" name="colour">
-											<?php include "../../notifications/getNotificationsGraph.php";
+											<?php include "../notifications/getNotificationsGraph.php";
 											getRoomColours(); ?>
 										</select>
 										<br>
