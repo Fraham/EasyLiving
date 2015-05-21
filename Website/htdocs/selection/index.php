@@ -16,6 +16,7 @@ require_once('../src/classes/PropertyClass.php');
 							<th>Password</th>
 							<th>Default Name</th>
 							<th>User Name</th>
+							<th>Edit</th>
 						</tr>
 					</thead>
 					<?php
@@ -55,29 +56,29 @@ require_once('../src/classes/PropertyClass.php');
 				</div>
 				<div class="modal-body row">
 					<div class="form-group col-lg-12">
-						<form class="form-horizontal" action="" method="post" id="editProperties">
+						<form class="form-horizontal" action="" method="post" id="editProperties" name="editProperties">
 							<div class="form-group">
 								<label for="propertyID" class="col-sm-2 control-label">Property ID</label>
 								<div class="col-sm-10">
-							    	<input type="text" class="form-control" id="propertyID" readonly>
+							    	<input type="text" class="form-control" id="propertyID" name="propertyID" readonly>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">Password</label>
 								<div class="col-sm-10">
-							    	<input type="text" class="form-control" id="password">
+							    	<input type="text" class="form-control" id="password" name="password">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="defaultName" class="col-sm-2 control-label">Default Name</label>
 								<div class="col-sm-10">
-							    	<input type="text" class="form-control" id="defaultName">
+							    	<input type="text" class="form-control" id="defaultName" name="defaultName">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="userName" class="col-sm-2 control-label">User Name</label>
 								<div class="col-sm-10">
-							    	<input type="text" class="form-control" id="userName">
+							    	<input type="text" class="form-control" id="userName" name="userName">
 								</div>
 							</div>													
 							<input type="button" value="Edit Property" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
@@ -90,6 +91,16 @@ require_once('../src/classes/PropertyClass.php');
 	</div>
 	
 	<script>
+		function showForm(propertyID, password, defaultName, userName)
+		{
+			document.forms["editProperties"]["propertyID"].value = propertyID;
+			document.forms["editProperties"]["password"].value = password;
+			document.forms["editProperties"]["defaultName"].value = defaultName;
+			document.forms["editProperties"]["userName"].value = userName;
+			
+			$('#AddModal').modal('show');	
+		}
+		
 		function submitForm()
 		{
 			$.post('editProperty.php', $('#editProperties').serialize())

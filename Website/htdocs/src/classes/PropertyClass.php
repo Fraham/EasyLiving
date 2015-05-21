@@ -49,6 +49,7 @@ class Property
     <td>{$this->password}</td>
     <td>{$this->defaultName}</td>
     <td>{$this->userName}</td>
+    <td><input type="button" value="Edit" class="btn btn-lg btn-danger btn-block" onClick='showForm("{$this->houseID}", "{$this->password}", "{$this->defaultName}", "{$this->userName}")'/></td>
     </tr>
     </tbody>
 HTML;
