@@ -133,6 +133,27 @@ HTML;
 				echo "Error: " . $insertStatement . "<br>" . $conn->error;
 			}
   }
+  
+  public static function updateProperty($userID, $defaultName, $userName, $propertyPassword, $propertyID)
+  {
+      require "../src/connect.php";
+  
+      $insertStatement = "UPDATE house
+      SET house_password = '$propertyPassword', dName = '$defaultName'
+      WHERE houseID = '$propertyID'";
+  
+      if (!$conn->query($insertStatement)) {
+				echo "Error: " . $insertStatement . "<br>" . $conn->error;
+			}
+  
+      $insertStatement = "UPDATE user_households
+      SET houseName = '$userName'
+      WHERE userID = '$userID' AND houseID = '$propertyID'";
+  
+      if (!$conn->query($insertStatement)) {
+				echo "Error: " . $insertStatement . "<br>" . $conn->error;
+			}
+  }
 }
 
 ?>

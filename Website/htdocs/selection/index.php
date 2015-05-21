@@ -105,6 +105,7 @@ require_once('../src/classes/PropertyClass.php');
 		{
 			$.post('editProperty.php', $('#editProperties').serialize())
 			.done(function( data ) {
+				//console.log(data);
 				location.reload();
 			});
 		};

@@ -11,8 +11,5 @@
 	
 	$userID = $_SESSION['user_id'];
 
-	Property::saveProperty($userID, $propertyName, $housePassword, $propertyID);
-	
-	echo "done";
-  
+	Property::saveProperty($userID, $propertyName, $housePassword, $propertyID);  
 ?>
