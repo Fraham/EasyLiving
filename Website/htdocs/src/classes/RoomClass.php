@@ -37,5 +37,13 @@ class Room
 		
 		echo $roomList;
 	}
+
+	public static function updateRoom($roomID, $name, $colourID, $iconID)
+	{
+		require "../src/connect.php";
+
+		$statement = "UPDATE room
+		SET name='$name', colourID='$colourID',iconID='$iconID'";
+	}
 }
 ?>

@@ -75,7 +75,7 @@ if (isset($_SESSION['house_id']))
 			$roomHTML .= <<<HTML
 			<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
 				<div class='panel panel-{$color}'>
-					<div class='panel-heading' data-toggle="modal" data-target="#EditRoomModal{$count}" style="cursor:pointer">
+					<div class='panel-heading' onClick="openRoomForm('{$row['dName']}', '{$row['unoccupied']}', '{$row['icon']}')" style="cursor:pointer">
 						<div class='row'>
 							<div class='col-xs-3'>
 								<i class='fa fa-{$row["icon"]} fa-4x'></i>
@@ -91,39 +91,6 @@ if (isset($_SESSION['house_id']))
 				</div>
 			</div>
 		</div>
-
-		<div class="modal fade" id="EditRoomModal{$count}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h2 class="modal-title" id="myModalLabel">Edit Room: {$row["dName"]}</h2>
-								<br>
-								<button name="delete" class="btn btn-lg btn-danger btn-block" onclick="deleteRoom('{$row["roomID"]}')"> Delete </button>
-							</div>
-							<div class="modal-body row">
-								<div class="form-group col-lg-12">
-									<form action="" method="post" name="login_form">
-										<label>Room Name:</label> <input type="text" id="Name" placeholder="{$row["dName"]}" name="name" class="form-control"/>
-										<br>
-										<label>Colour</label>
-										<select class="form-control" name="colour">
-											<?php include "../notifications/getNotificationsGraph.php";
-											getRoomColours(); ?>
-										</select>
-										<br>
-										<label>Icon</label>
-										<select class="form-control" name="icon">
-											<?php getIcons(); ?>
-										</select>
-										<br>
-										<input type="button" value="Save Changes" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
-										<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 HTML;
 		$count++;
 		}

@@ -73,7 +73,7 @@
 	{
 		if($('#password').val()!=$('#confirmpwd').val())
 		{
-      		alert("Password don't match");
+      		alert("Passwords don't match. Please try again");
 		}
 		else
 		{
