@@ -109,8 +109,6 @@ class Event
 					<button class = "btn btn-danger btn-lg" style="margin-top:0px">Add sensor</button>
 					<br>
 					<button class = "btn btn-danger btn-lg" style="margin-top:10px">Add condition</button>
-					<br>
-					<button class = "btn btn-danger btn-lg" style="margin-top:10px">Add device to be activated</button>
 				</div>
 			</div>
 		</div>
