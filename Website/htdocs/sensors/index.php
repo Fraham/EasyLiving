@@ -75,7 +75,7 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						
 					<h2 class="modal-title" id="myModalLabel">Edit Sensor</h2>
-					<button name="delete" class="btn btn-lg btn-danger btn-block" onclick=""> Delete </button>
+					<button name="delete" class="btn btn-lg btn-danger btn-block" onclick="deleteSensor()"> Delete </button>
 				</div>
 				<div class="modal-body row">
 					<div class="form-group col-lg-12">
@@ -128,7 +128,7 @@
 	</div>
 
 	<script>
-		function deleteSensor(ID)
+		function deleteSensor()
 		{
 			$.post("deleteSensor.php", { func: "delete", id: ID })
 			.done(function( data ) {
