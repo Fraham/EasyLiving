@@ -130,8 +130,8 @@
 	<script>
 		function deleteSensor()
 		{
-      var ID = document.getElementbyID("sensorID").value;
-      alert("sesnorID"+ID);
+      		var ID = document.getElementById("sensorID").value;
+			  
 			$.post("deleteSensor.php", { func: "delete", id: ID })
 			.done(function( data ) {
 				location.reload();
@@ -148,7 +148,6 @@
 		{
 			$.post('editSensor.php', $('#editSensorForm').serialize())
 			.done(function( data ) {
-				//console.log(data);
 				location.reload();
 			});
 		};
