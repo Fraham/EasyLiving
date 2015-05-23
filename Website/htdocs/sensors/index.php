@@ -130,8 +130,8 @@
 	<script>
 		function deleteSensor()
 		{
-      alert("helllo!!!!!");
       var ID= document.getElementbyID("sensorID").value;
+      alert(ID);
 			$.post("deleteSensor.php", { func: "delete", id: ID })
 			.done(function( data ) {
 				location.reload();
