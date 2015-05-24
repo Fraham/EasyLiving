@@ -10,7 +10,7 @@ if (isset($_SESSION['house_id']))
 
 	$houseID = $_SESSION['house_id'];
 
-	$statement = "SELECT R.dName, R.roomID, RC.occupied, RC.unoccupied, I.icon, R.roomID
+	$statement = "SELECT R.dName, R.roomID, RC.occupied, RC.colourID, RC.unoccupied, I.icon, I.iconID, R.roomID
 									FROM room as R
 									INNER JOIN room_colour as RC
 									ON R.colourID = RC.colourID
@@ -99,7 +99,7 @@ if (isset($_SESSION['house_id']))
 			$roomHTML .= <<<HTML
 			<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
 				<div class='panel panel-{$color}'>
-					<div class='panel-heading' onClick="openRoomForm('{$row['roomID']}', '{$row['dName']}', '{$row['unoccupied']}', '{$row['icon']}')" style="cursor:pointer">
+					<div class='panel-heading' onClick="openRoomForm('{$row['roomID']}', '{$row['dName']}', '{$row['colourID']}', '{$row['iconID']}')" style="cursor:pointer">
 						<div class='row'>
 							<div class='col-xs-3'>
 								<i class='fa fa-{$row["icon"]} fa-4x'></i>
