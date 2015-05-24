@@ -46,7 +46,7 @@
 				<div class="modal-body row">
 					<div class="form-group col-lg-12">
 						<form action="" method="post" id="addSensorForm">
-							<label>Sensor ID:</label> <input type="text" name="id" maxlength="6" autofocus class="form-control"/>
+							<label>Sensor ID:</label> <input type="text" id="id" name="id" maxlength="6" autofocus class="form-control"/>
 							<br>
 							<label>Sensor Name:</label> <input type="text" id="Name" name="name" class="form-control"/>
 							<br>
@@ -150,11 +150,64 @@
 		};
 		function submitForm()
 		{
-			$.post('index.php', $('#addSensorForm').serialize())
-			.done(function( data ) {
-				location.reload();
+			var sensorID = document.getElementById("id").value;
+			
+			console.log(sensorID);
+			
+			$.post("checkSensor.php", { sensorID: sensorID })
+			.done(function( data ) 
+			{
+				if (data == "sensor is locked")
+				{
+					alert("Sensor Locked");
+					return;
+				}
+				else if (data == "sensor is blocked")
+				{
+					alert("Sensor Blocked");
+					return;
+				}
+				else if (data == "unknown sensor")
+				{
+					alert("1 - Unknown Sensor");
+					return;
+				}
+				else
+				{
+					$.post('blockSensor.php',{ sensorID: sensorID })
+					.done(function( data ) 
+					{
+						if (data == "not able to blocked")
+						{
+							alert("Not able to block the sensor");
+							return;
+						}
+						else if (data == "unknown sensor")
+						{
+							alert("2 - Unknown Sensor");
+							return;
+						}
+						else
+						{
+							alert("Sensor is now blocked for 3 minutes");
+							//open model
+							var startTime = Date.now();
+							var done = false;
+			
+							while (Date.now() - startTime) < 180*1000 & !done) 
+							{
+	    						done = checkedLocked();
+							}
+							
+						}
+					});
+				}
 			});
 		};
+		function checkedLocked()
+		{
+			
+		}
 		function editSensor()
 		{
 			$.post('editSensor.php', $('#editSensorForm').serialize())

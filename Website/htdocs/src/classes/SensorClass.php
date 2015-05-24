@@ -102,6 +102,96 @@ HTML;
 			echo "Error: " . $insertStatement . "<br>" . $conn->error;
 		}
 	}
+	
+	public static function checkSensor($sensorID)
+	{
+		require "../src/connect.php";
+		
+		$statement = "SELECT assigned
+					FROM sensors
+					WHERE sensorID = '$sensorID'";
+					
+		$result = $conn->query($statement);
+	
+		if ($result->num_rows > 0)
+		{
+		  $row = $result->fetch_assoc();
+		  
+		  if (strcmp($row['assigned'], "0") === 0)
+		  {
+			  echo "sensor is free";
+		  }
+		  else if (strcmp($row['assigned'], "1") === 0)
+		  {
+			  echo "sensor is blocked";
+		  }
+		  else if (strcmp($row['assigned'], "2") === 0)
+		  {
+			  echo "sensor is locked";
+		  }		  
+		}
+		else
+		{
+			echo "unknown sensor";
+		}
+	}
+	
+	public static function blockSensor($sensorID)
+	{
+		require "../src/connect.php";
+		
+		$statement = "SELECT assigned
+					FROM sensors
+					WHERE sensorID = '$sensorID'";
+					
+		$result = $conn->query($statement);
+	
+		if ($result->num_rows > 0)
+		{
+		  $row = $result->fetch_assoc();
+		  
+		  if (strcmp($row['assigned'], "0") === 0)
+		  {
+			  $insertStatement = "UPDATE sensors
+      			SET assigned = '1'
+      			WHERE sensorID = '$sensorID'";
+  
+		      if (!$conn->query($insertStatement)) 
+			  {
+				echo "Error: " . $insertStatement . "<br>" . $conn->error;
+			  }
+			  else
+			  {
+				echo "blocked";
+			  }			
+		  }
+		  else
+		  {
+			  echo "not able to blocked";
+		  }
+		}
+		else
+		{
+			echo "unknown sensor";
+		}
+	} 
+	
+	public static function addSensor($sensorID, $name, $messageOn, $messageOff, $roomID)
+	{
+		require "../src/connect.php";
+  
+      	$insertStatement = "UPDATE sensors
+      	SET name = '$name', messageOn = '$messageOn' , messageOff = '$messageOff', roomID = '$roomID, assigned = '2'
+      	WHERE sensorID = '$sensorID'";
+  
+      	if (!$conn->query($insertStatement)) {
+			echo "Error: " . $insertStatement . "<br>" . $conn->error;
+		}
+		else
+		{
+			echo "assigned";
+		}
+	}
 
 }
 
