@@ -46,7 +46,7 @@
 				<div class="modal-body row">
 					<div class="form-group col-lg-12">
 						<form action="" method="post" id="addSensorForm">
-							<label>Sensor ID:</label> <input type="number" maxlength="6" name="id" required autofocus class="form-control"/>
+							<label>Sensor ID:</label> <input type="text" name="id" maxlength="6" autofocus class="form-control"/>
 							<br>
 							<label>Sensor Name:</label> <input type="text" id="Name" name="name" class="form-control"/>
 							<br>
