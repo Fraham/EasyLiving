@@ -169,8 +169,8 @@
 		{
 			document.forms["editRoomForm"]["roomID"].value = roomID;
 			document.forms["editRoomForm"]["name"].value = name;
-			document.forms["editRoomForm"]["colour"].value =  colourID;
-			document.forms["editRoomForm"]["icon"].value =  iconID;
+			$("#colour")[0].selectedIndex = parseInt(colourID) - 1;
+			$("#icon")[0].selectedIndex =  parseInt(iconID) - 1;
 			
 			$('#editRoomModal').modal('show');
 		};
