@@ -3,46 +3,29 @@
 	{
 		require "src/connect.php";
 
-		$statement = "UPDATE sensors SET state = '".$_POST['msg']."' WHERE sensorID = '".$_POST['id']."';";
+		if(strlen($_POST["id"]) == 1)
+		{
+			$statement = "UPDATE sensors SET state = '".$_POST['msg']."' WHERE sensorID = '".$_POST['id']."';";
 
-		if (!$conn->query($statement)) {
-			echo "Error: " . $statement . "<br>" . $conn->error;
+			if (!$conn->query($statement)) 
+				echo "Error: " . $statement . "<br>" . $conn->error;
+
+			$sql = "INSERT INTO log (sensorID, state)
+			VALUES (".$_POST['id'].", ".$_POST['msg'].")";
 		}
+		else if ($_POST["msg"] == "allow")
+			$sql = "UPDATE sensors SET assigned = 2 WHERE sensorID = '".$_POST['id']."' AND assigned = 1;";
 
-		$sql = "INSERT INTO log (sensorID, state)
-		VALUES (".$_POST['id'].", ".$_POST['msg'].")";
-
-		if (!$conn->query($sql)) {
+		if (!$conn->query($sql)) 
 			echo "Error: " . $sql . "<br>" . $conn->error;
-		}
 
 		$conn->close();
-		//notify();
-		//echo date('Y-m-d H:i:s');
 	}
 
-	function notify()
-	{
-		$url = "dynamicTest.php";
-		$data = array('update' => 'true');
-
-		$options = array(
-			'http' => array(
-				'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-				'method'  => 'POST',
-				'content' => http_build_query($data),
-			),
-		);
-		$context  = stream_context_create($options);
-		$result = file_get_contents($url, false, $context);
-
-		var_dump($result);
-	}
-
-	function here()
+	function display()
 	{
 		$file = 'arduino.txt';
-		$current = "here";
+		$current = "pressed";
 		file_put_contents($file, $current);
 	}
 ?>

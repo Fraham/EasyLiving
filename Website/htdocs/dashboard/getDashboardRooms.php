@@ -24,6 +24,10 @@ if (isset($_SESSION['house_id']))
 	{
 		while($row = $result->fetch_assoc())
 		{
+			if ($row['roomID'] == 1){
+			}
+			else{
+			
 			$occupiedStatement = "SELECT state, sensorID FROM sensors
 				INNER JOIN room
 				ON sensors.roomID = room.roomID
@@ -117,6 +121,7 @@ if (isset($_SESSION['house_id']))
 			</div>
 		</div>
 HTML;
+		}
 		}
 	}
 
