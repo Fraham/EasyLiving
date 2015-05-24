@@ -126,6 +126,17 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="VerifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="myModalLabel">Verify Sensor</h2>
+					<h3>Please press the button on the sesnor to verify it to the Property</h3>
+					<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script>
 		function deleteSensor()
