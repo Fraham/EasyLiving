@@ -76,7 +76,7 @@ if (isset($_SESSION['house_id']))
 					
 					$theDate = strtotime($lastSeenRow['date']);
 					
-					$state .= date("H:i l d-m", $theDate);
+					$state .= date("h:ia l d", $theDate);
 				}
 				else
 				{
