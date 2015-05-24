@@ -56,7 +56,31 @@ if (isset($_SESSION['house_id']))
 			else
 			{
 				$color = $row["unoccupied"];
-				$state = "Unoccupied";
+				
+				$lastSeenStatement = "SELECT date 
+				FROM log
+				INNER JOIN sensors
+				On sensors.sensorID = log.sensorID
+				INNER JOIN room
+				ON sensors.roomID = room.roomID
+				WHERE room.roomID = $row[roomID] and sensors.sensorID LIKE '01%'
+				ORDER BY logID DESC
+				LIMIT 1";
+				
+				$lastSeenResult = $conn->query($lastSeenStatement);
+				
+				if ($lastSeenResult->num_rows > 0)
+				{
+					$lastSeenRow = $lastSeenResult->fetch_assoc();
+					
+					$state = "Motion last dectected at: ";
+					
+					$state .= $lastSeenRow['date'];
+				}
+				else
+				{
+					$state = "No motion sensor detected";
+				}
 			}
 			
 			include_once ("{$path}../classes/SensorClass.php");

@@ -121,7 +121,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="room" class="col-sm-3 control-label">Icon</label>
+								<label for="icon" class="col-sm-3 control-label">Icon</label>
 								<div class="col-sm-9">
 									<select id="icon" name="icon" class="form-control">
 										<?php 
