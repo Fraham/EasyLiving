@@ -36,15 +36,8 @@ require_once('../src/classes/PropertyClass.php');
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-2">
-			<input type="button" value="Add Property" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#AddPropertyModal" />
-		</div>
-
-		<div class="col-md-2">
-			<a href="../buyNewHouse" class="btn btn-lg btn-danger" onclick="../buyNewHouse" />
-			Buy New Property
-		</a>
-		</div>
+		<button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#AddPropertyModal">Add Property</button>
+		<button href="../buyNewHouse" class="btn btn-lg btn-danger" onclick="../buyNewHouse">Buy New Property</button>
 	</div>
 	
 	<div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

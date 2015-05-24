@@ -58,7 +58,7 @@ $(document).ready(function(){
 						<label>Old Password:</label> <input type="password" id="oldPassword" class="form-control"/>
 						<label>New Password:</label> <input type="password" id="newPassword" class="form-control"/>
 						<label>Confirm Password:</label> <input type="password" id="confirmPassword" class="form-control"/>
-						<input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" onclick="changePassword()" />
+						<input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" onclick="changePassword(<?php echo $_SESSION['user_id']; ?>)" />
 						<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 					</form>
 				</div>
@@ -77,15 +77,14 @@ $(document).ready(function(){
                		<form action="" method="post" id="changeEmail" name="changeEmail">
 		                <label>New Email:</label> <input type="email" id="oldEmail" class="form-control"/>
 		                <label>Confirm New Email:</label> <input type="email" id="newEmail" class="form-control"/>
-		                <input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" onclick="changeEmail()" />
+		                <input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" onclick="changeEmail(<?php echo $_SESSION['user_id']; ?>)" />
 		                <input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 					</form>
             	</div>
           	</div>
         </div>
 	</div>
-</div>
-<script>
+	<script>
 	function changePassword()
 	{
 		if($('#newPassword').val()!=$('#oldPassword').val())
@@ -102,7 +101,7 @@ $(document).ready(function(){
 		}
 	};
 	
-	function changeEmail()
+	function changeEmail(userID)
 	{
 		if($('#newEmail').val()!=$('#oldEmail').val())
 		{
@@ -110,7 +109,9 @@ $(document).ready(function(){
 		}
 		else
 		{
-			$.post('changeEmail.php', $('#changeEmail').serialize())
+			var email = $('#newEmail').val();
+			
+			$.post("changeEmail.php", { email : email, userID: userID })
 			.done(function( data ) {
 				console.log(data);
 				//location.reload();
@@ -119,6 +120,8 @@ $(document).ready(function(){
 		
 	};
 </script>
+</div>
+
 	<?php
 	include $path."footer.php";
 	?>
