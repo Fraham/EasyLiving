@@ -75,7 +75,9 @@ if (isset($_SESSION['house_id']))
 					
 					$state = "Motion last dectected at: ";
 					
-					$state .= $lastSeenRow['date'];
+					$theDate = strtotime($lastSeenRow['date']);
+					
+					$state .= date("h:ia l d", $theDate);
 				}
 				else
 				{
