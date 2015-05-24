@@ -7,23 +7,19 @@
 		{
 			$statement = "UPDATE sensors SET state = '".$_POST['msg']."' WHERE sensorID = '".$_POST['id']."';";
 
-			if (!$conn->query($statement)) {
+			if (!$conn->query($statement)) 
 				echo "Error: " . $statement . "<br>" . $conn->error;
-			}
 
 			$sql = "INSERT INTO log (sensorID, state)
 			VALUES (".$_POST['id'].", ".$_POST['msg'].")";
 		}
 		else if ($_POST["msg"] == "allow")
-		{
-			display();
-		}
+			$sql = "UPDATE sensors SET assigned = 2 WHERE sensorID = '".$_POST['id']."' AND assigned = 1;";
 
-		// if (!$conn->query($sql)) {
-		// 	echo "Error: " . $sql . "<br>" . $conn->error;
-		// }
+		if (!$conn->query($sql)) 
+			echo "Error: " . $sql . "<br>" . $conn->error;
 
-		// $conn->close();
+		$conn->close();
 	}
 
 	function display()
