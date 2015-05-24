@@ -4,7 +4,7 @@ function changeGraph(url)
               chart: 
               {
                   renderTo: 'events',
-                  type: 'spline'
+                  type: 'column'
               },
               credits: 
               {
