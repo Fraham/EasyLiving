@@ -55,18 +55,18 @@ if (login_check($conn) == true) {
             ?>
             <form action="../src/includes/process_login.php" method="post" name="login_form">
                 Email: <input type="text" id="email" name="email" autofocus class="form-control" onkeypress="keyPress(event)" />
+                <br>
                 Password: <input type="password"
                                  name="password"
                                  id="password"
                                  class="form-control"
                                  onkeypress="keyPress(event)" />
-                <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+                <br>
                 <input type="button"
                       id="login_button"
                        value="Login"
                        class="btn btn-lg btn-danger btn-block"
                        onclick="formhash(this.form, this.form.password);" />
-
                 <a href="../createAccount" class="btn btn-lg btn-danger btn-block">Create a New Account</a>
             </form>
           </div>
