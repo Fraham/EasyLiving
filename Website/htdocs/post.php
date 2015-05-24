@@ -19,11 +19,11 @@
 			display();
 		}
 
-		if (!$conn->query($sql)) {
-			echo "Error: " . $sql . "<br>" . $conn->error;
-		}
+		// if (!$conn->query($sql)) {
+		// 	echo "Error: " . $sql . "<br>" . $conn->error;
+		// }
 
-		$conn->close();
+		// $conn->close();
 	}
 
 	function display()
