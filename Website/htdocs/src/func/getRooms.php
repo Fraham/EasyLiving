@@ -22,7 +22,6 @@ if (isset($_SESSION['house_id']))
 
 	if ($result->num_rows > 0)
 	{
-		$count = 0;
 		while($row = $result->fetch_assoc())
 		{
 			$occupiedStatement = "SELECT state, sensorID FROM sensors
@@ -118,7 +117,6 @@ if (isset($_SESSION['house_id']))
 			</div>
 		</div>
 HTML;
-		$count++;
 		}
 	}
 
