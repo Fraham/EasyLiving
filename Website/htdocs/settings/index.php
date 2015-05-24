@@ -54,21 +54,12 @@ $(document).ready(function(){
 			</div>
 			<div class="modal-body row">
 				<div class="form-group col-lg-12" style="margin:10px">
-					<form action="../src/includes/process_login.php" method="post" name="login_form">
-					<label>Old Password:</label> <input type="password" id="oldPassword" class="form-control"/>
-					<br>
-					<label>New Password:</label> <input type="password" id="newPassword" class="form-control"/>
-					<br>
-					<label>Confirm Password:</label> <input type="password" id="confirmPassword" class="form-control"/>
-					<br>
-					<input type="button"
-                       value="Confirm"
-                       class="btn btn-lg btn-danger btn-block"
-                       onclick="formhash(this.form, this.form.password);" />
-					<input type="button"
-                       value="Cancel"
-                       class="btn btn-lg btn-danger btn-block"
-                       data-dismiss="modal" aria-hidden="true" />
+					<form action="" method="post" id="changePassword" name="changePassword">
+						<label>Old Password:</label> <input type="password" id="oldPassword" class="form-control"/>
+						<label>New Password:</label> <input type="password" id="newPassword" class="form-control"/>
+						<label>Confirm Password:</label> <input type="password" id="confirmPassword" class="form-control"/>
+						<input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" onclick="changePassword()" />
+						<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 					</form>
 				</div>
 			</div>
@@ -79,31 +70,55 @@ $(document).ready(function(){
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-					<h2 class="modal-title" id="myModalLabel">Change Email</h2>
-          </div>
-          <div class="modal-body row">
-            <div class="form-group col-lg-12" style="margin:10px">
-               <form action="../src/includes/process_login.php" method="post" name="login_form">
-                <label>New Email:</label> <input type="email" id="oldPassword" class="form-control"/>
-                <br>
-                <label>Confirm New Email:</label> <input type="email" id="newPassword" class="form-control"/>
-				<br>
-                <input type="button"
-                       value="Confirm"
-                       class="btn btn-lg btn-danger btn-block"
-                       onclick="formhash(this.form, this.form.password);" />
-                <input type="button"
-                       value="Cancel"
-                       class="btn btn-lg btn-danger btn-block"
-                       data-dismiss="modal" aria-hidden="true" />
-				</form>
-
-            </div>
-          </div>
+				<h2 class="modal-title" id="myModalLabel">Change Email</h2>
+          	</div>
+        	<div class="modal-body row">
+            	<div class="form-group col-lg-12" style="margin:10px">
+               		<form action="" method="post" id="changeEmail" name="changeEmail">
+		                <label>New Email:</label> <input type="email" id="oldEmail" class="form-control"/>
+		                <label>Confirm New Email:</label> <input type="email" id="newEmail" class="form-control"/>
+		                <input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" onclick="changeEmail()" />
+		                <input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
+					</form>
+            	</div>
+          	</div>
         </div>
 	</div>
 </div>
-
+<script>
+	function changePassword()
+	{
+		if($('#newPassword').val()!=$('#oldPassword').val())
+		{
+      		alert("Passwords don't match. Please try again");
+		}
+		else
+		{
+			$.post('chnagePassoword.php', $('#changePassword').serialize())
+			.done(function( data ) {
+				console.log(data);
+				//location.reload();
+			});
+		}
+	};
+	
+	function changeEmail()
+	{
+		if($('#newEmail').val()!=$('#oldEmail').val())
+		{
+      		alert("Emails don't match. Please try again");
+		}
+		else
+		{
+			$.post('changeEmail.php', $('#changeEmail').serialize())
+			.done(function( data ) {
+				console.log(data);
+				//location.reload();
+			});
+		}
+		
+	};
+</script>
 	<?php
 	include $path."footer.php";
 	?>
