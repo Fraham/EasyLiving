@@ -43,10 +43,10 @@ if (isset($_SESSION['house_id']))
 
 			$roomHTML .= <<<HTML
 			<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
-				<div class='panel panel-info'>
+				<div class='panel panel-inverse'>
 						<div class='row'>
 							<div class='col-xs-3'>
-								<i class='fa fa-default fa-4x'></i>
+								<i class='fa fa-warning fa-4x'></i>
 							</div>
 							<div class='col-xs-9 text-right'>
 								<div class='huge' name=''>Unallocated Sensors</div>
