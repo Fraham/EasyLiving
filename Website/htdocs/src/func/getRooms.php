@@ -53,11 +53,11 @@ if (isset($_SESSION['house_id']))
 							</div>
 						</div>
 					
-				</div>
 				<div class='panel-body'>
 					{$sensorHTML}
 				</div>
 			</div>
+		</div>
 		
 HTML;
 	$count++;
@@ -149,9 +149,9 @@ HTML;
 							<div class='col-xs-9 text-right'>
 								<div class='huge' name=''>{$row["dName"]}</div>
 								<div>{$state}</div>
+							</div>
 						</div>
 					</div>
-				</div>
 				<div class='panel-body'>
 					{$sensorHTML}
 				</div>
