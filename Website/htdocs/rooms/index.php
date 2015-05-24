@@ -93,7 +93,7 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						
 					<h2 class="modal-title" id="myModalLabel">Edit Room</h2>
-					<button name="delete" class="btn btn-lg btn-danger btn-block" onclick=""> Delete </button>
+					<button name="delete" class="btn btn-lg btn-danger btn-block" onclick="deleteRoom()"> Delete </button>
 				</div>
 				<div class="modal-body row">
 					<div class="form-group col-lg-12">
@@ -141,8 +141,10 @@
 
 	<script>
 		
-		function deleteRoom(ID)
+		function deleteRoom()
 		{
+			var ID = document.getElementById("roomID").value;
+			
 			$.post("deleteRoom.php", { func: "delete", id: ID })
 			.done(function( data ) {
 				location.reload();
