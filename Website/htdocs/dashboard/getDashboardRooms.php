@@ -72,10 +72,11 @@ if (isset($_SESSION['house_id']))
 				{
 					$lastSeenRow = $lastSeenResult->fetch_assoc();
 					
-					$state = "Motion last dectected at: ";
+					$state = "Motion last detected at: ";
 					
 					$theDate = strtotime($lastSeenRow['date']);
 					
+					$state .= date("H:i l d-m", $theDate);
 				}
 				else
 				{
