@@ -152,8 +152,8 @@ $('#form_datetime1').datetimepicker({
 </script>
 
 
-
-
+<link href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"/>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -166,7 +166,8 @@ $('#form_datetime1').datetimepicker({
 			<table class="table table-striped table-bordered table-hover" id="notifications">
 
 			<script>
-			$("index.php").ready(function(){
+			
+			$(document).ready(function(){
 					$('#notifications').DataTable();
 			});
 			</script>
