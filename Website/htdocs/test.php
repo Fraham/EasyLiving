@@ -1,15 +1,15 @@
 <?php
 	require "src/connect.php";
 	
+	$id = "070001";
 	
-	
-$getHouseStatement = "SELECT house.houseID
+			$getHouseStatement = "SELECT house.houseID
                 		FROM house
 		                INNER JOIN room
 		                ON house.houseID = room.houseID
 		                INNER JOIN sensors
 		                ON sensors.roomID = room.roomID
-		                WHERE sensors.sensorID = '070001'";
+		                WHERE sensors.sensorID = '".$id."'";
 						
 			$getHouseResult = $conn->query($getHouseStatement);
 				
@@ -47,7 +47,7 @@ $getHouseStatement = "SELECT house.houseID
 			
 			$sql = "UPDATE sensors
 					SET messageOn = '$onMessage', done = '0'
-					WHERE sensors.sensorID = '070001'";
+					WHERE sensors.sensorID = '".$id."'";
 
 		if (!$conn->query($sql)) 
 			echo "Error: " . $sql . "<br>" . $conn->error;
