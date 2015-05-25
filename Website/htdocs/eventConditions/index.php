@@ -62,6 +62,44 @@
 		</div>
 	</div>
 	
+<div class="modal fade" id="AddSensorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h2 class="modal-title" id="myModalLabel">Add Sensor for Alert</h2>
+				</div>
+				<div class="modal-body row">
+					<div class="form-group col-lg-12">
+						<form class="form-horizontal" action="" method="post" id="editProperties" name="editProperties">										
+							<div class="form-group">
+								<label for="icon" class="col-sm-3 control-label">Sensor</label>
+								<div class="col-sm-9">
+									<select class="form-control" name="icon">
+									<?php 
+										include "../notifications/getNotificationsGraph.php";
+										$propertyID = $_SESSION['house_ID'];
+										getSensors(0,0,$propertyID);
+									?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="icon" class="col-sm-3 control-label">Condition</label>
+								<div class="col-sm-9">
+									<select class="form-control" name="icon">
+									</select>
+								</div>
+							</div>
+							<input type="button" value="Add Sensor and Condition" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
+							<input type="reset" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<?php
     	}
 	?>

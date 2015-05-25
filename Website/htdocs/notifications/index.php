@@ -25,7 +25,6 @@ include $path."main.php";
 							<?php
 								getProperties();
 							?>
-
 						</select>
 					</label>
 				</div>

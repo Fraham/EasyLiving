@@ -106,9 +106,7 @@ class Event
 				{$this->name}
 				</div>
 				<div class="panel-body"id="settingsBody">
-					<button class = "btn btn-danger btn-lg" style="margin-top:0px">Add sensor</button>
-					<br>
-					<button class = "btn btn-danger btn-lg" style="margin-top:10px">Add condition</button>
+					<button class = "btn btn-danger btn-lg" data-toggle="modal" data-target="#AddSensorModal">Add sensor</button>
 				</div>
 			</div>
 		</div>
