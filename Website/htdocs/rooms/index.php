@@ -182,12 +182,11 @@
 			
 			if (show == "0")
 			{
-				
+				$("#show").prop("checked", false);
 			}
 			else
 			{
-				document.forms["editRoomForm"]["show"].value =  "1";
-				//document.forms["editRoomForm"]["show"].checked =  false;
+				$("#show").prop("checked", true);
 			}
 			
 			$('#editRoomModal').modal('show');
