@@ -3,7 +3,7 @@
 	{
 		require "src/connect.php";
 
-		if(strlen($_POST["id"]) == 1)
+		if(strlen($_POST["msg"]) == 1)
 		{
 			$statement = "UPDATE sensors SET state = '".$_POST['msg']."' WHERE sensorID = '".$_POST['id']."';";
 
