@@ -5,10 +5,27 @@
 ?>
 
 <?php if (login_check($conn) == true) : ?>
+
+	<?php 
+		if (empty($_POST)===false)
+		{
+			$conditionName = $_POST['conditionName'];
+			require "../src/connect.php";
+
+			$userID = $_SESSION['user_id'];
+			$statement = "INSERT INTO event(name, userID)VALUES ('$conditionName', '$user_id')";
+			if (!$conn->query($statement)) {
+				echo "Error: " . $statement . "<br>" . $conn->error;
+			}
+			$conn->close();
+		}else{
+	?>
+
 	<div class="row">
 		<?php
 			require ("$path../classes/EventClass.php");
 			
+
 			$userID = $_SESSION['user_id'];
 
 			$events = [];
@@ -43,6 +60,10 @@
 			</div>
 		</div>
 	</div>
+	
+	<?php
+    	}
+	?>
 
 	<?php include $path."footer.php";?>
 
