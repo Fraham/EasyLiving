@@ -16,6 +16,7 @@
 					INNER JOIN house
 					ON room.houseID = house.houseID
 					WHERE house.houseID = $houseID
+					AND LEFT(sensors.sensorID, 2) != 01
           ORDER BY logID
 					DESC LIMIT 10";
 
