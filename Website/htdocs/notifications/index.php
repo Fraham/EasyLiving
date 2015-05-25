@@ -176,10 +176,10 @@ $('#form_datetime1').datetimepicker({
 							{ sWidth: "25%", bSearchable: false, bSortable: false },
 							{ sWidth: "25%", bSearchable: false, bSortable: false }
 						],
-						"scrollY": "200px",
-						"scrollCollapse": true,
-						"info": true,
-						"paging": true
+						"bScrollY": "200px",
+						"bScrollCollapse": true,
+						"bInfo": true,
+						"bPaginate": true
 					});
 			});
 			</script>
