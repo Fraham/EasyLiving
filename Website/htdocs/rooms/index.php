@@ -9,21 +9,7 @@
 <?php 
 		if (empty($_POST)===false)
 		{
-			$dName = $_POST['name'];
-			$houseID = $_SESSION['house_id'];
-			$colourID = $_POST['colour'];
-			$iconID = $_POST['icon'];
-			require "../src/connect.php";
-
-			$houseID = $_SESSION['house_id'];
-
-			$statement = "INSERT INTO room 
-						(dName, houseID, colourID, iconID) 
-						VALUES ('$dName', '$houseID', '$colourID', '$iconID')";
-			if (!$conn->query($statement)) {
-				echo "Error: " . $statement . "<br>" . $conn->error;
-			}
-			$conn->close();
+			
 		}else{
 	?>
 	
@@ -65,19 +51,35 @@
 				</div>
 				<div class="modal-body row">
 					<div class="form-group col-lg-12">
-						<form action="" method="post" id="addRoomForm">
-							<label>Room Name</label> <input type="text" id="Name" name="name" class="form-control"/>
-							<br>
-							<label>Colour</label>
-							<select class="form-control" name="colour">
-								<?php getRoomColours(); ?>
-							</select>
-							<br>
-							<label>Icon</label>
-							<select class="form-control" name="icon">
-								<?php getIcons(); ?>
-							</select>
-							<br>
+						<form class="form-horizontal" action="" method="post" id="addRoomForm">
+							<div class="form-group">
+								<label for="Name" class="col-sm-3 control-label">Room Name</label>
+								<div class="col-sm-9">
+									<input type="text" id="Name" name="name" class="form-control"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="colour" class="col-sm-3 control-label">Colour</label>
+								<div class="col-sm-9">
+									<select class="form-control" name="colour">
+										<?php getRoomColours(); ?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="icon" class="col-sm-3 control-label">Icon</label>
+								<div class="col-sm-9">
+									<select class="form-control" name="icon">
+										<?php getIcons(); ?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="show" class="col-sm-3 control-label">Show On Dashboard</label>
+								<div class="col-sm-9">
+									<input name="show" type="checkbox" value="">
+								</div>									
+							</div>
 							<input type="button" value="Add Room" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
 							<input type="reset" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
@@ -153,7 +155,7 @@
 		};
 		function submitForm()
 		{
-			$.post('index.php', $('#addRoomForm').serialize())
+			$.post('addRoom.php', $('#addRoomForm').serialize())
 			.done(function( data ) {
 				location.reload();
 			});
@@ -162,7 +164,6 @@
 		{
 			$.post('editRoom.php', $('#editRoomForm').serialize())
 			.done(function( data ) {
-				console.log(data);
 				location.reload();
 			});
 		};
@@ -170,8 +171,8 @@
 		{
 			document.forms["editRoomForm"]["roomID"].value = roomID;
 			document.forms["editRoomForm"]["name"].value = name;
-			$("#colour")[0].selectedIndex = parseInt(colourID) - 1;
-			$("#icon")[0].selectedIndex =  parseInt(iconID) - 1;
+			document.forms["editRoomForm"]["colour"].selectedIndex = parseInt(colourID) - 1;
+			document.forms["editRoomForm"]["icon"].selectedIndex =  parseInt(iconID) - 1;
 			
 			$('#editRoomModal').modal('show');
 		};
