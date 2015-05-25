@@ -53,7 +53,7 @@
 						<form action="" method="post" id="addConditionForm">
 							<label>Alert Name</label> <input type="text" id="Name" name="conditionName" class="form-control"/>
 							<br>
-							<button class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="createEvent()">Create Alert</button>
+							<input type="button" value="Create Alert" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="createEvent();" />
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
 					</div>
