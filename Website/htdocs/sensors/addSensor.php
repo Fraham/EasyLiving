@@ -1,7 +1,7 @@
 <?php  
 	include "../src/classes/SensorClass.php";
      
-	$sensorID = $_POST['sensorID'];
+	$sensorID = $_POST['id'];
 	$name = $_POST['name']; 
 	$messageOn = $_POST['messageOn'];
 	$messageOff = $_POST['messageOff'];

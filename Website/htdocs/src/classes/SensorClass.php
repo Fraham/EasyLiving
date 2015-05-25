@@ -181,7 +181,7 @@ HTML;
 		require "../src/connect.php";
   
       	$insertStatement = "UPDATE sensors
-      	SET name = '$name', messageOn = '$messageOn' , messageOff = '$messageOff', roomID = '$roomID, assigned = '2'
+      	SET name = '$name', messageOn = '$messageOn' , messageOff = '$messageOff', roomID = '$roomID', state = '0'
       	WHERE sensorID = '$sensorID'";
   
       	if (!$conn->query($insertStatement)) {
@@ -190,6 +190,20 @@ HTML;
 		else
 		{
 			echo "assigned";
+		}
+	}
+	
+	public static function resetSensor($sensorID)
+	{
+		require "../src/connect.php";
+		
+		$insertStatement = "UPDATE sensors
+      			SET assigned = '0'
+      			WHERE sensorID = '$sensorID'";
+  
+		if (!$conn->query($insertStatement)) 
+		{
+			echo "Error: " . $insertStatement . "<br>" . $conn->error;
 		}
 	}
 
