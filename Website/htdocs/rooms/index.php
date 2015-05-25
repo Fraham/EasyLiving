@@ -56,7 +56,10 @@
 								<label for="Name" class="col-sm-3 control-label">Room Name</label>
 								<div class="col-sm-9">
 									<input type="text" id="Name" name="name" class="form-control"/>
+									<br>
+									<p> (Please do not use any punctuation) </p>
 								</div>
+								
 							</div>
 							<div class="form-group">
 								<label for="colour" class="col-sm-3 control-label">Colour</label>
