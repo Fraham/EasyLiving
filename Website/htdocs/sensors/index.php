@@ -109,7 +109,7 @@
 								<div class="col-sm-9">
 									<select id="room" name="room" class="form-control">
 										<?php 
-											require "../src/classes/RoomCLass.php";
+											require "../src/classes/RoomClass.php";
 											
 											$propertyID = $_SESSION['house_id'];
 											
@@ -118,7 +118,7 @@
 									</select>
 								</div>
 							</div>							
-							<input type="button" value="Edit Sensor" class="btn btn-lg btn-danger btn-block" onclick="editSensor()" />
+							<input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" onclick="editSensor()" />
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
 					</div>
