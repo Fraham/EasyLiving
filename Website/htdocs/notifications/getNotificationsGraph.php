@@ -220,13 +220,15 @@ function getSensorBtns($room)
 	require "../src/connect.php";
 
 	$userID = $_SESSION['user_id'];
+	$houseID = $_SESSION['house_id'];
 
 	$statement = "SELECT sensors.roomID, sensors.name, sensors.messageOn, sensors.messageOff, sensors.sensorID, room.dName FROM sensors
 	INNER JOIN room
 	ON room.roomID = sensors.roomID
 	INNER JOIN user_households
 	ON user_households.houseID = room.houseID
-	WHERE user_households.userID = $userID";
+	WHERE user_households.houseID = '$houseID'
+	AND user_households.userID = '$userID'";
 
 	$result = $conn->query($statement);
 
@@ -306,7 +308,9 @@ function getRoomsAsPanels()
 			{
 				$room = $row["dName"];
 
-				if($row['roomID']==1){
+			$unallocated= "Unallocated Sensors";
+			if(strcmp($row['dName'],$unallocated)==0)
+			{
 					
 					$roomHTML .='
 				<div class="col-lg-4 col-md-4 col-sm-4">

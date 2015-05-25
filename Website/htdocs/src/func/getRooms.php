@@ -28,36 +28,36 @@ if (isset($_SESSION['house_id']))
 			if(strcmp($row['dName'],$unallocated)==0)
 			{
 			
-	include_once ("{$path}../classes/SensorClass.php");
-			
-			$sensorHTML = "";
-			
-			$sensors = [];
+				include_once ("{$path}../classes/SensorClass.php");
+				
+				$sensorHTML = "";
+				
+				$sensors = [];
 
-			$sensors = Sensor::getByRoomID($row['roomID']);
+				$sensors = Sensor::getByRoomID($row['roomID']);
 
-			foreach ($sensors as $sensor)
-			{
-				$sensorHTML .= $sensor->getBlockFormat();
-			}			
+				foreach ($sensors as $sensor)
+				{
+					$sensorHTML .= $sensor->getBlockFormat();
+				}			
 
-			$roomHTML .= <<<HTML
-			<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
-				<div class='panel panel-default' style="background-color: #D8D8D8;">
-						<div class='row'>
-							<div class='col-xs-3'>
-								<i class='fa fa-warning fa-4x'></i>
+				$roomHTML .= <<<HTML
+				<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
+					<div class='panel panel-default' style="background-color: #D8D8D8;">
+							<div class='row'>
+								<div class='col-xs-3'>
+									<i class='fa fa-warning fa-4x'></i>
+								</div>
+								<div class='col-xs-9 text-right'>
+									<div class='huge' name=''>Unallocated Sensors</div>
+								</div>
 							</div>
-							<div class='col-xs-9 text-right'>
-								<div class='huge' name=''>Unallocated Sensors</div>
-							</div>
-						</div>
-					
-				<div class='panel-body'>
-					{$sensorHTML}
+						
+					<div class='panel-body'>
+						{$sensorHTML}
+					</div>
 				</div>
 			</div>
-		</div>
 		
 HTML;
 
