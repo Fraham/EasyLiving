@@ -6,14 +6,17 @@
 
 		public static function addCondition($name, $userID)
 		{
-			require "../src/connect.php";
+			require_once "../src/connect.php";
 
-			$statement = "INSERT INTO event
+			$statement = $conn->prepare("INSERT INTO event
 						  (name, userID)
-						  VALUES ('$name','$userID')";
-			if (!$conn->query($statement)) {
-				echo "Error: " . $statement . "<br>" . $conn->error;
-			}
+						  VALUES (?,?)");
+			
+			$statement->bind_param("si", $name, $userID);
+			
+			addNewData ($statement);
+			
+
 			$conn->close();
 
 		}

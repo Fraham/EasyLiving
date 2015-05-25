@@ -28,14 +28,14 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h2 class="modal-title" id="myModalLabel">Add Condition</h2>
+					<h2 class="modal-title" id="myModalLabel">Create Alert</h2>
 				</div>
 				<div class="modal-body row">
 					<div class="form-group col-lg-12">
 						<form action="" method="post" id="addConditionForm">
-							<label>Condition Name</label> <input type="text" name="conditionName" autofocus class="form-control"/>
+							<label>Alert Name</label> <input type="text" name="conditionName" autofocus class="form-control"/>
 							<br>
-							<button class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="createEvent()">Add Condition</button>
+							<button class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="createEvent()">Create Alert</button>
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
 					</div>
