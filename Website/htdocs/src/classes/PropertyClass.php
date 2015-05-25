@@ -46,7 +46,7 @@ class Property
     <tbody>
     <tr class='odd gradeX'>
     <td>{$this->houseID}</td>
-    <td><input type="button" value="Show Password" class"btn btn-danger btn-block" onClick='showPassword("{$this->password}")'/></td> 
+    <td><input type="button" value="Show Password" class="btn btn-danger btn-block" onClick='showPassword("{$this->password}")'/></td> 
     <td>{$this->defaultName}</td>
     <td>{$this->userName}</td>
     <td><input type="button" value="Edit" class="btn btn-danger btn-block" onClick='showForm("{$this->houseID}", "{$this->password}", "{$this->defaultName}", "{$this->userName}")'/></td>
