@@ -139,7 +139,7 @@ HTML;
 			
 			$userID= $_SESSION['user_id'];
 			
-			$showStatement = "SELECT * 
+			$showStatement = "SELECT showRoom 
 				FROM user_room
 				WHERE userID = '$userID'
 				AND roomID = '$row[roomID]'";
@@ -148,7 +148,9 @@ HTML;
 				
 				if ($showResult->num_rows > 0)
 				{
-					$show = "1";
+					$lastSeenRow = $showResult->fetch_assoc();
+					
+					$show = $lastSeenRow['showRoom'];
 				}
 				else
 				{

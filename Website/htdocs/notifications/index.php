@@ -151,8 +151,8 @@ $('#form_datetime1').datetimepicker({
 </script>
 
 
-
-
+<link href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"/>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -161,8 +161,27 @@ $('#form_datetime1').datetimepicker({
 	<!-- /.panel-heading -->
 	<div class="panel-body panel-collapse" id="notiBody">
 		<div class="dataTable_wrapper">
+		
 			<table class="table table-striped table-bordered table-hover" id="notifications">
 
+			<script>
+			
+			$(document).ready(function(){
+					$('#notifications').DataTable({
+						'bSort':false,
+						'aoColumns': [
+							{  bSearchable: false, bSortable: false },
+							{ bSearchable: false, bSortable: false },
+							{ bSearchable: false, bSortable: false },
+							{ bSearchable: false, bSortable: false }
+						],
+						"bScrollY": "200px",
+						"bScrollCollapse": true,
+						"searching": false,
+						"bPaginate": true
+					});
+			});
+			</script>
 			<script>
 			/*refresh();
 
@@ -177,6 +196,7 @@ $('#form_datetime1').datetimepicker({
 		</div>
 	</div>
 
+	
 	<?php
 	include $path."footer.php"
 	?>

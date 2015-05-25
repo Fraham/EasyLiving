@@ -3,8 +3,15 @@
 	{
 		require "../src/connect.php";
 
-		$id = intval($_POST['id']);
-		$statement = "DELETE FROM sensors WHERE sensorID = $id";
+		$id = ($_POST['id']);
+		
+		
+		
+		$statement = "UPDATE sensors 
+					SET assigned = '0', roomID = ''
+					WHERE sensorID = '$id'";
+					
+					echo $statement;
 
 		if (!$conn->query($statement)) {
 			echo "Error: " . $statement . "<br>" . $conn->error;

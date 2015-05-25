@@ -126,7 +126,7 @@
 		INNER JOIN house
 		ON room.houseID = house.houseID ";
 	$statement .= $where;
-	$statement .= " ORDER BY logID DESC LIMIT 20";
+	$statement .= " ORDER BY logID DESC LIMIT 200";
 
 	$result = $conn->query($statement);
 
@@ -166,9 +166,11 @@
 			$tableHtml .= "</tbody>";
 		}
 	}
+	
+	
 	else
 	{
-		$tableHtml .= "There is nothing to dislay.";
+		$tableHtml .= "There is nothing to display.";
 	}
 
 	$conn->close();
