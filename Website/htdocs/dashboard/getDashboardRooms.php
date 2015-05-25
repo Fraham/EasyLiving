@@ -93,7 +93,7 @@ foreach($properties as $property)
 					}
 					else
 					{
-						$state = "No motion sensor detected";
+						$state = "";
 					}			
 				}
 				
