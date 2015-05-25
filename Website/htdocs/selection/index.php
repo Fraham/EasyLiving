@@ -92,8 +92,10 @@ require_once('../src/classes/PropertyClass.php');
 					<form class="form-horizontal" action="" method="post" id="displayPassword" name="displayPassword">
 							<div class="form-group">
 								<h2 class="modal-title" id="myModalLabel2">Your Password</h2>
-									<h3>The password for this property is: </h3>
+									<label for="passwordIntro" class="col-sm-2 control-label">The password for this property is: </label>
+									<div class="col-sm-2">
 										<input type="text" class="form-control" id="thePassword" name="thePassword"> 
+									</div>
 							</div>
 							<input type="button" value="OK" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 					</form>
