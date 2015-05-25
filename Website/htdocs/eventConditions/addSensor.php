@@ -1,5 +1,5 @@
 <?php 
-	include "../src/classes/EventClass.php";
+	include "../src/classes/ConditionClass.php";
 	
 	include "../src/includes/functions.php";
 	
@@ -9,6 +9,6 @@
 
 	$conditionName = $_POST['conditionName'];
 	$userID = $_SESSION['user_id'];
-
-	echo Event::addEvent($conditionName, $userID);
+//not done
+	echo Condition::addCondition($conditionName, $userID);
 ?>

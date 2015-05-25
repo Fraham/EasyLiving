@@ -71,11 +71,11 @@
 				</div>
 				<div class="modal-body row">
 					<div class="form-group col-lg-12">
-						<form class="form-horizontal" action="" method="post" id="editProperties" name="editProperties">										
+						<form class="form-horizontal" action="" method="post" id="addSensorForm" name="addSensorForm">										
 							<div class="form-group">
-								<label for="icon" class="col-sm-3 control-label">Sensor</label>
+								<label for="sensor" class="col-sm-3 control-label">Sensor</label>
 								<div class="col-sm-9">
-									<select class="form-control" name="icon">
+									<select class="form-control" name="sensor">
 									<?php 
 										include "../notifications/getNotificationsGraph.php";
 										$propertyID = $_SESSION['house_ID'];
@@ -85,12 +85,15 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="icon" class="col-sm-3 control-label">Condition</label>
+								<label for="condition" class="col-sm-3 control-label">Condition</label>
 								<div class="col-sm-9">
-									<select class="form-control" name="icon">
+									<select class="form-control" name="condition">
+										<option value=On>On</option>
+										<option value=Off>Off</option>	
 									</select>
 								</div>
 							</div>
+							<input type="hidden" id="eventID" name="eventID" value="">
 							<input type="button" value="Add Sensor and Condition" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
 							<input type="reset" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
@@ -113,6 +116,22 @@
 			.done(function( data ) {
 				location.reload();
 			});
+	}
+	
+	function submitAddSensorForm()
+	{
+		$.post('addSensor.php', $('#addSensorForm').serialize())
+			.done(function( data ) {
+				console.log(data)
+				//location.reload();
+		});
+	}
+	
+	function changeID(eventID)
+	{
+		$("#eventID").val = eventID;
+		
+		$('#AddSensorModal').modal('show');
 	}
 	
 </script>
