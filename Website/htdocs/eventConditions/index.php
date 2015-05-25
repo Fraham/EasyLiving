@@ -13,7 +13,7 @@
 			require "../src/connect.php";
 
 			$userID = $_SESSION['user_id'];
-			$statement = "INSERT INTO event(name, userID)VALUES ('$conditionName', '$user_id')";
+			$statement = "INSERT INTO event(name, userID)VALUES ('$conditionName', '$user_ID')";
 			if (!$conn->query($statement)) {
 				echo "Error: " . $statement . "<br>" . $conn->error;
 			}
