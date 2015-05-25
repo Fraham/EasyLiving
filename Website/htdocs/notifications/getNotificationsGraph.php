@@ -304,12 +304,13 @@ function getRoomsAsPanels()
 		{
 			while($row = $result->fetch_assoc())
 			{
-				$color = $row["unoccupied"];
 				$room = $row["dName"];
 
-				$roomHTML .='
+				if($row['roomID']==1){
+					
+					$roomHTML .='
 				<div class="col-lg-4 col-md-4 col-sm-4">
-					<div class="panel panel-'.$color.'">
+					<div class="panel" style="background-color: #D8D8D8;">
 						<div class="panel-heading" >
 							<strong>';
 								$roomHTML .="$row[dName]";
@@ -320,6 +321,25 @@ function getRoomsAsPanels()
 							</div>
 						</div>
 					</div>';
+				}
+				else
+				{
+					$color = $row["unoccupied"];
+
+					$roomHTML .='
+					<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="panel panel-'.$color.'">
+							<div class="panel-heading" >
+								<strong>';
+									$roomHTML .="$row[dName]";
+									$roomHTML .='</strong>
+								</div>
+								<div class="panel-body"id="chartBody">
+									'.getSensorBtns($room).'
+								</div>
+							</div>
+						</div>';
+				}
 			}
 		}
 
