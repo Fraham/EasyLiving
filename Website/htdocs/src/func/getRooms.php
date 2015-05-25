@@ -135,12 +135,31 @@ HTML;
 			foreach ($sensors as $sensor)
 			{
 				$sensorHTML .= $sensor->getBlockFormat();
-			}			
+			}
+			
+			$userID= $_SESSION['user_id'];
+			
+			$showStatement = "SELECT * 
+				FROM user_room
+				WHERE userID = '$userID'
+				AND roomID = '$row[roomID]'";
+				
+				$showResult = $conn->query($showStatement);
+				
+				if ($showResult->num_rows > 0)
+				{
+					$show = "1";
+				}
+				else
+				{
+					$show = "0";
+				}
+						
 
 			$roomHTML .= <<<HTML
 			<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
 				<div class='panel panel-{$color}'>
-					<div class='panel-heading' onClick="openRoomForm('{$row['roomID']}', '{$row['dName']}', '{$row['colourID']}', '{$row['iconID']}')" style="cursor:pointer">
+					<div class='panel-heading' onClick="openRoomForm('{$row['roomID']}', '{$row['dName']}', '{$row['colourID']}', '{$row['iconID']}', '{$show}')" style="cursor:pointer">
 						<div class='row'>
 							<div class='col-xs-3'>
 								<i class='fa fa-{$row["icon"]} fa-4x'></i>

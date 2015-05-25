@@ -132,7 +132,13 @@
 										?>
 									</select>
 								</div>
-							</div>								
+							</div>
+							<div class="form-group">
+								<label for="show" class="col-sm-3 control-label">Show On Dashboard</label>
+								<div class="col-sm-9">
+									<input id="show" name="show" type="checkbox" value="">
+								</div>									
+							</div>							
 							<input type="button" value="Edit Sensor" class="btn btn-lg btn-danger btn-block" onclick="editSensor()" />
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
@@ -167,12 +173,22 @@
 				location.reload();
 			});
 		};
-		function openRoomForm(roomID, name, colourID, iconID)
+		function openRoomForm(roomID, name, colourID, iconID, show)
 		{
 			document.forms["editRoomForm"]["roomID"].value = roomID;
 			document.forms["editRoomForm"]["name"].value = name;
 			document.forms["editRoomForm"]["colour"].selectedIndex = parseInt(colourID) - 1;
 			document.forms["editRoomForm"]["icon"].selectedIndex =  parseInt(iconID) - 1;
+			
+			if (show == "0")
+			{
+				
+			}
+			else
+			{
+				document.forms["editRoomForm"]["show"].value =  "1";
+				//document.forms["editRoomForm"]["show"].checked =  false;
+			}
 			
 			$('#editRoomModal').modal('show');
 		};
