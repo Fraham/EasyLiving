@@ -89,11 +89,14 @@ require_once('../src/classes/PropertyClass.php');
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-title" id="myModalLabel2">Your Password</h2>
-					<h3>The password for this property is: </h3>
-						<input type="text" class="form-control" id="thePassword" name="thePassword"> 
-					<br>
-					<input type="button" value="OK" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
+					<form class="form-horizontal" action="" method="post" id="displayPassword" name="displayPassword">
+							<div class="form-group">
+								<h2 class="modal-title" id="myModalLabel2">Your Password</h2>
+									<h3>The password for this property is: </h3>
+										<input type="text" class="form-control" id="thePassword" name="thePassword"> 
+							</div>
+							<input type="button" value="OK" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
+					</form>
 				</div>
 			</div>
 		</div>
@@ -112,7 +115,7 @@ require_once('../src/classes/PropertyClass.php');
 		
 		function showPassword(password)
 		{
-			document.forms["thePassword"].value = password;
+			document.forms["displayPassword"]["thePassword"].value = password;
 			
 			$('#PasswordModal').modal('show');
 		}
