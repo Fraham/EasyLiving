@@ -20,7 +20,7 @@
 				$event->getEventFormat();
 			}
 		?>
-	<button class = "btn btn-danger btn-lg" style="margin-top:30px" data-toggle="modal" data-target="#AddConditionModal">Create New Event</button>
+	<button class = "btn btn-danger btn-lg" style="margin-top:30px" data-toggle="modal" data-target="#AddConditionModal">Create New Alert</button>
 	</div>
 
 	<div class="modal fade" id="AddConditionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
