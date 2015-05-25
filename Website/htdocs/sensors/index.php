@@ -109,7 +109,7 @@
 								<div class="col-sm-9">
 									<select id="room" name="room" class="form-control">
 										<?php 
-											require "../src/classes/RoomCLass.php";
+											require "../src/classes/RoomClass.php";
 											
 											$propertyID = $_SESSION['house_id'];
 											
