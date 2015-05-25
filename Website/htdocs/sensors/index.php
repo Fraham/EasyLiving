@@ -194,20 +194,50 @@
 							var startTime = Date.now();
 							var done = false;
 			
-							while (Date.now() - startTime) < 180*1000 & !done) 
+							while (!done) 
 							{
-	    						done = checkedLocked();
+								if((Date.now() - startTime) < 10*1000)
+								{
+									
+								}
+								else
+								{
+									break;
+								}
+	    						done = checkedLocked(sensorID);
 							}
 							
+							if (done)
+							{
+								//connection made
+								console.log("done");
+							}
+							else
+							{
+								//not made
+								console.log("not done");
+								alert("not made");
+							}
 						}
 					});
 				}
 			});
 		};
-		function checkedLocked()
+		function checkedLocked(sensorID)
 		{
-			
-		}
+			$.post('checkSensor.php',{ sensorID: sensorID })
+			.done(function( data ) {
+				if(data == "sensor is locked")
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			});
+		};
+		
 		function editSensor()
 		{
 			$.post('editSensor.php', $('#editSensorForm').serialize())
