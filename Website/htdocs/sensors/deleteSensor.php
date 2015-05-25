@@ -4,7 +4,9 @@
 		require "../src/connect.php";
 
 		$id = intval($_POST['id']);
-		$statement = "DELETE FROM sensors WHERE sensorID = $id";
+		$statement = "UPDATE sensors 
+					SET assigned = '0'
+					WHERE sensorID = $id";
 
 		if (!$conn->query($statement)) {
 			echo "Error: " . $statement . "<br>" . $conn->error;
