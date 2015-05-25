@@ -23,7 +23,7 @@
 		                ON house.roomID = room.roomID
 		                INNER JOIN sensors
 		                ON sensors.roomID = room.roomID
-		                WHERE sensors.sensorID = '{$_POST['id']}'";
+		                WHERE sensors.sensorID = '".$_POST['id']."'";
 						
 			$getHouseResult = $conn->query($getHouseStatement);
 				
@@ -56,12 +56,13 @@
 			}
 			else
 			{
+				
 				$onMessage = "Secure";
 			}
 			
 			$sql = "UPDATE sensors
 					SET messageOn = '$onMessage', done = '0'
-					WHERE sensors.sensorID = '{$_POST['id']}'";
+					WHERE sensors.sensorID = '".$_POST['id']."'";
 		}
 
 		if (!$conn->query($sql)) 
