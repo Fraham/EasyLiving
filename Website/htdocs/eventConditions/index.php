@@ -73,8 +73,7 @@
 	{
 		$.post('addCondition.php', $('#addConditionForm').serialize())
 			.done(function( data ) {
-				//location.reload();
-				console.log(data);
+				location.reload();
 			});
 	}
 	
