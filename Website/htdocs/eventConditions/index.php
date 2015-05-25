@@ -51,7 +51,7 @@
 				<div class="modal-body row">
 					<div class="form-group col-lg-12">
 						<form action="" method="post" id="addConditionForm">
-							<label>Alert Name</label> <input type="text" name="conditionName" autofocus class="form-control"/>
+							<label>Alert Name</label> <input type="text" id="Name" name="conditionName" class="form-control"/>
 							<br>
 							<button class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="createEvent()">Create Alert</button>
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
@@ -71,12 +71,12 @@
 <script>
 	function createEvent()
 	{
-		alert("hello");
 		$.post('addCondition.php', $('#addConditionForm').serialize())
 			.done(function( data ) {
 				location.reload();
 			});
 	}
+	
 </script>
 
 <?php else : ?>
