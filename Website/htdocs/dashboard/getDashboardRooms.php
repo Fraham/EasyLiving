@@ -24,7 +24,8 @@ if (isset($_SESSION['house_id']))
 	{
 		while($row = $result->fetch_assoc())
 		{
-			if ($row['roomID'] == 1){
+			$unallocated= "Unallocated Sensors";
+			if(strcmp($row['dName'],$unallocated)==0){
 			}
 			else{
 			
