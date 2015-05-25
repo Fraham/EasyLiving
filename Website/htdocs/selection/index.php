@@ -42,20 +42,6 @@ require_once('../src/classes/PropertyClass.php');
 		</a>
 	</div>
 	
-	<div class="modal fade" id="PasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h2 class="modal-title" id="myModalLabel">Your Password</h2>
-					<h3>The password for this property is: </h3>
-					<input type="text" class="form-control" id="password" name="password"> 
-					<br>
-					<input type="button" value="OK" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
-				</div>
-			</div>
-		</div>
-	</div>
-	
 	<div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -73,6 +59,10 @@ require_once('../src/classes/PropertyClass.php');
 								</div>
 							</div>
 							<div class="form-group">
+								<label for="password" class="col-sm-2 control-label">Password</label>
+								<div class="col-sm-10">
+							    	<input type="text" class="form-control" id="password" name="password">
+								</div>
 							</div>
 							<div class="form-group">
 								<label for="defaultName" class="col-sm-2 control-label">Default Name</label>
@@ -96,19 +86,15 @@ require_once('../src/classes/PropertyClass.php');
 	</div>
 	
 	<script>
-		function showForm(propertyID, defaultName, userName)
+		function showForm(propertyID, password, defaultName, userName)
 		{
-			document.forms["editProperties"]["propertyID"].value = propertyID;			document.forms["editProperties"]["defaultName"].value = defaultName;
+			document.forms["editProperties"]["propertyID"].value = propertyID;
+			document.forms["editProperties"]["password"].value = password;
+			document.forms["editProperties"]["defaultName"].value = defaultName;
 			document.forms["editProperties"]["userName"].value = userName;
 			
 			$('#AddModal').modal('show');	
 		}
-		
-		function showPassword(password)
-		{
-			document.forms ["editProperties"]["password"].value = password;
-			
-			$('#PasswordModal').modal('show');
 		
 		function submitForm()
 		{
