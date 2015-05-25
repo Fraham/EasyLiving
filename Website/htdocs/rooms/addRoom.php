@@ -3,7 +3,7 @@
 
 	sec_session_start();
 	
-	$dName = $_POST['name'];
+	$dName = $_POST["name"];
 	$houseID = $_SESSION['house_id'];
 	$colourID = $_POST['colour'];
 	$iconID = $_POST['icon'];
