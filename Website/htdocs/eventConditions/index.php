@@ -53,7 +53,7 @@
 						<form action="" method="post" id="addConditionForm">
 							<label>Alert Name</label> <input type="text" id="Name" name="conditionName" class="form-control"/>
 							<br>
-							<input type="button" value="Create Alert" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="createEvent();" />
+							<input type="button" value="Create Alert" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="cEvent()" />
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
 					</div>
@@ -69,11 +69,12 @@
 	<?php include $path."footer.php";?>
 
 <script>
-	function createEvent()
+	function cEvent()
 	{
 		$.post('addCondition.php', $('#addConditionForm').serialize())
 			.done(function( data ) {
-				location.reload();
+				//location.reload();
+				console.log(data);
 			});
 	}
 	
