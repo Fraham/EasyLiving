@@ -171,14 +171,14 @@ $('#form_datetime1').datetimepicker({
 					$('#notifications').DataTable({
 						'bSort':false,
 						'aoColumns': [
-							{ sWidth: "25%", bSearchable: false, bSortable: false },
-							{ sWidth: "25%", bSearchable: false, bSortable: false },
-							{ sWidth: "25%", bSearchable: false, bSortable: false },
-							{ sWidth: "25%", bSearchable: false, bSortable: false }
+							{  bSearchable: false, bSortable: false },
+							{ bSearchable: false, bSortable: false },
+							{ bSearchable: false, bSortable: false },
+							{ bSearchable: false, bSortable: false }
 						],
 						"bScrollY": "200px",
 						"bScrollCollapse": true,
-						"bInfo": true,
+						"searching": false,
 						"bPaginate": true
 					});
 			});
