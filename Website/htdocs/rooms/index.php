@@ -57,7 +57,7 @@
 								<div class="col-sm-9">
 									<input type="text" id="Name" name="name" class="form-control"/>
 									<br>
-									<p> (Please do not use any punctuation) </p>
+									<p> (Please do not use an apostrophe) </p>
 								</div>
 								
 							</div>
