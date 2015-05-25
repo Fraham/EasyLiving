@@ -189,35 +189,53 @@
 						}
 						else
 						{
-							alert("Sensor is now blocked for 3 minutes");
+							alert("Please press the button on the sensor.");
 							//open model
-							var startTime = Date.now();
 							var done = false;
 			
-							while (!done) 
+							var startTime = new Date().getTime();
+							var interval = setInterval(function()
 							{
-								if((Date.now() - startTime) < 10*1000)
+							    if(new Date().getTime() - startTime > 180*1000 || done)
 								{
+							        clearInterval(interval);
+									if (done == true)
+									{
+										//connection made
+										console.log("done");
+										$.post('addSensor.php', $('#addSensorForm').serialize())
+										.done(function( data ) {
+											location.reload();
+										});
+									}
+									else
+									{
+										//not made
+										console.log("not done");
+										alert("not made");
+										
+										$.post('resetSensor.php',{ sensorID: sensorID })
+										.done(function( data ) 
+										{
+											alert("Adding the sensor has failed due to timeout.");
+										});
+									}
 									
-								}
-								else
+							        return;
+							    }
+							    $.post('checkSensor.php',{ sensorID: sensorID })
+								.done(function( data ) 
 								{
-									break;
-								}
-	    						done = checkedLocked(sensorID);
-							}
-							
-							if (done)
-							{
-								//connection made
-								console.log("done");
-							}
-							else
-							{
-								//not made
-								console.log("not done");
-								alert("not made");
-							}
+									if(data == "sensor is locked")
+									{
+										done = true;
+									}
+									else
+									{
+										done = false;
+									}
+								});
+							}, 2000);
 						}
 					});
 				}
@@ -225,17 +243,7 @@
 		};
 		function checkedLocked(sensorID)
 		{
-			$.post('checkSensor.php',{ sensorID: sensorID })
-			.done(function( data ) {
-				if(data == "sensor is locked")
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			});
+			
 		};
 		
 		function editSensor()
