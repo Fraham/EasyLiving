@@ -21,7 +21,7 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<i class="fa fa-home fa-fw"></i> Property Overview
+				<i class="fa fa-home fa-fw"></i> Account Overview
 			</div>
 			<div class="panel-body">
 				<?php
