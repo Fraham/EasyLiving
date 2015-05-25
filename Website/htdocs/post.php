@@ -50,7 +50,7 @@
 				
 			if ($result->num_rows > 0)
 			{
-				$row = $getHouseResult->fetch_assoc();
+				$row = $result->fetch_assoc();
 				
 				$onMessage = "{$row['name']} - {$row['dName']}";
 			}
