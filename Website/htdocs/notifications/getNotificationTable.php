@@ -166,9 +166,11 @@
 			$tableHtml .= "</tbody>";
 		}
 	}
+	
+	
 	else
 	{
-		$tableHtml .= "There is nothing to dislay.";
+		$tableHtml .= "There is nothing to display.";
 	}
 
 	$conn->close();

@@ -162,8 +162,14 @@ $('#form_datetime1').datetimepicker({
 	<!-- /.panel-heading -->
 	<div class="panel-body panel-collapse" id="notiBody">
 		<div class="dataTable_wrapper">
+		
 			<table class="table table-striped table-bordered table-hover" id="notifications">
 
+			<script>
+			$("index.php").ready(function(){
+					$('#notifications').DataTable();
+			});
+			</script>
 			<script>
 			/*refresh();
 
@@ -178,6 +184,7 @@ $('#form_datetime1').datetimepicker({
 		</div>
 	</div>
 
+	
 	<?php
 	include $path."footer.php"
 	?>
