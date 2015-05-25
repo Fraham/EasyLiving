@@ -115,7 +115,7 @@ require_once('../src/classes/PropertyClass.php');
 			document.forms["thePassword"].value = password;
 			
 			$('#PasswordModal').modal('show');
-		
+		}
 		
 		function submitForm()
 		{
