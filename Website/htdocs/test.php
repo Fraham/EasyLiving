@@ -1,29 +1,12 @@
 <?php
-	if (isset($_POST["msg"]) and isset($_POST["id"]))
-	{
-		require "src/connect.php";
-
-		if(strlen($_POST["msg"]) == 1)
-		{
-			$statement = "UPDATE sensors SET state = '".$_POST['msg']."' WHERE sensorID = '".$_POST['id']."';";
-
-			if (!$conn->query($statement)) 
-				echo "Error: " . $statement . "<br>" . $conn->error;
-
-			$sql = "INSERT INTO log (sensorID, state)
-			VALUES (".$_POST['id'].", ".$_POST['msg'].")";
-		}
-		else if ($_POST["msg"] == "allow")
-			$sql = "UPDATE sensors SET assigned = 2 WHERE sensorID = '".$_POST['id']."' AND assigned = 1;";
-		else if ($_POST["msg"] == "sysCheck")
-		{
-			$getHouseStatement = "SELECT house.houseID
+	require "src/connect.php";
+$getHouseStatement = "SELECT house.houseID
                 		FROM house
 		                INNER JOIN room
-		                ON house.roomID = room.roomID
+		                ON house.houseID = room.houseID
 		                INNER JOIN sensors
 		                ON sensors.roomID = room.roomID
-		                WHERE sensors.sensorID = '{$_POST['id']}'";
+		                WHERE sensors.sensorID = '070001'";
 						
 			$getHouseResult = $conn->query($getHouseStatement);
 				
@@ -50,7 +33,7 @@
 				
 			if ($result->num_rows > 0)
 			{
-				$row = $getHouseResult->fetch_assoc();
+				$row = $result->fetch_assoc();
 				
 				$onMessage = "{$row['name']} - {$row['dName']}";
 			}
@@ -61,21 +44,12 @@
 			
 			$sql = "UPDATE sensors
 					SET messageOn = '$onMessage', done = '0'
-					WHERE sensors.sensorID = '{$_POST['id']}'";
-		}
+					WHERE sensors.sensorID = '070001'";
 
 		if (!$conn->query($sql)) 
 			echo "Error: " . $sql . "<br>" . $conn->error;
 			
 		echo "done";
 
-		$conn->close();
-	}
-
-	function display()
-	{
-		$file = 'arduino.txt';
-		$current = "pressed";
-		file_put_contents($file, $current);
-	}
+		$conn->close();	
 ?>
