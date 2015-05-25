@@ -35,6 +35,7 @@
 		// $blockSize = 500;
 		include "../src/func/getRooms.php";
 	?>
+
 	<script>
 		$(function() {
 			$( "#roomsPanel" ).sortable({

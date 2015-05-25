@@ -22,10 +22,49 @@ if (isset($_SESSION['house_id']))
 
 	if ($result->num_rows > 0)
 	{
-		$count = 0;
 		while($row = $result->fetch_assoc())
 		{
-			$occupiedStatement = "SELECT state, sensorID FROM sensors
+			if($row['roomID'] == 1)
+			{
+			
+	include_once ("{$path}../classes/SensorClass.php");
+			
+			$sensorHTML = "";
+			
+			$sensors = [];
+
+			$sensors = Sensor::getByRoomID($row['roomID']);
+
+			foreach ($sensors as $sensor)
+			{
+				$sensorHTML .= $sensor->getBlockFormat();
+			}			
+
+			$roomHTML .= <<<HTML
+			<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
+				<div class='panel panel-inverse'>
+						<div class='row'>
+							<div class='col-xs-3'>
+								<i class='fa fa-warning fa-4x'></i>
+							</div>
+							<div class='col-xs-9 text-right'>
+								<div class='huge' name=''>Unallocated Sensors</div>
+							</div>
+						</div>
+					
+				<div class='panel-body'>
+					{$sensorHTML}
+				</div>
+			</div>
+		</div>
+		
+HTML;
+	$count++;
+
+		}
+		else{ 
+	
+				$occupiedStatement = "SELECT state, sensorID FROM sensors
 				INNER JOIN room
 				ON sensors.roomID = room.roomID
 				WHERE room.roomID = $row[roomID]";
@@ -109,16 +148,16 @@ if (isset($_SESSION['house_id']))
 							<div class='col-xs-9 text-right'>
 								<div class='huge' name=''>{$row["dName"]}</div>
 								<div>{$state}</div>
+							</div>
 						</div>
 					</div>
-				</div>
 				<div class='panel-body'>
 					{$sensorHTML}
 				</div>
 			</div>
 		</div>
 HTML;
-		$count++;
+		}
 		}
 	}
 

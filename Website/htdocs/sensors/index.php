@@ -131,7 +131,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h2 class="modal-title" id="myModalLabel">Verify Sensor</h2>
-					<h3>Please press the button on the sesnor to verify it to the Property</h3>
+					<h3>Please press the button on the sensor to verify it to the Property</h3>
 					<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 				</div>
 			</div>
