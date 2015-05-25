@@ -201,19 +201,13 @@
 							        clearInterval(interval);
 									if (done == true)
 									{
-										//connection made
-										console.log("done");
 										$.post('addSensor.php', $('#addSensorForm').serialize())
 										.done(function( data ) {
 											location.reload();
 										});
 									}
 									else
-									{
-										//not made
-										console.log("not done");
-										alert("not made");
-										
+									{										
 										$.post('resetSensor.php',{ sensorID: sensorID })
 										.done(function( data ) 
 										{
