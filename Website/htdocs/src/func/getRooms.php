@@ -120,7 +120,7 @@ HTML;
 				}
 				else
 				{
-					$state = "No motion sensor detected";
+					$state = "No motion sensor";
 				}
 			}
 			
