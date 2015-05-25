@@ -42,7 +42,7 @@ if (isset($_SESSION['house_id']))
 
 			$roomHTML .= <<<HTML
 			<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
-				<div class='panel panel-inverse'>
+				<div class='panel panel-default' style="background-color: #B8B8B8;">
 						<div class='row'>
 							<div class='col-xs-3'>
 								<i class='fa fa-warning fa-4x'></i>
@@ -59,7 +59,6 @@ if (isset($_SESSION['house_id']))
 		</div>
 		
 HTML;
-	$count++;
 
 		}
 		else{ 

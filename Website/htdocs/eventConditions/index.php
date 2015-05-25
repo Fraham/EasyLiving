@@ -35,7 +35,7 @@
 						<form action="" method="post" id="addConditionForm">
 							<label>Condition Name</label> <input type="text" name="conditionName" autofocus class="form-control"/>
 							<br>
-							<input type="button" value="Add Condition" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="createEvent()" />
+							<button class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="createEvent()">Add Condition</button>
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
 					</div>
