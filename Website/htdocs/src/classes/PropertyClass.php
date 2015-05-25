@@ -132,6 +132,15 @@ HTML;
       if (!$conn->query($insertStatement)) {
 				echo "Error: " . $insertStatement . "<br>" . $conn->error;
 			}
+
+        $name = $row['dName'];
+        $addStatement = "INSERT INTO room
+              (dName, houseID, colourID, iconID) 
+              VALUES ('Unallocated Sensors', '$houseID', '4', '35')";
+        if (!$conn->query($addStatement)) {
+          echo "Error: " . $addStatement . "<br>" . $conn->error;
+        }
+  
   }
   
   public static function updateProperty($userID, $defaultName, $userName, $propertyPassword, $propertyID)

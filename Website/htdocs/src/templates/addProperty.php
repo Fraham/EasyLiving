@@ -30,18 +30,10 @@
 				if (!$conn->query($insertStatement)) {
 					echo "Error: " . $insertStatement . "<br>" . $conn->error;
 				}
-				$houseID = $_SESSION['house_id'];
-				$name = $row['dName'];
-				$addStatement = "INSERT INTO room
-							(dName, houseID, colourID, iconID) 
-							VALUES ('Unallocated Sensors', '$houseID', '4', '35')";
-				if (!$conn->query($addStatement)) {
-					echo "Error: " . $addStatement . "<br>" . $conn->error;
 				}
 		
 			}
 		}
-	
 		$conn->close();
 	}
 ?>
