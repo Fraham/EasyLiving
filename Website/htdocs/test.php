@@ -1,5 +1,8 @@
 <?php
 	require "src/connect.php";
+	
+	
+	
 $getHouseStatement = "SELECT house.houseID
                 		FROM house
 		                INNER JOIN room

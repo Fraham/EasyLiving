@@ -20,7 +20,7 @@
 			$getHouseStatement = "SELECT house.houseID
                 		FROM house
 		                INNER JOIN room
-		                ON house.roomID = room.roomID
+		                ON house.houseID = room.houseID
 		                INNER JOIN sensors
 		                ON sensors.roomID = room.roomID
 		                WHERE sensors.sensorID = '".$_POST['id']."'";
@@ -56,7 +56,6 @@
 			}
 			else
 			{
-				
 				$onMessage = "Secure";
 			}
 			
