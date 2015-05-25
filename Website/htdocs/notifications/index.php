@@ -171,6 +171,7 @@ $('#form_datetime1').datetimepicker({
 					$('#notifications').DataTable({
 						paging: true,
 						ordering:false
+					});
 			});
 			</script>
 			<script>
