@@ -169,8 +169,17 @@ $('#form_datetime1').datetimepicker({
 			
 			$(document).ready(function(){
 					$('#notifications').DataTable({
-						paging: true,
-						ordering:false
+						'bSort':false,
+						'aoColumns': [
+							{ sWidth: "25%", bSearchable: false, bSortable: false },
+							{ sWidth: "25%", bSearchable: false, bSortable: false },
+							{ sWidth: "25%", bSearchable: false, bSortable: false },
+							{ sWidth: "25%", bSearchable: false, bSortable: false }
+						],
+						"scrollY": 200px",
+						"scrollCollapse": true,
+						"info": true,
+						"paging": true
 					});
 			});
 			</script>
