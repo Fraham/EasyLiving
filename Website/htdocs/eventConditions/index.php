@@ -9,11 +9,12 @@
 	<?php 
 		if (empty($_POST)===false)
 		{
+		
 			$conditionName = $_POST['conditionName'];
 			require "../src/connect.php";
 
-			$userID = $_SESSION['user_id'];
-			$statement = "INSERT INTO event(name, userID)VALUES ('$conditionName', '$user_ID')";
+			$user_ID = $_SESSION['user_id'];
+			$statement = "INSERT INTO event(name, userID) VALUES ('$conditionName', '$user_ID')";
 			if (!$conn->query($statement)) {
 				echo "Error: " . $statement . "<br>" . $conn->error;
 			}
