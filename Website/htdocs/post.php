@@ -1,9 +1,11 @@
 <?php
-	if (isset($_POST["msg"]) and isset($_POST["id"]))
+	if (isset($_POST["id"]) and isset($_POST["msg"]))
 	{
 		require "src/connect.php";
 
-		if(strlen($_POST["msg"]) == 1)
+		if (isset($_POST["temp"]))
+			$sql = "INSERT INTO tempHum (temp, hum) VALUES (".$_POST['temp'].", ".$_POST['hum'].")";
+		else if(strlen($_POST["msg"]) == 1)
 		{
 			$statement = "UPDATE sensors SET state = '".$_POST['msg']."' WHERE sensorID = '".$_POST['id']."';";
 
