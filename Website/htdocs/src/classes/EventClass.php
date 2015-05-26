@@ -154,7 +154,7 @@ HTML;
 		 <thread>
 		  <tr>
 		    <td>Sensor</td>
-		    <td>Condidtion</td>
+		    <td>Condition</td>
 		  </tr>
 		</thread>
 		<tbody>";
