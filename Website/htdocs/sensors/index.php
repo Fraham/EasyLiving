@@ -92,6 +92,8 @@
 								<label for="name" class="col-sm-3 control-label">Name</label>
 								<div class="col-sm-9">
 									<input type="text" id="name" name="name" class="form-control"/>
+									<br>
+									<p> (Please do not use an apostrophe) </p>
 								</div>
 							</div>
 							<div class="form-group">
