@@ -8,7 +8,8 @@
 
 	$houseID = $_SESSION['house_id'];
 
-	$statement = "SELECT DATE_FORMAT(date,'%k:%i') as time, sensors.messageOn, sensors.messageOff, log.state FROM log
+	$statement = "SELECT DATE_FORMAT(date,'%k:%i') as time, sensors.messageOn, sensors.messageOff, log.state, room.dName
+					FROM log
 	 				INNER JOIN sensors
 					ON log.sensorID = sensors.sensorID
 					INNER JOIN room
@@ -17,7 +18,7 @@
 					ON room.houseID = house.houseID
 					WHERE house.houseID = $houseID
 					AND LEFT(sensors.sensorID, 2) != 01
-          ORDER BY logID
+          			ORDER BY logID
 					DESC LIMIT 10";
 
 	$result = $conn->query($statement);
@@ -27,15 +28,15 @@
 		while($row = $result->fetch_assoc())
 		{
 			$state = (int) $row['state'];
-			$message = "";
+			$message = "{$row['dName']} - ";
 
 			if($state == 0)
 			{
-				$message = $row['messageOff'];
+				$message .= $row['messageOff'];
 			}
 			else
 			{
-				$message = $row['messageOn'];
+				$message .= $row['messageOn'];
 			}
 
 			$tableHtml .= "<a href='#' class='list-group-item'>";//<i class='fa fa-comment fa-fw'></i>";
