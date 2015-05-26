@@ -108,7 +108,9 @@ foreach($properties as $property)
 				foreach ($sensors as $sensor)
 				{
 					$sensorHTML .= $sensor->getBlockFormat();
-				}			
+				}
+				
+				$sensorHTML .= Sensor::getTempFormat($row['roomID']);		
 	
 				$roomHTML .= <<<HTML
 				<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>

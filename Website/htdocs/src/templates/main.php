@@ -31,6 +31,7 @@
 		<script src='<?php echo $path; ?>../datepicker/bootstrap-datepicker.js'></script>
 		<script src='<?php echo $path; ?>../js/sortable.js'></script>
 		<script src='<?php echo $path; ?>../js/jquery.bind.sortable.js'></script>
+		<script src='<?php echo $path; ?>../js/annyang.min.js'></script>
 		<link href='<?php echo $path; ?>../css/easyLiving.css' rel='stylesheet'>
 
 
@@ -118,23 +119,23 @@
 
 	</head>
 	<body>
-    <div class="modal fade" id="AddPropertyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h2 class="modal-title" id="myModalLabel">Add Property</h2>
-          </div>
-          <div class="modal-body row">
-            <div class="form-group col-lg-12" style="margin:10px">
-               <form action="" method="post" id="addPropertyForm">
-                	<label>Property ID:</label><input type="text" name="propertyID" autofocus class="form-control"/>
-                	<br>
-                	<label>Property Password:</label><input type="password" name="housePassword" id="housePassword" class="form-control"/>
-                	<br>
-                	<input type="button" value="Add Property" class="btn btn-lg btn-danger btn-block"onclick="addProperty()" />
-                	<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
-            	</form>
+	<div class="modal fade" id="AddPropertyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h2 class="modal-title" id="myModalLabel">Add Property</h2>
+		  </div>
+		  <div class="modal-body row">
+			<div class="form-group col-lg-12" style="margin:10px">
+			   <form action="" method="post" id="addPropertyForm">
+					<label>Property ID:</label><input type="text" name="propertyID" autofocus class="form-control"/>
+					<br>
+					<label>Property Password:</label><input type="password" name="housePassword" id="housePassword" class="form-control"/>
+					<br>
+					<input type="button" value="Add Property" class="btn btn-lg btn-danger btn-block"onclick="addProperty()" />
+					<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
+				</form>
 				<script>
 					function addProperty()
 					{
@@ -144,20 +145,34 @@
 						});
 					};
 				</script>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </body>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	</body>
 
-    <script>
-    function keepOpen(){
-    	document.getElementById("userDropdown").className += "open";
-    }
-    function edit(){
-    	document.getElementById("name").className = "form-control";
+	<script>
+		function keepOpen(){
+			document.getElementById("userDropdown").className += "open";
+		}
+		function edit(){
+			document.getElementById("name").className = "form-control";
 
-    	document.getElementById("name").type = "Text";
-    }
-    </script>
+			document.getElementById("name").type = "Text";
+		}
+
+		if (annyang) {
+			var commands = {
+				'Go to dashboard': function() {
+					window.location.replace("/dashboard");
+				},
+				'hello': function() {
+					alert("hello!");
+				}, 
+			};
+
+			annyang.addCommands(commands);
+			// annyang.start();
+		}
+	</script>

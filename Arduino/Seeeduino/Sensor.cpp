@@ -2,27 +2,28 @@
 
 Sensor::Sensor(String id, int pin)
 {
-	//Serial.begin(9600);
 	pinMode(_pin, INPUT);
 	_id = id;
 	_pin = pin;
 	_state = true;
-	_highMsg = "1";
-	_lowMsg = "0";
+	_last = 0;
+	
+
 }
 
-int Sensor::getPin()
+void Sensor::debounce(long last)
 {
-	return _pin;
+	if ((millis() - last) > _debounceDelay) 
+	{
+		interrupted();
+		_last = millis();
+	}
 }
 
-String Sensor::getId()
+void Sensor::interrupted()
 {
-	return _id;
-}
-
-bool Sensor::getState()
-{
-	return _state;
+	int state = digitalRead(_pin);
+	sendMsg(_id, state);
+        Serial.println(_id + _state);
 }
 

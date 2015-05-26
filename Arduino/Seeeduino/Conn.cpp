@@ -4,6 +4,8 @@
 char serverAddr[] = "easyliving.ml";
 byte mac[] = { 0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x02 };
 EthernetClient server;
+int buzzerPin = 8;
+String arduinoID = "100001";
 
 void connInit()
 {
@@ -13,20 +15,12 @@ void connInit()
 		exit(0);
 	}
 	Serial.println("Ready!");
-	tone(8, 500);
+	tone(buzzerPin, 500);
 	delay(200);
-	noTone(8);
+	noTone(buzzerPin);
 }
 
-void closeConn()
-{
-		if (!server.connected()) {
-			//Serial.println("Connection Closed");
-			server.stop();
-		}
-}
-
-void sendMsg(String id, String msg)
+void post(String id, String msg)
 {
 	String _id = "id=" + id;
 	String _msg = "&msg=" + msg;
@@ -40,11 +34,23 @@ void sendMsg(String id, String msg)
 		server.print(_id + _msg);
 		Serial.println(_id + _msg);
 	}
+}
+
+void sendMsg(String id, String msg)
+{
+	post(id, msg);
+	server.stop();
+}
+
+void sendMsg(String id, int msg)
+{
+	post(id, String(msg));
 	server.stop();
 }
 
 String getResponse()
 {
+	post(arduinoID, "?");
 	String response = "";
 	if (server.available())
 	{
@@ -55,7 +61,9 @@ String getResponse()
 		}
 		response = response.substring(248);
 		Serial.println(response);
-		closeConn();
+		server.stop();
 	}
 	return response;
 }
+
+

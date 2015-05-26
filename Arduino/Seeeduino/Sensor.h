@@ -9,13 +9,16 @@ class Sensor
 		int getPin();
 		String getId();
 		bool getState();
-		virtual void check() = 0;
+		void debounce(long last);
+		void interrupted();
+		void call();
+		long _last;
 		
 	protected:
 		int _pin;
 		String _id;
 		bool _state;
-		String _highMsg;
-		String _lowMsg;
+		
+		int _debounceDelay;
 };
 
