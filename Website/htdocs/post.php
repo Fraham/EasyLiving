@@ -1,7 +1,8 @@
 <?php
+	require "src/connect.php";
+	
 	if (isset($_POST["id"]) and isset($_POST["msg"]))
 	{
-		require "src/connect.php";
 
 		if (isset($_POST["temp"]))
 			$sql = "INSERT INTO tempHum (sensorID, temp, hum) VALUES (".$_POST['id'].", ".$_POST['temp'].", ".$_POST['hum'].")";
