@@ -18,7 +18,7 @@
 					ON room.houseID = house.houseID
 					WHERE house.houseID = $houseID
 					AND LEFT(sensors.sensorID, 2) != 01
-					OR LEFT(sensors.sensorID, 2) != 03
+					AND LEFT(sensors.sensorID, 2) != 03
           			ORDER BY logID
 					DESC LIMIT 10";
 
