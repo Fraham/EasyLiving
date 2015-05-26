@@ -87,6 +87,20 @@ class Sensor
 				</div>
 HTML;
 		}
+		if (substr( $this->sensorID, 0, 2) === "05")// door sensor
+		{
+			$sensorBlock = <<<HTML
+			<div class='col-md-12'>
+				<h4><font color='black'>{$this->name}: </font></h4>
+				<div class='col-md-6'>
+					<input type="button" value="On" class="btn btn-sm btn-danger btn-block" onclick="turnOn('{$this->sensorID}')" />
+				</div>
+				<div class='col-md-6'>
+					<input type="button" value="Off" class="btn btn-sm btn-danger btn-block" onclick="turnOff('{$this->sensorID}')" />
+				</div>
+			</div>
+HTML;
+		}
 		return $sensorBlock;
 	}
 	

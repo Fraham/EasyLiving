@@ -51,6 +51,24 @@
 	</div>
 </div>
 
+<script>
+		function turnOn(sensorID)
+		{			
+			$.post("turnOn.php", { sensorID: sensorID })
+			.done(function( data ) {
+				location.reload();
+			});
+		};
+		function turnOff(sensorID)
+		{			
+			$.post("turnOff.php", { sensorID: sensorID })
+			.done(function( data ) {
+				location.reload();
+			});
+		};
+		
+</script>
+
 <?php include $path."footer.php"; ?>
 
 <?php else : ?>
