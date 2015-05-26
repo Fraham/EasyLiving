@@ -108,6 +108,9 @@
 								<label for="roomID" class="col-sm-3 control-label">Room ID</label>
 								<div class="col-sm-9">
 									<input type="text" id="roomID" name="roomID" class="form-control" readonly/>
+									<br>
+								<p> (Please do not use an apostrophe) </p>
+							
 								</div>
 							</div>
 							<div class="form-group">
