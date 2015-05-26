@@ -194,6 +194,7 @@
 						else
 						{
 							alert("Please press the button on the sensor.");
+							//open model
 							var done = false;
 			
 							var startTime = new Date().getTime();
