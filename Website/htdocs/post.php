@@ -1,6 +1,6 @@
 <?php
 	require "src/connect.php";
-	
+
 	if (isset($_POST["id"]) and isset($_POST["msg"]))
 	{
 
@@ -8,7 +8,7 @@
 			$sql = "INSERT INTO tempHum (sensorID, temp, hum) VALUES (".$_POST['id'].", ".$_POST['temp'].", ".$_POST['hum'].")";
 		else if ($_POST["msg"] == "request")
 		{
-			$houseID = getHouseID();
+			$houseID = getHouseID($conn);
 
 			$sql = "SELECT sensorID	FROM sensors WHERE done = 0";
 
@@ -49,7 +49,7 @@
 		else if ($_POST["msg"] == "sysCheck")
 		{
 			
-			$houseID = getHouseID();
+			$houseID = getHouseID($conn);
 						
 			$statement = "SELECT sensors.name, room.dName
                 		FROM sensors
@@ -87,7 +87,7 @@
 		$conn->close();
 	}
 
-	function getHouseID()
+	function getHouseID($conn)
 	{
 		$getHouseStatement = "SELECT house.houseID
 							  FROM house
