@@ -38,6 +38,7 @@
 			}
 
 			echo $todo;
+			echo "apple";
 
 			return 0;
 		}
