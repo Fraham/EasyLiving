@@ -12,7 +12,7 @@
 
 			$sql = "SELECT sensorID	FROM sensors WHERE done = 0";
 
-			$result = query($sql);
+			$result = $conn->query($sql);
 			if (!$result) 
 				echo "Error: " . $sql . "<br>" . $conn->error;
 
