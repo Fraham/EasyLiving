@@ -12,11 +12,12 @@
 
 			$sql = "SELECT sensorID	FROM sensors WHERE done = 0";
 
-			if (!$conn->query($sql)) 
+			$result = query($sql);
+			if (!$result) 
 				echo "Error: " . $sql . "<br>" . $conn->error;
 
 			$todo = "";
-			while ($row = $sql->fetch_assoc()) 
+			while ($row = fetch_assoc($result)) { 
 			{
 				if (substr($row['sensorID'], 0, 2) === "08")
 					$query = "SELECT messageOn FROM sensors WHERE sensorID = ".$row['sensorID']."";
