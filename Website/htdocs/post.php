@@ -20,16 +20,21 @@
 			while ($row = $result->fetch_assoc())
 			{
 				if (substr($row['sensorID'], 0, 2) === "08")
+				{
 					$query = "SELECT messageOn FROM sensors WHERE sensorID = ".$row['sensorID']."";
+					$field = "messageOn";
+				}
 				else
+				{
 					$query = "SELECT state FROM sensors WHERE sensorID = ".$row['sensorID']."";
+					$field = "state";
+				}
 
 				$result2 = $conn->query($query); 
 				if (!$result2) 
 					echo "Error: " . $query . "<br>" . $conn->error;
 				$row2 = $result2->fetch_assoc();
-				$msg = $row2['messageOn'] || $row2['state'];
-				$todo .= $row['sensorID'] + $msg + ";";
+				$todo .= $row['sensorID'] + $row2[$field] + ";";
 			}
 
 			echo $todo;
