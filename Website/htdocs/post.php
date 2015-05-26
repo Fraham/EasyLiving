@@ -34,7 +34,7 @@
 				if (!$result2) 
 					echo "Error: " . $query . "<br>" . $conn->error;
 				$row2 = $result2->fetch_assoc();
-				$todo .= $row['sensorID'] + $row2[$field] + ";";
+				$todo .= $row['sensorID'] + ": " + $row2[$field] + ";";
 			}
 
 			echo $todo;
