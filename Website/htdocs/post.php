@@ -29,8 +29,6 @@
 				$todo .= $row['sensorID'] + $msg + ";";
 			}
 
-
-
 			echo $todo;
 
 			return 0;
@@ -103,10 +101,9 @@
 		if ($getHouseResult->num_rows > 0)
 		{
 			$row = $getHouseResult->fetch_assoc();
-
 			$houseID = $row['houseID'];
 		}
-		return $houseID
+		return $houseID;
 	}
 
 	function display()
