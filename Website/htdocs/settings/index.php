@@ -8,6 +8,7 @@ include $path."main.php";
 
 <script> type="text/javascript">
 $(document).ready(function(){ 
+	annyang.start();
     $("#myTab li:eq(1) a").tab('show');
 });
 </script>

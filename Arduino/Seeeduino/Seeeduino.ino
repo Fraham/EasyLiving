@@ -17,6 +17,8 @@ DHT dht(DHTPIN, DHTTYPE);
 // int sensorCount = sizeof(sensors) / sizeof(*sensors);
 
 long dhtLastTime = 0;
+long relayLastTime = 0;
+int relayState=0;
 
 Sensor door = Sensor("020001", 5);
 Sensor fridge = Sensor("020051", 6);
@@ -36,6 +38,9 @@ void setup()
 	enableInterrupt(6, iPin6, CHANGE);
 	enableInterrupt(7, iPin7, CHANGE);
 	//DHT = pin 8
+        pinMode(9, OUTPUT);
+
+//        Serial.println(getResponse());
         
 }
 
@@ -58,8 +63,14 @@ void loop()
 		sendDHT();
 		dhtLastTime = millis();
 	}
-
-	//getResponse();
+        
+        if(millis() - relayLastTime > 5000)
+	{
+		relayState = 1- relayState;
+                digitalWrite(9, relayState);
+		dhtLastTime = millis();
+	}
+	
         
 }
 

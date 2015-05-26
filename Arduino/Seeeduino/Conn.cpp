@@ -50,7 +50,19 @@ void sendMsg(String id, int msg)
 
 String getResponse()
 {
-	post(arduinoID, "?");
+	//post(arduinoID, "request");
+        String _id = "id=100001";
+	String _msg = "&msg=request";
+	if (server.connect(serverAddr, 80)) {
+		server.println("POST /post.php HTTP/1.1");
+		server.println("Host: " + String(serverAddr));
+		server.println("Content-Type: application/x-www-form-urlencoded");
+		//server.println("Connection: close");
+		server.println("Content-Length: " + String(_id.length()) + String(_msg.length()));
+		server.println();
+		server.print(_id + _msg);
+		Serial.println(_id + _msg);
+	}
 	String response = "";
 	if (server.available())
 	{
@@ -62,8 +74,8 @@ String getResponse()
 		response = response.substring(248);
 		Serial.println(response);
 		server.stop();
-	}
-	return response;
+ 	}
+ return response;
 }
 
 
