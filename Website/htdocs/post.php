@@ -4,7 +4,7 @@
 		require "src/connect.php";
 
 		if (isset($_POST["temp"]))
-			$sql = "INSERT INTO tempHum (temp, hum) VALUES (".$_POST['temp'].", ".$_POST['hum'].")";
+			$sql = "INSERT INTO tempHum (sensorID, temp, hum) VALUES (".$_POST['id'].", ".$_POST['temp'].", ".$_POST['hum'].")";
 		else if(strlen($_POST["msg"]) == 1)
 		{
 			$statement = "UPDATE sensors SET state = '".$_POST['msg']."' WHERE sensorID = '".$_POST['id']."';";
