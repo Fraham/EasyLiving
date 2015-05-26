@@ -76,7 +76,7 @@ require_once('../src/classes/PropertyClass.php');
 							    	<input type="text" class="form-control" id="userName" name="userName">
 								</div>
 							</div>													
-							<input type="button" value="Edit Property" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
+							<input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
 					</div>
