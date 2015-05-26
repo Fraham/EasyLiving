@@ -50,6 +50,8 @@
 							<br>
 							<label>Sensor Name:</label> <input type="text" id="Name" name="name" class="form-control"/>
 							<br>
+								<p> (Please do not use an apostrophe) </p>
+							<br>
 							<label>Message when activated</label> <input type="text" name="messageOn" class="form-control"/>
 							<br>
 							<label>Message when deactivated</label> <input type="text" name="messageOff" class="form-control"/>

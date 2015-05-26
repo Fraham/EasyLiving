@@ -237,10 +237,10 @@ HTML;
 			{
 				$html .="
 				<div class='col-md-6'>
-						<h4><font color='black'>Temperature: </font><span><strong>{$row['temp']}</strong></span></h4>
+						<h4><font color='black'>Temperature: </font><span><strong>{$row['temp']}&deg;C</strong></span></h4>
 					</div>
 				<div class='col-md-6'>
-						<h4><font color='black'>Humidity: </font><span><strong>{$row['hum']}</strong></span></h4>
+						<h4><font color='black'>Humidity: </font><span><strong>{$row['hum']}%</strong></span></h4>
 					</div>";
 			}
 		}
