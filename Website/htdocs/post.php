@@ -17,7 +17,7 @@
 				echo "Error: " . $sql . "<br>" . $conn->error;
 
 			$todo = "";
-			while ($row = fetch_assoc($result)) { 
+			while ($row = fetch_assoc($result))
 			{
 				if (substr($row['sensorID'], 0, 2) === "08")
 					$query = "SELECT messageOn FROM sensors WHERE sensorID = ".$row['sensorID']."";
