@@ -142,7 +142,7 @@
 									<input id="show" name="show" type="checkbox" value="">
 								</div>									
 							</div>							
-							<input type="button" value="Edit Sensor" class="btn btn-lg btn-danger btn-block" onclick="editSensor()" />
+							<input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" onclick="editSensor()" />
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
 					</div>
