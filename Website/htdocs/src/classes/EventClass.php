@@ -29,7 +29,7 @@ class Event
 			$event->userID = $row['userID'];
 			$event->eventID = $eventID;
 			
-			$statement = "SELECT event_sensor.sensorID
+			$statement = "SELECT event_sensor.sensorID, event_sensor.conditionID
 					FROM event_sensor
 					WHERE event_sensor.eventID = $eventID";
 	  
@@ -40,10 +40,11 @@ class Event
 				while($row = $result->fetch_assoc())
 			  	{
 					$event->sensors[] = $row['sensorID'];
+					$event->conditions[] = $row['conditionID'];
 			  	}			
 			}
 			
-			$statement = "SELECT event_condition.conditionID
+			/*$statement = "SELECT event_condition.conditionID
 					FROM event_condition
 					WHERE event_condition.eventID = $eventID";
 	  
@@ -55,7 +56,7 @@ class Event
 			  	{
 					$event->conditions[] = $row['conditionID'];
 			  	}			
-			}
+			}*/
 			
 			$statement = "SELECT event_device.deviceID
 					FROM event_device
@@ -149,20 +150,21 @@ HTML;
 		require "../src/connect.php";
 		
 		$html = "
-		 <table>
+		 <table class='table'>
+		 <thread>
 		  <tr>
 		    <td>Sensor</td>
 		    <td>Condidtion</td>
 		  </tr>
-		</table>";
-		
-		$count = 0;
-		
-		foreach($this->sensors as $sensor)
-		{
-			$statement = "SELECT name
+		</thread>
+		<tbody>";
+			$statement = "SELECT sensors.name AS sensorName, `condition`.name AS conditionName
 						FROM sensors
-						WHERE senors.sensorID = '$sensor'";
+						INNER JOIN event_sensor
+						ON sensors.sensorID = event_sensor.sensorID
+						INNER JOIN `condition`
+						ON `condition`.conditionID = event_sensor.conditionID
+						WHERE event_sensor.eventID = '{$this->eventID}'";
 			
 			$result = $conn->query($statement);
 			
@@ -171,11 +173,16 @@ HTML;
 				while($row = $result->fetch_assoc())
 			  	{
 					 $html .= "<tr>
-		    			<td>{$row['name']}</td>";
+		    			<td>{$row['sensorName']}</td>
+						<td>{$row['conditionName']}</td>
+								</tr>";
 						
-					  $statement = "SELECT name
-						FROM condition
-						WHERE condition.conditionID = '$this->conditions[$count]'";
+						
+						/*$condition = $this->conditions[$count];
+						
+					  $statement = "SELECT `condition`.name
+						FROM `condition`
+						WHERE `condition`.conditionID = '$condition'";
 			
 					$result = $conn->query($statement);
 					
@@ -187,15 +194,14 @@ HTML;
 		    					<td>{$row['name']}</td>
 								</tr>";
 						}
-					}
+					}*/
 				}		  
 			}
-			
-			
-			$count = $count + 1;
-		}
 		
-		$html = "</table>";
+		$html .= "</tbody>
+		</table>";
+		
+		return $html;
 	}
 	
 	public static function addEvent($name, $user_ID)
