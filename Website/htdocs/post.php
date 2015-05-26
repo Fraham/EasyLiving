@@ -24,9 +24,10 @@
 				else
 					$query = "SELECT state FROM sensors WHERE sensorID = ".$row['sensorID']."";
 
-				if (!$conn->query($query)) 
+				$result2 = $conn->query($query); 
+				if (!$result2) 
 					echo "Error: " . $query . "<br>" . $conn->error;
-				$row2 = $query->fetch_assoc();
+				$row2 = $result2->fetch_assoc();
 				$msg = $row2['messageOn'] || $row2['state'];
 				$todo .= $row['sensorID'] + $msg + ";";
 			}
