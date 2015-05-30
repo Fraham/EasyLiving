@@ -68,7 +68,7 @@ void loop()
 	{
 		relayState = 1- relayState;
                 digitalWrite(9, relayState);
-		dhtLastTime = millis();
+		relayLastTime = millis();
 	}
 	
         
