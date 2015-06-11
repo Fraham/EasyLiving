@@ -12,6 +12,8 @@ $properties = [];
 $properties = Property::getByUserID($userID);
 
 $roomHTML = "";
+
+$count = 0;
     
 foreach($properties as $property)
 {
@@ -36,7 +38,8 @@ foreach($properties as $property)
 			if (strcmp($row['dName'], "Unallocated Sensors") == 0)
 			{}
  			else
-			{			
+			{
+				$count = $count + 1;	
 				$occupiedStatement = "SELECT state, sensorID FROM sensors
 					INNER JOIN room
 					ON sensors.roomID = room.roomID
@@ -110,10 +113,16 @@ foreach($properties as $property)
 					$sensorHTML .= $sensor->getBlockFormat();
 				}
 				
-				$sensorHTML .= Sensor::getTempFormat($row['roomID']);		
+				$sensorHTML .= Sensor::getTempFormat($row['roomID']);
+				
+				if ($count === 1)
+				{
+					$roomHTML .= "<div class='row'>";
+				}		
 	
 				$roomHTML .= <<<HTML
-				<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
+				
+				<div class='col-md-4'>
 					<div class='panel panel-{$color}'>
 						<div class='panel-heading'>
 							<div class='row'>
@@ -123,18 +132,31 @@ foreach($properties as $property)
 								<div class='col-xs-9 text-right'>
 									<div class='huge' name=''>{$row["dName"]}</div>
 									<div>{$state}</div>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class='panel-body'>
-						{$sensorHTML}
+						<div class='panel-body'>
+							{$sensorHTML}
+						</div>
 					</div>
 				</div>
-			</div>
 HTML;
+				if ($count === 3)
+				{
+					$roomHTML .= "</div>";
+					$count = 0;
+				}
 			}
 		}
 	}
+}
+
+if ($count === 0)
+{
+}
+else
+{
+	$roomHTML .= "</div>";
 }
 
 $conn->close();
