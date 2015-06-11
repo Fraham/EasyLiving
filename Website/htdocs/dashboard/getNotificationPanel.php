@@ -6,14 +6,11 @@
 
 	sec_session_start();
 
-	//$houseID = $_SESSION['house_id'];
-	$houseID = "111111";
+	$houseID = $_SESSION['house_id'];
 	
 	$date=$_GET['date'];
-	//$date=date("Y-m-d h:i:s", strtotime($date));
 	
-	$jsonResult['date'] = $date;
-		
+	$jsonResult['date'] = $date;		
 	
 	$checkDateStatement = "SELECT log.date
 						FROM log
@@ -26,7 +23,7 @@
 						WHERE house.houseID = $houseID
 						AND log.date > '$date'
 	          			ORDER BY logID DESC
-						  LIMIT 10";
+						LIMIT 1";
 	
 	$checkDateResult = $conn->query($checkDateStatement);
 
@@ -78,8 +75,6 @@
 		$jsonResult['newData'] = "no";
 	}
 	$conn->close();
-	//echo $tableHtml;
-	
 	
 	$jsonResult['data'] = $tableHtml;
 	
