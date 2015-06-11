@@ -62,8 +62,6 @@ foreach($properties as $property)
 					$sensorHTML .= $sensor->getBlockFormat();
 				}
 				
-				$sensorHTML .= Sensor::getTempFormat($row['roomID']);
-				
 				if ($count === 1)
 				{
 					$roomHTML .= "<div class='row'>";

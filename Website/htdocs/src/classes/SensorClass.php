@@ -53,6 +53,10 @@ class Sensor
 				{
 					$sensor = new DoorSensor;
 				}
+				else if (substr( $row['sensorID'], 0, 2) === "03")// temperature sensor
+				{
+					$sensor = new TemperatureSensor;
+				}
 				else if (substr( $row['sensorID'], 0, 2) === "05")// relay sensor
 				{
 					$sensor = new RelaySensor;
@@ -199,47 +203,6 @@ class Sensor
 			echo "Error: " . $insertStatement . "<br>" . $conn->error;
 		}
 	}
-	
-	
-	public static function getTempByRoomID($roomID)
-	{
-		$statement = "SELECT sensors.sensorID, sensors.name, sensors.messageOn, sensors.messageOff, sensors.roomID, sensors.state
-		  			FROM sensors
-	                WHERE sensors.roomID = $roomID";
-					
-		return Sensor::getFromQuery($statement);
-	}
-	
-	public static function getTempFormat($roomID)
-	{
-		require "../src/connect.php";
-		$html = "";
-		$statement = "SELECT temp, hum
-					FROM temphum
-					INNER JOIN sensors
-					ON sensors.sensorID = temphum.sensorID
-					WHERE sensors.roomID = '$roomID'
-					ORDER BY id DESC
-					LIMIT 1";
-					
-		$result = $conn->query($statement);
-
-		if ($result->num_rows > 0)
-		{
-			while($row = $result->fetch_assoc())
-			{
-				$html .="
-				<div class='col-md-6'>
-						<h4><font color='black'>Temperature: </font><span><strong>{$row['temp']}&deg;C</strong></span></h4>
-					</div>
-				<div class='col-md-6'>
-						<h4><font color='black'>Humidity: </font><span><strong>{$row['hum']}%</strong></span></h4>
-					</div>";
-			}
-		}
-		
-		return $html;
-	}
 }
 
 class MotionSensor extends Sensor
@@ -296,6 +259,42 @@ class RelaySensor extends Sensor
 			</div>
 		</div>
 HTML;
+		
+		return $sensorBlock;
+	}
+}
+
+class TemperatureSensor extends Sensor
+{
+	public function getBlockFormat()
+	{
+		$sensorBlock = "";
+		
+		require "../src/connect.php";
+		
+		$statement = "SELECT temp, hum
+					FROM temphum
+					INNER JOIN sensors
+					ON sensors.sensorID = temphum.sensorID
+					WHERE sensors.roomID = '$this->roomID'
+					ORDER BY id DESC
+					LIMIT 1";
+					
+		$result = $conn->query($statement);
+
+		if ($result->num_rows > 0)
+		{
+			while($row = $result->fetch_assoc())
+			{
+				$sensorBlock .="
+				<div class='col-md-6'>
+						<h4><font color='black'>Temperature: </font><span><strong>{$row['temp']}&deg;C</strong></span></h4>
+					</div>
+				<div class='col-md-6'>
+						<h4><font color='black'>Humidity: </font><span><strong>{$row['hum']}%</strong></span></h4>
+					</div>";
+			}
+		}
 		
 		return $sensorBlock;
 	}

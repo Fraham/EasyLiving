@@ -46,9 +46,7 @@ if (isset($_SESSION['house_id']))
 				foreach ($sensors as $sensor)
 				{
 					$sensorHTML .= $sensor->getBlockFormat();
-				}
-				
-				$sensorHTML .= Sensor::getTempFormat($row['roomID']);		
+				}	
 
 				$roomHTML .= <<<HTML
 				<div class='col-md-3'>
@@ -92,8 +90,6 @@ HTML;
 			{
 				$sensorHTML .= $sensor->getBlockFormat();
 			}
-			
-			$sensorHTML .= Sensor::getTempFormat($row['roomID']);
 			
 			$userID= $_SESSION['user_id'];
 			
