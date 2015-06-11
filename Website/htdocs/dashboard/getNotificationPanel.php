@@ -6,56 +6,82 @@
 
 	sec_session_start();
 
-	$houseID = $_SESSION['house_id'];
+	//$houseID = $_SESSION['house_id'];
+	$houseID = "111111";
+	
+	$date=$_GET['date'];
+	//$date=date("Y-m-d h:i:s", strtotime($date));
+	
+	$jsonResult['date'] = $date;
+		
+	
+	$checkDateStatement = "SELECT log.date
+						FROM log
+		 				INNER JOIN sensors
+						ON log.sensorID = sensors.sensorID
+						INNER JOIN room
+						ON sensors.roomID = room.roomID
+						INNER JOIN house
+						ON room.houseID = house.houseID
+						WHERE house.houseID = $houseID
+						AND log.date > '$date'
+	          			ORDER BY logID DESC
+						  LIMIT 10";
+	
+	$checkDateResult = $conn->query($checkDateStatement);
 
-	$statement = "SELECT DATE_FORMAT(date,'%k:%i') as time, sensors.messageOn, sensors.messageOff, log.state, room.dName
-					FROM log
-	 				INNER JOIN sensors
-					ON log.sensorID = sensors.sensorID
-					INNER JOIN room
-					ON sensors.roomID = room.roomID
-					INNER JOIN house
-					ON room.houseID = house.houseID
-					WHERE house.houseID = $houseID
-					AND LEFT(sensors.sensorID, 2) != 01
-          			ORDER BY logID
-					DESC LIMIT 10";
-
-	$result = $conn->query($statement);
-
-	if ($result->num_rows > 0)
-	{
-		while($row = $result->fetch_assoc())
+	if ($checkDateResult->num_rows > 0)
+	{				
+		$jsonResult['newData'] = "yes";
+		
+		$statement = "SELECT DATE_FORMAT(date,'%k:%i') as time, sensors.messageOn, sensors.messageOff, log.state, room.dName
+						FROM log
+		 				INNER JOIN sensors
+						ON log.sensorID = sensors.sensorID
+						INNER JOIN room
+						ON sensors.roomID = room.roomID
+						INNER JOIN house
+						ON room.houseID = house.houseID
+						WHERE house.houseID = $houseID
+						AND LEFT(sensors.sensorID, 2) != 01
+	          			ORDER BY logID DESC
+						LIMIT 10";
+	
+		$result = $conn->query($statement);
+	
+		if ($result->num_rows > 0)
 		{
-			$state = (int) $row['state'];
-			$message = "{$row['dName']} - ";
-
-			if($state == 0)
+			while($row = $result->fetch_assoc())
 			{
-				$message .= $row['messageOff'];
+				$state = (int) $row['state'];
+				$message = "{$row['dName']} - ";
+	
+				if($state == 0)
+				{
+					$message .= $row['messageOff'];
+				}
+				else
+				{
+					$message .= $row['messageOn'];
+				}
+	
+				$tableHtml .= "<a href='#' class='list-group-item'>";//<i class='fa fa-comment fa-fw'></i>";
+				$tableHtml .= $message;
+				$tableHtml .= "<span class='pull-right text-muted small'><em>";
+				$tableHtml .= "$row[time]";
+				$tableHtml .= "</em></span>";
 			}
-			else
-			{
-				$message .= $row['messageOn'];
-			}
-
-			$tableHtml .= "<a href='#' class='list-group-item'>";//<i class='fa fa-comment fa-fw'></i>";
-			$tableHtml .= $message;
-			$tableHtml .= "<span class='pull-right text-muted small'><em>";
-			$tableHtml .= "$row[time]";
-			$tableHtml .= "</em></span>";
 		}
 	}
+	else
+	{
+		$jsonResult['newData'] = "no";
+	}
 	$conn->close();
-	echo $tableHtml;
+	//echo $tableHtml;
+	
+	
+	$jsonResult['data'] = $tableHtml;
+	
+	echo json_encode($jsonResult, JSON_NUMERIC_CHECK);
 ?>
-
-<!--					fa fa-comment fa-fw
-						fa fa-twitter fa-fw
-						fa fa-envelope fa-fw
-						fa fa-tasks fa-fw
-						fa fa-upload fa-fw
-						fa fa-bolt fa-fw
-						fa fa-warning fa-fw
-						fa fa-shopping-cart fa-fw
-						fa fa-money fa-fw-->
