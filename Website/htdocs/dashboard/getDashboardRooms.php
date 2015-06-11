@@ -1,6 +1,7 @@
 <?php
 require_once "../src/connect.php";
 require_once "../src/classes/PropertyClass.php";
+require_once "../src/classes/RoomClass.php";
 
 if (!isset($blockSize))
 	$blockSize = 370;
@@ -39,66 +40,14 @@ foreach($properties as $property)
 			{}
  			else
 			{
-				$count = $count + 1;	
-				$occupiedStatement = "SELECT state, sensorID FROM sensors
-					INNER JOIN room
-					ON sensors.roomID = room.roomID
-					WHERE room.roomID = $row[roomID]";
-	
-				$occupiedResult = $conn->query($occupiedStatement);
-	
-				$motion = 0;
-	
-				if ($occupiedResult->num_rows > 0)
-				{
-					while($occupiedRow = $occupiedResult->fetch_assoc())
-					{
-						if (0 === strpos($occupiedRow['sensorID'], '01'))
-			            {
-			                if ($occupiedRow['state'] == 1)
-			                {
-			                    $motion = 1;
-			                }
-			            }
-					}
-				}
-	
-				if ($motion == 1) //motion sensor state
-				{
-					$color = $row["occupied"];
-					$state = "Occupied";
-				}
-				else
-				{
-					$color = $row["unoccupied"];
-					
-					$lastSeenStatement = "SELECT date 
-					FROM log
-					INNER JOIN sensors
-					On sensors.sensorID = log.sensorID
-					INNER JOIN room
-					ON sensors.roomID = room.roomID
-					WHERE room.roomID = $row[roomID] and sensors.sensorID LIKE '01%'
-					ORDER BY logID DESC
-					LIMIT 1";
-					
-					$lastSeenResult = $conn->query($lastSeenStatement);
-					
-					if ($lastSeenResult->num_rows > 0)
-					{
-						$lastSeenRow = $lastSeenResult->fetch_assoc();
-						
-						$state = "Motion last detected at: ";
-						
-						$theDate = strtotime($lastSeenRow['date']);
-						
-						$state .= date("h:ia l d", $theDate);
-					}
-					else
-					{
-						$state = "No Motion Sensor";
-					}			
-				}
+				$count = $count + 1;
+				
+				$occupied = Room::occupiedState($row['roomID']);
+				
+				$state = $occupied[0];
+				$colorOCC = $occupied[1];
+				
+				$color = $row[$colorOCC];
 				
 				include_once ("{$path}../classes/SensorClass.php");
 				
