@@ -1,24 +1,24 @@
 <?php
-require_once "../src/connect.php";
+require_once "{$path}../connect.php";
+require_once "{$path}../classes/RoomClass.php";
 $roomHTML = "";
 
 if (!isset($blockSize))
 	$blockSize = 370;
 	
-	$count = 0;
+$count = 0;
 
 if (isset($_SESSION['house_id']))
 {
-
 	$houseID = $_SESSION['house_id'];
 
 	$statement = "SELECT R.dName, R.roomID, RC.occupied, RC.colourID, RC.unoccupied, I.icon, I.iconID, R.roomID
-									FROM room as R
-									INNER JOIN room_colour as RC
-									ON R.colourID = RC.colourID
-									INNER JOIN icons as I
-									ON R.iconID = I.iconID
-									WHERE	R.houseID = $houseID";
+					FROM room as R
+					INNER JOIN room_colour as RC
+					ON R.colourID = RC.colourID
+					INNER JOIN icons as I
+					ON R.iconID = I.iconID
+					WHERE	R.houseID = $houseID";
 
 	$result = $conn->query($statement);
 
@@ -26,17 +26,15 @@ if (isset($_SESSION['house_id']))
 	{
 		while($row = $result->fetch_assoc())
 		{
-							$count = $count + 1;
+			$count = $count + 1;
 				
-				if ($count === 1)
-				{
-					$roomHTML .= "<div class='row'>";
-				}
-				
-			$unallocated= "Unallocated Sensors";
-			if(strcmp($row['dName'],$unallocated)==0)
+			if ($count === 1)
 			{
-			
+				$roomHTML .= "<div class='row'>";
+			}
+				
+			if(strcmp($row['dName'], "Unallocated Sensors")==0)
+			{
 				include_once ("{$path}../classes/SensorClass.php");
 				
 				$sensorHTML = "";
@@ -71,69 +69,16 @@ if (isset($_SESSION['house_id']))
 			</div>
 		
 HTML;
-
-		}
-		else{ 
+			}
+		else
+		{ 
 	
-				$occupiedStatement = "SELECT state, sensorID FROM sensors
-				INNER JOIN room
-				ON sensors.roomID = room.roomID
-				WHERE room.roomID = $row[roomID]";
-
-			$occupiedResult = $conn->query($occupiedStatement);
-
-			$motion = 0;
-
-			if ($occupiedResult->num_rows > 0)
-			{
-				while($occupiedRow = $occupiedResult->fetch_assoc())
-				{
-					if (0 === strpos($occupiedRow['sensorID'], '01'))
-		            {
-		                if ($occupiedRow['state'] == 1)
-		                {
-		                    $motion = 1;
-		                }
-		            }
-				}
-			}
-
-			if ($motion == 1) //motion sensor state
-			{
-				$color = $row["occupied"];
-				$state = "Occupied";
-			}
-			else
-			{
-				$color = $row["unoccupied"];
+			$occupied = Room::occupiedState($row['roomID']);
 				
-				$lastSeenStatement = "SELECT date 
-				FROM log
-				INNER JOIN sensors
-				On sensors.sensorID = log.sensorID
-				INNER JOIN room
-				ON sensors.roomID = room.roomID
-				WHERE room.roomID = $row[roomID] and sensors.sensorID LIKE '01%'
-				ORDER BY logID DESC
-				LIMIT 1";
+			$state = $occupied[0];
+			$colorOCC = $occupied[1];
 				
-				$lastSeenResult = $conn->query($lastSeenStatement);
-				
-				if ($lastSeenResult->num_rows > 0)
-				{
-					$lastSeenRow = $lastSeenResult->fetch_assoc();
-					
-					$state = "Motion last dectected at: ";
-					
-					$theDate = strtotime($lastSeenRow['date']);
-					
-					$state .= date("h:ia l d", $theDate);
-				}
-				else
-				{
-					$state = "No motion sensor";
-				}
-			}
+			$color = $row[$colorOCC];
 			
 			include_once ("{$path}../classes/SensorClass.php");
 			
@@ -200,14 +145,14 @@ if ($count === 4)
 		}
 		}
 	}
-	
+		
 	if ($count === 0)
-{
-}
-else
-{
-	$roomHTML .= "</div>";
-}
+	{
+	}
+	else
+	{
+		$roomHTML .= "</div>";
+	}
 
 	$conn->close();
 	echo $roomHTML;
