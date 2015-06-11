@@ -4,6 +4,8 @@ $roomHTML = "";
 
 if (!isset($blockSize))
 	$blockSize = 370;
+	
+	$count = 0;
 
 if (isset($_SESSION['house_id']))
 {
@@ -24,6 +26,13 @@ if (isset($_SESSION['house_id']))
 	{
 		while($row = $result->fetch_assoc())
 		{
+							$count = $count + 1;
+				
+				if ($count === 1)
+				{
+					$roomHTML .= "<div class='row'>";
+				}
+				
 			$unallocated= "Unallocated Sensors";
 			if(strcmp($row['dName'],$unallocated)==0)
 			{
@@ -44,7 +53,7 @@ if (isset($_SESSION['house_id']))
 				$sensorHTML .= Sensor::getTempFormat($row['roomID']);		
 
 				$roomHTML .= <<<HTML
-				<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
+				<div class='col-md-3'>
 					<div class='panel panel-default' style="background-color: #D8D8D8;">
 							<div class='row'>
 								<div class='col-xs-3'>
@@ -160,10 +169,11 @@ HTML;
 				{
 					$show = "0";
 				}
+
 						
 
 			$roomHTML .= <<<HTML
-			<div class='col-lg-2 room-xs' style='width: {$blockSize}px; margin: auto; float: none;display: inline-block;'>
+			<div class='col-md-3'>
 				<div class='panel panel-{$color}'>
 					<div class='panel-heading' onClick="openRoomForm('{$row['roomID']}', '{$row['dName']}', '{$row['colourID']}', '{$row['iconID']}', '{$show}')" style="cursor:pointer">
 						<div class='row'>
@@ -182,9 +192,22 @@ HTML;
 			</div>
 		</div>
 HTML;
+if ($count === 4)
+				{
+					$roomHTML .= "</div>";
+					$count = 0;
+				}
 		}
 		}
 	}
+	
+	if ($count === 0)
+{
+}
+else
+{
+	$roomHTML .= "</div>";
+}
 
 	$conn->close();
 	echo $roomHTML;
