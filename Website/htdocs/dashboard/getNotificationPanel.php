@@ -22,6 +22,7 @@
 						ON room.houseID = house.houseID
 						WHERE house.houseID = $houseID
 						AND log.date > '$date'
+						AND sensors.sensorID NOT LIKE '01%'
 	          			ORDER BY logID DESC
 						LIMIT 1";
 	
@@ -40,7 +41,7 @@
 						INNER JOIN house
 						ON room.houseID = house.houseID
 						WHERE house.houseID = $houseID
-						AND LEFT(sensors.sensorID, 2) != 01
+						AND sensors.sensorID NOT LIKE '01%'
 	          			ORDER BY logID DESC
 						LIMIT 10";
 	
