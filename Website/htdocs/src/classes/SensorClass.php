@@ -241,7 +241,7 @@ class DoorSensor extends Sensor
 			
 		$sensorBlock .= <<<HTML
 			<div class='col-md-6'>
-				<h4><font color='black'>{$this->name}{$sensorCount}: </font><span><strong>{$message}</strong></span></h4>
+				<h4><font color='black'>{$this->name}: </font><span><strong>{$message}</strong></span></h4>
 			</div>
 HTML;
 
@@ -272,7 +272,7 @@ class RelaySensor extends Sensor
 		
 		$sensorBlock = <<<HTML
 		<div class='col-md-12' style='text-align:center;'>
-			<h4><font color='black'>{$this->name}{$sensorCount}</font></h4>
+			<h4><font color='black'>{$this->name}</font></h4>
 			<div class='col-md-6'>
 				<input type="button" value="On" class="btn btn-sm btn-danger btn-block" onclick="turnOn('{$this->sensorID}')" />
 			</div>
@@ -323,7 +323,7 @@ class TemperatureSensor extends Sensor
 			{
 				$sensorBlock .= <<<HTML
 				<div class='col-md-12' style='text-align:center;'>
-					<h4><font color='black'>{$this->name}{$sensorCount}</font></h4>
+					<h4><font color='black'>{$this->name}</font></h4>
 					<div class='col-md-6'>
 						<h4><font color='black'>Temperature: </font><span><strong>{$row['temp']}&deg;C</strong></span></h4>
 					</div>
