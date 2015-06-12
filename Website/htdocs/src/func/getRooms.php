@@ -43,9 +43,16 @@ if (isset($_SESSION['house_id']))
 
 				$sensors = Sensor::getByRoomID($row['roomID']);
 
+				$sensorCount = 0;
+	
 				foreach ($sensors as $sensor)
 				{
-					$sensorHTML .= $sensor->getBlockFormat();
+					$sensorHTML .= $sensor->getBlockFormat($sensorCount);
+				}
+				
+				if ($sensorCount !== 0)
+				{
+					$sensorHTML .= "</div>";
 				}	
 
 				$roomHTML .= <<<HTML
@@ -86,9 +93,16 @@ HTML;
 
 			$sensors = Sensor::getByRoomID($row['roomID']);
 
+			$sensorCount = 0;
+	
 			foreach ($sensors as $sensor)
 			{
-				$sensorHTML .= $sensor->getBlockFormat();
+				$sensorHTML .= $sensor->getBlockFormat($sensorCount);
+			}
+			
+			if ($sensorCount !== 0)
+			{
+				$sensorHTML .= "</div>";
 			}
 			
 			$userID= $_SESSION['user_id'];

@@ -56,10 +56,17 @@ foreach($properties as $property)
 				$sensors = [];
 	
 				$sensors = Sensor::getByRoomID($row['roomID']);
+				
+				$sensorCount = 0;
 	
 				foreach ($sensors as $sensor)
 				{
-					$sensorHTML .= $sensor->getBlockFormat();
+					$sensorHTML .= $sensor->getBlockFormat($sensorCount);
+				}
+				
+				if ($sensorCount === 1)
+				{
+					$sensorHTML .= "</div>";
 				}
 				
 				if ($count === 1)
