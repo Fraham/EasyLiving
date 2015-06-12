@@ -249,8 +249,8 @@ class RelaySensor extends Sensor
 		$sensorBlock = "";
 		
 		$sensorBlock = <<<HTML
-		<div class='col-md-12'>
-			<h4><font color='black'>{$this->name}: </font></h4>
+		<div class='col-md-12' style='text-align:center;'>
+			<h4><font color='black'>{$this->name}</font></h4>
 			<div class='col-md-6'>
 				<input type="button" value="On" class="btn btn-sm btn-danger btn-block" onclick="turnOn('{$this->sensorID}')" />
 			</div>
@@ -286,13 +286,17 @@ class TemperatureSensor extends Sensor
 		{
 			while($row = $result->fetch_assoc())
 			{
-				$sensorBlock .="
-				<div class='col-md-6'>
+				$sensorBlock .= <<<HTML
+				<div class='col-md-12' style='text-align:center;'>
+					<h4><font color='black'>{$this->name}</font></h4>
+					<div class='col-md-6'>
 						<h4><font color='black'>Temperature: </font><span><strong>{$row['temp']}&deg;C</strong></span></h4>
 					</div>
-				<div class='col-md-6'>
+					<div class='col-md-6'>
 						<h4><font color='black'>Humidity: </font><span><strong>{$row['hum']}%</strong></span></h4>
-					</div>";
+					</div>
+				</div>
+HTML;
 			}
 		}
 		
