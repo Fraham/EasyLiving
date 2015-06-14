@@ -22,7 +22,6 @@
 			
 		$.getJSON("getNotificationPanel.php?date=" + newDate, function (data)
 		{
-			console.log(data);
 			var newData = "newData";
 			console.log(data[newData]);
 			if (data[newData] === "yes")

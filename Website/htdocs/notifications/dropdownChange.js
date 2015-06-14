@@ -36,7 +36,7 @@ $(function () {
 
   $( "#sensorSelect" ).change(function() {
     var ID= $('#sensorSelect').val();
-    var type = substr()
+    var type = substr();
     //alert( "Handler for .change() called." );
   });
 });
