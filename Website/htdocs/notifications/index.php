@@ -172,7 +172,7 @@ $('#form_datetime1').datetimepicker({
 			<div class="panel-body panel-collapse" id="notiBody">
 				<div class="dataTable_wrapper">
 
-					<table class="display" cellspacing="0" width="100%" id="notifications">
+					<table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="notifications">
 						<thead>
 							<tr>
 								<th>Room</th>
@@ -196,7 +196,21 @@ $('#form_datetime1').datetimepicker({
 					var table;
 					$(document).ready(function() 
 					{
-						table = $('#notifications').dataTable();
+						table = $('#notifications').dataTable(
+							{
+								'bSort':true,
+								'aoColumns': [
+									{ bSearchable: true, bSortable: true },
+									{ bSearchable: true, bSortable: true },
+									{ bSearchable: true, bSortable: true },
+									{ bSearchable: true, bSortable: true }
+								],
+								"bScrollY": "200px",
+								"bScrollCollapse": true,
+								"searching": true,
+								"bPaginate": true
+							}
+						);
 						
 						confirm();
 					});
