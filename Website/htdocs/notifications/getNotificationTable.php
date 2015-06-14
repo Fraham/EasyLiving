@@ -1,5 +1,5 @@
 <?php
-	$tableHtml = "";
+	/*$tableHtml = "";
 	require_once "../src/connect.php";
 
 	include "../src/includes/functions.php";
@@ -113,10 +113,6 @@
 	  $set = 1;
 	}
 
-	/*sec_session_start();
-
-	$houseID = $_SESSION['house_id'];*/
-
 	$statement = "SELECT room.dName, DATE_FORMAT(log.date,'%d %M %Y %T') as time, sensors.name  as sensorName, sensors.messageOn, sensors.messageOff, log.state
 		FROM log
 		INNER JOIN sensors
@@ -166,5 +162,5 @@
 
 	$conn->close();
 
-	echo $tableHtml;
+	echo $tableHtml;*/
 ?>

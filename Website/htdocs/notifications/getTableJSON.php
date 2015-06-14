@@ -1,13 +1,7 @@
 <?php
-	
-	
-
 	include "../src/includes/functions.php";
 	
-	require_once "../src/classes/PropertyClass.php";
-	require_once "../src/classes/RoomClass.php";
-	require_once "../src/classes/SensorClass.php";
-	require_once "../src/classes/LogClass.php";
+	require_once "../src/connect.php";
 	
 	$where = "";
 	$set = 0;
@@ -118,36 +112,6 @@
 	  $set = 1;
 	}
 	
-	require_once "../src/connect.php";
-	
-	/*$statement = "SELECT log.logID
-		FROM log
-		INNER JOIN sensors
-		ON log.sensorID = sensors.sensorID
-		INNER JOIN room
-		ON sensors.roomID = room.roomID
-		INNER JOIN house
-		ON room.houseID = house.houseID ";
-	$statement .= $where;
-	$statement .= " ORDER BY logID DESC LIMIT 200";
-	
-	$result = $conn->query($statement);
-
-	if ($result->num_rows > 0)
-	{
-		$sensors = [];
-		$rooms = [];
-		
-		while($row = $result->fetch_assoc())
-		{
-			$log = Log::getByEventID($row['logID']);
-			
-			$data = array("Living Room", $log->logID, $log->state, $log->date);
-
-    		$jsonRows[] = $data;
-		}
-	}*/
-	
 	$statement = "SELECT room.dName, DATE_FORMAT(log.date,'%d %M %Y %T') as time, sensors.name  as sensorName, sensors.messageOn, sensors.messageOff, log.state
 		FROM log
 		INNER JOIN sensors
@@ -181,14 +145,11 @@
 
     		$jsonRows[] = $data;
 		}
-	}
-	
-	
+	}	
 	else
 	{
-		$tableHtml .= "There is nothing to display.";
-	}
-	
+		$jsonRows[] = array("There is nothing to display.");
+	}	
 	
 	$jsonResult[] = $jsonRows;
 

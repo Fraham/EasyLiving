@@ -58,9 +58,7 @@ include $path."main.php";
 			<div class="col-md-2">
 				<button type="button" class="btn btn-lg btn-danger" onclick="confirm()" >Confirm</button>
 
-				<script>
-					
-				//confirm();				
+				<script>				
 
 				function confirm()
 				{
@@ -76,8 +74,6 @@ include $path."main.php";
 					{
 						var start =	$("#startDate").datepicker( 'getDate' );
 
-						//start.setDate( start.getDate() + 1 );
-
 						var startDate = start.toISOString().slice(0, 11).replace(' ', '').replace('T', '');
 
 						startDate = startDate + " 00:00:00";
@@ -91,8 +87,6 @@ include $path."main.php";
 					{
 						var end = $("#endDate").datepicker( 'getDate' );
 
-						//end.setDate( end.getDate() + 1 );
-
 						var endDate = end.toISOString().slice(0, 11).replace(' ', '').replace('T', '');
 
 						endDate = endDate + " 23:59:59";
@@ -103,16 +97,11 @@ include $path."main.php";
 					}
 
 					url = "?propertyID=" + houseID + "&roomID=" + roomID + "&sensorID=" + sensorID + "&startDate=" + startDate + "&endDate=" + endDate;
-						
-					/*$.post("getNotificationTable.php" + url, function( data ) {
-						$("#notifications").html( data );
-					});*/
 					
 					table.fnClearTable();
 					
 					$.getJSON("getTableJSON.php" + url, function (data)
 					{
-						//var jsdata = JSON.parse(data);
 						$('#notifications').dataTable().fnAddData(data);
 					});
 
@@ -193,44 +182,23 @@ $('#form_datetime1').datetimepicker({
 					</table>
 
 					<script>
-					var table;
-					$(document).ready(function() 
-					{
-						table = $('#notifications').dataTable(
-							{
-								
-								'bSort':true,
-								/*'aoColumns': [
-									{ bSearchable: true, bSortable: true },
-									{ bSearchable: true, bSortable: true },
-									{ bSearchable: true, bSortable: true },
-									{ bSearchable: true, bSortable: true }
-								],*/
-								"bScrollY": "200px",
-								"bScrollCollapse": true,
-								"searching": true,
-								"bPaginate": true,
-								"aaSorting": [[ 3, "desc" ]]
-							}
-						);
-						
-						confirm();
-					});
-						/*$('#notifications').dataTable({
-							'bSort':true,
-							'aoColumns': [
-								{  bSearchable: false, bSortable: true },
-								{ bSearchable: false, bSortable: false },
-								{ bSearchable: false, bSortable: false },
-								{ bSearchable: false, bSortable: false }
-							],
-							"bScrollY": "200px",
-							"bScrollCollapse": true,
-							"searching": false,
-							"bPaginate": true
-						});*/
-						
-					
+						var table;
+						$(document).ready(function() 
+						{
+							table = $('#notifications').dataTable(
+								{
+									
+									'bSort':true,
+									"bScrollY": "200px",
+									"bScrollCollapse": true,
+									"searching": true,
+									"bPaginate": true,
+									"aaSorting": [[ 3, "desc" ]]
+								}
+							);
+							
+							confirm();
+						});					
 					</script>
 				</div>
 			</div>
