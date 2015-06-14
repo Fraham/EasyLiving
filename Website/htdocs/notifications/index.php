@@ -198,17 +198,19 @@ $('#form_datetime1').datetimepicker({
 					{
 						table = $('#notifications').dataTable(
 							{
+								
 								'bSort':true,
-								'aoColumns': [
+								/*'aoColumns': [
 									{ bSearchable: true, bSortable: true },
 									{ bSearchable: true, bSortable: true },
 									{ bSearchable: true, bSortable: true },
 									{ bSearchable: true, bSortable: true }
-								],
+								],*/
 								"bScrollY": "200px",
 								"bScrollCollapse": true,
 								"searching": true,
-								"bPaginate": true
+								"bPaginate": true,
+								"aaSorting": [[ 3, "desc" ]]
 							}
 						);
 						
