@@ -16,21 +16,23 @@
 
 	function refresh()
 	{
-			/*$.post( "getNotificationPanel.php", function( data ) {
-				$( "#notificationPanel" ).html( data );
-			});*/
+		$.ajax({
+			url: 'getNotificationPanel.php',
+			data: '?date=newDate',
+			datatype: 'json'
 			
-		$.getJSON("getNotificationPanel.php?date=" + newDate, function (data)
-		{
-			var newData = "newData";
-			console.log(data[newData]);
-			if (data[newData] === "yes")
+			success: function(data)
 			{
-				var setData = "data";
-				$( "#notificationPanel" ).html( data[setData] );
-				
-				date = new Date($.now());
-				newDate = ISODateString(date);
+				var newData = "newData";
+				console.log(data[newData]);
+				if (data[newData] === "yes")
+				{
+					var setData = "data";
+					$( "#notificationPanel" ).html( data[setData] );
+					
+					date = new Date($.now());
+					newDate = ISODateString(date);
+				}
 			}
 		});
 	}
