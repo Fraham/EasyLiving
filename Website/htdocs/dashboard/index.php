@@ -19,7 +19,21 @@
 		$.getJSON('getNotificationPanel.php', {'date':newDate}, function(data){			
 			if (data['newData'] === "yes")
 			{
-				$( "#notificationPanel" ).html( data["data"] );
+				var html = "";
+				
+				var htmlData = data['data'];				
+				
+				for(var j = 0; j < htmlData.length; j++) 
+      			{ 		
+					console.log(htmlData[j]);		  
+					html += "<a href='notifications' class='list-group-item'>";
+					html += htmlData[j]['name'] + " - " + htmlData[j]['message'];
+					html += "<span class='pull-right text-muted small'><em>";
+					html += htmlData[j]['date'];
+					html += "</em></span>";
+				}
+				
+				$("#notificationPanel").html(html);
 				
 				date = new Date($.now());
 				newDate = ISODateString(date);

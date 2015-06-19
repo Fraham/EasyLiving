@@ -52,32 +52,36 @@
 			while($row = $result->fetch_assoc())
 			{
 				$state = (int) $row['state'];
-				$message = "{$row['dName']} - ";
+				//$message = "{$row['dName']} - ";
 	
 				if($state == 0)
 				{
-					$message .= $row['messageOff'];
+					$message = $row['messageOff'];
 				}
 				else
 				{
-					$message .= $row['messageOn'];
+					$message = $row['messageOn'];
 				}
 	
-				$tableHtml .= "<a href='#' class='list-group-item'>";//<i class='fa fa-comment fa-fw'></i>";
+				/*$tableHtml .= "<a href='#' class='list-group-item'>";//<i class='fa fa-comment fa-fw'></i>";
 				$tableHtml .= $message;
 				$tableHtml .= "<span class='pull-right text-muted small'><em>";
 				$tableHtml .= "$row[time]";
-				$tableHtml .= "</em></span>";
+				$tableHtml .= "</em></span>";*/
+				
+				$data = array("name" => $row['dName'], "message" => $message, "date" => $row['time']);
+				
+				$jsonResult['data'][] = $data;
 			}
 		}
 	}
 	else
 	{
-		$jsonResult['newData'] = $checkDateStatement;
+		$jsonResult['newData'] = "no";
 	}
 	$conn->close();
 	
-	$jsonResult['data'] = $tableHtml;
+	//$jsonResult['data'] = $tableHtml;
 	
 	echo json_encode($jsonResult, JSON_NUMERIC_CHECK);
 ?>
