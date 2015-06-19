@@ -16,23 +16,13 @@
 
 	function refresh()
 	{
-		$.ajax({
-			url: 'getNotificationPanel.php',
-			data: '?date=newDate',
-			datatype: 'json'
-			
-			success: function(data)
+		$.getJSON('getNotificationPanel.php', {'date':newDate}, function(data){			
+			if (data['newData'] === "yes")
 			{
-				var newData = "newData";
-				console.log(data[newData]);
-				if (data[newData] === "yes")
-				{
-					var setData = "data";
-					$( "#notificationPanel" ).html( data[setData] );
-					
-					date = new Date($.now());
-					newDate = ISODateString(date);
-				}
+				$( "#notificationPanel" ).html( data["data"] );
+				
+				date = new Date($.now());
+				newDate = ISODateString(date);
 			}
 		});
 	}

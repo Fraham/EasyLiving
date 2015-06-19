@@ -73,7 +73,7 @@
 	}
 	else
 	{
-		$jsonResult['newData'] = "no";
+		$jsonResult['newData'] = $checkDateStatement;
 	}
 	$conn->close();
 	
