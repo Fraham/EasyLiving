@@ -10,8 +10,6 @@
 	
 	$date=$_GET['date'];
 	
-	$jsonResult['date'] = $date;
-	
 	$endtime = time() + 20;
 	$curtime = null;
 	$lasttime = null;
