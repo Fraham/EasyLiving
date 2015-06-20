@@ -10,29 +10,16 @@
 	
 	$date=$_GET['date'];
 	
-	$jsonResult['date'] = $date;		
+	$jsonResult['date'] = $date;
 	
-	$checkDateStatement = "SELECT log.date
-						FROM log
-		 				INNER JOIN sensors
-						ON log.sensorID = sensors.sensorID
-						INNER JOIN room
-						ON sensors.roomID = room.roomID
-						INNER JOIN house
-						ON room.houseID = house.houseID
-						WHERE house.houseID = $houseID
-						AND log.date > '$date'
-						AND sensors.sensorID NOT LIKE '01%'
-	          			ORDER BY logID DESC
-						LIMIT 1";
-	
-	$checkDateResult = $conn->query($checkDateStatement);
-
-	if ($checkDateResult->num_rows > 0)
-	{				
-		$jsonResult['newData'] = "yes";
-		
-		$statement = "SELECT DATE_FORMAT(date,'%k:%i') as time, sensors.messageOn, sensors.messageOff, log.state, room.dName
+	$endtime = time() + 20;
+	$curtime = null;
+	$lasttime = null;
+	$newData = false;
+					
+	while(time() <= $endtime)
+	{
+		$statement = "SELECT DATE_FORMAT(date,'%k:%i') as time, sensors.messageOn, sensors.messageOff, log.state, room.dName, date
 						FROM log
 		 				INNER JOIN sensors
 						ON log.sensorID = sensors.sensorID
@@ -44,6 +31,63 @@
 						AND sensors.sensorID NOT LIKE '01%'
 	          			ORDER BY logID DESC
 						LIMIT 10";
+						
+			$result = $conn->query($statement);
+	
+			if ($result->num_rows > 0)
+			{
+				$data = array();
+				
+				while($row = $result->fetch_assoc())
+				{
+					$state = (int) $row['state'];				
+	
+					if($state == 0)
+					{
+						$message = $row['messageOff'];
+					}
+					else
+					{
+						$message = $row['messageOn'];
+					}
+				
+					$data[] = array("name" => $row['dName'], "message" => $message, "time" => $row['time'], "date" => $row['date']);
+				}
+				
+				$curtime = strtotime($data[0]['date']);
+				$lasttime = strtotime($date);
+				
+				if(!empty($data) && $curtime >= $lasttime)
+				{
+					$newData = true;
+					$jsonResult['newData'] = "yes";
+					$jsonResult['data'] = $data;
+					$jsonResult['curtime'] = $curtime;
+					$jsonResult['lasttime'] = $lasttime;
+					break;
+				}
+				else{
+					sleep(1);
+				}
+			}
+	}
+	if(!$newData)
+	{	
+		$jsonResult['newData'] = "no";
+		$jsonResult['curtime'] = $curtime;
+		$jsonResult['lasttime'] = $lasttime;
+	}
+	echo json_encode($jsonResult, JSON_NUMERIC_CHECK);
+	
+	$conn->close();
+	
+	/*$checkDateResult = $conn->query($checkDateStatement);
+
+	if ($checkDateResult->num_rows > 0)
+	{				
+		
+		
+		
 	
 		$result = $conn->query($statement);
 	
@@ -69,7 +113,7 @@
 				$tableHtml .= "$row[time]";
 				$tableHtml .= "</em></span>";*/
 				
-				$data = array("name" => $row['dName'], "message" => $message, "date" => $row['time']);
+				/*$data = array("name" => $row['dName'], "message" => $message, "date" => $row['time']);
 				
 				$jsonResult['data'][] = $data;
 			}
@@ -79,9 +123,9 @@
 	{
 		$jsonResult['newData'] = "no";
 	}
-	$conn->close();
+	
 	
 	//$jsonResult['data'] = $tableHtml;
 	
-	echo json_encode($jsonResult, JSON_NUMERIC_CHECK);
+	*/
 ?>

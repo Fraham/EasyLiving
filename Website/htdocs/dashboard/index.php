@@ -11,11 +11,57 @@
 	var newDate = ISODateString(date);
 	
 	$( document ).ready(function() {
-    	var intervalID = setInterval(refresh, 500);
+    	//var intervalID = setInterval(refresh, 500);
+		refresh();
 	});
 
 	function refresh()
 	{
+		$.ajax({
+			url: 'getNotificationPanel.php',
+			//type: 'post',
+			dataType: 'json',
+			data: {
+				'date':newDate
+			},
+			timeout: 30000,
+			cache: false,
+			success: function(result)
+			{
+				//var data = $.parseJSON(result);
+				var data = result;
+				
+				if (data['newData'] === "yes")
+				{
+					var html = "";
+					
+					var htmlData = data['data'];				
+					
+					for(var j = 0; j < htmlData.length; j++) 
+	      			{	  
+						html += "<a href='notifications' class='list-group-item'>";
+						html += htmlData[j]['name'] + " - " + htmlData[j]['message'];
+						html += "<span class='pull-right text-muted small'><em>";
+						html += htmlData[j]['time'];
+						html += "</em></span>";
+					}
+					
+					$("#notificationPanel").html(html);
+					
+					date = new Date($.now());
+					newDate = ISODateString(date);
+				}
+			},
+			error: function(e){
+				console.log(e);
+			},
+			complete: function(){
+
+				
+				refresh();
+			}
+		});
+		/*
 		$.getJSON('getNotificationPanel.php', {'date':newDate}, function(data){			
 			if (data['newData'] === "yes")
 			{
@@ -37,12 +83,11 @@
 				date = new Date($.now());
 				newDate = ISODateString(date);
 			}
-		});
+		});*/
 	}
 	
 	function ISODateString(d)
-	{
-		
+	{		
   		function pad(n)
 		{
 			  return n<10 ? '0'+n : n
