@@ -62,8 +62,6 @@
 					$newData = true;
 					$jsonResult['newData'] = "yes";
 					$jsonResult['data'] = $data;
-					$jsonResult['curtime'] = $curtime;
-					$jsonResult['lasttime'] = $lasttime;
 					break;
 				}
 				else{
@@ -74,8 +72,6 @@
 	if(!$newData)
 	{	
 		$jsonResult['newData'] = "no";
-		$jsonResult['curtime'] = $curtime;
-		$jsonResult['lasttime'] = $lasttime;
 	}
 	echo json_encode($jsonResult, JSON_NUMERIC_CHECK);
 	
