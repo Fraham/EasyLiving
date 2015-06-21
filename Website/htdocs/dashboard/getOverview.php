@@ -32,21 +32,12 @@
     
     	if ($result->num_rows > 0)
     	{
-            //$doorHTMLtemp = "";
-
             $sensorData = array();
             
     		while($row = $result->fetch_assoc())
             {
                 if (0 === strpos($row['sensorID'], '02'))
-                {
-                    /*$doorHTMLtemp .= "<div style='text-indent: 2em;'>";
-    				$doorHTMLtemp .= "<h4>";
-    				$doorHTMLtemp .= "$row[name]";
-                    $doorHTMLtemp .= " ({$row['dName']}): ";
-    				$doorHTMLtemp .= "<span class='text-danger'>Open</span></h4>";
-                    $doorHTMLtemp .= "</div>";*/
-                    
+                {                    
                     $sensorData[] = array("sensor" => $row['name'], "room" => $row['dName']);
                 }
                 elseif (0 === strpos($row['sensorID'], '01'))
@@ -69,18 +60,7 @@
         $data = array("propertyName" => $property->userName, "occupied" => $occupied, "sensorData" => $sensorData);
         
         $propertyData[] = $data;
-    
-        /*if ($motion == 1)
-        {
-            $doorHTML .= "<h4>{} Occupied: <span>Yes</span></h4>";
-        }
-        else
-        {
-            $doorHTML .= "<h4>{$property->userName} Occupied: <span>No</span></h4>";
-        }*/
         
-        //$doorHTML .= $doorHTMLtemp;
-        //$doorHTMLtemp = "";
         $sensorData = array();        
     }
     
