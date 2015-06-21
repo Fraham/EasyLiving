@@ -5,21 +5,31 @@
 ?>
 
 <?php if (login_check($conn) == true) : ?>
-
+<script src="getInfo.js"></script>
 <script>
 	var date = new Date("July 21, 1983 01:15:00");
 	var newDate = ISODateString(date);
 	
 	$( document ).ready(function() {
-    	//var intervalID = setInterval(refresh, 500);
+		var refreshAjax;
 		refresh();
+		getOverview();
+	});
+	
+	window.onunload = unloadPage;
+	function unloadPage()
+	{
+	    refreshAjax.abort();
+	}
+	
+	$(window).bind('beforeunload',function(){
+		refreshAjax.abort();
 	});
 
 	function refresh()
 	{
-		$.ajax({
+		refreshAjax = $.ajax({
 			url: 'getNotificationPanel.php',
-			//type: 'post',
 			dataType: 'json',
 			data: {
 				'date':newDate
@@ -28,7 +38,6 @@
 			cache: false,
 			success: function(result)
 			{
-				//var data = $.parseJSON(result);
 				var data = result;
 				
 				if (data['newData'] === "yes")
@@ -39,7 +48,7 @@
 					
 					for(var j = 0; j < htmlData.length; j++) 
 	      			{	  
-						html += "<a href='notifications' class='list-group-item'>";
+						html += "<a href='../notifications' class='list-group-item'>";
 						html += htmlData[j]['name'] + " - " + htmlData[j]['message'];
 						html += "<span class='pull-right text-muted small'><em>";
 						html += htmlData[j]['time'];
@@ -61,29 +70,6 @@
 				refresh();
 			}
 		});
-		/*
-		$.getJSON('getNotificationPanel.php', {'date':newDate}, function(data){			
-			if (data['newData'] === "yes")
-			{
-				var html = "";
-				
-				var htmlData = data['data'];				
-				
-				for(var j = 0; j < htmlData.length; j++) 
-      			{	  
-					html += "<a href='notifications' class='list-group-item'>";
-					html += htmlData[j]['name'] + " - " + htmlData[j]['message'];
-					html += "<span class='pull-right text-muted small'><em>";
-					html += htmlData[j]['date'];
-					html += "</em></span>";
-				}
-				
-				$("#notificationPanel").html(html);
-				
-				date = new Date($.now());
-				newDate = ISODateString(date);
-			}
-		});*/
 	}
 	
 	function ISODateString(d)
@@ -114,8 +100,10 @@
 							<i class="fa fa-home fa-fw"></i> Overview
 						</div>
 						<div class="panel-body">
+							<div id="overviewPanel"></div>
 							<?php
-								include "getDoors.php";
+								
+								//include "getDoors.php";
 							?>
 						</div>
 					</div>

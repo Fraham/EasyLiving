@@ -2,12 +2,18 @@
 	$doorHTML = "";
 	require_once "../src/connect.php";
     require_once "../src/classes/PropertyClass.php";
+    
+    include "../src/includes/functions.php";
+
+	sec_session_start();
 
     $userID = $_SESSION['user_id'];
     
     $properties = [];
     
     $properties = Property::getByUserID($userID);
+    
+    $propertyData = array();
     
     foreach($properties as $property)
     {
@@ -26,18 +32,22 @@
     
     	if ($result->num_rows > 0)
     	{
-            $doorHTMLtemp = "";
+            //$doorHTMLtemp = "";
+
+            $sensorData = array();
+            
     		while($row = $result->fetch_assoc())
             {
                 if (0 === strpos($row['sensorID'], '02'))
                 {
-                    $doorHTMLtemp .= "<div style='text-indent: 2em;'>";
+                    /*$doorHTMLtemp .= "<div style='text-indent: 2em;'>";
     				$doorHTMLtemp .= "<h4>";
     				$doorHTMLtemp .= "$row[name]";
                     $doorHTMLtemp .= " ({$row['dName']}): ";
     				$doorHTMLtemp .= "<span class='text-danger'>Open</span></h4>";
-                    $doorHTMLtemp .= "</div>";
+                    $doorHTMLtemp .= "</div>";*/
                     
+                    $sensorData[] = array("sensor" => $row['name'], "room" => $row['dName']);
                 }
                 elseif (0 === strpos($row['sensorID'], '01'))
                 {
@@ -53,19 +63,31 @@
         {
             $doorHTML .= "";
         }
+        
+        $occupied = ($motion == 1 ? "Yes" : "No");
+        
+        $data = array("propertyName" => $property->userName, "occupied" => $occupied, "sensorData" => $sensorData);
+        
+        $propertyData[] = $data;
     
-        if ($motion == 1)
+        /*if ($motion == 1)
         {
-            $doorHTML .= "<h4>{$property->userName} Occupied: <span>Yes</span></h4>";
+            $doorHTML .= "<h4>{} Occupied: <span>Yes</span></h4>";
         }
         else
         {
             $doorHTML .= "<h4>{$property->userName} Occupied: <span>No</span></h4>";
-        }
+        }*/
         
-        $doorHTML .= $doorHTMLtemp;
-        $doorHTMLtemp = "";
+        //$doorHTML .= $doorHTMLtemp;
+        //$doorHTMLtemp = "";
+        $sensorData = array();        
     }
+    
+    $jsonResult['messgae'] = "no";
+    $jsonResult['data'] = $propertyData;		
+	
+	echo json_encode($jsonResult, JSON_NUMERIC_CHECK);
 
 	echo $doorHTML;
 ?>
