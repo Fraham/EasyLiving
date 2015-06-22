@@ -285,7 +285,7 @@ function getSensorTypes($return)
 
 function getRoomsAsPanels()
 {
-	$roomHTML = "";
+	/*$roomHTML = "";
 	require "../src/connect.php";
 
 	if (isset($_SESSION['house_id']))
@@ -353,7 +353,7 @@ function getRoomsAsPanels()
 		else
 		{
 			echo "house id not set";
-		}
+		}*/
 }
 
 	function getIcons()

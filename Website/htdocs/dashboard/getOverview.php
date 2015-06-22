@@ -64,10 +64,8 @@
         $sensorData = array();        
     }
     
-    $jsonResult['messgae'] = "no";
+    $jsonResult['message'] = "no";
     $jsonResult['data'] = $propertyData;		
 	
 	echo json_encode($jsonResult, JSON_NUMERIC_CHECK);
-
-	echo $doorHTML;
 ?>

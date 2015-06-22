@@ -1,3 +1,9 @@
+/*$(document).ready(function () {
+    getSensors();
+});*/
+
+getSensors();
+
 function deleteSensor() {
 	var ID = document.getElementById("sensorID").value;
 
@@ -95,3 +101,48 @@ function openForm(sensorID, name, messageOn, messageOff, roomID) {
 
 	$('#editSensorModal').modal('show');
 };
+
+function getSensors() {
+	$.ajax(
+		{
+			url: 'getSensors.php',
+			dataType: 'json',
+			async: true,
+			success: function (result) 
+			{
+				var sensorHTML = "";
+
+				var roomData = result['data'];
+
+				for (var j = 0; j < roomData.length; j++) 
+				{
+					sensorHTML = "";
+					sensorHTML += "<div class='col-sm-4'> \
+					<div class='panel panel-" + roomData[j]["colour"] + "'> \
+						<div class='panel-heading'' > \
+							" + roomData[j]["name"] +  " \
+						</div> \
+						<div class='panel-body'id='chartBody'> ";
+					
+					var sensorData = roomData[j]["sensorData"];	
+					
+					sensorHTML += sensorData;
+					
+					/*for(var i = 0; i < sensorData.length; i++)  
+					{
+						
+					}*/
+					sensorHTML += "</div></div></div>";					
+
+					$(sensorHTML).hide().appendTo("#sensorsPanel").fadeIn("slow");
+
+				}
+			},
+			error: function (e) {
+				//console.log(e);
+			},
+			complete: function () {
+
+			}
+		});
+}

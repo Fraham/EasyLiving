@@ -25,9 +25,11 @@
 		}else{
 	?>
 	<div class="row">
+		<div id="sensorsPanel">
+		</div>
 		<?php
-			include("../notifications/getNotificationsGraph.php");
-			getRoomsAsPanels();
+			//include("../notifications/getNotificationsGraph.php");
+			//getRoomsAsPanels();
 		?>
 	</div>
 	<div class="row">

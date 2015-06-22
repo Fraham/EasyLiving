@@ -5,11 +5,48 @@ class Room
 	public $roomID = "";
 	public $defaultName = "";
 	public $houseID = "";
-	public $colourID = "";
-	public $iconID = "";	
-
-
-
+	public $occupiedColour = "";
+	public $unoccupiedColour = "";
+	public $icon = "";
+	
+	public static function getRoomsByPropertyID($propertyID)	
+	{
+		require "../src/connect.php";
+		
+		$rooms = [];
+	
+		$statement = "SELECT dName, roomID, occupied, unoccupied, icon
+					FROM room
+					INNER JOIN room_colour
+					ON room.colourID = room_colour.colourID
+					INNER JOIN icons
+					ON room.iconID = icons.iconID
+					WHERE room.houseID = $propertyID";
+	
+		$result = $conn->query($statement);
+	
+		if ($result->num_rows > 0)
+		{
+			while($row = $result->fetch_assoc())
+			{
+				$room = new Room;
+				
+				$room->roomID = $row['roomID'];
+				$room->defaultName = $row['dName'];
+				$room->houseID = $propertyID;
+				$room->occupiedColour = $row['occupied'];
+				$room->unoccupiedColour = $row['unoccupied'];
+				$room->icon = $row['icon'];
+				
+				$rooms[] = $room;
+			}
+		}
+	
+		$conn->close();
+		
+		return $rooms;
+	}
+	
 	public static function getRoomsDrop($propertyID)
 	{
 		$roomList = "";
@@ -116,6 +153,44 @@ class Room
 				}
 				
 				return array($state, $colour);
+	}
+	
+	public static function getColour($colourID, $occupied)
+	{
+		$statement = "SELECT occupied, unoccupied
+				FROM room_colour
+				WHERE colourID = '$colourID'";
+				
+		require "../src/connect.php";
+	
+		$result = $conn->query($statement);
+	
+		if ($result->num_rows > 0)
+		{
+			while($row = $result->fetch_assoc())
+			{
+				return (strcmp($occupied, "occupied" ? $row['occupied'] : $row['unoccupied']));
+			}
+		}
+	}
+	
+	public static function getIcon($iconID)
+	{
+		$statement = "SELECT icon
+				FROM icons
+				WHERE iconID = '$iconID'";
+				
+		require "../src/connect.php";
+	
+		$result = $conn->query($statement);
+	
+		if ($result->num_rows > 0)
+		{
+			while($row = $result->fetch_assoc())
+			{
+				return $row['icon'];
+			}
+		}
 	}
 }
 ?>
