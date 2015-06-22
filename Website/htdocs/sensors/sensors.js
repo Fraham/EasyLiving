@@ -9,7 +9,9 @@ function deleteSensor() {
 
 	$.post("deleteSensor.php", { func: "delete", id: ID })
 		.done(function (data) {
-		location.reload();
+		//$('#modal').modal('toggle');
+		//location.reload();
+		getSensors();
 	});
 };
 function submitForm() {
@@ -54,7 +56,9 @@ function submitForm() {
 							if (done == true) {
 								$.post('addSensor.php', $('#addSensorForm').serialize())
 									.done(function (data) {
-									location.reload();
+									//location.reload();
+									$('#AddModal').modal('toggle');
+									getSensors();
 								});
 							}
 							else {
@@ -88,7 +92,9 @@ function checkedLocked(sensorID) {
 function editSensor() {
 	$.post('editSensor.php', $('#editSensorForm').serialize())
 		.done(function (data) {
-		location.reload();
+		//location.reload();
+		$('#editSensorModal').modal('toggle');
+		getSensors();
 	});
 };
 
@@ -103,6 +109,7 @@ function openForm(sensorID, name, messageOn, messageOff, roomID) {
 };
 
 function getSensors() {
+	$("#sensorsPanel").empty();
 	$.ajax(
 		{
 			url: 'getSensors.php',
