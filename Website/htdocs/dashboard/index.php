@@ -16,6 +16,10 @@
 		getOverview();
 	});
 	
+	$( window ).unload(function() {
+  		refreshAjax.abort();
+	});
+	
 	window.onunload = unloadPage;
 	function unloadPage()
 	{
@@ -31,6 +35,7 @@
 		refreshAjax = $.ajax({
 			url: 'getNotificationPanel.php',
 			dataType: 'json',
+			async:true,
 			data: {
 				'date':newDate
 			},
@@ -62,7 +67,7 @@
 				}
 			},
 			error: function(e){
-				console.log(e);
+				//console.log(e);
 			},
 			complete: function(){
 

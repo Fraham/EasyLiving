@@ -4,6 +4,7 @@ function getOverview()
 	{
 		url: 'getOverview.php',
 		dataType: 'json',
+		async:true,
 		success: function(result)
 		{
 			var overviewHTML = "";
@@ -25,7 +26,7 @@ function getOverview()
 			$("#overviewPanel").html(overviewHTML);
 		},
 		error: function(e){
-			console.log(e);
+			//console.log(e);
 		},
 		complete: function()
 		{
