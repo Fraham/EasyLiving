@@ -24,13 +24,12 @@
 			$conn->close();
 		}else{
 	?>
+			<?php
+			include("../notifications/getNotificationsGraph.php");
+		?>
 	<div class="row">
 		<div id="sensorsPanel">
 		</div>
-		<?php
-			//include("../notifications/getNotificationsGraph.php");
-			//getRoomsAsPanels();
-		?>
 	</div>
 	<div class="row">
 		<div class="col-lg-12 col-sm-12">
@@ -87,13 +86,13 @@
 							<div class="form-group">
 								<label for="sensorID" class="col-sm-3 control-label">Sensor ID</label>
 								<div class="col-sm-9">
-									<input type="text" id="sensorID" name="sensorID" class="form-control" readonly/>
+									<input type="text" id="sensorIDEdit" name="sensorID" class="form-control" readonly/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="name" class="col-sm-3 control-label">Name</label>
 								<div class="col-sm-9">
-									<input type="text" id="name" name="name" class="form-control"/>
+									<input type="text" id="nameEdit" name="name" class="form-control"/>
 									<br>
 									<p> (Please do not use an apostrophe) </p>
 								</div>
@@ -101,19 +100,19 @@
 							<div class="form-group">
 								<label for="messageOn" class="col-sm-3 control-label">Message On</label>
 								<div class="col-sm-9">
-									<input type="text" id="messageOn" name="messageOn" class="form-control"/>
+									<input type="text" id="messageOnEdit" name="messageOn" class="form-control"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="messageOff" class="col-sm-3 control-label">Message Off</label>
 								<div class="col-sm-9">
-									<input type="text" id="messageOff" name="messageOff" class="form-control"/>
+									<input type="text" id="messageOffEdit" name="messageOff" class="form-control"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="room" class="col-sm-3 control-label">Room</label>
 								<div class="col-sm-9">
-									<select id="room" name="room" class="form-control">
+									<select id="roomEdit" name="room" class="form-control">
 										<?php 
 											require "../src/classes/RoomClass.php";
 											
@@ -143,10 +142,6 @@
 			</div>
 		</div>
 	</div>
-
-	<script>
-		
-	</script>
 
 	<?php
     	}

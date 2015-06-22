@@ -93,11 +93,11 @@ function editSensor() {
 };
 
 function openForm(sensorID, name, messageOn, messageOff, roomID) {
-	document.forms["editSensorForm"]["sensorID"].value = sensorID;
-	document.forms["editSensorForm"]["name"].value = name;
-	document.forms["editSensorForm"]["messageOn"].value = messageOn;
-	document.forms["editSensorForm"]["messageOff"].value = messageOff;
-	document.forms["editSensorForm"]["room"].value = roomID;
+	$('#sensorIDEdit').val(sensorID);
+	$('#nameEdit').val(name);
+	$('#messageOnEdit').val(messageOn);
+	$('#messageOffEdit').val(messageOff);
+	$('#roomEdit').val(roomID);
 
 	$('#editSensorModal').modal('show');
 };
@@ -133,9 +133,7 @@ function getSensors() {
 						
 					}*/
 					sensorHTML += "</div></div></div>";					
-
 					$(sensorHTML).hide().appendTo("#sensorsPanel").fadeIn("slow");
-
 				}
 			},
 			error: function (e) {
@@ -145,4 +143,4 @@ function getSensors() {
 
 			}
 		});
-}
+};
