@@ -4,7 +4,8 @@
 
 	include "../src/includes/functions.php";
 
-	sec_session_start();
+	//sec_session_start();
+	session_start();
 
 	$houseID = $_SESSION['house_id'];
 	

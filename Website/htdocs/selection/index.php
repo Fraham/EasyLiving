@@ -3,9 +3,12 @@ $title = "My Locations";
 $path = "../src/templates/";
 include $path."main.php";
 require_once('../src/classes/PropertyClass.php');
+//sec_session_start();
+	//session_start();
 ?>
 
 <?php if (login_check($conn) == true) : ?>
+
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="dataTable_wrapper">

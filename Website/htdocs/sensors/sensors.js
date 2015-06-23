@@ -139,7 +139,11 @@ function getSensors() {
 					{
 						
 					}*/
-					sensorHTML += "</div></div></div>";					
+					sensorHTML += "</div></div></div>";
+					
+					if ((j + 1) % 3 === 0)
+						sensorHTML += "<div class='clearfix'>";
+										
 					$(sensorHTML).hide().appendTo("#sensorsPanel").fadeIn("slow");
 				}
 			},

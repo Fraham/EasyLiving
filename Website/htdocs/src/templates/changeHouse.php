@@ -5,7 +5,8 @@
 		
 		require "../connect.php";
 	
-		sec_session_start();
+		//sec_session_start();
+	session_start();
 		
 		$houseID = $_POST["houseID"];
 		

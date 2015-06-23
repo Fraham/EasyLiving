@@ -8,7 +8,8 @@
 	
 	include "../src/includes/functions.php";
 
-	sec_session_start();
+	//sec_session_start();
+	session_start();
 	
 	$userID = $_SESSION['user_id'];
 

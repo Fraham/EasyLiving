@@ -1,7 +1,8 @@
 <?php
 	include "../src/includes/functions.php";
 
-	sec_session_start();
+	//sec_session_start();
+	session_start();
 	
 	$dName = $_POST["name"];
 	$houseID = $_SESSION['house_id'];

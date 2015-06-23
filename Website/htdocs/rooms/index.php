@@ -13,15 +13,15 @@
 		}else{
 	?>
 	
-
+<script src="rooms.js"></script>
 		
 <div class="col-lg-12" id = "roomsPanel" style="width: 100%; margin-top: 20px;">
-
+	<div id="roomsPanel">
 	<?php
 		// $blockSize = 500;
-		include "../src/func/getRooms.php";
+		//include "../src/func/getRooms.php";
 	?>
-
+	</div>
 	<script>
 		$(function() {
 			$( "#roomsPanel" ).sortable({

@@ -2,7 +2,8 @@
 	include_once "$path../includes/functions.php";
 	include_once "$path../connect.php";
 
-	sec_session_start();
+	//sec_session_start();
+	session_start();
 ?>
 
 <!DOCTYPE html>

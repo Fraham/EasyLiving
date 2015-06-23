@@ -7,7 +7,8 @@
 	
 	include "../src/includes/functions.php";
 
-	sec_session_start();
+	//sec_session_start();
+	session_start();
 
 	if (isset($_SESSION['house_id']))
 	{
@@ -26,71 +27,15 @@
 			$jsonRooms[] = array("name" => $room->defaultName, "colour" => $room->unoccupiedColour, "sensorData" => $sensorData); 
 		}
 
-		/*$statement = "SELECT R.dName, R.roomID, RC.unoccupied
-		FROM room as R
-		INNER JOIN room_colour as RC
-		ON R.colourID = RC.colourID
-		INNER JOIN icons as I
-		ON R.iconID = I.iconID
-		WHERE R.houseID = $houseID";
-
-		$result = $conn->query($statement);
-		if ($result->num_rows > 0)
-		{
-			while($row = $result->fetch_assoc())
-			{
-				$room = $row["dName"];
-
-			$unallocated= "Unallocated Sensors";
-			if(strcmp($row['dName'],$unallocated)==0)
-			{
-					
-					$roomHTML .='
-				<div class="col-lg-4 col-md-4 col-sm-4">
-					<div class="panel" style="background-color: #D8D8D8;">
-						<div class="panel-heading" >
-							<strong>';
-								$roomHTML .="$row[dName]";
-								$roomHTML .='</strong>
-							</div>
-							<div class="panel-body"id="chartBody">
-								'.getSensorBtns($room).'
-							</div>
-						</div>
-					</div>';
-				}
-				else
-				{
-					$color = $row["unoccupied"];
-
-					$roomHTML .='
-					<div class="col-lg-4 col-md-4 col-sm-4">
-						<div class="panel panel-'.$color.'">
-							<div class="panel-heading" >
-								<strong>';
-									$roomHTML .="$row[dName]";
-									$roomHTML .='</strong>
-								</div>
-								<div class="panel-body"id="chartBody">
-									'.getSensorBtns($room).'
-								</div>
-							</div>
-						</div>';
-				}
-			}
-		}*/
+		
 		$jsonResult['message'] = "okay";
 		$jsonResult['data'] = $jsonRooms;
 		$conn->close();
-//			echo $roomHTML;
 	}
 	else
 	{
 		$jsonResult['message'] = "house ID not set";
-	}
-	
-	
-    //$jsonResult['data'] = $propertyData;		
+	}	
 	
 	echo json_encode($jsonResult, JSON_NUMERIC_CHECK);
 	

@@ -1,7 +1,8 @@
 <?php
 
 include_once 'functions.php';
-sec_session_start();
+//sec_session_start();
+	session_start();
 
 // Unset all session values
 $_SESSION = array();

@@ -4,6 +4,8 @@ function getProperties()
   $propertyList = "";
 
   require "../src/connect.php";
+  //sec_session_start();
+	session_start();
 
   $userID = $_SESSION['user_id'];
 
@@ -30,6 +32,8 @@ function getRooms()
 {
   $roomList = "";
   require "../src/connect.php";
+  //sec_session_start();
+	session_start();
 
   $userID = $_SESSION['user_id'];
 
@@ -63,6 +67,8 @@ function getSensors()
 {
   $sensorList = "";
   require "../src/connect.php";
+  //sec_session_start();
+	session_start();
 
   $userID = $_SESSION['user_id'];
 

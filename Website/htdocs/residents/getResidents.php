@@ -3,6 +3,10 @@ require_once "../src/connect.php";
 
 $residents = "";
 
+
+//sec_session_start();
+	session_start();
+
 $houseID = $_SESSION['house_id'];
 
 $statement = "SELECT U.email, H.dName FROM users as U

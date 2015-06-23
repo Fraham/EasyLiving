@@ -2,6 +2,8 @@
   $title = "Sensors";
   $path = "../src/templates/";
   include $path."main.php";
+  //sec_session_start();
+	//session_start();
 ?>
 
 <?php if (login_check($conn) == true) : ?>

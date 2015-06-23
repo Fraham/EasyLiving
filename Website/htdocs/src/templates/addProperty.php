@@ -2,7 +2,8 @@
 	if (isset($_POST["propertyID"]) and isset($_POST["housePassword"]))
 	{
 		require_once "../includes/functions.php";
-		sec_session_start();
+		//sec_session_start();
+	session_start();
 		
 		$propertyID = $_POST['propertyID'];
 		$housePassword = $_POST['housePassword'];
