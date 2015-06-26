@@ -162,6 +162,7 @@
 			
 			$.post("deleteRoom.php", { func: "delete", id: ID })
 			.done(function( data ) {
+				$('#editRoomModal').modal('hide');
 				getRooms();
 			});
 		};
@@ -169,6 +170,7 @@
 		{
 			$.post('addRoom.php', $('#addRoomForm').serialize())
 			.done(function( data ) {
+				$('#addRoomModal').modal('hide');
 				getRooms();
 			});
 		};
@@ -176,6 +178,7 @@
 		{
 			$.post('editRoom.php', $('#editRoomForm').serialize())
 			.done(function( data ) {
+				$('#editRoomModal').modal('hide');
 				getRooms();
 			});
 		};
