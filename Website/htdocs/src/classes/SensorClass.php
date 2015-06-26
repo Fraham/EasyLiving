@@ -9,6 +9,8 @@ class Sensor
 	public $roomID = "";
 	public $state = "";
 	
+	public $sensorCount = 0;
+	
 	public static function getByUserID($userID)
 	{
 		$statement = "SELECT sensors.sensorID, sensors.name, sensors.messageOn, sensors.messageOff, sensors.roomID, sensors.state
@@ -80,7 +82,7 @@ class Sensor
 		  return $sensors;
 	}
 	
-	public function getBlockFormat(&$sensorCount)
+	public function getBlockFormat()
 	{
 		$sensorBlock = "";
 		
@@ -207,7 +209,9 @@ class Sensor
 
 class MotionSensor extends Sensor
 {
-	public function getBlockFormat(&$sensorCount)
+	public $sensorCount = 0;
+	
+	public function getBlockFormat()
 	{
 		$sensorBlock = "";
 		
@@ -217,13 +221,13 @@ class MotionSensor extends Sensor
 
 class DoorSensor extends Sensor
 {
-	public function getBlockFormat(&$sensorCount)
+	public $sensorCount = 1;
+	
+	public function getBlockFormat()
 	{
 		$sensorBlock = "";
 		
 		$message = "";
-		
-		$sensorCount = $sensorCount + 1;
 			
 		if(strcmp($this->state, "0") === 0)
 		{
@@ -233,23 +237,12 @@ class DoorSensor extends Sensor
 		{
 			$message = $this->messageOn;
 		}
-		
-		if ($sensorCount === 1)
-		{
-			$sensorBlock .= "<div class='row'>";
-		}
 			
 		$sensorBlock .= <<<HTML
 			<div class='col-md-6'>
-				<h4><font color='black'>{$this->name}: </font><span><strong>{$message}</strong></span></h4>
+				<p><font color='black'>{$this->name}: </font><span><strong>{$message}</strong></span></p>
 			</div>
 HTML;
-
-		if ($sensorCount === 2)
-		{
-			$sensorBlock .= "</div>";
-			$sensorCount = 0;
-		}
 		
 		return $sensorBlock;
 	}
@@ -257,16 +250,11 @@ HTML;
 
 class RelaySensor extends Sensor
 {
-	public function getBlockFormat(&$sensorCount)
+	public $sensorCount = 2;
+	
+	public function getBlockFormat()
 	{
 		$sensorBlock = "";
-		
-		$sensorCount = $sensorCount + 1;
-		
-		if ($sensorCount === 1)
-		{
-			$sensorBlock .= "</div>";
-		}
 		
 		$sensorBlock .= "<div class='row'>";
 		
@@ -281,27 +269,17 @@ class RelaySensor extends Sensor
 			</div>
 		</div>
 HTML;
-
-		$sensorBlock .= "</div>";
-		$sensorCount = 0;
-		
-		
 		return $sensorBlock;
 	}
 }
 
 class TemperatureSensor extends Sensor
 {
-	public function getBlockFormat(&$sensorCount)
+	public $sensorCount = 2;
+	
+	public function getBlockFormat()
 	{
 		$sensorBlock = "";
-		
-		$sensorCount = $sensorCount + 1;
-		
-		if ($sensorCount === 1)
-		{
-			$sensorBlock .= "</div>";
-		}
 		
 		$sensorBlock .= "<div class='row'>";
 		
@@ -325,18 +303,15 @@ class TemperatureSensor extends Sensor
 				<div class='col-md-12' style='text-align:center;'>
 					<h4><font color='black'>{$this->name}</font></h4>
 					<div class='col-md-6'>
-						<h4><font color='black'>Temperature: </font><span><strong>{$row['temp']}&deg;C</strong></span></h4>
+						<p><font color='black'>Temperature: </font><span><strong>{$row['temp']}&deg;C</strong></span></p>
 					</div>
 					<div class='col-md-6'>
-						<h4><font color='black'>Humidity: </font><span><strong>{$row['hum']}%</strong></span></h4>
+						<p><font color='black'>Humidity: </font><span><strong>{$row['hum']}%</strong></span></p>
 					</div>
 				</div>
 HTML;
 			}
 		}
-		
-		$sensorBlock .= "</div>";
-		$sensorCount = 0;
 		
 		return $sensorBlock;
 	}

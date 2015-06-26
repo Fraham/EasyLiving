@@ -22,10 +22,44 @@
 		
 		foreach($rooms as $room)
 		{
-			//get sensor data
-			//$sensorData = getSensorBtns($room->roomID);
-			$sensorData = "";
-			$jsonRooms[] = array("id" => $room->roomID, "name" => $room->defaultName, "colourUnoccupied" => $room->unoccupiedColour, "colourOccupied" => $room->occupiedColour, "sensorData" => $sensorData, "occupied" => 0); 
+			$sensorData = array();
+			
+			$sensors = [];
+
+			$sensors = Sensor::getByRoomID($room->roomID);
+	
+			foreach ($sensors as $sensor)
+			{				
+				$sensorData[] = array("count" => $sensor->sensorCount, "sensorHTML" => $sensor->getBlockFormat());
+			}
+			
+			$userID= $_SESSION['user_id'];
+			
+			$showStatement = "SELECT showRoom 
+				FROM user_room
+				WHERE userID = '$userID'
+				AND roomID = '$room->roomID'";
+				
+			$showResult = $conn->query($showStatement);
+				
+			if ($showResult->num_rows > 0)
+			{
+				$lastSeenRow = $showResult->fetch_assoc();
+				
+				$show = $lastSeenRow['showRoom'];
+			}
+			else
+			{
+					$show = "0";
+			}
+				
+			$occupied = Room::occupiedState($room->roomID);
+				
+			$state = $occupied[0];
+			
+			$jsonRooms[] = array("id" => $room->roomID, "name" => $room->defaultName, "colourUnoccupied" => $room->unoccupiedColour,
+								 "colourOccupied" => $room->occupiedColour, "sensorData" => $sensorData, "occupied" => 0, "icon" => $room->icon, 
+								 "iconID" => $room->iconID, "colourID" => $room->colourID, "show" => $show, "state" => $state); 
 		}
 
 		

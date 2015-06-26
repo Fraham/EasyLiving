@@ -8,14 +8,16 @@ class Room
 	public $occupiedColour = "";
 	public $unoccupiedColour = "";
 	public $icon = "";
-	
+	public $iconID = "";
+	public $colourID = "";
+		
 	public static function getRoomsByPropertyID($propertyID)	
 	{
 		require "../src/connect.php";
 		
 		$rooms = [];
 	
-		$statement = "SELECT dName, roomID, occupied, unoccupied, icon
+		$statement = "SELECT dName, roomID, occupied, unoccupied, icon, room.iconID, room.colourID
 					FROM room
 					INNER JOIN room_colour
 					ON room.colourID = room_colour.colourID
@@ -37,6 +39,8 @@ class Room
 				$room->occupiedColour = $row['occupied'];
 				$room->unoccupiedColour = $row['unoccupied'];
 				$room->icon = $row['icon'];
+				$room->colourID = $row['colourID'];
+				$room->iconID = $row['iconID'];
 				
 				$rooms[] = $room;
 			}
