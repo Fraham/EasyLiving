@@ -162,21 +162,21 @@
 			
 			$.post("deleteRoom.php", { func: "delete", id: ID })
 			.done(function( data ) {
-				location.reload();
+				getRooms();
 			});
 		};
 		function submitForm()
 		{
 			$.post('addRoom.php', $('#addRoomForm').serialize())
 			.done(function( data ) {
-				location.reload();
+				getRooms();
 			});
 		};
 		function editSensor()
 		{
 			$.post('editRoom.php', $('#editRoomForm').serialize())
 			.done(function( data ) {
-				location.reload();
+				getRooms();
 			});
 		};
 		function openRoomForm(roomID, name, colourID, iconID, show)
