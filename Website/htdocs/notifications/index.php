@@ -42,8 +42,12 @@ include $path."main.php";
 				</div>
 				<div class="col-md-2">
 					<select class="form-control" id="sensorSelect">
+						<option selected hidden value = Any>Sensor</option>
+						<option value = Any>Any</option>
+						<div id="sensorList">
+						</div>
 						<?php
-						getSensors();
+						//getSensors();
 						?>
 					</select>
 				</label>
