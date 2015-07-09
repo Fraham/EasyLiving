@@ -38,11 +38,12 @@
 			}
 		}
 	
-		$statement = "SELECT sensors.name, sensorID FROM sensors
-		INNER JOIN room
-		ON room.roomID = sensors.roomID
-		INNER JOIN user_households
-		ON user_households.houseID = room.houseID";  
+		$statement = "SELECT sensors.name, sensorID, messageOn, messageOff, sensors.roomID , sensors.state
+					FROM sensors
+					INNER JOIN room
+					ON room.roomID = sensors.roomID
+					INNER JOIN user_households
+					ON user_households.houseID = room.houseID";  
 		$statement .= $where;
 		
 		$sensors = Sensor::getFromQuery($statement);

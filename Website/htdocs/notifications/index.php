@@ -16,7 +16,7 @@ include $path."main.php";
 
 	<script type="text/javascript" src="graph.js"></script>
 	<script type="text/javascript" src="history.js"></script>
-	<script type="text/javascript" src="dropdownChange.js"></script>
+	<!-- <script type="text/javascript" src="dropdownChange.js"></script> -->
 
 	<div class="row">
 		<div class="col-sm-12">
@@ -44,8 +44,7 @@ include $path."main.php";
 					<select class="form-control" id="sensorSelect">
 						<option selected hidden value = Any>Sensor</option>
 						<option value = Any>Any</option>
-						<div id="sensorList">
-						</div>
+						<div id="sensorList"></div>
 						<?php
 						//getSensors();
 						?>
