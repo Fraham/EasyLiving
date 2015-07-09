@@ -15,7 +15,7 @@ $(function () {
     $.post("getNotificationsGraph.php" + url, function (data) {
       $("#sensorSelect").html(data);
     });*/
-    
+
     updateSensorsList();
   });
 
@@ -29,7 +29,7 @@ $(function () {
     $.post("getNotificationsGraph.php" + url, function (data) {
       $("#sensorSelect").html(data);
     });*/
-    
+
     updateSensorsList();
   });
 
@@ -44,25 +44,25 @@ $(function () {
 
 function updateSensorsList() {
   $("#sensorSelect").empty();
+
+  $('#sensorSelect').append($('<option/>', {
+    value: "Any",
+    text: "Any"
+  }));
+
   $.ajax(
     {
       url: 'history.php',
       dataType: 'json',
       async: true,
-      data : { action : "updateSensorsList", roomID : $('#roomSelect').val(), propertyID : $('#propertySelect').val()},
+      data: { action: "updateSensorsList", roomID: $('#roomSelect').val(), propertyID: $('#propertySelect').val() },
       success: function (result) {
         var sensorData = result['data'];
-        
-        $('#sensorSelect').append($('<option/>', { 
-          value: "Any",
-          text : "Any" 
-        }));
 
-        for (var j = 0; j < sensorData.length; j++) 
-        {
-          $('#sensorSelect').append($('<option/>', { 
+        for (var j = 0; j < sensorData.length; j++) {
+          $('#sensorSelect').append($('<option/>', {
             value: sensorData[j]["sensorID"],
-            text : sensorData[j]["name"] 
+            text: sensorData[j]["name"]
           }));
         }
       },
