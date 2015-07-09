@@ -163,6 +163,8 @@ function getSensors($return = 0, $option = 0, $propertyID)
 	<option value = Any>Any</option>";  
 
 	require "../src/connect.php";
+	
+	session_start();
 
 	$userID = $_SESSION['user_id'];
 

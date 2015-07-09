@@ -1,16 +1,18 @@
 <?php
-	if(isset($_POST['action']) && !empty($_POST['action'])) 
+	if(isset($_GET['action']) && !empty($_GET['action'])) 
 	{
-	    $action = $_POST['action'];
+	    $action = $_GET['action'];
 	    switch($action) 
 		{
 	        case 'updateSensorsList' : updateSensorsList();break;
+			//case default : updateSensorsList();break;
 	    }
 	}
 	
 	function updateSensorsList()
 	{
 		require "../src/connect.php";
+		include "../src/classes/SensorClass.php";
 		
 		session_start();
 
@@ -19,10 +21,10 @@
 		$where = " WHERE user_households.userID = ";
 		$where .= $userID;
 	
-		if(isset($_POST['propertyID']) && isset($_POST['roomID']))
+		if(isset($_GET['propertyID']) && isset($_GET['roomID']))
 		{
-			$propertyID = $_POST['propertyID'];
-			$roomID = $_POST['roomID'];
+			$propertyID = $_GET['propertyID'];
+			$roomID = $_GET['roomID'];
 			
 			if ($propertyID !== "Any")
 			{
@@ -42,5 +44,14 @@
 		INNER JOIN user_households
 		ON user_households.houseID = room.houseID";  
 		$statement .= $where;
+		
+		$sensors = Sensor::getFromQuery($statement);
+		
+		foreach($sensors as $sensor)
+		{
+			$jsonResult['data'][] = array("sensorID" => $sensor->sensorID, "name" => $sensor->name);
+		}
+	
+		echo json_encode($jsonResult, JSON_NUMERIC_CHECK);
 	}
 ?>
