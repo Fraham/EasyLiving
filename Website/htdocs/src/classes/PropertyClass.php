@@ -6,7 +6,7 @@ class Property
   public $password = "";
   public $defaultName = "";
   public $userName = "";
-  
+
   public $rooms = [];
 
   public static function getByUserID($userID)
@@ -46,7 +46,7 @@ class Property
     <tbody>
     <tr class='odd gradeX'>
     <td>{$this->houseID}</td>
-    <td><input type="button" value="Show Password" class="btn btn-danger btn-block" onClick='showPassword("{$this->password}")'/></td> 
+    <td><input type="button" value="Show Password" class="btn btn-danger btn-block" onClick='showPassword("{$this->password}")'/></td>
     <td>{$this->defaultName}</td>
     <td>{$this->userName}</td>
     <td><input type="button" value="Edit" class="btn btn-danger btn-block" onClick='showForm("{$this->houseID}", "{$this->password}", "{$this->defaultName}", "{$this->userName}")'/></td>
@@ -89,76 +89,76 @@ HTML;
 
     echo $menuHTML;
   }
-  
+
   public static function getNextID()
   {
     require "../src/connect.php";
-    
-    $statement = "SELECT MAX(houseID) AS houseID 
+
+    $statement = "SELECT MAX(houseID) AS houseID
                   FROM house";
-                  
+
     $result = $conn->query($statement);
 
     if ($result->num_rows > 0)
-    {             
+    {
       $row = $result->fetch_assoc();
-      
-      $newID = $row["houseID"] + 1;      
+
+      $newID = $row["houseID"] + 1;
     }
     else
     {
       $newID = "111111";
     }
-    
+
     return ("$newID");
   }
-  
+
   public static function saveProperty($userID, $name, $housePassword, $houseID)
   {
       require "../src/connect.php";
-  
+
       $insertStatement = "INSERT INTO house
       (houseID, house_password, dName)
       VALUES ('$houseID', '$housePassword', '$name')";
-  
+
       if (!$conn->query($insertStatement)) {
 				echo "Error: " . $insertStatement . "<br>" . $conn->error;
 			}
-  
+
       $insertStatement = "INSERT INTO user_households
       (houseName, userID, houseID)
       VALUES ('$name', '$userID', '$houseID')";
-  
+
       if (!$conn->query($insertStatement)) {
 				echo "Error: " . $insertStatement . "<br>" . $conn->error;
 			}
 
         $name = $row['dName'];
         $addStatement = "INSERT INTO room
-              (dName, houseID, colourID, iconID) 
+              (dName, houseID, colourID, iconID)
               VALUES ('Unallocated Sensors', '$houseID', '4', '35')";
         if (!$conn->query($addStatement)) {
           echo "Error: " . $addStatement . "<br>" . $conn->error;
         }
-  
+
   }
-  
+
   public static function updateProperty($userID, $defaultName, $userName, $propertyPassword, $propertyID)
   {
       require "../src/connect.php";
-  
+
       $insertStatement = "UPDATE house
       SET house_password = '$propertyPassword', dName = '$defaultName'
       WHERE houseID = '$propertyID'";
-  
+
       if (!$conn->query($insertStatement)) {
 				echo "Error: " . $insertStatement . "<br>" . $conn->error;
 			}
-  
+
       $insertStatement = "UPDATE user_households
       SET houseName = '$userName'
       WHERE userID = '$userID' AND houseID = '$propertyID'";
-  
+
       if (!$conn->query($insertStatement)) {
 				echo "Error: " . $insertStatement . "<br>" . $conn->error;
 			}
