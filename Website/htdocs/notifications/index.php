@@ -40,7 +40,7 @@ include $path."main.php";
 						<option selected hidden value = Any>Sensor</option>
 						<option value = Any>Any</option>
 						<?php
-						getRooms();
+						//getRooms();
 						?>
 					</select>
 				</div>
