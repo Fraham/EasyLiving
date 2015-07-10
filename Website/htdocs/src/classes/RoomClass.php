@@ -11,19 +11,31 @@ class Room
 	public $iconID = "";
 	public $colourID = "";
 
-	public static function getRoomsByPropertyID($propertyID)
+	public static function getRoomsByPropertyID($propertyID = "Any")
 	{
 		require "../src/connect.php";
 
 		$rooms = [];
 
-		$statement = "SELECT dName, roomID, occupied, unoccupied, icon, room.iconID, room.colourID
+		$where = "";
+
+		if(isset($propertyID))
+		{
+			if ($propertyID !== "Any")
+			{
+				$where .= " WHERE room.houseID = ";
+				$where .= $propertyID;
+			}
+		}
+
+		$statement = "SELECT dName, roomID, occupied, unoccupied, icon, room.iconID, room.colourID, room.houseID
 					FROM room
 					INNER JOIN room_colour
 					ON room.colourID = room_colour.colourID
 					INNER JOIN icons
-					ON room.iconID = icons.iconID
-					WHERE room.houseID = $propertyID";
+					ON room.iconID = icons.iconID";
+
+		$statement .= $where;
 
 		$result = $conn->query($statement);
 
@@ -35,7 +47,7 @@ class Room
 
 				$room->roomID = $row['roomID'];
 				$room->defaultName = $row['dName'];
-				$room->houseID = $propertyID;
+				$room->houseID = $row['houseID'];
 				$room->occupiedColour = $row['occupied'];
 				$room->unoccupiedColour = $row['unoccupied'];
 				$room->icon = $row['icon'];

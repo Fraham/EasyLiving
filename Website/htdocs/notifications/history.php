@@ -60,46 +60,33 @@
 
 	function updateRoomsList()
 	{
-		require "../src/connect.php";
-		include "../src/classes/SensorClass.php";
+		//require "../src/connect.php";
+		include "../src/classes/RoomClass.php";
 
-		session_start();
+		//session_start();
 
-		$userID = $_SESSION['user_id'];
+		//$userID = $_SESSION['user_id'];
 
-		$where = " WHERE user_households.userID = ";
-		$where .= $userID;
+		//$where = " WHERE user_households.userID = ";
+		//$where .= $userID;
 
-		if(isset($_GET['propertyID']) && isset($_GET['roomID']))
+		$jsonResult;
+		$rooms;
+
+		if(isset($_GET['propertyID']))
 		{
 			$propertyID = $_GET['propertyID'];
-			$roomID = $_GET['roomID'];
 
-			if ($propertyID !== "Any")
-			{
-				$where .= " AND room.houseID = ";
-				$where .= $propertyID;
-			}
-			if ($roomID !== "Any")
-			{
-				$where .= " AND sensors.roomID = ";
-				$where .= $roomID;
-			}
+			$rooms = Room::getRoomsByPropertyID($propertyID);
+		}
+		else
+		{
+			$rooms = Room::getRoomsByPropertyID();
 		}
 
-		$statement = "SELECT sensors.name, sensorID, messageOn, messageOff, sensors.roomID , sensors.state
-					FROM sensors
-					INNER JOIN room
-					ON room.roomID = sensors.roomID
-					INNER JOIN user_households
-					ON user_households.houseID = room.houseID";
-		$statement .= $where;
-
-		$sensors = Sensor::getFromQuery($statement);
-
-		foreach($sensors as $sensor)
+		foreach($rooms as $room)
 		{
-			$jsonResult['data'][] = array("sensorID" => $sensor->sensorID, "name" => $sensor->name);
+			$jsonResult['data'][] = array("roomID" => $room->roomID, "defaultName" => $room->defaultName);
 		}
 
 		echo json_encode($jsonResult, JSON_NUMERIC_CHECK);
