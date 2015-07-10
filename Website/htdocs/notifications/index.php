@@ -27,7 +27,7 @@ include $path."main.php";
 				<div class="panel-body">
 					<div class="col-md-2">
 						<select class="form-control" id="propertySelect">
-							<option selected hidden value = Any>Sensor</option>
+							<option selected hidden value = Any>Property</option>
 							<option value = Any>Any</option>
 							<?php
 							getProperties();
@@ -37,7 +37,7 @@ include $path."main.php";
 				</div>
 				<div class="col-md-2">
 					<select class="form-control" id="roomSelect">
-						<option selected hidden value = Any>Sensor</option>
+						<option selected hidden value = Any>Room</option>
 						<option value = Any>Any</option>
 						<?php
 						//getRooms();
