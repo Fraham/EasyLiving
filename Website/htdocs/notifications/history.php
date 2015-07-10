@@ -60,15 +60,7 @@
 
 	function updateRoomsList()
 	{
-		//require "../src/connect.php";
 		include "../src/classes/RoomClass.php";
-
-		//session_start();
-
-		//$userID = $_SESSION['user_id'];
-
-		//$where = " WHERE user_households.userID = ";
-		//$where .= $userID;
 
 		$jsonResult;
 		$rooms;
