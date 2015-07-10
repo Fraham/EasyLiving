@@ -1,3 +1,5 @@
+updatePropertyList();
+updateRoomsList();
 updateSensorsList();
 
 $(function () {
@@ -15,6 +17,7 @@ $(function () {
     $.post("getNotificationsGraph.php" + url, function (data) {
       $("#sensorSelect").html(data);
     });*/
+    updateRoomsList();
 
     updateSensorsList();
   });
@@ -29,7 +32,7 @@ $(function () {
     $.post("getNotificationsGraph.php" + url, function (data) {
       $("#sensorSelect").html(data);
     });*/
-    updateRoomsList();
+
 
     updateSensorsList();
   });
