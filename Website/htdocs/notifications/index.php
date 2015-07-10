@@ -27,6 +27,8 @@ include $path."main.php";
 				<div class="panel-body">
 					<div class="col-md-2">
 						<select class="form-control" id="propertySelect">
+							<option selected hidden value = Any>Sensor</option>
+							<option value = Any>Any</option>
 							<?php
 							getProperties();
 							?>
@@ -35,6 +37,8 @@ include $path."main.php";
 				</div>
 				<div class="col-md-2">
 					<select class="form-control" id="roomSelect">
+						<option selected hidden value = Any>Sensor</option>
+						<option value = Any>Any</option>
 						<?php
 						getRooms();
 						?>
@@ -44,7 +48,6 @@ include $path."main.php";
 					<select class="form-control" id="sensorSelect">
 						<option selected hidden value = Any>Sensor</option>
 						<option value = Any>Any</option>
-						<div id="sensorList"></div>
 						<?php
 						//getSensors();
 						?>
@@ -62,7 +65,7 @@ include $path."main.php";
 			<div class="col-md-2">
 				<button type="button" class="btn btn-lg btn-danger" onclick="confirm()" >Confirm</button>
 
-				<script>				
+				<script>
 
 				function confirm()
 				{
@@ -101,9 +104,9 @@ include $path."main.php";
 					}
 
 					url = "?propertyID=" + houseID + "&roomID=" + roomID + "&sensorID=" + sensorID + "&startDate=" + startDate + "&endDate=" + endDate;
-					
+
 					table.fnClearTable();
-					
+
 					$.getJSON("getTableJSON.php" + url, function (data)
 					{
 						$('#notifications').dataTable().fnAddData(data);
@@ -174,7 +177,7 @@ $('#form_datetime1').datetimepicker({
 								<th>Date and Time</th>
 							</tr>
 						</thead>
-						
+
 						<tfoot>
 							<tr>
 								<th>Room</th>
@@ -187,11 +190,11 @@ $('#form_datetime1').datetimepicker({
 
 					<script>
 						var table;
-						$(document).ready(function() 
+						$(document).ready(function()
 						{
 							table = $('#notifications').dataTable(
 								{
-									
+
 									'bSort':true,
 									"bScrollY": "200px",
 									"bScrollCollapse": true,
@@ -200,9 +203,9 @@ $('#form_datetime1').datetimepicker({
 									"aaSorting": [[ 3, "desc" ]]
 								}
 							);
-							
+
 							confirm();
-						});					
+						});
 					</script>
 				</div>
 			</div>
