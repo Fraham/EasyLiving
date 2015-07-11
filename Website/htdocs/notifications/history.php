@@ -19,7 +19,7 @@
 		$where = "";
 
 		session_start();
-		
+
 
 		session_write_close();
 
@@ -92,7 +92,7 @@
 	function updatePropertyList()
 	{
 		require "../src/connect.php";
-		include "../src/classes/SensorClass.php";
+		include "../src/classes/PropertyClass.php";
 
 		session_start();
 
@@ -100,39 +100,11 @@
 
 		$userID = $_SESSION['user_id'];
 
-		$where = " WHERE user_households.userID = ";
-		$where .= $userID;
+		$properties = Property::getByUserID($userID);
 
-		if(isset($_GET['propertyID']) && isset($_GET['roomID']))
+		foreach($properties as $property)
 		{
-			$propertyID = $_GET['propertyID'];
-			$roomID = $_GET['roomID'];
-
-			if ($propertyID !== "Any")
-			{
-				$where .= " AND room.houseID = ";
-				$where .= $propertyID;
-			}
-			if ($roomID !== "Any")
-			{
-				$where .= " AND sensors.roomID = ";
-				$where .= $roomID;
-			}
-		}
-
-		$statement = "SELECT sensors.name, sensorID, messageOn, messageOff, sensors.roomID , sensors.state
-					FROM sensors
-					INNER JOIN room
-					ON room.roomID = sensors.roomID
-					INNER JOIN user_households
-					ON user_households.houseID = room.houseID";
-		$statement .= $where;
-
-		$sensors = Sensor::getFromQuery($statement);
-
-		foreach($sensors as $sensor)
-		{
-			$jsonResult['data'][] = array("sensorID" => $sensor->sensorID, "name" => $sensor->name);
+			$jsonResult['data'][] = array("houseID" => $property->houseID, "userName" => $property->userName);
 		}
 
 		echo json_encode($jsonResult, JSON_NUMERIC_CHECK);

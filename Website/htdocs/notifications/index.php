@@ -30,7 +30,7 @@ include $path."main.php";
 							<option selected hidden value = Any>Property</option>
 							<option value = Any>Any</option>
 							<?php
-							getProperties();
+							//getProperties();
 							?>
 						</select>
 					</label>
