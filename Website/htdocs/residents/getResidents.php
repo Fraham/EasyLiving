@@ -6,6 +6,7 @@ $residents = "";
 
 //sec_session_start();
 	session_start();
+  session_write_close();
 
 $houseID = $_SESSION['house_id'];
 

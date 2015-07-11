@@ -2,9 +2,9 @@
 
 if (isset($_GET["propertyID"]))
 {
-	include "../src/includes/functions.php";
-	sec_session_start();
-	
+	session_start();
+	session_write_close();
+
 	$propertyID = $_GET["propertyID"];
 
 	$option = $_GET["option"];
@@ -16,16 +16,16 @@ if (isset($_GET["propertyID"]))
 	if(strcmp($option, 'sensor') == 0)
 	{
 		echo getSensors(1, 1, $propertyID);
-	}      
+	}
 }
 
 if (isset($_GET["roomID"]))
 {
-	include "../src/includes/functions.php";
-	sec_session_start();
-	
+	session_start();
+	session_write_close();
+
 	$roomID = $_GET["roomID"];
-	
+
 	echo getSensors(1, 2, $roomID);
 }
 
@@ -160,11 +160,12 @@ function getRoomsSettings()
 function getSensors($return = 0, $option = 0, $propertyID)
 {
 	$sensorList = "<option selected hidden value = Any>Sensor:</option>
-	<option value = Any>Any</option>";  
+	<option value = Any>Any</option>";
 
 	require "../src/connect.php";
-	
+
 	session_start();
+	session_write_close();
 
 	$userID = $_SESSION['user_id'];
 
@@ -192,7 +193,7 @@ function getSensors($return = 0, $option = 0, $propertyID)
 	INNER JOIN room
 	ON room.roomID = sensors.roomID
 	INNER JOIN user_households
-	ON user_households.houseID = room.houseID";  
+	ON user_households.houseID = room.houseID";
 	$statement .= $where;
 
 	$result = $conn->query($statement);
@@ -239,7 +240,7 @@ function getSensorBtns($room)
 		$count = 0;
 		while($row = $result->fetch_assoc())
 		{
-			if($room == $row["dName"]){       
+			if($room == $row["dName"]){
 
 				$sensorList .= <<<HTML
 				<div class="col-lg-6">
@@ -313,7 +314,7 @@ function getRoomsAsPanels()
 			$unallocated= "Unallocated Sensors";
 			if(strcmp($row['dName'],$unallocated)==0)
 			{
-					
+
 					$roomHTML .='
 				<div class="col-lg-4 col-md-4 col-sm-4">
 					<div class="panel" style="background-color: #D8D8D8;">
@@ -383,8 +384,8 @@ function getRoomsAsPanels()
 		}
 		echo $propertyList;
 	}
-	
-	
+
+
 	function getRoomColours()
 	{
 		$propertyList = "";

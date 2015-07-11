@@ -16,7 +16,12 @@
 		require "../src/connect.php";
 		include "../src/classes/SensorClass.php";
 
+		$where = "";
+
 		session_start();
+		
+
+		session_write_close();
 
 		$userID = $_SESSION['user_id'];
 
@@ -90,6 +95,8 @@
 		include "../src/classes/SensorClass.php";
 
 		session_start();
+
+		session_write_close();
 
 		$userID = $_SESSION['user_id'];
 

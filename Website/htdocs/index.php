@@ -4,6 +4,7 @@
 
 	//sec_session_start();
 	session_start();
+	session_write_close();
 
 	if (login_check($conn) == true)
 	{

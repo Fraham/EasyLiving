@@ -5,6 +5,7 @@ include_once "../src/includes/functions.php";
 
 //sec_session_start();
 	session_start();
+  session_write_close();
 
 if (login_check($conn) == true) {
     $logged = 'in';
@@ -79,7 +80,7 @@ if (login_check($conn) == true) {
   <script>
   function verify(){
     if(document.getElementById("email").value != null && document.getElementById("password")!= null){
-      
+
       var email = document.getElementById("email").value;
       var password = document.getElementById("password").value;
 
@@ -91,7 +92,7 @@ if (login_check($conn) == true) {
       document.getElementById('login_button').click();
     }
   });
-  
+
     password.addEventListener("keypress", function() {
     if(e.keyCode == 13){
       document.getElementById('login_button').click();
@@ -100,10 +101,10 @@ if (login_check($conn) == true) {
 
 
   </script>
-  
 
 
-  
+
+
 
   <!-- jQuery -->
   <script src="../src/bower_components/jquery/dist/jquery.min.js"></script>

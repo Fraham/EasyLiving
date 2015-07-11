@@ -1,5 +1,5 @@
 <?php
-	
+
 class Sensor
 {
 	public $sensorID = "";
@@ -8,9 +8,9 @@ class Sensor
 	public $messageOff = "";
 	public $roomID = "";
 	public $state = "";
-	
+
 	public $sensorCount = 0;
-	
+
 	public static function getByUserID($userID)
 	{
 		$statement = "SELECT sensors.sensorID, sensors.name, sensors.messageOn, sensors.messageOff, sensors.roomID, sensors.state
@@ -22,27 +22,27 @@ class Sensor
 	                INNER JOIN user_households
 	                ON house.houseID = user_households.houseID
 	                WHERE user_households.userID = $userID";
-					
+
 		return Sensor::getFromQuery($statement);
 	}
-	
+
 	public static function getByRoomID($roomID)
 	{
 	  	$statement = "SELECT sensors.sensorID, sensors.name, sensors.messageOn, sensors.messageOff, sensors.roomID, sensors.state
 		  			FROM sensors
 	                WHERE sensors.roomID = $roomID";
-					
+
 		return Sensor::getFromQuery($statement);
 	}
-	
+
 	public static function getFromQuery($statement)
 	{
 		require "../src/connect.php";
-	  
+
 	  	$sensors = [];
-	  
+
 		$result = $conn->query($statement);
-	
+
 		if ($result->num_rows > 0)
 		{
 			while($row = $result->fetch_assoc())
@@ -67,55 +67,55 @@ class Sensor
 				{
 					$sensor = new Sensor;
 				}
-				
+
 				$sensor->sensorID = $row['sensorID'];
 				$sensor->name		= $row['name'];
 				$sensor->messageOn	= $row['messageOn'];
 				$sensor->messageOff   = $row['messageOff'];
 				$sensor->roomID	= $row['roomID'];
 				$sensor->state	= $row['state'];
-				
+
 				$sensors[] = $sensor;
 		  }
 		}
-		
+
 		  return $sensors;
 	}
-	
+
 	public function getBlockFormat()
 	{
 		$sensorBlock = "";
-		
+
 		return $sensorBlock;
 	}
-	
+
 	public static function updateSensor($sensorID, $name, $messageOn, $messageOff, $roomID)
 	{
 		require "../src/connect.php";
-  
+
       	$insertStatement = "UPDATE sensors
       	SET name = '$name', messageOn = '$messageOn' , messageOff = '$messageOff', roomID = '$roomID'
       	WHERE sensorID = '$sensorID'";
-  
+
       	if (!$conn->query($insertStatement)) {
 			echo "Error: " . $insertStatement . "<br>" . $conn->error;
 		}
 	}
-	
+
 	public static function checkSensor($sensorID)
 	{
 		require "../src/connect.php";
-		
+
 		$statement = "SELECT assigned
 					FROM sensors
 					WHERE sensorID = '$sensorID'";
-					
+
 		$result = $conn->query($statement);
-	
+
 		if ($result->num_rows > 0)
 		{
 		  $row = $result->fetch_assoc();
-		  
+
 		  if (strcmp($row['assigned'], "0") === 0)
 		  {
 			  echo "sensor is free";
@@ -127,42 +127,42 @@ class Sensor
 		  else if (strcmp($row['assigned'], "2") === 0)
 		  {
 			  echo "sensor is locked";
-		  }		  
+		  }
 		}
 		else
 		{
 			echo "unknown sensor";
 		}
 	}
-	
+
 	public static function blockSensor($sensorID)
 	{
 		require "../src/connect.php";
-		
+
 		$statement = "SELECT assigned
 					FROM sensors
 					WHERE sensorID = '$sensorID'";
-					
+
 		$result = $conn->query($statement);
-	
+
 		if ($result->num_rows > 0)
 		{
 		  $row = $result->fetch_assoc();
-		  
+
 		  if (strcmp($row['assigned'], "0") === 0)
 		  {
 			  $insertStatement = "UPDATE sensors
       			SET assigned = '1'
       			WHERE sensorID = '$sensorID'";
-  
-		      if (!$conn->query($insertStatement)) 
+
+		      if (!$conn->query($insertStatement))
 			  {
 				echo "Error: " . $insertStatement . "<br>" . $conn->error;
 			  }
 			  else
 			  {
 				echo "blocked";
-			  }			
+			  }
 		  }
 		  else
 		  {
@@ -173,16 +173,16 @@ class Sensor
 		{
 			echo "unknown sensor";
 		}
-	} 
-	
+	}
+
 	public static function addSensor($sensorID, $name, $messageOn, $messageOff, $roomID)
 	{
 		require "../src/connect.php";
-  
+
       	$insertStatement = "UPDATE sensors
       	SET name = '$name', messageOn = '$messageOn' , messageOff = '$messageOff', roomID = '$roomID', state = '0'
       	WHERE sensorID = '$sensorID'";
-  
+
       	if (!$conn->query($insertStatement)) {
 			echo "Error: " . $insertStatement . "<br>" . $conn->error;
 		}
@@ -191,16 +191,16 @@ class Sensor
 			echo "assigned";
 		}
 	}
-	
+
 	public static function resetSensor($sensorID)
 	{
 		require "../src/connect.php";
-		
+
 		$insertStatement = "UPDATE sensors
       			SET assigned = '0'
       			WHERE sensorID = '$sensorID'";
-  
-		if (!$conn->query($insertStatement)) 
+
+		if (!$conn->query($insertStatement))
 		{
 			echo "Error: " . $insertStatement . "<br>" . $conn->error;
 		}
@@ -210,11 +210,11 @@ class Sensor
 class MotionSensor extends Sensor
 {
 	public $sensorCount = 0;
-	
+
 	public function getBlockFormat()
 	{
 		$sensorBlock = "";
-		
+
 		return $sensorBlock;
 	}
 }
@@ -222,13 +222,13 @@ class MotionSensor extends Sensor
 class DoorSensor extends Sensor
 {
 	public $sensorCount = 1;
-	
+
 	public function getBlockFormat()
 	{
 		$sensorBlock = "";
-		
+
 		$message = "";
-			
+
 		if(strcmp($this->state, "0") === 0)
 		{
 			$message = $this->messageOff;
@@ -237,13 +237,13 @@ class DoorSensor extends Sensor
 		{
 			$message = $this->messageOn;
 		}
-			
+
 		$sensorBlock .= <<<HTML
 			<div class='col-md-6'>
 				<p><font color='black'>{$this->name}: </font><span><strong>{$message}</strong></span></p>
 			</div>
 HTML;
-		
+
 		return $sensorBlock;
 	}
 }
@@ -251,13 +251,13 @@ HTML;
 class RelaySensor extends Sensor
 {
 	public $sensorCount = 2;
-	
+
 	public function getBlockFormat()
 	{
 		$sensorBlock = "";
-		
+
 		$sensorBlock .= "<div class='row'>";
-		
+
 		$sensorBlock = <<<HTML
 		<div class='col-md-12' style='text-align:center;'>
 			<h4><font color='black'>{$this->name}</font></h4>
@@ -276,15 +276,15 @@ HTML;
 class TemperatureSensor extends Sensor
 {
 	public $sensorCount = 2;
-	
+
 	public function getBlockFormat()
 	{
 		$sensorBlock = "";
-		
+
 		$sensorBlock .= "<div class='row'>";
-		
+
 		require "../src/connect.php";
-		
+
 		$statement = "SELECT temp, hum
 					FROM temphum
 					INNER JOIN sensors
@@ -292,7 +292,7 @@ class TemperatureSensor extends Sensor
 					WHERE sensors.roomID = '$this->roomID'
 					ORDER BY id DESC
 					LIMIT 1";
-					
+
 		$result = $conn->query($statement);
 
 		if ($result->num_rows > 0)
@@ -312,7 +312,7 @@ class TemperatureSensor extends Sensor
 HTML;
 			}
 		}
-		
+
 		return $sensorBlock;
 	}
 }
