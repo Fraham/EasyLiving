@@ -8,7 +8,7 @@ require_once('../src/classes/PropertyClass.php');
 ?>
 
 <?php if (login_check($conn) == true) : ?>
-
+	<script src="selection.js"></script>
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="dataTable_wrapper">
@@ -44,7 +44,7 @@ require_once('../src/classes/PropertyClass.php');
 				Buy New Property
 		</a>
 	</div>
-	
+
 	<div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -78,7 +78,7 @@ require_once('../src/classes/PropertyClass.php');
 								<div class="col-sm-10">
 							    	<input type="text" class="form-control" id="userName" name="userName">
 								</div>
-							</div>													
+							</div>
 							<input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
@@ -87,7 +87,7 @@ require_once('../src/classes/PropertyClass.php');
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="modal fade" id="PasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -97,7 +97,7 @@ require_once('../src/classes/PropertyClass.php');
 								<h2 class="modal-title" id="myModalLabel">Your Password</h2>
 									<label for="passwordIntro" class="col-sm-6 control-label">Your password for this property is: </label>
 									<div class="col-sm-2">
-										<input type="text" class="form-control" id="thePassword" name="thePassword"> 
+										<input type="text" class="form-control" id="thePassword" name="thePassword">
 									</div>
 							</div>
 							<input type="button" value="OK" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
@@ -106,7 +106,7 @@ require_once('../src/classes/PropertyClass.php');
 			</div>
 		</div>
 	</div>
-	
+
 	<script>
 		function showForm(propertyID, password, defaultName, userName)
 		{
@@ -114,17 +114,17 @@ require_once('../src/classes/PropertyClass.php');
 			document.forms["editProperties"]["password"].value = password;
 			document.forms["editProperties"]["defaultName"].value = defaultName;
 			document.forms["editProperties"]["userName"].value = userName;
-			
-			$('#AddModal').modal('show');	
+
+			$('#AddModal').modal('show');
 		}
-		
+
 		function showPassword(password)
 		{
 			document.forms["displayPassword"]["thePassword"].value = password;
-			
+
 			$('#PasswordModal').modal('show');
 		}
-		
+
 		function submitForm()
 		{
 			$.post('editProperty.php', $('#editProperties').serialize())

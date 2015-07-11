@@ -7,9 +7,9 @@ include $path."main.php";
 ?>
 
 <?php if (login_check($conn) == true) : ?>
-
+<script src="settings.js"></script>
 <script> type="text/javascript">
-$(document).ready(function(){ 
+$(document).ready(function(){
 	annyang.start();
     $("#myTab li:eq(1) a").tab('show');
 });
@@ -46,7 +46,7 @@ $(document).ready(function(){
 			<button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#EditPasswordModal">Edit</button>
 		</div>
     </div>
-</div>	
+</div>
 
 
 <div class="modal fade" id="EditPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -103,7 +103,7 @@ $(document).ready(function(){
 			});
 		}
 	};
-	
+
 	function changeEmail(userID)
 	{
 		if($('#newEmail').val()!=$('#oldEmail').val())
@@ -113,14 +113,14 @@ $(document).ready(function(){
 		else
 		{
 			var email = $('#newEmail').val();
-			
+
 			$.post("changeEmail.php", { email : email, userID: userID })
 			.done(function( data ) {
 				console.log(data);
 				//location.reload();
 			});
 		}
-		
+
 	};
 </script>
 </div>
