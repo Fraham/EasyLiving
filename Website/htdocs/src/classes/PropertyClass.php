@@ -9,9 +9,16 @@ class Property
 
   public $rooms = [];
 
-  public static function getByUserID($userID)
+  public static function getByUserID($userID, $sent = 0)
   {
-    require "../src/connect.php";
+    if ($sent == 0)
+    {
+      require "../src/connect.php";
+    }
+    else
+    {
+      require "../connect.php";
+    }
 
     $properties = [];
 
@@ -74,17 +81,8 @@ HTML;
 
     $menuHTML = <<<HTML
     <div>
-      <input onclick="clickButton{$this->houseID}()" type="button" id="houseMenu" value="{$this->userName}"class="btn btn-md {$button} btn-block" style="margin-top:5px;"></input>
+      <input onclick="clickButton{$this->houseID}()" ></input>
     </div>
-    <script>
-      function clickButton{$this->houseID}(){
-        $.post("{$path}changeHouse.php", { func: "changeHouse", houseID: "{$this->houseID}", user_id: "{$_SESSION['user_id']}" })
-  			.done(function( data ) {
-  				//location.reload();
-          reloadPage();
-  			});
-      }
-    </script>
 HTML;
 
     echo $menuHTML;

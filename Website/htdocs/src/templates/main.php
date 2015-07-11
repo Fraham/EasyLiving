@@ -35,6 +35,7 @@
 		<script src='<?php echo $path; ?>../js/jquery.bind.sortable.js'></script>
 		<script src='<?php echo $path; ?>../js/annyang.min.js'></script>
 		<link href='<?php echo $path; ?>../css/easyLiving.css' rel='stylesheet'>
+		<script src='<?php echo $path; ?>../templates/main.js'></script>
 
 
 		<div id='wrapper'>
@@ -59,9 +60,10 @@
 						<li style='text-align: center'><h4> Available Properties</h4></li>
 
 						<li class='divider'></li>
-
+						<div id="propertyMenuSelect">
+						</div>
 						<?php
-							require_once('../src/classes/PropertyClass.php');
+							/*require_once('../src/classes/PropertyClass.php');
 
 							$userID = $_SESSION['user_id'];
 
@@ -72,7 +74,7 @@
 							foreach ($properties as $property)
 							{
 								$property->getMenu($path);
-							}
+							}*/
 						?>
 
 						<div class="divider"></div>

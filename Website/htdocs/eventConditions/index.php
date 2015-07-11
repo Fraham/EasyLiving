@@ -1,4 +1,4 @@
-<?php 
+<?php
 	$title = "Alert Conditions";
 	$path = "../src/templates/";
 	include $path."main.php";
@@ -7,11 +7,11 @@
 ?>
 
 <?php if (login_check($conn) == true) : ?>
-
-	<?php 
+<script src="eventConditions.js"></script>
+	<?php
 		if (empty($_POST)===false)
 		{
-		
+
 			$conditionName = $_POST['conditionName'];
 			require "../src/connect.php";
 
@@ -27,7 +27,7 @@
 	<div class="row">
 		<?php
 			require ("$path../classes/EventClass.php");
-			
+
 
 			$userID = $_SESSION['user_id'];
 
@@ -63,7 +63,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 <div class="modal fade" id="AddSensorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -73,12 +73,12 @@
 				</div>
 				<div class="modal-body row">
 					<div class="form-group col-lg-12">
-						<form class="form-horizontal" action="" method="post" id="addSensorForm" name="addSensorForm">										
+						<form class="form-horizontal" action="" method="post" id="addSensorForm" name="addSensorForm">
 							<div class="form-group">
 								<label for="sensor" class="col-sm-3 control-label">Sensor</label>
 								<div class="col-sm-9">
 									<select class="form-control" name="sensor">
-									<?php 
+									<?php
 										include "../notifications/getNotificationsGraph.php";
 										$propertyID = $_SESSION['house_ID'];
 										getSensors(0,0,$propertyID);
@@ -91,7 +91,7 @@
 								<div class="col-sm-9">
 									<select class="form-control" name="condition">
 										<option value=On>On</option>
-										<option value=Off>Off</option>	
+										<option value=Off>Off</option>
 									</select>
 								</div>
 							</div>
@@ -119,7 +119,7 @@
 				location.reload();
 			});
 	}
-	
+
 	function submitAddSensorForm()
 	{
 		$.post('addSensor.php', $('#addSensorForm').serialize())
@@ -128,14 +128,14 @@
 				//location.reload();
 		});
 	}
-	
+
 	function changeID(eventID)
 	{
 		$("#eventID").val = eventID;
-		
+
 		$('#AddSensorModal').modal('show');
 	}
-	
+
 </script>
 
 <?php else : ?>
