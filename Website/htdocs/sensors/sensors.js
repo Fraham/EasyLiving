@@ -115,13 +115,13 @@ function getSensors() {
 			url: 'getSensors.php',
 			dataType: 'json',
 			async: true,
-			success: function (result) 
+			success: function (result)
 			{
 				var sensorHTML = "";
 
 				var roomData = result['data'];
 
-				for (var j = 0; j < roomData.length; j++) 
+				for (var j = 0; j < roomData.length; j++)
 				{
 					sensorHTML = "";
 					sensorHTML += "<div class='col-sm-4'> \
@@ -130,20 +130,20 @@ function getSensors() {
 							" + roomData[j]["name"] +  " \
 						</div> \
 						<div class='panel-body'id='chartBody'> ";
-					
-					var sensorData = roomData[j]["sensorData"];	
-					
+
+					var sensorData = roomData[j]["sensorData"];
+
 					sensorHTML += sensorData;
-					
-					/*for(var i = 0; i < sensorData.length; i++)  
+
+					/*for(var i = 0; i < sensorData.length; i++)
 					{
-						
+
 					}*/
 					sensorHTML += "</div></div></div>";
-					
+
 					if ((j + 1) % 3 === 0)
 						sensorHTML += "<div class='clearfix'>";
-										
+
 					$(sensorHTML).hide().appendTo("#sensorsPanel").fadeIn("slow");
 				}
 			},
@@ -155,3 +155,8 @@ function getSensors() {
 			}
 		});
 };
+
+function reloadPage()
+{
+	getSensors();
+}

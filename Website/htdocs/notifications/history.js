@@ -4,19 +4,6 @@ updateSensorsList();
 
 $(function () {
   $("#propertySelect").change(function () {
-    /*var houseID = $('#propertySelect').val();
-
-    var url = "?propertyID=" + houseID + "&option=room";
-
-    $.post("getNotificationsGraph.php" + url, function (data) {
-      $("#roomSelect").html(data);
-    });
-
-    /*url = "?propertyID=" + houseID + "&option=sensor";
-
-    $.post("getNotificationsGraph.php" + url, function (data) {
-      $("#sensorSelect").html(data);
-    });*/
     updateRoomsList();
 
     updateSensorsList();
@@ -25,15 +12,6 @@ $(function () {
 
 
   $("#roomSelect").change(function () {
-    /*var roomID = $('#roomSelect').val();
-
-    var url = "?roomID=" + roomID;
-
-    $.post("getNotificationsGraph.php" + url, function (data) {
-      $("#sensorSelect").html(data);
-    });*/
-
-
     updateSensorsList();
   });
 
@@ -143,4 +121,9 @@ function updatePropertyList() {
 
       }
     });
+}
+
+function reloadPage()
+{
+
 }

@@ -7,16 +7,16 @@ function getRooms() {
 			url: 'getRooms.php',
 			dataType: 'json',
 			async: true,
-			success: function (result) 
+			success: function (result)
 			{
 				var roomHTML = "";
 
 				var roomData = result['data'];
 
-				for (var j = 0; j < roomData.length; j++) 
+				for (var j = 0; j < roomData.length; j++)
 				{
-					var sensorPanelID = roomData[j]["id"] + "sensorPanel"; 
-					
+					var sensorPanelID = roomData[j]["id"] + "sensorPanel";
+
 					roomHTML = "";
 					roomHTML += "<div class='col-md-3'> \
 				<div class='panel panel-" + (roomData[j]["state"] === "Occupied" ? roomData[j]["colourOccupied"] : roomData[j]["colourUnoccupied"]) + "'> \
@@ -34,24 +34,23 @@ function getRooms() {
 				<div class='panel-body' id='" + sensorPanelID + "'> \
 				</div> \
 			</div> \
-		</div>"; 
-					
-					console.log("<div class='panel-heading' onClick='openRoomForm('" + roomData[j]["id"] + "', '" + roomData[j]["name"] + "', '" + roomData[j]["colourID"] + "', '" + roomData[j]["iconID"] + "', '" + roomData[j]["show"] + "')' style='cursor:pointer'>");
+		</div>";
+
 					//roomHTML += "</div></div></div>";
-					
+
 					if ((j + 1) % 4 === 0)
-						roomHTML += "<div class='clearfix'>";	
-									
+						roomHTML += "<div class='clearfix'>";
+
 					$(roomHTML).hide().appendTo("#roomsPanel").fadeIn("slow");
-					
-					
-					
-					
+
+
+
+
 					var sensorData = roomData[j]["sensorData"];
-					
+
 					var sensorCount = 0;
-					
-					for(var i = 0; i < sensorData.length; i++)  
+
+					for(var i = 0; i < sensorData.length; i++)
 					{
 						if (sensorData[i]["count"] > 0)
 						{
@@ -64,7 +63,7 @@ function getRooms() {
 							{
 								sensorHTML += "<div class='clearfix'>";
 							}
-							
+
 							$(sensorHTML).hide().appendTo("#"+sensorPanelID).fadeIn("slow");
 						}
 					}
@@ -78,3 +77,8 @@ function getRooms() {
 			}
 		});
 };
+
+function reloadPage()
+{
+	getRooms();
+}

@@ -5,7 +5,7 @@
 	require_once "../src/classes/RoomClass.php";
 	require_once "../src/classes/SensorClass.php";
 
-	include "../src/includes/functions.php";
+	//include "../src/includes/functions.php";
 
 	//sec_session_start();
 	session_start();

@@ -80,8 +80,8 @@ HTML;
       function clickButton{$this->houseID}(){
         $.post("{$path}changeHouse.php", { func: "changeHouse", houseID: "{$this->houseID}", user_id: "{$_SESSION['user_id']}" })
   			.done(function( data ) {
-  				location.reload();
-          console.log(data);
+  				//location.reload();
+          reloadPage();
   			});
       }
     </script>
