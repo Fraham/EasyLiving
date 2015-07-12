@@ -36,6 +36,8 @@
 		<script src='<?php echo $path; ?>../js/annyang.min.js'></script>
 		<link href='<?php echo $path; ?>../css/easyLiving.css' rel='stylesheet'>
 		<script src='<?php echo $path; ?>../templates/main.js'></script>
+		<script src='<?php echo $path; ?>../templates/progression.min.js'></script>
+		<link href='<?php echo $path; ?>../templates/progression.min..css' rel='stylesheet'>
 
 
 		<div id='wrapper'>
