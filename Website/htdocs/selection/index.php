@@ -13,7 +13,7 @@ require_once('../src/classes/PropertyClass.php');
 		<div class="col-lg-12">
 			<div class="dataTable_wrapper">
 				<table class="table table-striped table-bordered table-hover" id="propertyTable">
-					<thead>
+					<tbody>
 						<tr>
 							<th>Property ID</th>
 							<th>Password</th>
@@ -21,19 +21,7 @@ require_once('../src/classes/PropertyClass.php');
 							<th>User Name</th>
 							<th>Edit</th>
 						</tr>
-					</thead>
-					<?php
-						$userID = $_SESSION['user_id'];
-
-						$properties = [];
-
-						$properties = Property::getByUserID($userID);
-
-						foreach ($properties as $property)
-						{
-							$property->__getTableFormat();
-						}
-					?>
+					</tbody>
 				</table>
 			</div>
 		</div>
@@ -130,7 +118,10 @@ require_once('../src/classes/PropertyClass.php');
 			$.post('editProperty.php', $('#editProperties').serialize())
 			.done(function( data ) {
 				//console.log(data);
-				location.reload();
+				//location.reload();
+				updateTable();
+
+				$('#AddModal').modal('toggle');
 			});
 		};
 	</script>
