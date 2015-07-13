@@ -161,7 +161,10 @@ function getRooms() {
 
 						var roomPanel = $("<div/>", {class : "panel panel-" + colour});
 
-						var roomHeading = $("<div/>", {class : "panel-heading", style : "cursor:pointer"});
+						var roomHeading = $("<div/>", {
+															'data-toggle' : "collapse",
+								'data-target' : "#" + sensorPanelID + "colPanel",
+								class : "panel-heading", style : "cursor:pointer"});
 
 						var roomRow = $("<div/>", {class : "row"});
 
@@ -173,7 +176,10 @@ function getRooms() {
 
 						var roomNameSpace = $("<div/>", {class : "col-xs-9 text-right"});
 
-						var roomName = $("<div/>", {text : roomData[j]["name"]});
+						var roomName = $("<div/>", {
+								'data-toggle' : "collapse",
+								'data-target' : "#" + sensorPanelID + "colPanel",
+								text : roomData[j]["name"]});
 
 						var roomState = $("<div/>", {text : roomData[j]["state"]});
 
@@ -189,36 +195,17 @@ function getRooms() {
 
 						roomPanel.append(roomHeading);
 
-
+						var roomCollapse = $("<div/>", {class : "panel-collapse collapse in", id : sensorPanelID + "colPanel"});
 
 						var roomSensorPanel = $("<div/>", {class : "panel-body", id : sensorPanelID });
 
-						roomPanel.append(roomSensorPanel);
+						roomCollapse.append(roomSensorPanel);
+
+						roomPanel.append(roomCollapse);
 
 						roomMain.append(roomPanel);
 
 						$(roomMain).hide().appendTo("#" + propertyData[t]["propertyID"] + "roomsPanel").fadeIn("slow");
-
-						roomHTML = "";
-						roomHTML += "<div class='col-md-3'> \
-					<div class='panel panel-" + (roomData[j]["state"] === "Occupied" ? roomData[j]["colourOccupied"] : roomData[j]["colourUnoccupied"]) + "'> \
-						<div class='panel-heading' " + '"' +  " style='cursor:pointer'> \
-							<div class='row'> \
-								<div class='col-xs-3'> \
-									<i class='fa fa-" + roomData[j]["icon"] + " fa-2x'></i> \
-								</div> \
-								<div class='col-xs-9 text-right'> \
-									<div class='' name=''>" + roomData[j]["name"] + "</div> \
-									<div>" + roomData[j]["state"] + "</div> \
-								</div> \
-							</div> \
-						</div> \
-					<div class='panel-body' id='" + sensorPanelID + "'> \
-					</div> \
-				</div> \
-			</div>";
-
-						//roomHTML += "</div></div></div>";
 
 						if ((j + 1) % 4 === 0)
 						{
