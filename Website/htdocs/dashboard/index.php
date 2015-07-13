@@ -32,7 +32,7 @@
 		<div class="row">
 			<div class="col-sm-12" id="roomsPanel" style="text-align:center;">
 				<?php
-					include "getDashboardRooms.php";
+					//include "getDashboardRooms.php";
 				?>
 			</div>
 		</div>
