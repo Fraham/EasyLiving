@@ -94,38 +94,6 @@ require_once('../src/classes/PropertyClass.php');
 			</div>
 		</div>
 	</div>
-
-	<script>
-		function showForm(propertyID, password, defaultName, userName)
-		{
-			document.forms["editProperties"]["propertyID"].value = propertyID;
-			document.forms["editProperties"]["password"].value = password;
-			document.forms["editProperties"]["defaultName"].value = defaultName;
-			document.forms["editProperties"]["userName"].value = userName;
-
-			$('#AddModal').modal('show');
-		}
-
-		function showPassword(password)
-		{
-			document.forms["displayPassword"]["thePassword"].value = password;
-
-			$('#PasswordModal').modal('show');
-		}
-
-		function submitForm()
-		{
-			$.post('editProperty.php', $('#editProperties').serialize())
-			.done(function( data ) {
-				//console.log(data);
-				//location.reload();
-				updateTable();
-
-				$('#AddModal').modal('toggle');
-			});
-		};
-	</script>
-
 <?php
 include $path."footer.php";
 ?>
