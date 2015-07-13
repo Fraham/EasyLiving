@@ -11,6 +11,42 @@ class Room
 	public $iconID = "";
 	public $colourID = "";
 
+	public static function getRoomByRoomID($roomID)
+	{
+		require "../src/connect.php";
+
+		$statement = "SELECT dName, roomID, occupied, unoccupied, icon, room.iconID, room.colourID, room.houseID
+					FROM room
+					INNER JOIN room_colour
+					ON room.colourID = room_colour.colourID
+					INNER JOIN icons
+					ON room.iconID = icons.iconID
+					WHERE room.roomID = '$roomID'";
+
+		$result = $conn->query($statement);
+
+		$conn->close();
+
+		if ($result->num_rows > 0)
+		{
+			while($row = $result->fetch_assoc())
+			{
+				$room = new Room;
+
+				$room->roomID = $row['roomID'];
+				$room->defaultName = $row['dName'];
+				$room->houseID = $row['houseID'];
+				$room->occupiedColour = $row['occupied'];
+				$room->unoccupiedColour = $row['unoccupied'];
+				$room->icon = $row['icon'];
+				$room->colourID = $row['colourID'];
+				$room->iconID = $row['iconID'];
+			}
+		}
+
+		return $room;
+	}
+
 	public static function getRoomsByPropertyID($propertyID = "Any")
 	{
 		require "../src/connect.php";
@@ -28,7 +64,7 @@ class Room
 			}
 		}
 
-		$statement = "SELECT dName, roomID, occupied, unoccupied, icon, room.iconID, room.colourID, room.houseID
+		/*$statement = "SELECT dName, roomID, occupied, unoccupied, icon, room.iconID, room.colourID, room.houseID
 					FROM room
 					INNER JOIN room_colour
 					ON room.colourID = room_colour.colourID
@@ -38,6 +74,8 @@ class Room
 		$statement .= $where;
 
 		$result = $conn->query($statement);
+
+		$conn->close();
 
 		if ($result->num_rows > 0)
 		{
@@ -56,9 +94,24 @@ class Room
 
 				$rooms[] = $room;
 			}
-		}
+		}*/
+
+		$statement = "SELECT roomID
+					FROM room";
+
+		$statement .= $where;
+
+		$result = $conn->query($statement);
 
 		$conn->close();
+
+		if ($result->num_rows > 0)
+		{
+			while($row = $result->fetch_assoc())
+			{
+				$rooms[] = Room::getRoomByRoomID($row['roomID']);
+			}
+		}
 
 		return $rooms;
 	}

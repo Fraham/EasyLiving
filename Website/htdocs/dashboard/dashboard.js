@@ -120,7 +120,7 @@ function getRooms() {
 					roomHTML = "";
 					roomHTML += "<div class='col-md-3'> \
 				<div class='panel panel-" + (roomData[j]["state"] === "Occupied" ? roomData[j]["colourOccupied"] : roomData[j]["colourUnoccupied"]) + "'> \
-					<div class='panel-heading' onClick=" + '"' +  "openRoomForm('" + roomData[j]["id"] + "', '" + roomData[j]["name"] + "', '" + roomData[j]["colourID"] + "', '" + roomData[j]["iconID"] + "', '" + roomData[j]["show"] + "')" + '"' +  " style='cursor:pointer'> \
+					<div class='panel-heading' " + '"' +  " style='cursor:pointer'> \
 						<div class='row'> \
 							<div class='col-xs-3'> \
 								<i class='fa fa-" + roomData[j]["icon"] + " fa-2x'></i> \
@@ -142,9 +142,6 @@ function getRooms() {
 						roomHTML += "<div class='clearfix'>";
 
 					$(roomHTML).hide().appendTo("#roomsPanel").fadeIn("slow");
-
-
-
 
 					var sensorData = roomData[j]["sensorData"];
 
