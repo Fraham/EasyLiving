@@ -64,38 +64,6 @@ class Room
 			}
 		}
 
-		/*$statement = "SELECT dName, roomID, occupied, unoccupied, icon, room.iconID, room.colourID, room.houseID
-					FROM room
-					INNER JOIN room_colour
-					ON room.colourID = room_colour.colourID
-					INNER JOIN icons
-					ON room.iconID = icons.iconID";
-
-		$statement .= $where;
-
-		$result = $conn->query($statement);
-
-		$conn->close();
-
-		if ($result->num_rows > 0)
-		{
-			while($row = $result->fetch_assoc())
-			{
-				$room = new Room;
-
-				$room->roomID = $row['roomID'];
-				$room->defaultName = $row['dName'];
-				$room->houseID = $row['houseID'];
-				$room->occupiedColour = $row['occupied'];
-				$room->unoccupiedColour = $row['unoccupied'];
-				$room->icon = $row['icon'];
-				$room->colourID = $row['colourID'];
-				$room->iconID = $row['iconID'];
-
-				$rooms[] = $room;
-			}
-		}*/
-
 		$statement = "SELECT roomID
 					FROM room";
 
