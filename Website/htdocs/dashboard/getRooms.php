@@ -4,18 +4,22 @@
 
 	require_once "../src/classes/RoomClass.php";
 	require_once "../src/classes/SensorClass.php";
+	require_once "../src/classes/PropertyClass.php";
+	require_once "../src/classes/RoomClass.php";
 
-	//include "../src/includes/functions.php";
-
-	//sec_session_start();
 	session_start();
 	session_write_close();
 
-	if (isset($_SESSION['house_id']))
+	$userID= $_SESSION['user_id'];
+
+	$properties = Property::getByUserID($userID);
+
+
+	foreach($properties as $property)
 	{
 		$rooms = [];
 
-		$rooms = Room::getChosenRooms();
+		$rooms = Room::getChosenRooms($property->houseID);
 
 		$jsonRooms = array();
 
@@ -61,14 +65,11 @@
 								 "iconID" => $room->iconID, "colourID" => $room->colourID, "show" => $show, "state" => $state);
 		}
 
+		$propertyData = array("propertyID" => $property->houseID, "userName" => $property->userName, "roomData" => $jsonRooms);
 
 		$jsonResult['message'] = "okay";
-		$jsonResult['data'] = $jsonRooms;
-		$conn->close();
-	}
-	else
-	{
-		$jsonResult['message'] = "house ID not set";
+		$jsonResult['data'][] = $propertyData;
+		//$conn->close();
 	}
 
 	echo json_encode($jsonResult, JSON_NUMERIC_CHECK);

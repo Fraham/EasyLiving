@@ -47,7 +47,7 @@ class Room
 		return $room;
 	}
 
-	public static function getChosenRooms()
+	public static function getChosenRooms($propertyID)
 	{
 		require "../src/connect.php";
 
@@ -62,7 +62,8 @@ class Room
 					FROM room
 					INNER JOIN user_room
 					ON user_room.roomID = room.roomID
-					WHERE user_room.showRoom = '1'
+					WHERE room.houseID = '$propertyID'
+					AND user_room.showRoom = '1'
 					AND user_room.userID = '$userID'";
 
 		$result = $conn->query($statement);

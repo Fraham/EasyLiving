@@ -109,62 +109,103 @@ function getRooms() {
 			async: true,
 			success: function (result)
 			{
-				var roomHTML = "";
+				var propertyData = result['data'];
 
-				var roomData = result['data'];
-
-				for (var j = 0; j < roomData.length; j++)
+				for (var t = 0; t < propertyData.length; t++)
 				{
-					var sensorPanelID = roomData[j]["id"] + "sensorPanel";
+					var panel = $("<div/>", {class : "panel panel-default", id : propertyData[t]["propertyID"] + "mainPanel"}); // Remeber to change
 
-					roomHTML = "";
-					roomHTML += "<div class='col-md-3'> \
-				<div class='panel panel-" + (roomData[j]["state"] === "Occupied" ? roomData[j]["colourOccupied"] : roomData[j]["colourUnoccupied"]) + "'> \
-					<div class='panel-heading' " + '"' +  " style='cursor:pointer'> \
-						<div class='row'> \
-							<div class='col-xs-3'> \
-								<i class='fa fa-" + roomData[j]["icon"] + " fa-2x'></i> \
-							</div> \
-							<div class='col-xs-9 text-right'> \
-								<div class='' name=''>" + roomData[j]["name"] + "</div> \
-								<div>" + roomData[j]["state"] + "</div> \
+					var heading = $("<div/>", { class : "panel-heading"});
+
+					var title = $("<h4/>", { class : "panel-title",
+						'data-toggle' : "collapse",
+						'data-target' : "#" + propertyData[t]["propertyID"] + "colPanel"
+					});
+
+					var bar = $("<a/>", {
+						'data-toggle' : "collapse",
+						'data-target' : "#" + propertyData[t]["propertyID"] + "colPanel",
+						text : propertyData[t]["userName"]
+					});
+
+					title.append(bar);
+
+					heading.append(title);
+
+					panel.append(heading);
+
+					var collapse = $("<div/>", {class : "panel-collapse collapse in", id : propertyData[t]["propertyID"] + "colPanel"}); // Remeber to change
+
+					var body = $("<div/>", {class : "panel-body", id : propertyData[t]["propertyID"] + "roomsPanel"});// Remeber to change
+
+					collapse.append(body);
+
+					panel.append(collapse);
+
+					$(panel).hide().appendTo("#roomsPanel").fadeIn("slow");
+
+
+
+					var roomHTML = "";
+
+					var roomData = propertyData[t]["roomData"];
+
+					for (var j = 0; j < roomData.length; j++)
+					{
+						var sensorPanelID = roomData[j]["id"] + "sensorPanel";
+
+						roomHTML = "";
+						roomHTML += "<div class='col-md-3'> \
+					<div class='panel panel-" + (roomData[j]["state"] === "Occupied" ? roomData[j]["colourOccupied"] : roomData[j]["colourUnoccupied"]) + "'> \
+						<div class='panel-heading' " + '"' +  " style='cursor:pointer'> \
+							<div class='row'> \
+								<div class='col-xs-3'> \
+									<i class='fa fa-" + roomData[j]["icon"] + " fa-2x'></i> \
+								</div> \
+								<div class='col-xs-9 text-right'> \
+									<div class='' name=''>" + roomData[j]["name"] + "</div> \
+									<div>" + roomData[j]["state"] + "</div> \
+								</div> \
 							</div> \
 						</div> \
+					<div class='panel-body' id='" + sensorPanelID + "'> \
 					</div> \
-				<div class='panel-body' id='" + sensorPanelID + "'> \
 				</div> \
-			</div> \
-		</div>";
+			</div>";
 
-					//roomHTML += "</div></div></div>";
+						//roomHTML += "</div></div></div>";
 
-					if ((j + 1) % 4 === 0)
-						roomHTML += "<div class='clearfix'>";
+						if ((j + 1) % 4 === 0)
+							roomHTML += "<div class='clearfix'>";
 
-					$(roomHTML).hide().appendTo("#roomsPanel").fadeIn("slow");
+						console.log("time");
 
-					var sensorData = roomData[j]["sensorData"];
+						$(roomHTML).hide().appendTo("#" + propertyData[t]["propertyID"] + "roomsPanel").fadeIn("slow");
 
-					var sensorCount = 0;
+						var sensorData = roomData[j]["sensorData"];
 
-					for(var i = 0; i < sensorData.length; i++)
-					{
-						if (sensorData[i]["count"] > 0)
+						var sensorCount = 0;
+
+						for(var i = 0; i < sensorData.length; i++)
 						{
-							var sensorHTML = sensorData[i]["sensorHTML"];
-							if (sensorData[i]["count"] > 1)
+							if (sensorData[i]["count"] > 0)
 							{
-								sensorHTML = "<div class='clearfix'>" + sensorHTML;
-							}
-							if ((sensorCount = sensorCount + sensorData[i]["count"]) % 2 === 0)
-							{
-								sensorHTML += "<div class='clearfix'>";
-							}
+								var sensorHTML = sensorData[i]["sensorHTML"];
+								if (sensorData[i]["count"] > 1)
+								{
+									sensorHTML = "<div class='clearfix'>" + sensorHTML;
+								}
+								if ((sensorCount = sensorCount + sensorData[i]["count"]) % 2 === 0)
+								{
+									sensorHTML += "<div class='clearfix'>";
+								}
 
-							$(sensorHTML).hide().appendTo("#"+sensorPanelID).fadeIn("slow");
+								$(sensorHTML).hide().appendTo("#"+sensorPanelID).fadeIn("slow");
+							}
 						}
 					}
 				}
+
 			},
 			error: function (e) {
 				//console.log(e);
