@@ -104,7 +104,7 @@ function getRooms() {
 	$("#roomsPanel").empty();
 	$.ajax(
 		{
-			url: '../rooms/getRooms.php',
+			url: 'getRooms.php',
 			dataType: 'json',
 			async: true,
 			success: function (result)

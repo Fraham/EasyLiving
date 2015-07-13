@@ -47,6 +47,39 @@ class Room
 		return $room;
 	}
 
+	public static function getChosenRooms()
+	{
+		require "../src/connect.php";
+
+		$rooms = [];
+
+		session_start();
+		session_write_close();
+
+		$userID = $_SESSION['user_id'];
+
+		$statement = "SELECT room.roomID
+					FROM room
+					INNER JOIN user_room
+					ON user_room.roomID = room.roomID
+					WHERE user_room.showRoom = '1'
+					AND user_room.userID = '$userID'";
+
+		$result = $conn->query($statement);
+
+		$conn->close();
+
+		if ($result->num_rows > 0)
+		{
+			while($row = $result->fetch_assoc())
+			{
+				$rooms[] = Room::getRoomByRoomID($row['roomID']);
+			}
+		}
+
+		return $rooms;
+	}
+
 	public static function getRoomsByPropertyID($propertyID = "Any")
 	{
 		require "../src/connect.php";

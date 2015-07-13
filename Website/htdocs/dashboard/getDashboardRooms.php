@@ -7,15 +7,15 @@ if (!isset($blockSize))
 	$blockSize = 370;
 
 $userID = $_SESSION['user_id'];
-    
+
 $properties = [];
-    
+
 $properties = Property::getByUserID($userID);
 
 $roomHTML = "";
 
 $count = 0;
-    
+
 foreach($properties as $property)
 {
 	$statement = "SELECT R.dName, R.roomID, RC.occupied, RC.unoccupied, I.icon, R.roomID
@@ -29,7 +29,7 @@ foreach($properties as $property)
 				WHERE R.houseID = $property->houseID
 				AND user_room.showRoom = '1'
 				AND user_room.userID = $userID";
-				
+
 	$result = $conn->query($statement);
 
 	if ($result->num_rows > 0)
@@ -41,41 +41,41 @@ foreach($properties as $property)
  			else
 			{
 				$count = $count + 1;
-				
+
 				$occupied = Room::occupiedState($row['roomID']);
-				
+
 				$state = $occupied[0];
 				$colorOCC = $occupied[1];
-				
+
 				$color = $row[$colorOCC];
-				
+
 				include_once ("{$path}../classes/SensorClass.php");
-				
+
 				$sensorHTML = "";
-				
+
 				$sensors = [];
-	
+
 				$sensors = Sensor::getByRoomID($row['roomID']);
-				
+
 				$sensorCount = 0;
-	
+
 				foreach ($sensors as $sensor)
 				{
 					$sensorHTML .= $sensor->getBlockFormat($sensorCount);
 				}
-				
+
 				if ($sensorCount === 1)
 				{
 					$sensorHTML .= "</div>";
 				}
-				
+
 				if ($count === 1)
 				{
 					$roomHTML .= "<div class='row'>";
-				}		
-	
+				}
+
 				$roomHTML .= <<<HTML
-				
+
 				<div class='col-md-4'>
 					<div class='panel panel-{$color}'>
 						<div class='panel-heading'>
