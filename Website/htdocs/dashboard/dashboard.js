@@ -115,7 +115,7 @@ function getRooms() {
 				{
 					var panel = $("<div/>", {class : "panel panel-default", id : propertyData[t]["propertyID"] + "mainPanel"}); // Remeber to change
 
-					var heading = $("<div/>", { class : "panel-heading"});
+					var heading = $("<div/>", { class : "panel-heading", style : "cursor:pointer"});
 
 					var title = $("<h4/>", { class : "panel-title",
 						'data-toggle' : "collapse",
@@ -154,6 +154,51 @@ function getRooms() {
 					{
 						var sensorPanelID = roomData[j]["id"] + "sensorPanel";
 
+
+						var roomMain = $("<div/>", {class : "col-md-3"});
+
+						var colour = (roomData[j]["state"] === "Occupied" ? roomData[j]["colourOccupied"] : roomData[j]["colourUnoccupied"]);
+
+						var roomPanel = $("<div/>", {class : "panel panel-" + colour});
+
+						var roomHeading = $("<div/>", {class : "panel-heading", style : "cursor:pointer"});
+
+						var roomRow = $("<div/>", {class : "row"});
+
+						var roomIconSpace = $("<div/>", {class : "col-xs-3"});
+
+						var roomIcon = $("<i/>", {class : "fa fa-" + roomData[j]["icon"] + " fa-2x"});
+
+						roomIconSpace.append(roomIcon);
+
+						var roomNameSpace = $("<div/>", {class : "col-xs-9 text-right"});
+
+						var roomName = $("<div/>", {text : roomData[j]["name"]});
+
+						var roomState = $("<div/>", {text : roomData[j]["state"]});
+
+						roomNameSpace.append(roomName);
+
+						roomNameSpace.append(roomState);
+
+						roomRow.append(roomIconSpace);
+
+						roomRow.append(roomNameSpace);
+
+						roomHeading.append(roomRow);
+
+						roomPanel.append(roomHeading);
+
+
+
+						var roomSensorPanel = $("<div/>", {class : "panel-body", id : sensorPanelID });
+
+						roomPanel.append(roomSensorPanel);
+
+						roomMain.append(roomPanel);
+
+						$(roomMain).hide().appendTo("#" + propertyData[t]["propertyID"] + "roomsPanel").fadeIn("slow");
+
 						roomHTML = "";
 						roomHTML += "<div class='col-md-3'> \
 					<div class='panel panel-" + (roomData[j]["state"] === "Occupied" ? roomData[j]["colourOccupied"] : roomData[j]["colourUnoccupied"]) + "'> \
@@ -176,11 +221,10 @@ function getRooms() {
 						//roomHTML += "</div></div></div>";
 
 						if ((j + 1) % 4 === 0)
-							roomHTML += "<div class='clearfix'>";
-
-						console.log("time");
-
-						$(roomHTML).hide().appendTo("#" + propertyData[t]["propertyID"] + "roomsPanel").fadeIn("slow");
+						{
+							var clearfix = $("<div/>", {class : "clearfix"});
+							$(clearfix).hide().appendTo("#" + propertyData[t]["propertyID"] + "roomsPanel").fadeIn("slow");
+						}
 
 						var sensorData = roomData[j]["sensorData"];
 
