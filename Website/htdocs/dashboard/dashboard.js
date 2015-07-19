@@ -162,7 +162,7 @@ function getRooms() {
 						var roomPanel = $("<div/>", {class : "panel panel-" + colour});
 
 						var roomHeading = $("<div/>", {
-															'data-toggle' : "collapse",
+								'data-toggle' : "collapse",
 								'data-target' : "#" + sensorPanelID + "colPanel",
 								class : "panel-heading", style : "cursor:pointer"});
 

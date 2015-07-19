@@ -3,9 +3,6 @@
 	require_once "../src/connect.php";
     require_once "../src/classes/PropertyClass.php";
 
-    include "../src/includes/functions.php";
-
-	//sec_session_start();
 	session_start();
     session_write_close();
 

@@ -4,9 +4,9 @@ function reloadPage()
 {
 
 }
+
 function updateTable()
 {
-	//$("#tableContents").empty();
   $("#propertyTable").find("tr:gt(0)").remove();
 
   $.ajax(

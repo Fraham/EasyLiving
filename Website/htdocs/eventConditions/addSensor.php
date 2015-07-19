@@ -1,9 +1,6 @@
 <?php
 	include "../src/classes/ConditionClass.php";
-
-	include "../src/includes/functions.php";
-
-	//sec_session_start();
+	
 	session_start();
 	session_write_close();
 
