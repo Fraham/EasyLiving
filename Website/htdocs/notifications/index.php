@@ -18,6 +18,7 @@ include $path."main.php";
 
 	<script type="text/javascript" src="graph.js"></script>
 	<script type="text/javascript" src="history.js"></script>
+	<script type="text/javascript" src="temperatureChart.js"></script>
 	<!-- <script type="text/javascript" src="dropdownChange.js"></script> -->
 
 	<div class="row">
