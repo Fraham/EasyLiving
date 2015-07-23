@@ -103,7 +103,7 @@ function updatePropertyList() {
       url: 'history.php',
       dataType: 'json',
       async: true,
-      data: { action: "updatePropertyList"},
+      data: { action: "updatePropertyList" },
       success: function (result) {
         var propertyData = result['data'];
 
@@ -123,7 +123,48 @@ function updatePropertyList() {
     });
 }
 
-function reloadPage()
-{
+function confirm() {
+  var url = "";
+
+  var houseID = $('#propertySelect').val();
+
+  var roomID = $('#roomSelect').val();
+
+  var sensorID = $('#sensorSelect').val();
+
+  try {
+    var start = $("#startDate").datepicker('getDate');
+
+    var startDate = start.toISOString().slice(0, 11).replace(' ', '').replace('T', '');
+
+    startDate = startDate + " 00:00:00";
+  }
+  catch (err) {
+    startDate = "1970-02-01 00:00:00"
+  }
+
+  try {
+    var end = $("#endDate").datepicker('getDate');
+
+    var endDate = end.toISOString().slice(0, 11).replace(' ', '').replace('T', '');
+
+    endDate = endDate + " 23:59:59";
+  }
+  catch (err) {
+    endDate = "2020-02-01 00:00:00"
+  }
+
+  url = "?propertyID=" + houseID + "&roomID=" + roomID + "&sensorID=" + sensorID + "&startDate=" + startDate + "&endDate=" + endDate;
+
+  table.fnClearTable();
+
+  $.getJSON("getTableJSON.php" + url, function (data) {
+    $('#notifications').dataTable().fnAddData(data);
+  });
+
+  changeGraph(url);
+}
+
+function reloadPage() {
 
 }
