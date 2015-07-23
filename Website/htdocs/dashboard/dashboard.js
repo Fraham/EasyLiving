@@ -155,7 +155,7 @@ function getRooms() {
 						var sensorPanelID = roomData[j]["id"] + "sensorPanel";
 
 
-						var roomMain = $("<div/>", {class : "col-md-3"});
+						var roomMain = $("<div/>", {class : "col-md-4 col-lg-3 col-sm-6"});
 
 						var colour = (roomData[j]["state"] === "Occupied" ? roomData[j]["colourOccupied"] : roomData[j]["colourUnoccupied"]);
 
@@ -209,7 +209,17 @@ function getRooms() {
 
 						if ((j + 1) % 4 === 0)
 						{
-							var clearfix = $("<div/>", {class : "clearfix"});
+							var clearfix = $("<div/>", {class : "clearfix visible-lg-block"});
+							$(clearfix).hide().appendTo("#" + propertyData[t]["propertyID"] + "roomsPanel").fadeIn("slow");
+						}
+						else if ((j + 1) % 3 === 0)
+						{
+							var clearfix = $("<div/>", {class : "clearfix visible-md-block"});
+							$(clearfix).hide().appendTo("#" + propertyData[t]["propertyID"] + "roomsPanel").fadeIn("slow");
+						}
+						if ((j + 1) % 2 === 0)
+						{
+							var clearfix = $("<div/>", {class : "clearfix visible-sm-block"});
 							$(clearfix).hide().appendTo("#" + propertyData[t]["propertyID"] + "roomsPanel").fadeIn("slow");
 						}
 
