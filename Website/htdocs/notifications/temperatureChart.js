@@ -3,7 +3,7 @@ function changeTemperatureGraph(url) {
     chart:
     {
       renderTo: 'temperatureChart',
-      type: 'column'
+      type: 'line'
     },
     credits:
     {
@@ -11,7 +11,7 @@ function changeTemperatureGraph(url) {
     },
     title:
     {
-      text: 'Amount',
+      text: 'Degrees',
       x: -6
     },
     subtitle:
@@ -28,7 +28,7 @@ function changeTemperatureGraph(url) {
     {
       title:
       {
-        text: 'Amount'
+        text: 'Degrees'
       },
       plotLines:
       [{
