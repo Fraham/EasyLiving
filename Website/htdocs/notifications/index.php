@@ -10,6 +10,8 @@ include $path."main.php";
 	<script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 	<script src="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 
+	<script src="http://code.highcharts.com/highcharts.js"></script>
+
 	<?php
 	include("getNotificationsGraph.php");
 	?>
@@ -64,57 +66,6 @@ include $path."main.php";
 
 			<div class="col-md-2">
 				<button type="button" class="btn btn-lg btn-danger" onclick="confirm()" >Confirm</button>
-
-				<script>
-
-				function confirm()
-				{
-					var url = "";
-
-					var houseID = $('#propertySelect').val();
-
-					var roomID = $('#roomSelect').val();
-
-					var sensorID = $('#sensorSelect').val();
-
-					try
-					{
-						var start =	$("#startDate").datepicker( 'getDate' );
-
-						var startDate = start.toISOString().slice(0, 11).replace(' ', '').replace('T', '');
-
-						startDate = startDate + " 00:00:00";
-					}
-					catch(err)
-					{
-						startDate = "1970-02-01 00:00:00"
-					}
-
-					try
-					{
-						var end = $("#endDate").datepicker( 'getDate' );
-
-						var endDate = end.toISOString().slice(0, 11).replace(' ', '').replace('T', '');
-
-						endDate = endDate + " 23:59:59";
-					}
-					catch(err)
-					{
-						endDate = "2020-02-01 00:00:00"
-					}
-
-					url = "?propertyID=" + houseID + "&roomID=" + roomID + "&sensorID=" + sensorID + "&startDate=" + startDate + "&endDate=" + endDate;
-
-					table.fnClearTable();
-
-					$.getJSON("getTableJSON.php" + url, function (data)
-					{
-						$('#notifications').dataTable().fnAddData(data);
-					});
-
-					changeGraph(url);
-				}
-				</script>
 			</div>
 		</div>
 	</div>
@@ -129,8 +80,25 @@ include $path."main.php";
 			</div>
 			<div class="panel-body"id="chartBody">
 				<div class="col-md-12">
-					<script src="http://code.highcharts.com/highcharts.js"></script>
-					<div id="events" style="height: 400px; margin: 0 auto">
+
+					<div id="eventsChart" style="height: 400px; margin: 0 auto">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Temperature Charts
+			</div>
+			<div class="panel-body"id="chartBody">
+				<div class="col-md-12">
+					<div id="temperatureChart" style="height: 400px; margin: 0 auto">
 
 					</div>
 				</div>

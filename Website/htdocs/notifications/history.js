@@ -163,6 +163,8 @@ function confirm() {
   });
 
   changeGraph(url);
+
+  changeTemperatureGraph(url);
 }
 
 function reloadPage() {

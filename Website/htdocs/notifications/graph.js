@@ -1,21 +1,21 @@
 function changeGraph(url)
-{  
+{
   var options = {
-              chart: 
+              chart:
               {
-                  renderTo: 'events',
+                  renderTo: 'eventsChart',
                   type: 'column'
               },
-              credits: 
+              credits:
               {
                 enabled: false
               },
-              title: 
+              title:
               {
                   text: 'Amount',
-                  x: -6 
+                  x: -6
               },
-              subtitle: 
+              subtitle:
               {
                   text: '',
                   x: -20
@@ -25,25 +25,25 @@ function changeGraph(url)
                 maxPadding: 0,
 				        minPadding: 0,
 			        },
-              yAxis: 
+              yAxis:
               {
-                  title: 
+                  title:
                   {
                       text: 'Amount'
                   },
-                  plotLines: 
+                  plotLines:
                   [{
                       value: 0,
                       width: 1,
                       color: '#808080'
                   }]
               },
-              tooltip: 
+              tooltip:
               {
                 crosshairs: true,
                 shared: true
               },
-              legend: 
+              legend:
               {
                   layout: 'vertical',
                   align: 'right',
@@ -53,33 +53,33 @@ function changeGraph(url)
                   borderWidth: 0
               }
           };
-  
-  $.getJSON("getGraphData.php" + url, function(json) 
+
+  $.getJSON("getGraphData.php" + url, function(json)
   {
     var chart = new Highcharts.Chart(options);
-    
-    for(var i = 0; i < json.length; i++) 
+
+    for(var i = 0; i < json.length; i++)
     {
       var obj = json[i];
-      
+
       var dataArray = [];
-      
-      for(var j = 0; j < obj.data.length; j++) 
+
+      for(var j = 0; j < obj.data.length; j++)
       {
         var tempArray = [];
         var date = Date.UTC(obj.data[j][0], obj.data[j][1] - 1, obj.data[j][2], obj.data[j][3], obj.data[j][4], obj.data[j][5]);
-        
+
         tempArray.push(date);
         tempArray.push(obj.data[j][6]);
-        
+
         dataArray.push(tempArray);
       }
-      
+
       chart.addSeries({
                     name: obj.name,
                     data: dataArray
       });
-    }     
+    }
   });
 }
 
