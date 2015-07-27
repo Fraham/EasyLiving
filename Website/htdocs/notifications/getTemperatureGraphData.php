@@ -10,14 +10,7 @@ $set = 0;
 
 	  if (strcmp($propertyID, 'Any') !== 0)
 	  {
-		  if ($set == 0)
-		  {
-		    $where .= "WHERE ";
-		  }
-		  else
-		  {
-		    $where .= " AND  ";
-		  }
+		  $where .= ($set == 0 ? "WHERE " : " AND ");
 
 		  $where .= "house.houseID = ";
 		  $where .= $propertyID;
@@ -32,14 +25,7 @@ $set = 0;
 
 	  if (strcmp($roomID, 'Any') !== 0)
 	  {
-		  if ($set == 0)
-		  {
-		    $where .= "WHERE ";
-		  }
-		  else
-		  {
-		    $where .= " AND  ";
-		  }
+		  $where .= ($set == 0 ? "WHERE " : " AND ");
 
 		  $where .= "room.roomID = ";
 		  $where .= $roomID;
@@ -54,14 +40,7 @@ $set = 0;
 
 	  if (strcmp($sensorID, 'Any') !== 0)
 	  {
-		  if ($set == 0)
-		  {
-		    $where .= "WHERE ";
-		  }
-		  else
-		  {
-		    $where .= " AND  ";
-		  }
+		  $where .= ($set == 0 ? "WHERE " : " AND ");
 
 		  $where .= "sensors.sensorID = ";
 		  $where .= $sensorID;
@@ -74,14 +53,7 @@ $set = 0;
 	{
 	  $startDate = $_GET["startDate"];
 
-	  if ($set == 0)
-	  {
-	    $where .= "WHERE ";
-	  }
-	  else
-	  {
-	    $where .= " AND ";
-	  }
+	  $where .= ($set == 0 ? "WHERE " : " AND ");
 
 	  $where .= "temphum.date >= '";
 	  $where .= $startDate;
@@ -94,14 +66,7 @@ $set = 0;
 	{
 	  $endDate = $_GET["endDate"];
 
-	  if ($set == 0)
-	  {
-	    $where .= "WHERE ";
-	  }
-	  else
-	  {
-	    $where .= " AND ";
-	  }
+	  $where .= ($set == 0 ? "WHERE " : " AND ");
 
 	  $where .= "temphum.date <= '";
 	  $where .= $endDate;
@@ -111,20 +76,20 @@ $set = 0;
 	}
 
 $statement = "SELECT temphum.date, AVG(temphum.temp) AS temperature, AVG(temphum.hum) AS humidity, sensors.name as SensorName, temphum.sensorID
-FROM temphum
-INNER JOIN sensors
-ON sensors.sensorID = temphum.sensorID
-INNER JOIN room
-ON room.roomID = sensors.roomID
-INNER JOIN house
-ON house.houseID = room.houseID ";
+			FROM temphum
+			INNER JOIN sensors
+			ON sensors.sensorID = temphum.sensorID
+			INNER JOIN room
+			ON room.roomID = sensors.roomID
+			INNER JOIN house
+			ON house.houseID = room.houseID ";
 $statement .= $where;
 $statement .= " GROUP BY
-  temphum.sensorID,
-	YEAR(temphum.date),
-	MONTH(temphum.date),
-	DAY(temphum.date),
-	HOUR(temphum.date)";
+				temphum.sensorID,
+				YEAR(temphum.date),
+				MONTH(temphum.date),
+				DAY(temphum.date),
+				HOUR(temphum.date)";
 
 $result = $conn->query($statement);
 
