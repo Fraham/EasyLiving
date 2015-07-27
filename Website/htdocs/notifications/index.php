@@ -107,6 +107,22 @@ include $path."main.php";
 		</div>
 	</div>
 </div>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Humidity Charts
+			</div>
+			<div class="panel-body"id="chartBody">
+				<div class="col-md-12">
+					<div id="humidityChart" style="height: 400px; margin: 0 auto">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <script type="text/javascript">
 $('#startDate').datepicker({

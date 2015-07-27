@@ -110,7 +110,7 @@ $set = 0;
 	  $set = 1;
 	}
 
-$statement = "SELECT temphum.date, AVG(temphum.temp) AS amount, sensors.name as SensorName, temphum.sensorID
+$statement = "SELECT temphum.date, AVG(temphum.temp) AS temperature, AVG(temphum.hum) AS humidity, sensors.name as SensorName, temphum.sensorID
 FROM temphum
 INNER JOIN sensors
 ON sensors.sensorID = temphum.sensorID
@@ -163,7 +163,7 @@ if ($result->num_rows > 0)
 	$day = substr($row['date'], 8, 2);
 	$hour = substr($row['date'], 11, 2);
 
-	$data = array($year, $month, $day, $hour, 0, 0, $row['amount']);
+	$data = array($year, $month, $day, $hour, 0, 0, $row['temperature'], $row['humidity']);
 
     $jsonRows['data'][] = $data;
   }
