@@ -167,6 +167,30 @@ function confirm() {
   changeTemperatureGraph(url);
 }
 
+function togglePanelSize(which) {
+  var panel;
+  var body;
+  if (which == "temp")
+  {
+    panel = $('#temperaturePanelSize');
+    body = $('#ChartBody');
+
+    panel.toggleClass('col-sm-6 col-sm-12');
+    chart.setSize($('#tempGraph').width(), body.height());
+  }
+  else{
+    panel = $('#humidityPanelSize');
+    body = $('#ChartBodyH');
+
+    panel.toggleClass('col-sm-6 col-sm-12');
+    chartH.setSize($('#humGraph').width(), body.height());
+  }
+
+
+
+
+}
+
 function reloadPage() {
 
 }

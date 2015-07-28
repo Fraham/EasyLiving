@@ -92,13 +92,16 @@ include $path."main.php";
 </div>
 
 <div class="row">
-	<div class="col-sm-6">
+	<div class="col-sm-6" id="temperaturePanelSize">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				Temperature Charts
-			</div>
+		        Temperature Chart
+		        <div class="btn-group pull-right">
+		            <a onClick="togglePanelSize('temp')" class="btn btn-default btn-sm hidden-xs">Toggle</a>
+		        </div>
+		    </div>
 			<div class="panel-body"id="chartBody">
-				<div class="col-md-12">
+				<div class="col-md-12" id="tempGraph">
 					<div id="temperatureChart" style="height: 400px; margin: 0 auto">
 
 					</div>
@@ -106,13 +109,16 @@ include $path."main.php";
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-6">
+	<div class="col-sm-6" id="humidityPanelSize">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				Humidity Charts
+				Humidity Chart
+				<div class="btn-group pull-right">
+		            <a onClick="togglePanelSize('hum')" class="btn btn-default btn-sm hidden-xs">Toggle</a>
+		        </div>
 			</div>
-			<div class="panel-body"id="chartBody">
-				<div class="col-md-12">
+			<div class="panel-body"id="chartBodyH">
+				<div class="col-md-12" id="humGraph">
 					<div id="humidityChart" style="height: 400px; margin: 0 auto">
 
 					</div>

@@ -1,3 +1,6 @@
+var chart;
+var chartH;
+
 function changeTemperatureGraph(url) {
   var options = {
     chart:
@@ -107,9 +110,11 @@ function changeTemperatureGraph(url) {
     }
   };
 
+  chart = new Highcharts.Chart(options);
+  chartH = new Highcharts.Chart(optionsH);
+
   $.getJSON("getTemperatureGraphData.php" + url, function (json) {
-    var chart = new Highcharts.Chart(options);
-    var chartH = new Highcharts.Chart(optionsH);
+
 
     for (var i = 0; i < json.length; i++) {
       var obj = json[i];
