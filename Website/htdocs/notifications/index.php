@@ -92,7 +92,7 @@ include $path."main.php";
 </div>
 
 <div class="row">
-	<div class="col-sm-12">
+	<div class="col-sm-6">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				Temperature Charts
@@ -106,9 +106,7 @@ include $path."main.php";
 			</div>
 		</div>
 	</div>
-</div>
-<div class="row">
-	<div class="col-sm-12">
+	<div class="col-sm-6">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				Humidity Charts
