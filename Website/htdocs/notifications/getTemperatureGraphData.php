@@ -2,7 +2,13 @@
 require_once "../src/connect.php";
 
 $where = "";
-$set = 0;
+$set = 1;
+
+session_start();
+session_write_close();
+$userID = $_SESSION['user_id'];
+
+$user = $_SESSION['user_id'];
 
 	if (isset($_GET["propertyID"]))
 	{
@@ -82,7 +88,10 @@ $statement = "SELECT temphum.date, AVG(temphum.temp) AS temperature, AVG(temphum
 			INNER JOIN room
 			ON room.roomID = sensors.roomID
 			INNER JOIN house
-			ON house.houseID = room.houseID ";
+			ON house.houseID = room.houseID 
+			INNER JOIN user_households
+			ON user_households.houseID = house.houseID
+			WHERE user_households.userID = '$userID'";
 $statement .= $where;
 $statement .= " GROUP BY
 				temphum.sensorID,
