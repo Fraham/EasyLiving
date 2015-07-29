@@ -127,14 +127,24 @@ function changeTemperatureGraph(url) {
         var tempArrayH = [];
         var date = Date.UTC(obj.data[j][0], obj.data[j][1] - 1, obj.data[j][2], obj.data[j][3], obj.data[j][4], obj.data[j][5]);
 
-        tempArray.push(date);
-        tempArray.push(obj.data[j][6]);
+        if (obj.data[j][6] != null)
+        {
+          tempArray.push(date);
+          tempArray.push(obj.data[j][6]);
 
-        tempArrayH.push(date);
-        tempArrayH.push(obj.data[j][7]);
+          temperatureDataArray.push(tempArray);
+        }
 
-        temperatureDataArray.push(tempArray);
-        humidityDataArray.push(tempArrayH);
+        if (obj.data[j][7] != null)
+        {
+          tempArrayH.push(date);
+          tempArrayH.push(obj.data[j][7]);
+
+          humidityDataArray.push(tempArrayH);
+        }
+
+
+
       }
 
       chart.addSeries({
