@@ -4,7 +4,11 @@
 	require_once "../src/connect.php";
 	
 	$where = "";
-	$set = 0;
+	$set = 1;
+
+session_start();
+session_write_close();
+$userID = $_SESSION['user_id'];
 	
 	if (isset($_GET["propertyID"]))
 	{
@@ -119,7 +123,10 @@
 		INNER JOIN room
 		ON sensors.roomID = room.roomID
 		INNER JOIN house
-		ON room.houseID = house.houseID ";
+		ON room.houseID = house.houseID 			
+		INNER JOIN user_households
+		ON user_households.houseID = house.houseID
+		WHERE user_households.userID = '$userID'";
 	$statement .= $where;
 	$statement .= " ORDER BY logID DESC";
 
