@@ -122,6 +122,9 @@ function changeTemperatureGraph(url) {
       var temperatureDataArray = [];
       var humidityDataArray = [];
 
+      var tempHigh = -99;
+      var tempLow = 1000;
+
       for (var j = 0; j < obj.data.length; j++) {
         var tempArray = [];
         var tempArrayH = [];
@@ -129,8 +132,19 @@ function changeTemperatureGraph(url) {
 
         if (obj.data[j][6] != null)
         {
+          var temp = obj.data[j][6];
+
           tempArray.push(date);
-          tempArray.push(obj.data[j][6]);
+          tempArray.push(temp);
+
+          if (temp > tempHigh)
+          {
+            tempHigh = temp;
+          }
+          if (temp > tempLow)
+          {
+            tempLow = temp;
+          }
 
           temperatureDataArray.push(tempArray);
         }
@@ -142,9 +156,6 @@ function changeTemperatureGraph(url) {
 
           humidityDataArray.push(tempArrayH);
         }
-
-
-
       }
 
       chart.addSeries({
