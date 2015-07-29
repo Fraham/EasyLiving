@@ -91,7 +91,7 @@ $statement = "SELECT temphum.date, AVG(temphum.temp) AS temperature, AVG(temphum
 			ON house.houseID = room.houseID 
 			INNER JOIN user_households
 			ON user_households.houseID = house.houseID
-			WHERE user_households.userID = '$userID'";
+			WHERE user_households.userID = '$userID' ";
 $statement .= $where;
 $statement .= " GROUP BY
 				temphum.sensorID,

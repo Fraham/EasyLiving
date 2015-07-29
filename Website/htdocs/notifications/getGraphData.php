@@ -2,7 +2,11 @@
 require_once "../src/connect.php";
 
 $where = "";
-$set = 0;
+$set = 1;
+
+session_start();
+session_write_close();
+$userID = $_SESSION['user_id'];
 
 	if (isset($_GET["propertyID"]))
 	{
@@ -116,7 +120,10 @@ ON sensors.sensorID = log.sensorID
 INNER JOIN room
 ON room.roomID = sensors.roomID
 INNER JOIN house
-ON house.houseID = room.houseID ";
+ON house.houseID = room.houseID 			
+INNER JOIN user_households
+ON user_households.houseID = house.houseID
+WHERE user_households.userID = '$userID' ";
 $statement .= $where;
 $statement .= " GROUP BY
   log.sensorID,
