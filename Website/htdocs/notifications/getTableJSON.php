@@ -152,13 +152,15 @@ $userID = $_SESSION['user_id'];
 
     		$jsonRows[] = $data;
 		}
+		
+		$jsonResult["error"] = 0;
 	}	
 	else
 	{
-		$jsonRows[] = array("There is nothing to display.");
+		$jsonResult["error"] = 1;
 	}	
 	
-	$jsonResult[] = $jsonRows;
+	$jsonResult["data"] = $jsonRows;
 
 	echo json_encode($jsonRows, JSON_NUMERIC_CHECK);
 
