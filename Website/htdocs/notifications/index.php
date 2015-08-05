@@ -159,7 +159,39 @@ include $path."main.php";
 					</div>
 				</div>
 				<div class="col-md-12" id="humDetails">
-
+					<div class="col-md-3 col-sm-4">
+						<h4>
+							Highest Humidity
+						</h4>
+						<span>
+							<span id="highestHum">
+								NaN
+							</span>
+							%
+						</span>
+					</div>
+					<div class="col-md-3 col-sm-4">
+						<h4>
+							Lowest Humidity
+						</h4>
+						<span>
+							<span id="lowestHum">
+								NaN
+							</span>
+							%
+						</span>
+					</div>
+					<div class="col-md-3 col-sm-4">
+						<h4>
+							Average Humidity
+						</h4>
+						<span>
+							<span id="averageHum">
+								NaN
+							</span>
+							%
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>
