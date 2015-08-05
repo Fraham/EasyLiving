@@ -160,6 +160,7 @@ function changeTemperatureGraph(url) {
         }
 
         if (obj.data[j][7] != null) {
+          humCount++;
           var hum = obj.data[j][7];
 
           tempArrayH.push(date);
