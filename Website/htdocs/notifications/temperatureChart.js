@@ -146,7 +146,7 @@ function changeTemperatureGraph(url) {
           if (temp > tempHigh) {
             tempHigh = temp;
           }
-          if (temp > tempLow) {
+          if (temp < tempLow) {
             tempLow = temp;
           }
 
@@ -176,6 +176,8 @@ function changeTemperatureGraph(url) {
     averageTemp = totalTemp / count;
 
     $("#highestTemp").text(tempHigh.toFixed(2));
+    $("#lowestTemp").text(tempLow.toFixed(2));
+    $("#averageTemp").text(averageTemp.toFixed(2));
   });
 }
 

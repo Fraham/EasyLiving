@@ -118,6 +118,28 @@ include $path."main.php";
 							&deg;C
 						</span>
 					</div>
+					<div class="col-md-3 col-sm-4">
+						<h4>
+							Lowest Temperature
+						</h4>
+						<span>
+							<span id="lowestTemp">
+								NaN
+							</span>
+							&deg;C
+						</span>
+					</div>
+					<div class="col-md-3 col-sm-4">
+						<h4>
+							Average Temperature
+						</h4>
+						<span>
+							<span id="averageTemp">
+								NaN
+							</span>
+							&deg;C
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>
