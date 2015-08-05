@@ -210,7 +210,7 @@ function changeTemperatureGraph(url) {
       }
       else
       {
-        $("#humidityDataArrayPanelSize").remove();
+        $("#humidityPanelSize").remove();
       }
     }
   });
