@@ -157,7 +157,7 @@ function confirm() {
   url = "?propertyID=" + houseID + "&roomID=" + roomID + "&sensorID=" + sensorID + "&startDate=" + startDate + "&endDate=" + endDate;
 
   table.fnClearTable();
-  
+
   $.ajax(
     {
       url: "getTableJSON.php" + url,
@@ -166,10 +166,10 @@ function confirm() {
       data: { action: "updatePropertyList" },
       success: function (result) {
         var error = result['error'];
-        if (error === "0")
+        if (error === 0)
         {
           var data = result['data'];
-          $('#notifications').dataTable().fnAddData(result);
+          $('#notifications').dataTable().fnAddData(data);
         }
       },
       error: function (e) {
