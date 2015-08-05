@@ -178,7 +178,9 @@ function changeTemperatureGraph(url) {
           humidityDataArray.push(tempArrayH);
         }
       }
-      if (tempCount > 0)
+    }
+
+    if (tempCount > 0)
       {
         chart.addSeries({
           name: obj.name,
@@ -192,9 +194,11 @@ function changeTemperatureGraph(url) {
         $("#averageTemp").text(averageTemp.toFixed(2));
 
         $( "#temperaturePanelSize" ).show();
+        console.log(tempCount);
       }
       else
       {
+        console.log("hide");
         $( "#temperaturePanelSize" ).hide();
       }
       if (humCount > 0)
@@ -216,7 +220,6 @@ function changeTemperatureGraph(url) {
       {
         $("#humidityPanelSize").hide();
       }
-    }
   });
 }
 
