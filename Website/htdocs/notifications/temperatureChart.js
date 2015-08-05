@@ -115,6 +115,12 @@ function changeTemperatureGraph(url) {
 
   $.getJSON("getTemperatureGraphData.php" + url, function (json) {
 
+    var tempHigh = -99;
+    var tempLow = 1000;
+
+    var count = 0;
+    var totalTemp = 0;
+    var averageTemp = 0;
 
     for (var i = 0; i < json.length; i++) {
       var obj = json[i];
@@ -122,35 +128,34 @@ function changeTemperatureGraph(url) {
       var temperatureDataArray = [];
       var humidityDataArray = [];
 
-      var tempHigh = -99;
-      var tempLow = 1000;
+
 
       for (var j = 0; j < obj.data.length; j++) {
         var tempArray = [];
         var tempArrayH = [];
         var date = Date.UTC(obj.data[j][0], obj.data[j][1] - 1, obj.data[j][2], obj.data[j][3], obj.data[j][4], obj.data[j][5]);
 
-        if (obj.data[j][6] != null)
-        {
+        count++;
+
+        if (obj.data[j][6] != null) {
           var temp = obj.data[j][6];
 
           tempArray.push(date);
           tempArray.push(temp);
 
-          if (temp > tempHigh)
-          {
+          if (temp > tempHigh) {
             tempHigh = temp;
           }
-          if (temp > tempLow)
-          {
+          if (temp > tempLow) {
             tempLow = temp;
           }
+
+          totalTemp += temp;
 
           temperatureDataArray.push(tempArray);
         }
 
-        if (obj.data[j][7] != null)
-        {
+        if (obj.data[j][7] != null) {
           tempArrayH.push(date);
           tempArrayH.push(obj.data[j][7]);
 
@@ -168,6 +173,9 @@ function changeTemperatureGraph(url) {
         data: humidityDataArray
       });
     }
+    averageTemp = totalTemp / count;
+
+    console.log(averageTemp);
   });
 }
 
