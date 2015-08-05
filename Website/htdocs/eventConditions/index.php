@@ -124,7 +124,6 @@
 	{
 		$.post('addSensor.php', $('#addSensorForm').serialize())
 			.done(function( data ) {
-				console.log(data)
 				//location.reload();
 		});
 	}

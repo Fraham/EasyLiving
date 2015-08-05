@@ -66,7 +66,7 @@ function changeGraph(url) {
           for (var i = 0; i < result['data'].length; i++)
           {
             var obj = result['data'][i];
-            console.log(obj);
+
             var dataArray = [];
 
             for (var j = 0; j < obj.data.length; j++)
