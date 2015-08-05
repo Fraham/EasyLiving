@@ -175,7 +175,7 @@ function changeTemperatureGraph(url) {
     }
     averageTemp = totalTemp / count;
 
-    console.log(averageTemp);
+    $("#highestTemp").text(tempHigh.toFixed(2));
   });
 }
 

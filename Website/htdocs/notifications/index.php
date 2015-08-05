@@ -106,6 +106,19 @@ include $path."main.php";
 
 					</div>
 				</div>
+				<div class="col-md-12" id="tempDetails">
+					<div class="col-md-3 col-sm-4">
+						<h4>
+							Highest Temperature
+						</h4>
+						<span>
+							<span id="highestTemp">
+								NaN
+							</span>
+							&deg;C
+						</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -122,6 +135,9 @@ include $path."main.php";
 					<div id="humidityChart" style="height: 400px; margin: 0 auto">
 
 					</div>
+				</div>
+				<div class="col-md-12" id="humDetails">
+
 				</div>
 			</div>
 		</div>
