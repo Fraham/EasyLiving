@@ -88,7 +88,7 @@ $statement = "SELECT temphum.date, AVG(temphum.temp) AS temperature, AVG(temphum
 			INNER JOIN room
 			ON room.roomID = sensors.roomID
 			INNER JOIN house
-			ON house.houseID = room.houseID 
+			ON house.houseID = room.houseID
 			INNER JOIN user_households
 			ON user_households.houseID = house.houseID
 			WHERE user_households.userID = '$userID' ";
@@ -141,9 +141,11 @@ if ($result->num_rows > 0)
 
     $jsonRows['data'][] = $data;
   }
+
+  $jsonResult[] = $jsonRows;
 }
 
-$jsonResult[] = $jsonRows;
+
 
 print json_encode($jsonResult, JSON_NUMERIC_CHECK);
 
