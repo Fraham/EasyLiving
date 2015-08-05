@@ -97,6 +97,7 @@ include $path."main.php";
 			<div class="panel-heading">
 		        Temperature Chart
 		        <div class="btn-group pull-right">
+					<a onClick="confirm()" class="btn btn-default btn-sm hidden-xs"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
 		            <a onClick="togglePanelSize('temp')" class="btn btn-default btn-sm hidden-xs">Toggle</a>
 		        </div>
 		    </div>
@@ -149,6 +150,7 @@ include $path."main.php";
 			<div class="panel-heading">
 				Humidity Chart
 				<div class="btn-group pull-right">
+					<a onClick="confirm()" class="btn btn-default btn-sm hidden-xs"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
 		            <a onClick="togglePanelSize('hum')" class="btn btn-default btn-sm hidden-xs">Toggle</a>
 		        </div>
 			</div>
