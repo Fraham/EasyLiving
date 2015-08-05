@@ -220,7 +220,7 @@ $('#form_datetime1').datetimepicker({
 
 <div class="row">
 	<div class="col-sm-12">
-		<div class="panel panel-default">
+		<div class="panel panel-default" id="historyTablePanel">
 			<div class="panel-heading">
 				Historys Tables
 			</div>

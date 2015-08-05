@@ -171,6 +171,10 @@ function confirm() {
           var data = result['data'];
           $('#notifications').dataTable().fnAddData(data);
         }
+        else
+        {
+          $("#historyTablePanel").remove();
+        }
       },
       error: function (e) {
         console.log(e);
