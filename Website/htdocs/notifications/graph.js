@@ -85,10 +85,11 @@ function changeGraph(url) {
               data: dataArray
             });
           }
+          $("#histroyChartPanel").show();
         }
         else
         {
-          $("#histroyChartPanel").remove();
+          $("#histroyChartPanel").hide();
         }
       },
       error: function (e) {

@@ -170,10 +170,12 @@ function confirm() {
         {
           var data = result['data'];
           $('#notifications').dataTable().fnAddData(data);
+
+          $("#historyTablePanel").show();
         }
         else
         {
-          $("#historyTablePanel").remove();
+          $("#historyTablePanel").hide();
         }
       },
       error: function (e) {

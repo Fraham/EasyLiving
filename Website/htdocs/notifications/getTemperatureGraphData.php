@@ -102,6 +102,8 @@ $statement .= " GROUP BY
 
 $result = $conn->query($statement);
 
+$jsonResult = array();
+
 if ($result->num_rows > 0)
 {
     $check = 0;
@@ -143,6 +145,10 @@ if ($result->num_rows > 0)
   }
 
   $jsonResult[] = $jsonRows;
+}
+else
+{
+
 }
 
 
