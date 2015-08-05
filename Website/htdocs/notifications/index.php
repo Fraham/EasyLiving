@@ -75,7 +75,7 @@ include $path."main.php";
 
 <div class="row">
 	<div class="col-sm-12">
-		<div class="panel panel-default">
+		<div class="panel panel-default" id="histroyChartPanel">
 			<div class="panel-heading">
 				History Charts
 			</div>
