@@ -194,11 +194,9 @@ function changeTemperatureGraph(url) {
         $("#averageTemp").text(averageTemp.toFixed(2));
 
         $( "#temperaturePanelSize" ).show();
-        console.log(tempCount);
       }
       else
       {
-        console.log("hide");
         $( "#temperaturePanelSize" ).hide();
       }
       if (humCount > 0)

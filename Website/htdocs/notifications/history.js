@@ -46,6 +46,20 @@ function updateSensorsList() {
             value: sensorData[j]["sensorID"],
             text: sensorData[j]["name"]
           }));
+
+          var div =  $('<div/>', {
+            class: "col-md-2"
+          });
+          var input = $('<input/>', {
+            type: "checkbox",
+            value: sensorData[j]["sensorID"],
+            id: sensorData[j]["name"],
+            checked: "checked"
+          });
+          $(div).append(input);
+          $(div).append( " " + sensorData[j]["name"]);
+
+          $('#sensorSelectionPanelBody').append(div);
         }
       },
       error: function (e) {
@@ -79,6 +93,20 @@ function updateRoomsList() {
             value: roomData[j]["roomID"],
             text: roomData[j]["defaultName"]
           }));
+
+          var div =  $('<div/>', {
+            class: "col-md-2"
+          });
+          var input = $('<input/>', {
+            type: "checkbox",
+            value: roomData[j]["roomID"],
+            id: roomData[j]["defaultName"],
+            checked: "checked"
+          });
+          $(div).append(input);
+          $(div).append( " " + roomData[j]["defaultName"]);
+
+          $('#roomSelectionPanelBody').append(div);
         }
       },
       error: function (e) {
@@ -112,6 +140,20 @@ function updatePropertyList() {
             value: propertyData[j]["houseID"],
             text: propertyData[j]["userName"]
           }));
+
+          var div =  $('<div/>', {
+            class: "col-md-2"
+          });
+          var input = $('<input/>', {
+            type: "checkbox",
+            value: propertyData[j]["houseID"],
+            id: propertyData[j]["houseID"],
+            checked: "checked"
+          });
+          $(div).append(input);
+          $(div).append( " " + propertyData[j]["userName"]);
+
+          $('#propertySelectionPanelBody').append(div);
         }
       },
       error: function (e) {
