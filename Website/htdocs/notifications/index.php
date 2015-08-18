@@ -35,6 +35,9 @@ include $path."main.php";
 						</select>
 					</div>
 					<div class="col-md-2">
+						<button type="button" class="btn" onclick="showSelection('propertySelectionPanel')" >Property</button>
+					</div>
+					<div class="col-md-2">
 						<select class="form-control" id="roomSelect">
 							<option selected hidden value = Any>Room</option>
 							<option value = Any>Any</option>

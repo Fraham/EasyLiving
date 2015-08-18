@@ -257,6 +257,11 @@ function togglePanelSize(which) {
 
 }
 
+function showSelection(panelBody)
+{
+  $("#" + panelBody).toggle("slow");
+}
+
 function reloadPage() {
 
 }
