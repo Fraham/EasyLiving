@@ -54,6 +54,7 @@ function updateSensorsList() {
             type: "checkbox",
             value: sensorData[j]["sensorID"],
             id: sensorData[j]["name"],
+            class: "checkboxes",
             checked: "checked"
           });
           $(div).append(input);
@@ -69,6 +70,8 @@ function updateSensorsList() {
 
       }
     });
+
+    //confirm();
 }
 
 function updateRoomsList() {
@@ -174,6 +177,22 @@ function confirm() {
 
   var sensorID = $('#sensorSelect').val();
 
+  var sets = 0;
+
+  var sensorsWhere = "";
+
+  $("#sensorSelectionPanelBody .checkboxes:checked").each(function(){
+    if (sets === 0)
+    {
+      sets = 1;
+      //sensorsWhere += " AND ";
+    }
+    else
+      sensorsWhere = sensorsWhere + " OR ";
+
+    sensorsWhere = sensorsWhere + "sensors.sensorID=" + $(this).attr("value") + "";
+  });
+
   try {
     var start = $("#startDate").datepicker('getDate');
 
@@ -196,7 +215,12 @@ function confirm() {
     endDate = "2020-02-01 00:00:00"
   }
 
-  url = "?propertyID=" + houseID + "&roomID=" + roomID + "&sensorID=" + sensorID + "&startDate=" + startDate + "&endDate=" + endDate;
+  url = "";
+
+  if (sets ===1)
+    url = "?sensorsWhere=" + sensorsWhere + "&startDate=" + startDate + "&endDate=" + endDate;
+  else
+    url = "?startDate=" + startDate + "&endDate=" + endDate;
 
   table.fnClearTable();
 
