@@ -129,11 +129,13 @@ function changeTemperatureGraph(url) {
     var totalHum = 0;
     var averageHum = 0;
 
+
+
     for (var i = 0; i < json.length; i++) {
       var obj = json[i];
 
       var temperatureDataArray = [];
-      var humidityDataArray = [];
+    var humidityDataArray = [];
 
       for (var j = 0; j < obj.data.length; j++) {
         var tempArray = [];
@@ -178,46 +180,44 @@ function changeTemperatureGraph(url) {
           humidityDataArray.push(tempArrayH);
         }
       }
+
+
+    if (tempCount > 0) {
+      chart.addSeries({
+        name: obj.name,
+        data: temperatureDataArray
+      });
+
+
+      averageTemp = totalTemp / tempCount;
+
+      $("#highestTemp").text(tempHigh.toFixed(2));
+      $("#lowestTemp").text(tempLow.toFixed(2));
+      $("#averageTemp").text(averageTemp.toFixed(2));
+
+      $("#temperaturePanelSize").show();
     }
+    else {
+      $("#temperaturePanelSize").hide();
+    }
+    if (humCount > 0) {
+      chartH.addSeries({
+        name: obj.name,
+        data: humidityDataArray
+      });
 
-    if (tempCount > 0)
-      {
-        chart.addSeries({
-          name: obj.name,
-          data: temperatureDataArray
-        });
+      averageHum = totalHum / humCount;
 
-        averageTemp = totalTemp / tempCount;
+      $("#highestHum").text(humHigh.toFixed(2));
+      $("#lowestHum").text(humLow.toFixed(2));
+      $("#averageHum").text(averageHum.toFixed(2));
 
-        $("#highestTemp").text(tempHigh.toFixed(2));
-        $("#lowestTemp").text(tempLow.toFixed(2));
-        $("#averageTemp").text(averageTemp.toFixed(2));
-
-        $( "#temperaturePanelSize" ).show();
-      }
-      else
-      {
-        $( "#temperaturePanelSize" ).hide();
-      }
-      if (humCount > 0)
-      {
-        chartH.addSeries({
-          name: obj.name,
-          data: humidityDataArray
-        });
-
-        averageHum = totalHum / humCount;
-
-        $("#highestHum").text(humHigh.toFixed(2));
-        $("#lowestHum").text(humLow.toFixed(2));
-        $("#averageHum").text(averageHum.toFixed(2));
-
-        $( "#humidityPanelSize" ).show();
-      }
-      else
-      {
-        $("#humidityPanelSize").hide();
-      }
+      $("#humidityPanelSize").show();
+    }
+    else {
+      $("#humidityPanelSize").hide();
+    }
+    }
   });
 }
 
