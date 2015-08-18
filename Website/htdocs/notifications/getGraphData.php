@@ -8,7 +8,7 @@ session_start();
 session_write_close();
 $userID = $_SESSION['user_id'];
 
-	if (isset($_GET["propertyID"]))
+	/*if (isset($_GET["propertyID"]))
 	{
 	  $propertyID = $_GET["propertyID"];
 
@@ -72,6 +72,11 @@ $userID = $_SESSION['user_id'];
 
 		  $set = 1;
 	  }
+	}*/
+
+	if (isset($_GET["sensorsWhere"]))
+	{
+	  $where = " AND (" . $_GET['sensorsWhere'] . ")";
 	}
 
 	if (isset($_GET["startDate"]))
