@@ -27,10 +27,10 @@ $(function () {
 function updateSensorsList() {
   $("#sensorSelect").empty();
 
-  $('#sensorSelect').append($('<option/>', {
+  /*$('#sensorSelect').append($('<option/>', {
     value: "Any",
     text: "Any"
-  }));
+  }));*/
 
   $.ajax(
     {
@@ -42,10 +42,10 @@ function updateSensorsList() {
         var sensorData = result['data'];
 
         for (var j = 0; j < sensorData.length; j++) {
-          $('#sensorSelect').append($('<option/>', {
+          /*$('#sensorSelect').append($('<option/>', {
             value: sensorData[j]["sensorID"],
             text: sensorData[j]["name"]
-          }));
+          }));*/
 
           var div =  $('<div/>', {
             class: "col-md-2"
@@ -92,10 +92,10 @@ function updateRoomsList() {
         var roomData = result['data'];
 
         for (var j = 0; j < roomData.length; j++) {
-          $('#roomSelect').append($('<option/>', {
+          /*$('#roomSelect').append($('<option/>', {
             value: roomData[j]["roomID"],
             text: roomData[j]["defaultName"]
-          }));
+          }));*/
 
           var div =  $('<div/>', {
             class: "col-md-2"
@@ -139,10 +139,10 @@ function updatePropertyList() {
         var propertyData = result['data'];
 
         for (var j = 0; j < propertyData.length; j++) {
-          $('#propertySelect').append($('<option/>', {
+          /*$('#propertySelect').append($('<option/>', {
             value: propertyData[j]["houseID"],
             text: propertyData[j]["userName"]
-          }));
+          }));*/
 
           var div =  $('<div/>', {
             class: "col-md-2"
@@ -171,11 +171,11 @@ function updatePropertyList() {
 function confirm() {
   var url = "";
 
-  var houseID = $('#propertySelect').val();
+  /*var houseID = $('#propertySelect').val();
 
   var roomID = $('#roomSelect').val();
 
-  var sensorID = $('#sensorSelect').val();
+  var sensorID = $('#sensorSelect').val();*/
 
   var sets = 0;
 
