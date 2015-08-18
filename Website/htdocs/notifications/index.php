@@ -32,27 +32,18 @@ include $path."main.php";
 						<select class="form-control" id="propertySelect">
 							<option selected hidden value = Any>Property</option>
 							<option value = Any>Any</option>
-							<?php
-							//getProperties();
-							?>
 						</select>
 					</div>
 					<div class="col-md-2">
 						<select class="form-control" id="roomSelect">
 							<option selected hidden value = Any>Room</option>
 							<option value = Any>Any</option>
-							<?php
-							//getRooms();
-							?>
 						</select>
 					</div>
 					<div class="col-md-2">
 						<select class="form-control" id="sensorSelect">
 							<option selected hidden value = Any>Sensor</option>
 							<option value = Any>Any</option>
-							<?php
-							//getSensors();
-							?>
 						</select>
 					</div>
 
