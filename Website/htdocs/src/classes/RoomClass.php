@@ -87,19 +87,27 @@ class Room
 
 		$rooms = [];
 
+		session_start();
+		session_write_close();
+
+		$userID = $_SESSION['user_id'];
+
 		$where = "";
 
 		if(isset($propertyID))
 		{
 			if ($propertyID !== "Any")
 			{
-				$where .= " WHERE room.houseID = ";
+				$where .= " AND room.houseID = ";
 				$where .= $propertyID;
 			}
 		}
 
 		$statement = "SELECT roomID
-					FROM room";
+					FROM room
+					INNER JOIN user_households
+					ON room.houseID = user_households.houseID
+					WHERE '$userID' = user_households.userID";
 
 		$statement .= $where;
 
