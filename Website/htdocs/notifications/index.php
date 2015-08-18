@@ -44,10 +44,16 @@ include $path."main.php";
 						</select>
 					</div>
 					<div class="col-md-2">
+						<button type="button" class="btn" onclick="showSelection('roomSelectionPanel')" >Room</button>
+					</div>
+					<div class="col-md-2">
 						<select class="form-control" id="sensorSelect">
 							<option selected hidden value = Any>Sensor</option>
 							<option value = Any>Any</option>
 						</select>
+					</div>
+					<div class="col-md-2">
+						<button type="button" class="btn" onclick="showSelection('sensorSelectionPanel')" >Sensor</button>
 					</div>
 
 					<div class="col-md-2">

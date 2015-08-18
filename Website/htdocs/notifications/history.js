@@ -251,10 +251,6 @@ function togglePanelSize(which) {
     panel.toggleClass('col-sm-6 col-sm-12');
     chartH.setSize($('#humGraph').width(), body.height());
   }
-
-
-
-
 }
 
 function showSelection(panelBody)
