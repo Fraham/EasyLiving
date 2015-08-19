@@ -49,52 +49,50 @@ $jsonResult = array();
 
 if ($result->num_rows > 0)
 {
-    $check = 0;
+	$check = 0;
 
-  $jsonRows = array();
+	$jsonRows = array();
 
-  $jsonResult = array();
+	$jsonResult = array();
 
-  $lastItem = "";
+	$lastItem = "";
 
-  while($row = $result->fetch_assoc())
-  {
-    $sensorID = $row['sensorID'];
+	while($row = $result->fetch_assoc())
+	{
+		$sensorID = $row['sensorID'];
 
-    if (strcmp($sensorID, $lastItem) !== 0)
-    {
-        $lastItem = $row['sensorID'];
+		if (strcmp($sensorID, $lastItem) !== 0)
+		{
+			$lastItem = $row['sensorID'];
 
-        if ($check == 1)
-        {
-			$jsonResult[] = $jsonRows;
-        }
+			if ($check == 1)
+			{
+				$jsonResult[] = $jsonRows;
+			}
 
-        $jsonRows = array();
+			$jsonRows = array();
 
-        $jsonRows['name'] = $row['SensorName'];
+			$jsonRows['name'] = $row['SensorName'];
 
-        $check = 1;
-    }
+			$check = 1;
+		}
 
-	$year = substr($row['date'], 0, 4);
-	$month = substr($row['date'], 5, 2);
-	$day = substr($row['date'], 8, 2);
-	$hour = substr($row['date'], 11, 2);
+		$year = substr($row['date'], 0, 4);
+		$month = substr($row['date'], 5, 2);
+		$day = substr($row['date'], 8, 2);
+		$hour = substr($row['date'], 11, 2);
 
-	$data = array($year, $month, $day, $hour, 0, 0, $row['temperature'], $row['humidity']);
+		$data = array($year, $month, $day, $hour, 0, 0, $row['temperature'], $row['humidity']);
 
-    $jsonRows['data'][] = $data;
-  }
+		$jsonRows['data'][] = $data;
+	}
 
-  $jsonResult[] = $jsonRows;
+	$jsonResult[] = $jsonRows;
 }
 else
 {
-
+	//add error code
 }
-
-
 
 print json_encode($jsonResult, JSON_NUMERIC_CHECK);
 
