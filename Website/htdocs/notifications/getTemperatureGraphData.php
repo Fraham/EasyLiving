@@ -2,7 +2,6 @@
 require_once "../src/connect.php";
 
 $where = "";
-$set = 1;
 
 session_start();
 session_write_close();
@@ -10,81 +9,20 @@ $userID = $_SESSION['user_id'];
 
 $user = $_SESSION['user_id'];
 
-	/*if (isset($_GET["propertyID"]))
-	{
-	  $propertyID = $_GET["propertyID"];
+if (isset($_GET["sensorsWhere"]))
+{
+  $where = " AND (" . $_GET['sensorsWhere'] . ")";
+}
 
-	  if (strcmp($propertyID, 'Any') !== 0)
-	  {
-		  $where .= ($set == 0 ? "WHERE " : " AND ");
+if (isset($_GET["startDate"]))
+{
+  $where .= " AND temphum.date >= '" . $_GET["startDate"] . "'";
+}
 
-		  $where .= "house.houseID = ";
-		  $where .= $propertyID;
-
-		  $set = 1;
-	  }
-	}
-
-	if (isset($_GET["roomID"]))
-	{
-	  $roomID = $_GET["roomID"];
-
-	  if (strcmp($roomID, 'Any') !== 0)
-	  {
-		  $where .= ($set == 0 ? "WHERE " : " AND ");
-
-		  $where .= "room.roomID = ";
-		  $where .= $roomID;
-
-		  $set = 1;
-	  }
-	}
-
-	if (isset($_GET["sensorID"]))
-	{
-	  $sensorID = $_GET["sensorID"];
-
-	  if (strcmp($sensorID, 'Any') !== 0)
-	  {
-		  $where .= ($set == 0 ? "WHERE " : " AND ");
-
-		  $where .= "sensors.sensorID = ";
-		  $where .= $sensorID;
-
-		  $set = 1;
-	  }
-	}*/
-
-	if (isset($_GET["sensorsWhere"]))
-	{
-	  $where = " AND (" . $_GET['sensorsWhere'] . ")";
-	}
-
-	if (isset($_GET["startDate"]))
-	{
-	  $startDate = $_GET["startDate"];
-
-	  $where .= ($set == 0 ? "WHERE " : " AND ");
-
-	  $where .= "temphum.date >= '";
-	  $where .= $startDate;
-	  $where .= "'";
-
-	  $set = 1;
-	}
-
-	if (isset($_GET["endDate"]))
-	{
-	  $endDate = $_GET["endDate"];
-
-	  $where .= ($set == 0 ? "WHERE " : " AND ");
-
-	  $where .= "temphum.date <= '";
-	  $where .= $endDate;
-	  $where .= "'";
-
-	  $set = 1;
-	}
+if (isset($_GET["endDate"]))
+{
+  $where .= " AND temphum.date <= '" . $_GET["endDate"] . "'";
+}
 
 $statement = "SELECT temphum.date, AVG(temphum.temp) AS temperature, AVG(temphum.hum) AS humidity, sensors.name as SensorName, temphum.sensorID
 			FROM temphum
