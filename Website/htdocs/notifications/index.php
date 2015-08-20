@@ -106,6 +106,10 @@ include $path."main.php";
 			<div class="panel panel-default" id="histroyChartPanel">
 				<div class="panel-heading">
 					History Charts
+					<div class="btn-group pull-right">
+						<a onClick="changeGraph(makeURL())" class="btn btn-default btn-sm hidden-xs"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
+			            <!--<a onClick="togglePanelSize('hum')" class="btn btn-default btn-sm hidden-xs">Toggle</a>-->
+			        </div>
 				</div>
 				<div class="panel-body"id="chartBody">
 					<div class="col-md-12">
@@ -125,7 +129,7 @@ include $path."main.php";
 				<div class="panel-heading">
 			        Temperature Chart
 			        <div class="btn-group pull-right">
-						<a onClick="confirm()" class="btn btn-default btn-sm hidden-xs"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
+						<a onClick="changeTemperatureGraph(makeURL())" class="btn btn-default btn-sm hidden-xs"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
 			            <a onClick="togglePanelSize('temp')" class="btn btn-default btn-sm hidden-xs">Toggle</a>
 			        </div>
 			    </div>
@@ -178,7 +182,7 @@ include $path."main.php";
 				<div class="panel-heading">
 					Humidity Chart
 					<div class="btn-group pull-right">
-						<a onClick="confirm()" class="btn btn-default btn-sm hidden-xs"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
+						<a onClick="changeTemperatureGraph(makeURL())" class="btn btn-default btn-sm hidden-xs"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
 			            <a onClick="togglePanelSize('hum')" class="btn btn-default btn-sm hidden-xs">Toggle</a>
 			        </div>
 				</div>
@@ -253,6 +257,10 @@ $('#form_datetime1').datetimepicker({
 			<div class="panel panel-default" id="historyTablePanel">
 				<div class="panel-heading">
 					Historys Tables
+					<div class="btn-group pull-right">
+						<a onClick="changeHistoryTable(makeURL())" class="btn btn-default btn-sm hidden-xs"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
+			            <!--<a onClick="togglePanelSize('hum')" class="btn btn-default btn-sm hidden-xs">Toggle</a>-->
+			        </div>
 				</div>
 				<div class="panel-body panel-collapse" id="notiBody">
 					<div class="dataTable_wrapper">

@@ -47,7 +47,7 @@ function updateSensorsList() {
             text: sensorData[j]["name"]
           }));*/
 
-          var div =  $('<div/>', {
+          var div = $('<div/>', {
             class: "col-md-2"
           });
           var input = $('<input/>', {
@@ -58,7 +58,7 @@ function updateSensorsList() {
             checked: "checked"
           });
           $(div).append(input);
-          $(div).append( " " + sensorData[j]["name"]);
+          $(div).append(" " + sensorData[j]["name"]);
 
           $('#sensorSelectionPanelBody').append(div);
         }
@@ -71,7 +71,7 @@ function updateSensorsList() {
       }
     });
 
-    //confirm();
+  //confirm();
 }
 
 function updateRoomsList() {
@@ -97,7 +97,7 @@ function updateRoomsList() {
             text: roomData[j]["defaultName"]
           }));*/
 
-          var div =  $('<div/>', {
+          var div = $('<div/>', {
             class: "col-md-2"
           });
           var input = $('<input/>', {
@@ -107,7 +107,7 @@ function updateRoomsList() {
             checked: "checked"
           });
           $(div).append(input);
-          $(div).append( " " + roomData[j]["defaultName"]);
+          $(div).append(" " + roomData[j]["defaultName"]);
 
           $('#roomSelectionPanelBody').append(div);
         }
@@ -144,7 +144,7 @@ function updatePropertyList() {
             text: propertyData[j]["userName"]
           }));*/
 
-          var div =  $('<div/>', {
+          var div = $('<div/>', {
             class: "col-md-2"
           });
           var input = $('<input/>', {
@@ -154,7 +154,7 @@ function updatePropertyList() {
             checked: "checked"
           });
           $(div).append(input);
-          $(div).append( " " + propertyData[j]["userName"]);
+          $(div).append(" " + propertyData[j]["userName"]);
 
           $('#propertySelectionPanelBody').append(div);
         }
@@ -169,23 +169,78 @@ function updatePropertyList() {
 }
 
 function confirm() {
+  var url = makeURL();
+
+  changeHistoryTable(url)
+
+  changeGraph(url);
+
+  changeTemperatureGraph(url);
+}
+
+function changeHistoryTable(url) {
+  table.fnClearTable();
+
+  $.ajax(
+    {
+      url: "getTableJSON.php" + url,
+      dataType: 'json',
+      async: true,
+      data: { action: "updatePropertyList" },
+      success: function (result) {
+        var error = result['error'];
+        if (error === 0) {
+          var data = result['data'];
+          $('#notifications').dataTable().fnAddData(data);
+
+          $("#historyTablePanel").show();
+        }
+        else {
+          $("#historyTablePanel").hide();
+        }
+      },
+      error: function (e) {
+        console.log(e);
+      },
+      complete: function () {
+
+      }
+    });
+}
+
+function togglePanelSize(which) {
+  var panel;
+  var body;
+  if (which == "temp") {
+    panel = $('#temperaturePanelSize');
+    body = $('#ChartBody');
+
+    panel.toggleClass('col-sm-6 col-sm-12');
+    chart.setSize($('#tempGraph').width(), body.height());
+  }
+  else {
+    panel = $('#humidityPanelSize');
+    body = $('#ChartBodyH');
+
+    panel.toggleClass('col-sm-6 col-sm-12');
+    chartH.setSize($('#humGraph').width(), body.height());
+  }
+}
+
+function showSelection(panelBody) {
+  $("#" + panelBody).toggle("slow");
+}
+
+function makeURL() {
   var url = "";
-
-  /*var houseID = $('#propertySelect').val();
-
-  var roomID = $('#roomSelect').val();
-
-  var sensorID = $('#sensorSelect').val();*/
 
   var sets = 0;
 
   var sensorsWhere = "";
 
-  $("#sensorSelectionPanelBody .checkboxes:checked").each(function(){
-    if (sets === 0)
-    {
+  $("#sensorSelectionPanelBody .checkboxes:checked").each(function () {
+    if (sets === 0) {
       sets = 1;
-      //sensorsWhere += " AND ";
     }
     else
       sensorsWhere = sensorsWhere + " OR ";
@@ -217,69 +272,12 @@ function confirm() {
 
   url = "";
 
-  if (sets ===1)
+  if (sets === 1)
     url = "?sensorsWhere=" + sensorsWhere + "&startDate=" + startDate + "&endDate=" + endDate;
   else
     url = "?startDate=" + startDate + "&endDate=" + endDate;
 
-  table.fnClearTable();
-
-  $.ajax(
-    {
-      url: "getTableJSON.php" + url,
-      dataType: 'json',
-      async: true,
-      data: { action: "updatePropertyList" },
-      success: function (result) {
-        var error = result['error'];
-        if (error === 0)
-        {
-          var data = result['data'];
-          $('#notifications').dataTable().fnAddData(data);
-
-          $("#historyTablePanel").show();
-        }
-        else
-        {
-          $("#historyTablePanel").hide();
-        }
-      },
-      error: function (e) {
-        console.log(e);
-      },
-      complete: function () {
-
-      }
-    });
-
-  changeGraph(url);
-
-  changeTemperatureGraph(url);
-}
-
-function togglePanelSize(which) {
-  var panel;
-  var body;
-  if (which == "temp")
-  {
-    panel = $('#temperaturePanelSize');
-    body = $('#ChartBody');
-
-    panel.toggleClass('col-sm-6 col-sm-12');
-    chart.setSize($('#tempGraph').width(), body.height());
-  }
-  else{
-    panel = $('#humidityPanelSize');
-    body = $('#ChartBodyH');
-
-    panel.toggleClass('col-sm-6 col-sm-12');
-    chartH.setSize($('#humGraph').width(), body.height());
-  }
-}
-
-function showSelection(panelBody)
-{
-  $("#" + panelBody).toggle("slow");
+  return url;
 }
 
 function reloadPage() {

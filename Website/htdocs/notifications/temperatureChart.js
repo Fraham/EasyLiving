@@ -135,7 +135,7 @@ function changeTemperatureGraph(url) {
       var obj = json[i];
 
       var temperatureDataArray = [];
-    var humidityDataArray = [];
+      var humidityDataArray = [];
 
       for (var j = 0; j < obj.data.length; j++) {
         var tempArray = [];
@@ -182,41 +182,41 @@ function changeTemperatureGraph(url) {
       }
 
 
-    if (tempCount > 0) {
-      chart.addSeries({
-        name: obj.name,
-        data: temperatureDataArray
-      });
+      if (tempCount > 0) {
+        chart.addSeries({
+          name: obj.name,
+          data: temperatureDataArray
+        });
 
 
-      averageTemp = totalTemp / tempCount;
+        averageTemp = totalTemp / tempCount;
 
-      $("#highestTemp").text(tempHigh.toFixed(2));
-      $("#lowestTemp").text(tempLow.toFixed(2));
-      $("#averageTemp").text(averageTemp.toFixed(2));
+        $("#highestTemp").text(tempHigh.toFixed(2));
+        $("#lowestTemp").text(tempLow.toFixed(2));
+        $("#averageTemp").text(averageTemp.toFixed(2));
 
-      $("#temperaturePanelSize").show();
-    }
-    else {
-      $("#temperaturePanelSize").hide();
-    }
-    if (humCount > 0) {
-      chartH.addSeries({
-        name: obj.name,
-        data: humidityDataArray
-      });
+        $("#temperaturePanelSize").show();
+      }
+      else {
+        $("#temperaturePanelSize").hide();
+      }
+      if (humCount > 0) {
+        chartH.addSeries({
+          name: obj.name,
+          data: humidityDataArray
+        });
 
-      averageHum = totalHum / humCount;
+        averageHum = totalHum / humCount;
 
-      $("#highestHum").text(humHigh.toFixed(2));
-      $("#lowestHum").text(humLow.toFixed(2));
-      $("#averageHum").text(averageHum.toFixed(2));
+        $("#highestHum").text(humHigh.toFixed(2));
+        $("#lowestHum").text(humLow.toFixed(2));
+        $("#averageHum").text(averageHum.toFixed(2));
 
-      $("#humidityPanelSize").show();
-    }
-    else {
-      $("#humidityPanelSize").hide();
-    }
+        $("#humidityPanelSize").show();
+      }
+      else {
+        $("#humidityPanelSize").hide();
+      }
     }
   });
 }
