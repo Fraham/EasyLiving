@@ -4,7 +4,6 @@
 	require_once "../src/connect.php";
 
 	$where = "";
-	$set = 1;
 
 	session_start();
 	session_write_close();
@@ -50,12 +49,7 @@
 	{
 		while($row = $result->fetch_assoc())
 		{
-			$state = (int) $row["state"];
-			$message = ($state == 0 ? $row['messageOff'] : $row['messageOn']);
-
-			$data = array($row['dName'], $row['sensorName'], $message, $row['time']);
-
-    		$jsonRows[] = $data;
+			$jsonRows[] = array($row['dName'], $row['sensorName'], ((int) $row["state"] == 0 ? $row['messageOff'] : $row['messageOn']), $row['time']);
 		}
 
 		$jsonResult["error"] = 0;
