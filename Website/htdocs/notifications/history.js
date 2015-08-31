@@ -270,8 +270,6 @@ function makeURL() {
     endDate = "2020-02-01 00:00:00"
   }
 
-  url = "";
-
   if (sets === 1)
     url = "?sensorsWhere=" + sensorsWhere + "&startDate=" + startDate + "&endDate=" + endDate;
   else
