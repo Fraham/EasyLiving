@@ -10,8 +10,6 @@ include $path."main.php";
 	<script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 	<script src="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 
-	<!--<script src="http://code.highcharts.com/highcharts.js"></script>
-	<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>-->
 	<script src="http://code.highcharts.com/stock/highstock.js"></script>
 
 	<?php
@@ -21,7 +19,6 @@ include $path."main.php";
 	<script type="text/javascript" src="graph.js"></script>
 	<script type="text/javascript" src="history.js"></script>
 	<script type="text/javascript" src="temperatureChart.js"></script>
-	<!-- <script type="text/javascript" src="dropdownChange.js"></script> -->
 
 	<div class="row">
 		<div class="col-sm-12">
@@ -30,30 +27,12 @@ include $path."main.php";
 					History Options
 				</div>
 				<div class="panel-body">
-					<!--<div class="col-md-2" style="display: none">
-						<select class="form-control" id="propertySelect">
-							<option selected hidden value = Any>Property</option>
-							<option value = Any>Any</option>
-						</select>
-					</div>-->
 					<div class="col-md-2">
 						<button type="button" class="btn" onclick="showSelection('propertySelectionPanel')" >Property</button>
 					</div>
-					<!--<div class="col-md-2" style="display: none">
-						<select class="form-control" id="roomSelect">
-							<option selected hidden value = Any>Room</option>
-							<option value = Any>Any</option>
-						</select>
-					</div>-->
 					<div class="col-md-2">
 						<button type="button" class="btn" onclick="showSelection('roomSelectionPanel')" >Room</button>
 					</div>
-					<!--<div class="col-md-2" style="display: none">
-						<select class="form-control" id="sensorSelect">
-							<option selected hidden value = Any>Sensor</option>
-							<option value = Any>Any</option>
-						</select>
-					</div>-->
 					<div class="col-md-2">
 						<button type="button" class="btn" onclick="showSelection('sensorSelectionPanel')" >Sensor</button>
 					</div>
