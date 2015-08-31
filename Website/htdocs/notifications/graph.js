@@ -33,6 +33,34 @@ function changeGraph(url) {
         text: 'Amount'
       }
     },
+    rangeSelector: {
+      enabled: true,
+      buttons: [{
+        type: 'day',
+        count: 3,
+        text: '3d'
+      }, {
+          type: 'week',
+          count: 1,
+          text: '1w'
+        }, {
+          type: 'month',
+          count: 1,
+          text: '1m'
+        }, {
+          type: 'month',
+          count: 6,
+          text: '6m'
+        }, {
+          type: 'year',
+          count: 1,
+          text: '1y'
+        }, {
+          type: 'all',
+          text: 'All'
+        }],
+      selected: 3
+    },
     tooltip: {
       headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
       pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
@@ -59,22 +87,19 @@ function changeGraph(url) {
       async: true,
       success: function (result) {
         var error = result['error'];
-        if (error === 0)
-        {
-          var chart = new Highcharts.Chart(options);
+        if (error === 0) {
+          var chart = new Highcharts.StockChart(options);
 
-          for (var i = 0; i < result['data'].length; i++)
-          {
+
+          for (var i = 0; i < result['data'].length; i++) {
             var obj = result['data'][i];
 
             var dataArray = [];
 
-            for (var j = 0; j < obj.data.length; j++)
-            {
+            for (var j = 0; j < obj.data.length; j++) {
               var tempArray = [];
-              var date = Date.UTC(obj.data[j][0], obj.data[j][1] - 1, obj.data[j][2], obj.data[j][3], obj.data[j][4], obj.data[j][5]);
 
-              tempArray.push(date);
+              tempArray.push(Date.UTC(obj.data[j][0], obj.data[j][1] - 1, obj.data[j][2], obj.data[j][3], obj.data[j][4], obj.data[j][5]));
               tempArray.push(obj.data[j][6]);
 
               dataArray.push(tempArray);
@@ -87,8 +112,7 @@ function changeGraph(url) {
           }
           $("#histroyChartPanel").show();
         }
-        else
-        {
+        else {
           $("#histroyChartPanel").hide();
         }
       },

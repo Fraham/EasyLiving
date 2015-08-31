@@ -17,6 +17,34 @@ function changeTemperatureGraph(url) {
       text: 'Temperature',
       x: -6
     },
+    rangeSelector: {
+      enabled: true,
+      buttons: [{
+        type: 'day',
+        count: 3,
+        text: '3d'
+      }, {
+          type: 'week',
+          count: 1,
+          text: '1w'
+        }, {
+          type: 'month',
+          count: 1,
+          text: '1m'
+        }, {
+          type: 'month',
+          count: 6,
+          text: '6m'
+        }, {
+          type: 'year',
+          count: 1,
+          text: '1y'
+        }, {
+          type: 'all',
+          text: 'All'
+        }],
+      selected: 3
+    },
     subtitle:
     {
       text: '',
@@ -98,6 +126,34 @@ function changeTemperatureGraph(url) {
         color: '#808080'
       }]
     },
+    rangeSelector: {
+      enabled: true,
+      buttons: [{
+        type: 'day',
+        count: 3,
+        text: '3d'
+      }, {
+          type: 'week',
+          count: 1,
+          text: '1w'
+        }, {
+          type: 'month',
+          count: 1,
+          text: '1m'
+        }, {
+          type: 'month',
+          count: 6,
+          text: '6m'
+        }, {
+          type: 'year',
+          count: 1,
+          text: '1y'
+        }, {
+          type: 'all',
+          text: 'All'
+        }],
+      selected: 3
+    },
     tooltip:
     {
       headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
@@ -118,8 +174,8 @@ function changeTemperatureGraph(url) {
     }
   };
 
-  chart = new Highcharts.Chart(options);
-  chartH = new Highcharts.Chart(optionsH);
+  chart = new Highcharts.StockChart(options);
+  chartH = new Highcharts.StockChart(optionsH);
 
   $.getJSON("getTemperatureGraphData.php" + url, function (json) {
 

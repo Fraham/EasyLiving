@@ -10,7 +10,9 @@ include $path."main.php";
 	<script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 	<script src="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 
-	<script src="http://code.highcharts.com/highcharts.js"></script>
+	<!--<script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>-->
+	<script src="http://code.highcharts.com/stock/highstock.js"></script>
 
 	<?php
 	include("getNotificationsGraph.php");
@@ -113,10 +115,7 @@ include $path."main.php";
 				</div>
 				<div class="panel-body"id="chartBody">
 					<div class="col-md-12">
-
-						<div id="eventsChart" style="height: 400px; margin: 0 auto">
-
-						</div>
+						<div id="eventsChart" style="height: 400px; margin: 0 auto"></div>
 					</div>
 				</div>
 			</div>
