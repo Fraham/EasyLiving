@@ -33,6 +33,11 @@ function changeGraph(url) {
         text: 'Amount'
       }
     },
+    dataGrouping: {
+      approximation: "sum",
+      enabled: true,
+      forced: true
+    },
     rangeSelector: {
       enabled: true,
       buttons: [{
@@ -64,7 +69,7 @@ function changeGraph(url) {
     tooltip: {
       headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
       pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-      '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+      '<td style="padding:0"><b>{point.y:.0f}</b></td></tr>',
       footerFormat: '</table>',
       shared: true,
       useHTML: true

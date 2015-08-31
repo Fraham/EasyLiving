@@ -135,7 +135,8 @@ $statement = "SELECT log.date, count(*) AS amount, sensors.name as SensorName, l
 				YEAR(log.date),
 				MONTH(log.date),
 				DAY(log.date),
-				HOUR(log.date)";
+				HOUR(log.date),
+				MINUTE(log.date)";
 
 	$result = $conn->query($statement);
 
@@ -170,12 +171,14 @@ $statement = "SELECT log.date, count(*) AS amount, sensors.name as SensorName, l
 	        $check = 1;
 	    }
 
+
 		$year = substr($row['date'], 0, 4);
 		$month = substr($row['date'], 5, 2);
 		$day = substr($row['date'], 8, 2);
 		$hour = substr($row['date'], 11, 2);
+		$minute = substr($row['date'], 14, 2);
 
-		$data = array($year, $month, $day, $hour, 0, 0, $row['amount']);
+		$data = array($year, $month, $day, $hour, $minute, 0, $row['amount']);
 
 	    $jsonRows['data'][] = $data;
 		$jsonResult['error'] = 0;

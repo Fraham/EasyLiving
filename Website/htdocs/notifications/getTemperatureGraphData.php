@@ -41,7 +41,8 @@ $statement .= " GROUP BY
 				YEAR(temphum.date),
 				MONTH(temphum.date),
 				DAY(temphum.date),
-				HOUR(temphum.date)";
+				HOUR(temphum.date),
+				MINUTE(temphum.date)";
 
 $result = $conn->query($statement);
 
@@ -81,8 +82,9 @@ if ($result->num_rows > 0)
 		$month = substr($row['date'], 5, 2);
 		$day = substr($row['date'], 8, 2);
 		$hour = substr($row['date'], 11, 2);
+		$minute = substr($row['date'], 14, 2);
 
-		$data = array($year, $month, $day, $hour, 0, 0, $row['temperature'], $row['humidity']);
+		$data = array($year, $month, $day, $hour, $minute, 0, $row['temperature'], $row['humidity']);
 
 		$jsonRows['data'][] = $data;
 	}
