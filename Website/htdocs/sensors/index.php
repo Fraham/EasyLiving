@@ -1,5 +1,6 @@
 <?php
   $title = "Sensors";
+  $pageName = "sensors";
   $path = "../src/templates/";
   include $path."main.php";
   //sec_session_start();
@@ -8,7 +9,7 @@
 
 <?php if (login_check($conn) == true) : ?>
 	<script src="sensors.js"></script>
-	<?php 
+	<?php
 		If (empty($_POST)===false)
 		{
 			$sensorID = $_POST['id'];
@@ -72,13 +73,13 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="modal fade" id="editSensorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header">					
+				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						
+
 					<h2 class="modal-title" id="myModalLabel">Edit Sensor</h2>
 					<button name="delete" class="btn btn-lg btn-danger btn-block" onclick="deleteSensor()"> Delete </button>
 				</div>
@@ -115,16 +116,16 @@
 								<label for="room" class="col-sm-3 control-label">Room</label>
 								<div class="col-sm-9">
 									<select id="roomEdit" name="room" class="form-control">
-										<?php 
+										<?php
 											require "../src/classes/RoomClass.php";
-											
+
 											$propertyID = $_SESSION['house_id'];
-											
+
 											Room::getRoomsDrop($propertyID);
 										?>
 									</select>
 								</div>
-							</div>							
+							</div>
 							<input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" onclick="editSensor()" />
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
@@ -152,6 +153,6 @@
 	<?php
 		include $path."footer.php"
 	?>
-  
+
 <?php else : ?>
 <?php endif; ?>

@@ -1,5 +1,6 @@
 <?php
 	$title = "Property Residents";
+  $pageName = "residents";
 	$path = "../src/templates/";
 	include $path."main.php";
 ?>

@@ -1,5 +1,6 @@
 <?php
 $title = "My Locations";
+$pageName = "selection";
 $path = "../src/templates/";
 include $path."main.php";
 require_once('../src/classes/PropertyClass.php');

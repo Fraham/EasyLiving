@@ -1,4 +1,4 @@
-function formhash(form, password) {
+function formhash(form, password, returnAddress = "dashboard") {
     // Create a new element input, this will be our hashed password field.
     var p = document.createElement("input");
 
@@ -7,6 +7,14 @@ function formhash(form, password) {
     p.name = "p";
     p.type = "hidden";
     p.value = hex_sha512(password.value);
+
+    var returnA = document.createElement("input");
+
+    // Add the new element to our form.
+    form.appendChild(returnA);
+    returnA.name = "returnAddress";
+    returnA.type = "hidden";
+    returnA.value = returnAddress;
 
     // Make sure the plaintext password doesn't get sent.
     password.value = "";

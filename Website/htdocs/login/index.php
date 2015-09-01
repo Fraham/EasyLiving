@@ -25,16 +25,10 @@ if (login_check($conn) == true) {
 
   <title>Easy Living Login</title>
   <link rel="shortcut icon" href="../src/images/TabLogo.png">
-  <!-- Bootstrap Core CSS -->
+
   <link href="../src/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- MetisMenu CSS -->
   <link href="../src/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
   <link href="../src/dist/css/sb-admin-2.css" rel="stylesheet">
-
-  <!-- Custom Fonts -->
   <link href="../src/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
   <script type="text/JavaScript" src="../src/js/sha512.js"></script>
@@ -67,7 +61,7 @@ if (login_check($conn) == true) {
                       id="login_button"
                        value="Login"
                        class="btn btn-lg btn-danger btn-block"
-                       onclick="formhash(this.form, this.form.password);" />
+                       onclick="formhash(this.form, this.form.password<?php if (isset($_GET['return'])) { echo ", '" . $_GET['return'] . "'";  } ?>);" />
                 <a href="../createAccount" class="btn btn-lg btn-danger btn-block">Create a New Account</a>
             </form>
           </div>
@@ -100,21 +94,9 @@ if (login_check($conn) == true) {
 
 
   </script>
-
-
-
-
-
-  <!-- jQuery -->
   <script src="../src/bower_components/jquery/dist/jquery.min.js"></script>
-
-  <!-- Bootstrap Core JavaScript -->
   <script src="../src/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-  <!-- Metis Menu Plugin JavaScript -->
   <script src="../src/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-  <!-- Custom Theme JavaScript -->
   <script src="../src/dist/js/sb-admin-2.js"></script>
 </body>
 </html>

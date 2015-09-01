@@ -1,12 +1,13 @@
 <?php
 	$title = "Room Settings";
+	$pageName = "roomsSettings";
 	$path = "../src/templates/";
 	include $path."main.php";
 ?>
 <?php if (login_check($conn) == true) : ?>
 
 	<div id="roomsList" class="col-lg-12">
-		<?php 
+		<?php
 		include("../notifications/getNotificationsGraph.php");
 		getRoomsSettings();
 		?>
@@ -40,7 +41,7 @@
 	});
 </script>
 
-	
+
 
 <?php
 	include $path."footer.php"

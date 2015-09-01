@@ -8,10 +8,11 @@ include_once 'functions.php';
 if (isset($_POST['email'], $_POST['p'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = $_POST['p']; // The hashed password.
+    $returnAddress = $_POST['returnAddress'];
 
     if (login($email, $password, $conn) == true) {
         // Login success
-        header("Location: ../../dashboard");
+        header("Location: ../../" . $returnAddress);
         exit();
     } else {
         // Login failed

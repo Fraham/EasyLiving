@@ -1,5 +1,6 @@
 <?php
 $title = "History";
+$pageName = "notifications";
 $path = "../src/templates/";
 include $path."main.php";
 ?>

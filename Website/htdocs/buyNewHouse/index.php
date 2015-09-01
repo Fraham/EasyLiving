@@ -1,5 +1,6 @@
 <?php
 	$title = "Buy New Property";
+	$pageName = "buyNewHouse";
 	$path = "../src/templates/";
 	include $path."main.php";
 ?>
@@ -45,12 +46,12 @@
                                 class="form-control"
                                 placeholder="Card Holder's Name"/><br>
                 Card Number: <input type="text"
-								 name="cardNo" 
+								 name="cardNo"
                                  class="form-control"
                                  /><br>
                 Expiration Date: <br> <input  class="btn btn-default " readonly placeholder="Month"  id="month">
-                				 <input  class="btn btn-default " readonly placeholder="Year"  id="year">                
-                
+                				 <input  class="btn btn-default " readonly placeholder="Year"  id="year">
+
 				<br>
 				<br>
                 Card CVV: <input type="password	"
@@ -88,13 +89,13 @@
 <script type="text/javascript">
 	$('#month').datepicker({
 		format: 'MM (mm)',
-		viewMode: "months", 
+		viewMode: "months",
     	minViewMode: "months",
 		autoclose: true,
 	});
 	$('#year').datepicker({
 		format: 'yyyy',
-		viewMode: "years", 
+		viewMode: "years",
     	minViewMode: "years",
 		autoclose: true,
 	});

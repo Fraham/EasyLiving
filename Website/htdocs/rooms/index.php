@@ -1,20 +1,21 @@
 <?php
 	$title = "Rooms Overview";
+	$pageName = "rooms";
 	$path = "../src/templates/";
 	include $path."main.php";
 ?>
 
 <?php if (login_check($conn) == true) : ?>
 
-<?php 
+<?php
 		if (empty($_POST)===false)
 		{
-			
+
 		}else{
 	?>
-	
+
 <script src="rooms.js"></script>
-		
+
 <div class="col-lg-12" id = "roomsPanel" style="width: 100%; margin-top: 20px;">
 	<div id="roomsPanel">
 	<?php
@@ -32,17 +33,17 @@
 </div>
 	<div class="row">
 		<?php
-			include("../notifications/getNotificationsGraph.php");	
+			include("../notifications/getNotificationsGraph.php");
 		?>
 	</div>
-		
+
 	<div class="row">
 		<div class="col-lg-12 col-sm-12">
 			<button class="btn btn-danger center-block btn-lg" data-toggle="modal" data-target="#AddModal"><i class="fa fa-plus"></i></button>
 		</div>
 	</div>
 
-	
+
 	<div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -59,7 +60,7 @@
 									<br>
 									<p> (Please do not use an apostrophe) </p>
 								</div>
-								
+
 							</div>
 							<div class="form-group">
 								<label for="colour" class="col-sm-3 control-label">Colour</label>
@@ -81,7 +82,7 @@
 								<label for="show" class="col-sm-3 control-label">Show On Dashboard</label>
 								<div class="col-sm-9">
 									<input name="show" type="checkbox" value="">
-								</div>									
+								</div>
 							</div>
 							<input type="button" value="Add Room" class="btn btn-lg btn-danger btn-block" id="submitButton" onclick="submitForm();" />
 							<input type="reset" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
@@ -95,9 +96,9 @@
 	<div class="modal fade" id="editRoomModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header">					
+				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						
+
 					<h2 class="modal-title" id="myModalLabel">Edit Room</h2>
 					<button name="delete" class="btn btn-lg btn-danger btn-block" onclick="deleteRoom()"> Delete </button>
 				</div>
@@ -110,7 +111,7 @@
 									<input type="text" id="roomID" name="roomID" class="form-control" readonly/>
 									<br>
 								<p> (Please do not use an apostrophe) </p>
-							
+
 								</div>
 							</div>
 							<div class="form-group">
@@ -123,7 +124,7 @@
 								<label for="room" class="col-sm-3 control-label">Colour</label>
 								<div class="col-sm-9">
 									<select id="colour" name="colour" class="form-control">
-										<?php 
+										<?php
 											getRoomColours();
 										?>
 									</select>
@@ -133,7 +134,7 @@
 								<label for="icon" class="col-sm-3 control-label">Icon</label>
 								<div class="col-sm-9">
 									<select id="icon" name="icon" class="form-control">
-										<?php 
+										<?php
 											getIcons();
 										?>
 									</select>
@@ -143,8 +144,8 @@
 								<label for="show" class="col-sm-3 control-label">Show On Dashboard</label>
 								<div class="col-sm-9">
 									<input id="show" name="show" type="checkbox" value="">
-								</div>									
-							</div>							
+								</div>
+							</div>
 							<input type="button" value="Confirm" class="btn btn-lg btn-danger btn-block" onclick="editSensor()" />
 							<input type="button" value="Cancel" class="btn btn-lg btn-danger btn-block" data-dismiss="modal" aria-hidden="true" />
 						</form>
@@ -155,11 +156,11 @@
 	</div>
 
 	<script>
-		
+
 		function deleteRoom()
 		{
 			var ID = document.getElementById("roomID").value;
-			
+
 			$.post("deleteRoom.php", { func: "delete", id: ID })
 			.done(function( data ) {
 				$('#editRoomModal').modal('hide');
@@ -188,7 +189,7 @@
 			document.forms["editRoomForm"]["name"].value = name;
 			document.forms["editRoomForm"]["colour"].selectedIndex = parseInt(colourID) - 1;
 			document.forms["editRoomForm"]["icon"].selectedIndex =  parseInt(iconID) - 1;
-			
+
 			if (show == "0")
 			{
 				$("#show").prop("checked", false);
@@ -197,11 +198,11 @@
 			{
 				$("#show").prop("checked", true);
 			}
-			
+
 			$('#editRoomModal').modal('show');
 		};
 	</script>
-		
+
 	</script>
 <?php } ?>
 <?php include $path."footer.php"; ?>

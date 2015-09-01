@@ -1,5 +1,6 @@
 <?php
 	$title = "Alert Conditions";
+	$pageName = "eventConditions";
 	$path = "../src/templates/";
 	include $path."main.php";
 	//sec_session_start();

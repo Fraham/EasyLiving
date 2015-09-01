@@ -1,5 +1,6 @@
 <?php
 	 $title = "Dashboard";
+	 $pageName = "dashboard";
 	 $path = "../src/templates/";
 	 include $path."main.php";
 ?>

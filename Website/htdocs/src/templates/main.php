@@ -112,7 +112,7 @@
 					</h1>
 					<br>
 						<div class="text-center">
-							<a href="../login" class="btn btn-danger huge btn-lg text-center-block">Login</a>
+							<a href="../login?return=<?php echo $pageName ?>" class="btn btn-danger huge btn-lg text-center-block">Login</a>
 						</div>
 
 				</div>
