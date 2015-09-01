@@ -27,25 +27,28 @@ include $path."main.php";
 					History Options
 				</div>
 				<div class="panel-body">
-					<div class="col-md-2">
-						<button type="button" class="btn" onclick="showSelection('propertySelectionPanel')" >Property</button>
+					<div class="button-group col-xs-12 col-md-6">
+						<div class="col-sm-4 col-xs-6">
+							<button type="button" class="btn btn-lg" onclick="showSelection('propertySelectionPanel')" >Property</button>
+						</div>
+						<div class="col-sm-4 col-xs-6">
+							<button type="button" class="btn btn-lg" onclick="showSelection('roomSelectionPanel')" >Room</button>
+						</div>
+						<div class="col-sm-4 col-xs-6">
+							<button type="button" class="btn btn-lg" onclick="showSelection('sensorSelectionPanel')" >Sensor</button>
+						</div>
 					</div>
-					<div class="col-md-2">
-						<button type="button" class="btn" onclick="showSelection('roomSelectionPanel')" >Room</button>
-					</div>
-					<div class="col-md-2">
-						<button type="button" class="btn" onclick="showSelection('sensorSelectionPanel')" >Sensor</button>
-					</div>
+					<div class="col-xs-12 col-md-6">
+						<div class="col-sm-4 col-xs-6">
+							<input type="text" class="form-control text-center" id="startDate" placeholder="Enter Start Date"></input>
+						</div>
+						<div class="col-sm-4 col-xs-6">
+							<input type="text" class="form-control text-center" id="endDate" placeholder="Enter End Date"></input>
+						</div>
 
-					<div class="col-md-2">
-						<input type="text" class="form-control text-center" id="startDate" placeholder="Enter Start Date"></input>
-					</div>
-					<div class="col-md-2">
-						<input type="text" class="form-control text-center" id="endDate" placeholder="Enter End Date"></input>
-					</div>
-
-					<div class="col-md-2">
-						<button type="button" class="btn btn-lg btn-danger" onclick="confirm()" >Confirm</button>
+						<div class="col-sm-4 col-xs-6">
+							<button type="button" class="btn btn-lg btn-danger" onclick="confirm()" >Confirm</button>
+						</div>
 					</div>
 
 					<div class="col-md-12">
@@ -89,7 +92,6 @@ include $path."main.php";
 					History Charts
 					<div class="btn-group pull-right">
 						<a onClick="changeGraph(makeURL())" class="btn btn-default btn-sm hidden-xs"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
-			            <!--<a onClick="togglePanelSize('hum')" class="btn btn-default btn-sm hidden-xs">Toggle</a>-->
 			        </div>
 				</div>
 				<div class="panel-body"id="chartBody">
@@ -118,7 +120,7 @@ include $path."main.php";
 						</div>
 					</div>
 					<div class="col-md-12" id="tempDetails">
-						<div class="col-md-3 col-sm-4">
+						<div class="col-md-3 col-sm-4 col-xs-6">
 							<h4>
 								Highest Temperature
 							</h4>
@@ -129,7 +131,7 @@ include $path."main.php";
 								&deg;C
 							</span>
 						</div>
-						<div class="col-md-3 col-sm-4">
+						<div class="col-md-3 col-sm-4 col-xs-6">
 							<h4>
 								Lowest Temperature
 							</h4>
@@ -140,7 +142,7 @@ include $path."main.php";
 								&deg;C
 							</span>
 						</div>
-						<div class="col-md-3 col-sm-4">
+						<div class="col-md-3 col-sm-4 col-xs-6">
 							<h4>
 								Average Temperature
 							</h4>
@@ -171,7 +173,7 @@ include $path."main.php";
 						</div>
 					</div>
 					<div class="col-md-12" id="humDetails">
-						<div class="col-md-3 col-sm-4">
+						<div class="col-md-3 col-sm-4 col-xs-6">
 							<h4>
 								Highest Humidity
 							</h4>
@@ -182,7 +184,7 @@ include $path."main.php";
 								%
 							</span>
 						</div>
-						<div class="col-md-3 col-sm-4">
+						<div class="col-md-3 col-sm-4 col-xs-6">
 							<h4>
 								Lowest Humidity
 							</h4>
@@ -193,7 +195,7 @@ include $path."main.php";
 								%
 							</span>
 						</div>
-						<div class="col-md-3 col-sm-4">
+						<div class="col-md-3 col-sm-4 col-xs-6">
 							<h4>
 								Average Humidity
 							</h4>
@@ -237,7 +239,7 @@ $('#form_datetime1').datetimepicker({
 					Historys Tables
 					<div class="btn-group pull-right">
 						<a onClick="changeHistoryTable(makeURL())" class="btn btn-default btn-sm hidden-xs"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
-			            <!--<a onClick="togglePanelSize('hum')" class="btn btn-default btn-sm hidden-xs">Toggle</a>-->
+
 			        </div>
 				</div>
 				<div class="panel-body panel-collapse" id="notiBody">
