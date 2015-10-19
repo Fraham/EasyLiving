@@ -1,6 +1,6 @@
 <?php
 	require_once "../src/connect.php";
-	
+
 	$statement = "SELECT date, AVG(temperature) as temperature, spots.zone
 		FROM temperatureLog
 		INNER JOIN spots

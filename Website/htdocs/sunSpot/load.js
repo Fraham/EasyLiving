@@ -3,7 +3,7 @@ function load() {
     chart:
     {
       renderTo: 'container',
-      type: 'column'
+      type: 'line'
     },
     credits:
     {
@@ -92,32 +92,27 @@ function load() {
       async: true,
       success: function (result) {
         var error = result['error'];
+
         if (error === 0) {
           var chart = new Highcharts.Chart(options);
 
-
-          for (var i = 0; i < result['data'].length; i++) {
-            var obj = result['data'][i];
-
+          $.each(result.data, function (index, element) {
             var dataArray = [];
-
-            for (var j = 0; j < obj.data.length; j++) {
+            $.each(element, function (index2, element2) {
               var tempArray = [];
-              
-              console.log(obj.data[j][1])
 
-              tempArray.push(Date.UTC(obj.data[j][0], obj.data[j][1] - 1, obj.data[j][2], obj.data[j][3], obj.data[j][4], obj.data[j][5]));
-              tempArray.push(obj.data[j][6]);
+              tempArray.push(element2[0]);
+              tempArray.push(element2[1]);
 
               dataArray.push(tempArray);
-            }
+            });
 
             chart.addSeries({
-              name: obj.name,
+              name: index,
               data: dataArray
             });
-          }
-          //$("#container").show();
+          });
+          //$("#container").show();*/
         }
         else {
           //$("#container").hide();
