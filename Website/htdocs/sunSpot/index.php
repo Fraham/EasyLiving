@@ -13,7 +13,4 @@
 	<script>
 		load();
 	</script>
-	<div>
-		<h1>TEst</h1>
-	</div>
 	</body>

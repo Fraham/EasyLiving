@@ -20,7 +20,12 @@
 	{
 		while($row = $result->fetch_assoc())
 		{
-			$jsonRows[$row['zone']][] = array($row['date'], $row['temperature']);
+			$year = substr($row['date'], 0, 4);
+			$month = substr($row['date'], 5, 2);
+			$day = substr($row['date'], 8, 2);
+			$hour = substr($row['date'], 11, 2);
+
+			$jsonRows[$row['zone']][] = array($year, $month, $day, $hour, 0, 0, $row['temperature']);
 		}
 
 		$jsonResult["error"] = 0;

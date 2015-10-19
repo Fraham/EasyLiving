@@ -33,49 +33,20 @@ function load() {
         text: 'Amount'
       }
     },
-    dataGrouping: {
-      approximation: "sum",
-      enabled: true,
-      forced: true
-    },
-    rangeSelector: {
-      enabled: true,
-      buttons: [{
-        type: 'day',
-        count: 3,
-        text: '3d'
-      }, {
-          type: 'week',
-          count: 1,
-          text: '1w'
-        }, {
-          type: 'month',
-          count: 1,
-          text: '1m'
-        }, {
-          type: 'month',
-          count: 6,
-          text: '6m'
-        }, {
-          type: 'year',
-          count: 1,
-          text: '1y'
-        }, {
-          type: 'all',
-          text: 'All'
-        }],
-      selected: 3
-    },
     tooltip: {
       headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
       pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-      '<td style="padding:0"><b>{point.y:.0f}</b></td></tr>',
+      '<td style="padding:0"><b>{point.y:.2f}</b></td></tr>',
       footerFormat: '</table>',
       shared: true,
       useHTML: true
     },
     legend:
     {
+      title:
+      {
+        text: 'Zones'
+      },
       layout: 'vertical',
       align: 'right',
       verticalAlign: 'top',
@@ -101,8 +72,8 @@ function load() {
             $.each(element, function (index2, element2) {
               var tempArray = [];
 
-              tempArray.push(element2[0]);
-              tempArray.push(element2[1]);
+              tempArray.push(Date.UTC(element2[0], element2[1] - 1, element2[2], element2[3], element2[4], element2[5]));
+              tempArray.push(element2[6]);
 
               dataArray.push(tempArray);
             });
