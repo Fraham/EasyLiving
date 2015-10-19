@@ -10,7 +10,8 @@
 			YEAR(date),
 			MONTH(date),
 			DAY(date),
-			HOUR(date)";
+			HOUR(date)
+		ORDER BY spots.zone";
 
 	$result = $conn->query($statement);
 

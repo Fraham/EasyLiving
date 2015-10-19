@@ -11,7 +11,7 @@ function load() {
     },
     title:
     {
-      text: 'Amount',
+      text: 'Temperature in the different zones',
       x: -6
     },
     subtitle:
@@ -20,6 +20,10 @@ function load() {
       x: -20
     },
     xAxis: {
+      title:
+      {
+        text: 'Time'
+      },
       type: 'datetime',
       crosshair: true,
       maxPadding: 0,
@@ -30,7 +34,7 @@ function load() {
       min: 0,
       title:
       {
-        text: 'Amount'
+        text: 'Temperature'
       }
     },
     tooltip: {
