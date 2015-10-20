@@ -9,8 +9,10 @@
 <meta content="utf-8" http-equiv="encoding">
 	</head>
 	<body>
-	<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	<div id="temperatureGraph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	<div id="lightGraph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 	<script>
-		load();
+		loadTemperature();
+		loadLight();
 	</script>
 	</body>
