@@ -1,3 +1,6 @@
+var chartLight;
+var chartTemperature;
+
 function loadTemperature() {
   var options = {
     chart:
@@ -69,7 +72,7 @@ function loadTemperature() {
         var error = result['error'];
 
         if (error === 0) {
-          var chart = new Highcharts.Chart(options);
+          chartTemperature = new Highcharts.Chart(options);
 
           $.each(result.data, function (index, element) {
             var dataArray = [];
@@ -82,7 +85,7 @@ function loadTemperature() {
               dataArray.push(tempArray);
             });
 
-            chart.addSeries({
+            chartTemperature.addSeries({
               name: index,
               data: dataArray
             });
@@ -172,7 +175,7 @@ function loadLight() {
         var error = result['error'];
 
         if (error === 0) {
-          var chart = new Highcharts.Chart(options);
+          chartLight = new Highcharts.Chart(options);
 
           $.each(result.data, function (index, element) {
             var dataArray = [];
@@ -185,7 +188,7 @@ function loadLight() {
               dataArray.push(tempArray);
             });
 
-            chart.addSeries({
+            chartLight.addSeries({
               name: index,
               data: dataArray
             });
@@ -204,5 +207,18 @@ function loadLight() {
       }
     });
 }
-
+function graphChange(zone)
+{
+  zone = zone - 1;
+  if (chartTemperature.series[zone].visible)
+  {
+    chartTemperature.series[zone].hide();
+    chartLight.series[zone].hide();
+  }
+  else
+  {
+    chartTemperature.series[zone].show();
+    chartLight.series[zone].show();
+  }  
+}
 
