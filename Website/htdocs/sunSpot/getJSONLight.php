@@ -11,7 +11,8 @@
 			MONTH(date),
 			DAY(date),
 			HOUR(date)
-		ORDER BY spots.zone";
+		ORDER BY spots.zone
+		WHERE date between date_sub(now(),INTERVAL 1 WEEK) and now()";
 
 	$result = $conn->query($statement);
 
