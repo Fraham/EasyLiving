@@ -6,9 +6,9 @@ function getTemp($spotID){
   $temp = "n/a";
 
   $statement = "SELECT T.temperature FROM temperaturelog as T
+  GROUP BY spotID
   ORDER BY date ASC
-  WHERE spotID = $spotID
-  " ;
+  WHERE spotID = $spotID" ;
 
   $result = $conn->query($statement);
   
