@@ -12,7 +12,7 @@ if ($result->num_rows > 0)
 {
   while($row = $result->fetch_assoc())
   {
-   $temp = getTemp($row[spotID]);
+   $temp = getTemp($row["spotID"]);
     $spots .= "<tbody>";
     $spots .= "<tr class='odd gradeX'>";
     $spots .= "<td class='center'> $row[spotID] </td>";
