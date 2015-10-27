@@ -1,7 +1,26 @@
 <?php
 require_once "../src/connect.php";
 
-require "getCurrTemp.php";
+function getTemp($spotID){
+
+$temp = "n/a";
+
+$statement = "SELECT T.temperature FROM temperaturelog as T
+			ORDER BY date ASC
+			WHERE spotID = $spotID
+" ;
+
+$result = $conn->query($statement);
+
+if ($result->num_rows > 0)
+{
+	$row = $result->fetch_assoc();
+	
+	$temp = $row[temperature];
+}
+return $temp;
+}
+
 $spots = "";
 
 $statement = "SELECT S.spotID, S.zone FROM spots as S " ;
@@ -12,7 +31,7 @@ if ($result->num_rows > 0)
 {
   while($row = $result->fetch_assoc())
   {
-   $temp = getTemp($row["spotID"]);
+    $temp = getTemp($row["spotID"]);
     $spots .= "<tbody>";
     $spots .= "<tr class='odd gradeX'>";
     $spots .= "<td class='center'> $row[spotID] </td>";
@@ -29,4 +48,6 @@ if ($result->num_rows > 0)
 
 $conn->close();
 echo $spots;
+
+
 ?>

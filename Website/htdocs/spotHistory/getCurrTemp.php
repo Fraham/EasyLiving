@@ -1,8 +1,6 @@
 <?php
 
 function getTemp($spotID){
-	
-require_once "../src/connect.php";
 
 $temp = "n/a";
 
