@@ -31,7 +31,6 @@ $title = "Spot History";
 		<script src='<?php echo $path; ?>../js/jquery.bind.sortable.js'></script>
 		<script src='<?php echo $path; ?>../js/annyang.min.js'></script>
 		<link href='<?php echo $path; ?>../css/easyLiving.css' rel='stylesheet'>
-		<script src='<?php echo $path; ?>../templates/main.js'></script>
 	
 	<div class="row">
         <div class="col-lg-12">
