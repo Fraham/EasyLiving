@@ -3,11 +3,6 @@ require_once "../src/connect.php";
 
 $spots = "";
 
-
-//sec_session_start();
-	session_start();
-  session_write_close();
-
 $statement = "SELECT S.spotID, S.zone FROM spots as S " ;
 
 $result = $conn->query($statement);
@@ -22,7 +17,7 @@ if ($result->num_rows > 0)
     $spots .= "<td class='center'> $row[zone] </td>";
     $spots .= "<td class='center'> 0 </td>";
     $spots .= "<td class='center'> 0 </td>";
-    $spots .= "<td class='center'> 0 </td>";
+    $spots .= "<td class='center'> <button>History</button> </td>";
     
     
     $spots .= "</tr>";
