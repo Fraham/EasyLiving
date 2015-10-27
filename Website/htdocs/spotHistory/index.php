@@ -1,4 +1,8 @@
 <?php
+$title = "Spot History";
+  $pageName = "Spots";
+	$path = "../src/templates/";
+	include $path."main.php";
 ?>
 
 <!DOCTYPE html>
