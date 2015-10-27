@@ -10,14 +10,14 @@ WHERE spotID = $spotID
 ORDER BY date ASC
 LIMIT 1";
 
-  $result = $conn->query($statementT);
+  $result = mysqli_query($conn,$statementT);
   
   //if ($result->num_rows > 0)
   //{
-    $row = $result->fetch_assoc();
+    while($row = mysqli_fetch_row($result)){
     
     $temp = $row[temperature];
-  //}
+  }
   $conn->close();
   return $temp;
 }
