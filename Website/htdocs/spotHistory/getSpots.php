@@ -8,16 +8,16 @@ function getTemp($spotID){
   $statementT = "SELECT temperature FROM temperaturelog
 WHERE spotID = $spotID
 ORDER BY date ASC
-LIMIT 1" ;
+LIMIT 1";
 
   $result = $conn->query($statementT);
   
-  if ($result->num_rows > 0)
-  {
+  //if ($result->num_rows > 0)
+  //{
     $row = $result->fetch_assoc();
     
     $temp = $row[temperature];
-  }
+  //}
   $conn->close();
   return $temp;
 }
