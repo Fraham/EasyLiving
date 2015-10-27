@@ -39,11 +39,11 @@ $title = "Spot History";
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                   <thead>
                     <tr>
-                      <th>SPOT ID</th>
-                      <th>Zone</th>
-					            <th>Current Light</th>
-					            <th>Current temp</th>
-					            <th>History</th>
+                        <th>SPOT ID</th>
+                        <th>Zone</th>
+						<th>Current Light</th>
+						<th>Current temp</th>
+						<th>History</th>
                     </tr>
                   </thead>
 				  <?php

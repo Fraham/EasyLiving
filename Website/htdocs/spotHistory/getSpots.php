@@ -1,6 +1,7 @@
 <?php
 require_once "../src/connect.php";
 
+require "getCurrTemp.php";
 $spots = "";
 
 $statement = "SELECT S.spotID, S.zone FROM spots as S " ;
@@ -16,7 +17,7 @@ if ($result->num_rows > 0)
     $spots .= "<td class='center'> $row[spotID] </td>";
     $spots .= "<td class='center'> $row[zone] </td>";
     $spots .= "<td class='center'> 0 </td>";
-    $spots .= "<td class='center'> 0 </td>";
+    $spots .= "<td class='center'> getTemp($row[spotID]) </td>";
     $spots .= "<td class='center'> <button>History</button> </td>";
     
     
