@@ -1,5 +1,5 @@
 <?php
-require_once "../src/connect.php";
+require "../src/connect.php";
 
 function getTemp($spotID){
 
