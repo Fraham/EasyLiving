@@ -5,10 +5,10 @@ function getTemp($spotID){
   require "../src/connect.php";
   $temp = "n/a";
 
-  $statementT = "SELECT T.temperature FROM temperaturelog as T
-  GROUP BY spotID
-  ORDER BY date ASC
-  WHERE spotID = $spotID" ;
+  $statementT = "SELECT temperature FROM temperaturelog
+WHERE spotID = $spotID
+ORDER BY date ASC
+LIMIT 1" ;
 
   $result = $conn->query($statementT);
   
