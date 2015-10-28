@@ -16,28 +16,28 @@ $title = "Spot History";
 	</head>
 	<body>
 	
-	<div class="row">
-        <div class="col-lg-12">
-            <!-- /.panel-heading -->
-              <div class="dataTable_wrapper">
-                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                  <thead>
-                    <tr>
-                        <th>SPOT ID</th>
-                        <th>Zone</th>
-						<th>Current Light</th>
-						<th>Current temp</th>
-						<th>History</th>
-                    </tr>
-                  </thead>
-				  <?php
-				  	include "getSpots.php";
-				  ?>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<!-- /.panel-heading -->
+				<div class="dataTable_wrapper">
+					<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+					<thead>
+						<tr>
+							<th>SPOT ID</th>
+							<th>Zone</th>
+							<th>Current Light</th>
+							<th>Current temp</th>
+							<th>History</th>
+						</tr>
+					</thead>
+					<?php
+						include "getSpots.php";
+					?>
+				</div>
 			</div>
 		</div>
-	</div>
 	
-	<div class="container">
 	<h2>Modal Example</h2>
 	<!-- Trigger the modal with a button -->
 	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
