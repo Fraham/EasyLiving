@@ -66,7 +66,9 @@ if ($result->num_rows > 0)
 				</div>
 				<div class='modal-body'>
         
-     <div class='dataTable_wrapper'>
+     <div class='row'>
+			<div class='col-lg-12'>
+        <div class='dataTable_wrapper'>
 					<table class='table table-striped table-bordered table-hover' id='dataTables-example'>
 					<thead>
 						<tr>
@@ -77,7 +79,9 @@ if ($result->num_rows > 0)
           
           
 				
-		$spots .="		
+		$spots .="
+        </div>
+        </div>		
           </div>
         </div>
 				<div class='modal-footer'>
