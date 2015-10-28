@@ -34,6 +34,7 @@ $title = "Spot History";
 					<?php
 						include "getSpots.php";
 					?>
+					</table>
 				</div>
 			</div>
 		</div>
