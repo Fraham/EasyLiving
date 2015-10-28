@@ -10,7 +10,8 @@
 			YEAR(date),
 			MONTH(date),
 			DAY(date),
-			HOUR(date)
+			HOUR(date),
+			MINUTE(date)
 		ORDER BY spots.zone";
 
 	$result = $conn->query($statement);
@@ -25,8 +26,9 @@
 			$month = substr($row['date'], 5, 2);
 			$day = substr($row['date'], 8, 2);
 			$hour = substr($row['date'], 11, 2);
+			$minute = substr($row['date'], 14, 2);
 
-			$jsonRows[$row['zone']][] = array($year, $month, $day, $hour, 0, 0, $row['temperature']);
+			$jsonRows[$row['zone']][] = array($year, $month, $day, $hour, $minute, 0, $row['temperature']);
 		}
 
 		$jsonResult["error"] = 0;

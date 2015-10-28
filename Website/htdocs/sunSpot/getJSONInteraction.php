@@ -1,18 +1,26 @@
 <?php
 	require_once "../src/connect.php";
+	if(isset($_GET['date'])) {
+		$date= $_GET['date'];
+	}
+	else
+	{
+		$date = "1971-06-22 05:40:06";
+	}
 
-	$statement = "SELECT date, AVG(light) as light, spots.zone
-		FROM lightLog
-		INNER JOIN spots
-		ON spots.spotID = lightLog.spotID
+	$statement = "SELECT date, COUNT(*) as amount, items.name as name
+		FROM log2
+		INNER JOIN items
+		ON items.itemID = log2.itemID
+		WHERE log2.sensorType = 'i' AND date > '" .$date. "' 
 		GROUP BY
-			spots.zone,
+			items.itemID,
 			YEAR(date),
 			MONTH(date),
 			DAY(date),
 			HOUR(date),
 			MINUTE(date)
-		ORDER BY spots.zone";
+		ORDER BY items.itemID";
 
 	$result = $conn->query($statement);
 
@@ -28,14 +36,14 @@
 			$hour = substr($row['date'], 11, 2);
 			$minute = substr($row['date'], 14, 2);
 
-			$jsonRows[$row['zone']][] = array($year, $month, $day, $hour, $minute, 0, $row['light']);
+			$jsonRows[$row['name']][] = array($year, $month, $day, $hour, $minute, 0, $row['amount']);
 		}
 
 		$jsonResult["error"] = 0;
 	}
 	else
 	{
-		$jsonResult["error"] = 1;
+		$jsonResult["error"] = $date;
 	}
 
 	$jsonResult["data"] = $jsonRows;

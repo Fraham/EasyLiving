@@ -14,8 +14,11 @@
 		<button onclick="graphChange(3)">Zone 3</button> 
 		<div id="temperatureGraph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 		<div id="lightGraph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<div id="interactionGraph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 		<script>
 			loadTemperature();
 			loadLight();
+			loadInteraction();
+			setInterval(function(){updateInteractionData()}, 5000);
 		</script>
 	</body>
