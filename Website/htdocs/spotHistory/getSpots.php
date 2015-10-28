@@ -87,8 +87,7 @@ if ($result->num_rows > 0)
                 <td>10</td>
                 <td class='text-right'>39097</td>
               </tr>
-            </tbody>
-          </table>";
+            </tbody>";
           
           
 				
