@@ -39,7 +39,7 @@ if ($result->num_rows > 0)
     $spots .= "<td class='center'> $row[zone] </td>";
     $spots .= "<td class='center'> 0 </td>";
     $spots .= "<td class='center'> $temp </td>";
-    $spots .= "<td class='center'> <button class='btn btn-danger data-toggle='modal' data-target='#myModal'>History</button> </td>";
+    $spots .= "<td class='center'> <button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#myModal'>Open Modal</button> </td>";
     
     
     $spots .= "</tr>";
