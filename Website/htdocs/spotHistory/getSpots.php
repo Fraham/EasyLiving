@@ -5,7 +5,7 @@ function getHistory($spotID){
 		require "../src/connect.php";
 
 
-		$statement = "SELECT S.spotID, I.date, I.interaction FROM spots as S 
+		$statement = "SELECT I.date, I.interaction FROM spots as S 
                  LEFT OUTER JOIN interactionlog as I
                   ON I.spotID = S.spotID
                   WHERE S.spotID = $spotID
@@ -17,17 +17,9 @@ function getHistory($spotID){
 		{
 			while($row = $result->fetch_assoc())
 			{
-          $spots .= "<tbody>";
-          $spots .= "<tr class='odd gradeX'>";
-          $spots .= "<td class='center'> $row[spotID] </td>";
-          $spots .= "<td class='center'> $row[zone] </td>";
-          $spots .= "<td class='center'> 0 </td>";
-          $spots .= "<td class='center'> $temp </td>";
-          $spots .= "<td class='center'> <button type='button' class='btn btn-danger btn-block' data-toggle='modal' data-target='#$row[spotID]'>History</button> </td>";
-          
-          
-          $spots .= "</tr>";
-          $spots .= "</tbody>";
+          $spots .= "<div>
+          <p style='margin-right:1.25em; text-align:center;'>$row[interaction] <span style='padding:100px;'>$row[date]</p>
+          </div>";
 			}
 		}
 }
@@ -70,7 +62,7 @@ if ($result->num_rows > 0)
           </div>
           <div style='text-align:right;'><h3>Date</h3></div>";
           
-          
+          getHistory($row['spotID']);
 				
 		$spots .="
         </div>
