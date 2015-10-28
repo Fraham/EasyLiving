@@ -75,7 +75,8 @@ if ($result->num_rows > 0)
 							<th>Interaction</th>
 							<th>Date</th>
 						</tr>
-					</thead>";
+					</thead>
+          </table>";
           
           
 				
