@@ -66,7 +66,7 @@ if ($result->num_rows > 0)
 				</div>
 				<div class='modal-body'>
           <div>
-          <h3 style='text-align:center;'>Interaction <span>Date</h3></span>
+          <h3 style='text-align:center;'>Interaction <span style='display:inline-block;'>Date</h3></span>
           </div>
           <div style='text-align:right;'><h3>Date</h3></div>";
           
