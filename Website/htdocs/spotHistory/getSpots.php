@@ -67,8 +67,9 @@ if ($result->num_rows > 0)
 				<div class='modal-body'>
           <div>
           <h3>Interaction</h3>
+          <h3 style='text-align:right'>Date</h3>
           </div>
-          <div class='right'><h3>Date</h3></div>";
+          <div style='text-align:right;'><h3>Date</h3></div>";
           
           
 				
