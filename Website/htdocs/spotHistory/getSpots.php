@@ -66,14 +66,28 @@ if ($result->num_rows > 0)
 				</div>
 				<div class='modal-body'>
         
-        <div class='dataTable_wrapper'>
-					<table class='table table-striped table-bordered table-hover' id='dataTables-example'>
-					<thead>
-						<tr>
-							<th>Interaction</th>
-							<th>Date</th>
-						</tr>
-					</thead>
+                  <table class='table table-striped' id='tblGrid'>
+            <thead id='tblHead'>
+              <tr>
+                <th>Location</th>
+                <th>Points</th>
+                <th class='text-right'>Mean</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Long Island, NY, USA</td>
+                <td>3</td>
+                <td class='text-right'>45001</td>
+              </tr>
+              <tr><td>Chicago, Illinois, USA</td>
+                <td>5</td>
+                <td class='text-right'>76455</td>
+              </tr>
+              <tr><td>New York, New York, USA</td>
+                <td>10</td>
+                <td class='text-right'>39097</td>
+              </tr>
+            </tbody>
           </table>";
           
           
