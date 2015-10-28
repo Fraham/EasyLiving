@@ -93,6 +93,7 @@ if ($result->num_rows > 0)
           
 				
 		$spots .="
+        </div>
 				<div class='modal-footer'>
 				<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
 				</div>
