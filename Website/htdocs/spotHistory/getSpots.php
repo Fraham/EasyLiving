@@ -39,7 +39,7 @@ if ($result->num_rows > 0)
     $spots .= "<td class='center'> $row[zone] </td>";
     $spots .= "<td class='center'> 0 </td>";
     $spots .= "<td class='center'> $temp </td>";
-    $spots .= "<td class='center'> <button>History</button> </td>";
+    $spots .= "<td class='center'> <button class='btn btn-danger'>History</button> </td>";
     
     
     $spots .= "</tr>";
