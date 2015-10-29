@@ -6,8 +6,8 @@ function getHistory($spotID){
 
     $spot = "";
 
-		$statement2 = "SELECT I.date, COUNT(*) as interaction FROM spots as S 
-                 LEFT OUTER JOIN interactionlog as I
+		$statement2 = "SELECT I.date, COUNT(*) as data FROM spots as S 
+                 LEFT OUTER JOIN log2 as I
                   ON I.spotID = S.spotID
                   WHERE S.spotID = '$spotID'
                   GROUP BY 
