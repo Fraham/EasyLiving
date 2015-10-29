@@ -6,10 +6,16 @@ function getHistory($spotID){
 
     $spot = "";
 
-		$statement2 = "SELECT I.date, I.interaction FROM spots as S 
+		$statement2 = "SELECT I.date, COUNT(*) as interaction FROM spots as S 
                  LEFT OUTER JOIN interactionlog as I
                   ON I.spotID = S.spotID
                   WHERE S.spotID = '$spotID'
+                  GROUP BY 
+                  			YEAR(I.date),
+                        MONTH(I.date),
+                        DAY(I.date),
+                        HOUR(I.date),
+                        MINUTE(I.date)
                  ORDER BY I.date DESC";
 
 		$result2 = $conn->query($statement2);
