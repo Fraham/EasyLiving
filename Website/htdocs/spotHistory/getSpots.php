@@ -11,11 +11,11 @@ function getHistory($spotID){
                   WHERE S.spotID = $spotID
                  ORDER BY I.date DESC";
 
-		$result = $conn->query($statement);
+		$result2 = $conn->query($statement);
 
-		if (is_object($result) &&$result->num_rows > 0)
+		if ($result2->num_rows > 0)
 		{
-			while($row = $result->fetch_assoc())
+			while($row = $result2->fetch_assoc())
 			{
           $spots .= "<div>
           <p style='margin-right:1.25em; text-align:center;'>$row[interaction] <span style='padding:100px;'>$row[date]</p>
