@@ -8,7 +8,7 @@ function getHistory($spotID){
 		$statement2 = "SELECT I.date, I.interaction FROM spots as S 
                  LEFT OUTER JOIN interactionlog as I
                   ON I.spotID = S.spotID
-                  WHERE S.spotID = $spotID
+                  WHERE S.spotID = '$spotID'
                  ORDER BY I.date DESC";
 
 		$result2 = $conn->query($statement2);
