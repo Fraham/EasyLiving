@@ -13,7 +13,7 @@ function getHistory($spotID){
 
 		$result = $conn->query($statement);
 
-		if ($result->num_rows > 0)
+		if (is_object($result) &&$result->num_rows > 0)
 		{
 			while($row = $result->fetch_assoc())
 			{
@@ -60,7 +60,6 @@ if ($result->num_rows > 0)
           <div>
           <h3 style='margin-right:1.25em; text-align:center;'>Interaction <span style='padding:100px;'>Date</h3></span>
           </div>";
-          $conn->close(); 
           
           getHistory($row['spotID']);
 				
@@ -75,6 +74,7 @@ if ($result->num_rows > 0)
 		</div>
     ";
   }
+          $conn->close(); 
 }
 
 echo $spots;
