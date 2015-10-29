@@ -59,8 +59,8 @@ if ($result->num_rows > 0)
 				<div class='modal-body'>
           <div>
           <h3 style='margin-right:1.25em; text-align:center;'>Interaction <span style='padding:100px;'>Date</h3></span>
-          </div>
-          <div style='text-align:right;'><h3>Date</h3></div>";
+          </div>";
+          $conn->close(); 
           
           getHistory($row['spotID']);
 				
@@ -77,7 +77,6 @@ if ($result->num_rows > 0)
   }
 }
 
-$conn->close();
 echo $spots;
 
 
