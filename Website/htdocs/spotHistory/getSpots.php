@@ -25,7 +25,7 @@ function getHistory($spotID){
 			while($row = $result2->fetch_assoc())
 			{
           $spot .= "<div>
-          <p style='margin-right:1.25em; text-align:center;'>$row[interaction] <span style='padding:100px;'>$row[date]</p>
+          <p style='margin-right:1.25em; text-align:center;'>$row[interaction] <span style='padding:200px;'>$row[date]</p>
           </div>";
 			}
 		}
