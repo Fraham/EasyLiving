@@ -5,13 +5,13 @@ function getHistory($spotID){
 		require "../src/connect.php";
 
 
-		$statement = "SELECT I.date, I.interaction FROM spots as S 
+		$statement2 = "SELECT I.date, I.interaction FROM spots as S 
                  LEFT OUTER JOIN interactionlog as I
                   ON I.spotID = S.spotID
                   WHERE S.spotID = $spotID
                  ORDER BY I.date DESC";
 
-		$result2 = $conn->query($statement);
+		$result2 = $conn->query($statement2);
 
 		if ($result2->num_rows > 0)
 		{
