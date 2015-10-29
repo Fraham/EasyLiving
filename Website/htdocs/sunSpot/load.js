@@ -212,17 +212,25 @@ function loadLight() {
 }
 function graphChange(zone)
 {
-  zone = zone - 1;
-  if (chartTemperature.series[zone].visible)
-  {
-    chartTemperature.series[zone].hide();
-    chartLight.series[zone].hide();
+  var tempSeries = chartTemperature.get(zone);
+  var lightSeries = chartLight.get(zone);
+  
+  if (tempSeries.visible)
+  {  
+    tempSeries.hide();
   }
   else
   {
-    chartTemperature.series[zone].show();
-    chartLight.series[zone].show();
-  }  
+    tempSeries.show();
+  }
+  if (lightSeries.visible)
+  {
+    lightSeries.hide();
+  }
+  else
+  {
+    lightSeries.show();
+  }
 }
 
 function loadInteraction() {
