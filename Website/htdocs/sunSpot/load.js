@@ -87,6 +87,7 @@ function loadTemperature() {
             });
 
             chartTemperature.addSeries({
+              id: index,
               name: index,
               data: dataArray
             });
@@ -190,6 +191,7 @@ function loadLight() {
             });
 
             chartLight.addSeries({
+              id: index,
               name: index,
               data: dataArray
             });
@@ -359,6 +361,88 @@ function updateInteractionData()
             series.setData(dataArray);        
           });
           interactionDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        }
+        else {
+        }
+      },
+      error: function (e) {
+        console.log(e);
+      },
+      complete: function () {
+
+      }
+    });
+}
+
+function updateLightData()
+{
+  console.log("update");
+  $.ajax(
+    {
+      url: "getJSONLight.php",//?date=" + interactionDate,
+      dataType: 'json',
+      async: true,
+      success: function (result) {
+        var error = result['error'];
+
+        if (error === 0) {
+          $.each(result.data, function (index, element) {
+            var dataArray = [];
+            $.each(element, function (index2, element2) {
+              var tempArray = [];
+
+              tempArray.push(Date.UTC(element2[0], element2[1] - 1, element2[2], element2[3], element2[4], element2[5]));
+              tempArray.push(element2[6]);
+
+              dataArray.push(tempArray);
+              /*
+              series.addPoint(tempArray); */           
+              
+            });
+            var series = chartLight.get(index);
+            series.setData(dataArray);        
+          });
+        }
+        else {
+        }
+      },
+      error: function (e) {
+        console.log(e);
+      },
+      complete: function () {
+
+      }
+    });
+}
+
+function updateTemperatureData()
+{
+  console.log("update");
+  $.ajax(
+    {
+      url: "getJSONTemperature.php",//?date=" + interactionDate,
+      dataType: 'json',
+      async: true,
+      success: function (result) {
+        var error = result['error'];
+
+        if (error === 0) {
+          $.each(result.data, function (index, element) {
+            var dataArray = [];
+            $.each(element, function (index2, element2) {
+              var tempArray = [];
+
+              tempArray.push(Date.UTC(element2[0], element2[1] - 1, element2[2], element2[3], element2[4], element2[5]));
+              tempArray.push(element2[6]);
+
+              dataArray.push(tempArray);
+              /*
+              series.addPoint(tempArray); */           
+              
+            });
+            var series = chartTemperature.get(index);
+            series.setData(dataArray);        
+          });
         }
         else {
         }

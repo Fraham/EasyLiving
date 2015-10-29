@@ -1,18 +1,17 @@
 <?php
 	require_once "../src/connect.php";
 
-	$statement = "SELECT date, AVG(light) as light, spots.zone
-		FROM lightLog
-		INNER JOIN spots
-		ON spots.spotID = lightLog.spotID
+	$statement = "SELECT date, AVG(data) as light, zone
+		FROM log2
+		WHERE log2.sensorType = 'l'
 		GROUP BY
-			spots.zone,
+			zone,
 			YEAR(date),
 			MONTH(date),
 			DAY(date),
 			HOUR(date),
 			MINUTE(date)
-		ORDER BY spots.zone";
+		ORDER BY zone";
 
 	$result = $conn->query($statement);
 

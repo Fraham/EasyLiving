@@ -12,7 +12,7 @@
 		FROM log2
 		INNER JOIN items
 		ON items.itemID = log2.itemID
-		WHERE log2.sensorType = 'i' AND date > '" .$date. "' 
+		WHERE log2.sensorType = 'i'
 		GROUP BY
 			items.itemID,
 			YEAR(date),

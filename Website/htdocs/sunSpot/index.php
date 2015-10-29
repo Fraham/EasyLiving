@@ -20,5 +20,7 @@
 			loadLight();
 			loadInteraction();
 			setInterval(function(){updateInteractionData()}, 5000);
+			setInterval(function(){updateLightData()}, 5000);
+			setInterval(function(){updateTemperatureData()}, 5000);
 		</script>
 	</body>
