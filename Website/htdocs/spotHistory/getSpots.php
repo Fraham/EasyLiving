@@ -4,6 +4,7 @@ require "../src/connect.php";
 function getHistory($spotID){
 		require "../src/connect.php";
 
+    $spot = "";
 
 		$statement2 = "SELECT I.date, I.interaction FROM spots as S 
                  LEFT OUTER JOIN interactionlog as I
@@ -17,11 +18,12 @@ function getHistory($spotID){
 		{
 			while($row = $result2->fetch_assoc())
 			{
-          $spots .= "<div>
+          $spot .= "<div>
           <p style='margin-right:1.25em; text-align:center;'>$row[interaction] <span style='padding:100px;'>$row[date]</p>
           </div>";
 			}
 		}
+    return $spot;
 }
 
 $spots = "";
@@ -61,7 +63,7 @@ if ($result->num_rows > 0)
           <h3 style='margin-right:1.25em; text-align:center;'>Interaction <span style='padding:100px;'>Date</h3></span>
           </div>";
           
-          getHistory($row['spotID']);
+          $spots .= getHistory($row['spotID']);
 				
 		$spots .="
         </div>
